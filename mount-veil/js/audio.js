@@ -1,0 +1,102 @@
+"use strict";
+// Synthesized sound effects plus a soft wind loop (no audio files).
+
+const Sound = (() => {
+  let ac = null, master = null, noiseBuf = null, wind = null, muted = false;
+
+  function init() {
+    if (ac) { if (ac.state === "suspended") ac.resume(); return; }
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    ac = new AC();
+    master = ac.createGain();
+    master.gain.value = muted ? 0 : 0.45;
+    master.connect(ac.destination);
+    noiseBuf = ac.createBuffer(1, ac.sampleRate * 2, ac.sampleRate);
+    const d = noiseBuf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    startWind();
+  }
+
+  function startWind() {
+    const src = ac.createBufferSource();
+    src.buffer = noiseBuf; src.loop = true;
+    const f = ac.createBiquadFilter();
+    f.type = "bandpass"; f.frequency.value = 400; f.Q.value = 0.7;
+    const g = ac.createGain();
+    g.gain.value = 0.05;
+    const lfo = ac.createOscillator(), lg = ac.createGain();
+    lfo.frequency.value = 0.13; lg.gain.value = 180;
+    lfo.connect(lg).connect(f.frequency);
+    src.connect(f).connect(g).connect(master);
+    src.start(); lfo.start();
+    wind = g;
+  }
+
+  function tone(freq, dur, type, gain, when = 0, slideTo = null) {
+    const t0 = ac.currentTime + when;
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, t0);
+    if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, t0 + dur);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + 0.008);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g).connect(master);
+    o.start(t0); o.stop(t0 + dur + 0.05);
+  }
+
+  function noise(dur, gain, freq, type = "bandpass", q = 1, when = 0, slideTo = null) {
+    const t0 = ac.currentTime + when;
+    const src = ac.createBufferSource();
+    src.buffer = noiseBuf;
+    const f = ac.createBiquadFilter();
+    f.type = type; f.frequency.setValueAtTime(freq, t0); f.Q.value = q;
+    if (slideTo) f.frequency.exponentialRampToValueAtTime(slideTo, t0 + dur);
+    const g = ac.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(f).connect(g).connect(master);
+    src.start(t0, Math.random()); src.stop(t0 + dur + 0.05);
+  }
+
+  const vary = () => 0.94 + Math.random() * 0.12;   // slight random pitch
+
+  const bank = {
+    jump: () => { noise(0.08, 0.2, 1800 * vary(), "bandpass", 1.5); tone(330 * vary(), 0.08, "square", 0.05, 0, 520); },
+    wallJump: () => { noise(0.1, 0.25, 1400 * vary(), "bandpass", 1.5); tone(300 * vary(), 0.09, "square", 0.05, 0, 560); },
+    land: (e) => noise(0.09, 0.12 + e.power * 0.2, 500, "lowpass"),
+    dash: (e) => {
+      const pitch = e.dy < 0 ? 1.25 : e.dy > 0 ? 0.8 : 1;
+      noise(0.22, 0.4, 3000 * pitch, "bandpass", 0.8, 0, 600 * pitch);
+      tone(180 * pitch, 0.15, "sawtooth", 0.06, 0, 90 * pitch);
+    },
+    refill: () => { tone(1320, 0.12, "triangle", 0.18); tone(1760, 0.2, "triangle", 0.15, 0.06); },
+    refillBack: () => tone(990, 0.1, "sine", 0.06),
+    spring: () => { tone(220, 0.25, "square", 0.08, 0, 880); noise(0.08, 0.15, 1200); },
+    crumble: () => noise(0.35, 0.18, 300, "lowpass", 1),
+    crumbled: () => noise(0.25, 0.25, 180, "lowpass", 1),
+    grab: () => noise(0.05, 0.12, 2500, "highpass"),
+    berryTouch: () => { tone(880, 0.1, "triangle", 0.12); tone(1175, 0.14, "triangle", 0.1, 0.07); },
+    berry: (e) => {
+      // Each berry in a chain chimes a step higher.
+      const base = 523 * Math.pow(2, Math.min(e.chain - 1, 6) * 2 / 12);
+      [1, 1.25, 1.5, 2].forEach((m, i) => tone(base * m, 0.18, "triangle", 0.15, i * 0.06));
+    },
+    death: () => { noise(0.4, 0.4, 900, "bandpass", 0.7, 0, 150); tone(440, 0.35, "square", 0.08, 0, 110); },
+    respawn: () => { tone(330, 0.25, "sine", 0.1, 0, 660); },
+    room: () => {},
+    complete: () => [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, 0.45, "triangle", 0.16, i * 0.11)),
+  };
+
+  return {
+    init,
+    play(e) {
+      if (!ac || muted || !bank[e.type]) return;
+      bank[e.type](e);
+    },
+    get muted() { return muted; },
+    set muted(v) { muted = v; if (master) master.gain.value = muted ? 0 : 0.45; },
+  };
+})();

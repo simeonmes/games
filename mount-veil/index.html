@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#120f24">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Mount Veil</title>
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="title" class="screen">
+  <div class="card">
+    <div class="logo">
+      <span class="t1">MOUNT VEIL</span>
+      <span class="sub">Chapter 1 · The Foothills</span>
+    </div>
+    <div id="saveInfo" class="saveinfo"></div>
+    <div class="menu">
+      <button id="continue" class="big">Continue</button>
+      <button id="newClimb" class="big alt">Climb</button>
+      <button id="openSettings">Settings &amp; Assist Mode</button>
+    </div>
+    <details class="howto">
+      <summary>How to play</summary>
+      <div class="cols">
+        <div>
+          <h4>Keyboard</h4>
+          <p><kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move</p>
+          <p id="bindText"></p>
+          <p><kbd>Esc</kbd> pause</p>
+        </div>
+        <div>
+          <h4>Gamepad &amp; touch</h4>
+          <p>Stick or d-pad moves · <b>A</b> jump · <b>X</b>/<b>B</b> dash · bumpers or triggers grab · <b>Start</b> pause</p>
+          <p>On a touchscreen: stick on the left, Jump / Dash / Grab on the right.</p>
+        </div>
+        <div>
+          <h4>Moves</h4>
+          <p><b>Dash</b> in any of 8 directions. Your hair turns blue when it's used; landing or a green crystal gives it back.</p>
+          <p><b>Grab</b> walls to climb. Climbing tires you out (you'll flash red), so rest on the ground.</p>
+          <p>Jump off walls. Strawberries follow you and count once you land somewhere safe.</p>
+        </div>
+      </div>
+    </details>
+    <div class="foot">
+      <a class="link" href="../index.html">← All games</a>
+      <span>Inspired by Celeste. A fan-made tribute, not affiliated with its makers.</span>
+    </div>
+  </div>
+</div>
+
+<div id="pause" class="screen hidden">
+  <div class="card small">
+    <h2>PAUSED</h2>
+    <div id="pauseStats" class="stats"></div>
+    <div class="menu">
+      <button id="resume" class="big">Resume</button>
+      <button id="retry">Retry (respawn)</button>
+      <button id="pauseSettings">Settings &amp; Assist Mode</button>
+      <button id="quit">Save &amp; quit</button>
+    </div>
+  </div>
+</div>
+
+<div id="settings" class="screen hidden">
+  <div class="card">
+    <h2>Settings</h2>
+    <div class="grid">
+      <section>
+        <h3>Assist Mode</h3>
+        <p class="note">Mount Veil is meant to be a challenge. If it's too hard, change it here. Your save gets a small badge, that's all.</p>
+        <label>Game speed <select id="aSpeed"></select></label>
+        <label><input type="checkbox" id="aStamina"> Infinite stamina</label>
+        <label>Air dashes <select id="aDashes"><option value="default">Default</option><option value="infinite">Infinite</option></select></label>
+        <label><input type="checkbox" id="aInvincible"> Invincibility (pits bounce you back)</label>
+      </section>
+      <section>
+        <h3>Options</h3>
+        <label>Grab <select id="oGrab"><option value="hold">Hold</option><option value="toggle">Toggle</option></select></label>
+        <label><input type="checkbox" id="oShake"> Screen shake &amp; rumble</label>
+        <label><input type="checkbox" id="oTimer"> Speedrun timer</label>
+        <label><input type="checkbox" id="oSound"> Sound</label>
+      </section>
+      <section>
+        <h3>Controls</h3>
+        <div id="binds"></div>
+        <button id="resetBinds" class="small">Reset to defaults</button>
+      </section>
+      <section>
+        <h3>Save file</h3>
+        <p class="note">Progress is saved in this browser. Clearing site data erases it, so download a copy to keep it safe or move it to another device.</p>
+        <button id="exportSave" class="small">Download save</button>
+        <button id="importSave" class="small">Load save file</button>
+        <button id="deleteSave" class="small danger">Delete save</button>
+        <input type="file" id="importFile" accept=".json,application/json" hidden>
+        <div id="saveMsg" class="note"></div>
+      </section>
+    </div>
+    <button id="closeSettings" class="big">Back</button>
+  </div>
+</div>
+
+<div id="done" class="screen hidden">
+  <div class="card small">
+    <h2 class="gold">SUMMIT REACHED</h2>
+    <div id="doneStats" class="stats big"></div>
+    <div class="menu">
+      <button id="again" class="big">Climb again</button>
+      <button id="toTitle">Main menu</button>
+    </div>
+  </div>
+</div>
+
+<div id="touch" class="touch hidden">
+  <div class="stick"><div class="knob"></div></div>
+  <div class="btns">
+    <button data-act="grab" class="tb grab">GRAB</button>
+    <button data-act="dash" class="tb dash">DASH</button>
+    <button data-act="jump" class="tb jump">JUMP</button>
+  </div>
+  <button id="touchPause" class="tpause">❚❚</button>
+</div>
+
+<div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to climb</div>
+
+<script src="js/levels.js?v=1"></script>
+<script src="js/sim.js?v=1"></script>
+<script src="js/input.js?v=1"></script>
+<script src="js/audio.js?v=1"></script>
+<script src="js/render.js?v=1"></script>
+<script src="js/main.js?v=1"></script>
+</body>
+</html>
