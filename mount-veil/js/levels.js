@@ -1,9 +1,9 @@
 "use strict";
-// Chapter 1 of Mount Veil. Each room is drawn in tiles (40×23, 8 px each) and placed on
+// Chapter 1 of the Celeste fan game. Each room is drawn in tiles (40×23, 8 px each) and placed on
 // one big grid by its x/y (in tiles); rooms that touch are connected. Tile key in sim.js.
 
 const CHAPTER = {
-  name: "Mount Veil",
+  name: "Celeste",
   subtitle: "Chapter 1: The Foothills",
   rooms: [
     { id: "1", name: "Trailhead", x: 0, y: 0, rows: [

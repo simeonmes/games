@@ -1,5 +1,5 @@
 "use strict";
-// Mount Veil simulation: the climber's physics and every level object. There is no DOM
+// Celeste fan game simulation: the climber's physics and every level object. There is no DOM
 // code here, so the same file runs in the browser and in the room checker
 // (tools/verify.js), which proves each room can be finished.
 //

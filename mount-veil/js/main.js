@@ -261,7 +261,7 @@ const App = {
       try {
         const data = JSON.parse(r.result);
         const s = this.migrate(data && data.save);
-        if (!s) throw new Error("not a Mount Veil save");
+        if (!s) throw new Error("not a Celeste save");
         this.save = s;
         this.writeSave();
         if (data.settings && data.settings.binds) {
@@ -272,14 +272,14 @@ const App = {
         $("saveMsg").textContent = "Save loaded.";
         if (this.state === "title") this.titleScene();
       } catch (e) {
-        $("saveMsg").textContent = "That file isn't a Mount Veil save.";
+        $("saveMsg").textContent = "That file isn't a save from this game.";
       }
     };
     r.readAsText(file);
   },
 
   deleteSave() {
-    if (!confirm("Delete your Mount Veil progress, strawberries and best time?")) return;
+    if (!confirm("Delete your Celeste progress, strawberries and best time?")) return;
     this.save = null;
     try { localStorage.removeItem(SAVE_KEY); } catch (e) { /* ignore */ }
     $("saveMsg").textContent = "Save deleted.";
