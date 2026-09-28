@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Celeste</title>
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -91,6 +91,15 @@
         <button id="resetBinds" class="small">Reset to defaults</button>
       </section>
       <section>
+        <h3>Music</h3>
+        <p class="note">Play your own songs while you climb. Pick audio files from your device (MP3, M4A, OGG, WAV…). They stay in this browser and are never uploaded. With several songs, the music changes as you climb higher, in file-name order.</p>
+        <button id="addMusic" class="small">Choose songs…</button>
+        <button id="clearMusic" class="small danger">Remove songs</button>
+        <input type="file" id="musicFile" accept="audio/*,.mp3,.m4a,.ogg,.wav,.flac,.opus" multiple hidden>
+        <label>Volume <input type="range" id="musicVol" min="0" max="1" step="0.05"></label>
+        <ol id="musicList" class="tracks"></ol>
+      </section>
+      <section>
         <h3>Save file</h3>
         <p class="note">Progress is saved in this browser. Clearing site data erases it, so download a copy to keep it safe or move it to another device.</p>
         <button id="exportSave" class="small">Download save</button>
@@ -127,11 +136,12 @@
 
 <div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to climb</div>
 
-<script src="js/levels.js?v=2"></script>
-<script src="js/sim.js?v=2"></script>
-<script src="js/input.js?v=2"></script>
-<script src="js/audio.js?v=2"></script>
-<script src="js/render.js?v=2"></script>
-<script src="js/main.js?v=2"></script>
+<script src="js/levels.js?v=3"></script>
+<script src="js/sim.js?v=3"></script>
+<script src="js/input.js?v=3"></script>
+<script src="js/audio.js?v=3"></script>
+<script src="js/music.js?v=3"></script>
+<script src="js/render.js?v=3"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>

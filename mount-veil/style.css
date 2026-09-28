@@ -64,6 +64,9 @@ section { background: rgba(0, 0, 0, 0.2); border-radius: 10px; padding: 12px; }
 section label { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 14px; }
 select { font: inherit; background: #1b1636; color: #efeaff; border: 1px solid #5a4a93; border-radius: 6px; padding: 3px 6px; }
 .note { font-size: 12px; color: #a99ed0; margin: 4px 0 8px; line-height: 1.4; }
+.tracks { margin: 6px 0 0; padding-left: 20px; font-size: 13px; color: #d8cdfc; max-height: 120px; overflow-y: auto; }
+.tracks:empty::before { content: "No songs chosen."; color: #8f84b8; margin-left: -20px; }
+input[type="range"] { accent-color: #9d7bff; }
 .bind { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 5px 0; font-size: 14px; }
 .bind .keys { flex: 1; color: #d8cdfc; }
 .bind button { min-width: 0; padding: 4px 10px; font-size: 12px; }

@@ -23,7 +23,7 @@ const App = {
 
   defaultSettings() {
     return {
-      binds: JSON.parse(JSON.stringify(DEFAULT_BINDS)), grabMode: "hold", shake: true, timer: false, muted: false,
+      binds: JSON.parse(JSON.stringify(DEFAULT_BINDS)), grabMode: "hold", shake: true, timer: false, muted: false, musicVolume: 0.6,
       assist: { speed: 1, infiniteStamina: false, airDashes: "default", invincible: false },
     };
   },
@@ -94,6 +94,7 @@ const App = {
     Render.reset(this.game);
     Render.banner = { text: fromStart || !prev ? CHAPTER.subtitle : this.game.room.name, t: 0 };
     Sound.init();
+    Music.playFor(this.game.room.index, this.game.rooms.length);
     this.show(null);
     this.writeSave();
   },
@@ -102,6 +103,7 @@ const App = {
     this.capture();
     this.state = "title";
     this.paused = false;
+    Music.stop();
     this.titleScene();
     this.refreshTitle();
     this.show("title");
@@ -117,6 +119,7 @@ const App = {
   pause(on) {
     if (this.state !== "play") return;
     this.paused = on ?? !this.paused;
+    Music.duck(this.paused);
     if (this.paused) { this.capture(); this.refreshPause(); this.show("pause"); }
     else this.show(null);
   },
@@ -185,6 +188,7 @@ const App = {
     $("oTimer").checked = st.timer;
     $("oSound").checked = !st.muted;
     $("saveMsg").textContent = "";
+    $("musicVol").value = String(st.musicVolume ?? 0.6);
     this.renderBinds();
     this.show("settings");
   },
@@ -213,6 +217,8 @@ const App = {
     Render.settings.shake = st.shake;
     Render.settings.timer = st.timer;
     Sound.muted = st.muted;
+    Music.setMuted(st.muted);
+    Music.setVolume(st.musicVolume ?? 0.6);
     if (this.game) this.game.assist = st.assist;
   },
 
@@ -294,6 +300,7 @@ const App = {
       Render.effect(e, g);
       if (this.state === "play") Sound.play(e);
       if (e.type === "room" || e.type === "berry") this.capture();
+      if (e.type === "room") Music.playFor(g.room.index, g.rooms.length);
       if (e.type === "complete" && this.state === "play") this.finish();
     }
     g.events.length = 0;
@@ -313,6 +320,17 @@ const App = {
     $("importSave").onclick = () => $("importFile").click();
     $("importFile").onchange = (e) => { if (e.target.files[0]) this.importSave(e.target.files[0]); e.target.value = ""; };
     $("deleteSave").onclick = () => this.deleteSave();
+    $("addMusic").onclick = () => $("musicFile").click();
+    $("musicFile").onchange = async (e) => {
+      const n = await Music.add(e.target.files);
+      e.target.value = "";
+      if (!n) alert("Those files aren't audio files the browser can play.");
+    };
+    $("clearMusic").onclick = () => Music.clear();
+    $("musicVol").oninput = (e) => { this.settings.musicVolume = +e.target.value; Music.setVolume(+e.target.value); this.writeSettings(); };
+    Music.onChange = () => {
+      $("musicList").innerHTML = Music.tracks.map((t) => `<li>${t.name.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c])}</li>`).join("");
+    };
     $("again").onclick = () => this.newGame(true);
     $("toTitle").onclick = () => this.toTitle();
     $("touchPause").onclick = () => this.pause(true);
@@ -378,6 +396,7 @@ function loop(now) {
 // ---------------------------------------------------------------------------- boot
 
 App.load();
+Music.init();
 Input.init();
 Input.initTouch($("touch"));
 Render.init($("game"));
@@ -386,4 +405,4 @@ App.build();
 App.toTitle();
 requestAnimationFrame(loop);
 
-window.__MV = { App, Game, CHAPTER, Render, Input };
+window.__MV = { App, Game, CHAPTER, Render, Input, Music };
