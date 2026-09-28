@@ -64,14 +64,16 @@ const overlap = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h 
 //   #  rock            =  jump-through ledge       ^ v < >  spikes (pointing that way)
 //   P  respawn point   s  spring                   o  dash refill crystal
 //   %  crumble block   *  strawberry               G  summit flag (end of the chapter)
-function buildRoom(def, index) {
+//   O  pink crystal: refills to two dashes
+// A room can also have `wind` (px/s, + blows right, - blows left).
+function buildRoom(def, index, chapterId) {
   const rows = def.rows, h = rows.length, w = rows[0].length;
   rows.forEach((r, i) => {
     if (r.length !== w) throw new Error(`room ${def.id}: row ${i} is ${r.length} wide, expected ${w}`);
   });
   const x0 = def.x * TILE, y0 = def.y * TILE;
   const room = {
-    id: def.id, name: def.name || "", index, tx: def.x, ty: def.y, w, h,
+    id: def.id, name: def.name || "", index, tx: def.x, ty: def.y, w, h, wind: def.wind || 0,
     x: x0, y: y0, pw: w * TILE, ph: h * TILE,
     grid: [], spawns: [], springs: [], refills: [], berries: [], crumbles: [], goal: null,
     crumbleAt: new Int16Array(w * h).fill(-1),
@@ -82,8 +84,8 @@ function buildRoom(def, index) {
       const c = row[x], px = x0 + x * TILE, py = y0 + y * TILE;
       if (c === "P") room.spawns.push({ x: px + 4, y: py + TILE });
       else if (c === "s") room.springs.push({ x: px, y: py, t: 0 });
-      else if (c === "o") room.refills.push({ x: px + 4, y: py + 4, respawn: 0 });
-      else if (c === "*") room.berries.push({ id: `${def.id}:${x},${y}`, hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, state: 0 });
+      else if (c === "o" || c === "O") room.refills.push({ x: px + 4, y: py + 4, respawn: 0, two: c === "O" });
+      else if (c === "*") room.berries.push({ id: `${chapterId}/${def.id}:${x},${y}`, hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, state: 0 });
       else if (c === "G") room.goal = { x: px, y: py - TILE, w: TILE, h: TILE * 2 };
       else if (c === "#" || c === "=" || c === "%" || "^v<>".includes(c)) continue;
       else if (c !== ".") throw new Error(`room ${def.id}: unknown tile "${c}" at ${x},${y}`);
@@ -112,7 +114,7 @@ class Game {
   // opts: { startRoom, startSpawn, collected: [berry ids], assist, quiet }
   constructor(chapter, opts = {}) {
     this.chapter = chapter;
-    this.rooms = chapter.rooms.map(buildRoom);
+    this.rooms = chapter.rooms.map((def, i) => buildRoom(def, i, chapter.id));
     this.roomIndex = {};
     this.rooms.forEach((r) => { this.roomIndex[r.id] = r; });
     this.assist = Object.assign({ infiniteStamina: false, airDashes: "default", invincible: false }, opts.assist);
@@ -148,6 +150,7 @@ class Game {
       wallSlideTimer: C.WallSlideTime, wallSlideDir: 0, wallSpeedRetained: 0, wallSpeedRetentionTimer: 0,
       wallBoostDir: 0, wallBoostTimer: 0, hopWaitX: 0, hopWaitXSpeed: 0, climbNoMoveTimer: 0, lastClimbMove: 0,
       deadT: 0, respawnT: 0, safeT: 0, sx: 1, sy: 1, flash: 0,
+      justRespawned: true,   // wind leaves you alone until you first move, as in Celeste
     };
   }
 
@@ -385,7 +388,7 @@ class Game {
     p.vy = p.varJumpSpeed = C.SuperBounceSpeed;
     p.ducking = false;
     this.setState(ST_NORMAL);
-    p.dashes = MAX_DASHES;
+    p.dashes = Math.max(p.dashes, MAX_DASHES);
     p.stamina = C.ClimbMaxStamina;
     this.squash(0.6, 1.4);
   }
@@ -638,6 +641,7 @@ class Game {
 
   updatePlayer() {
     const p = this.p, inp = this.inp;
+    if (inp.mx || inp.my || inp.jump || inp.jumpPressed || inp.dashPressed || inp.grab) p.justRespawned = false;
     p.flash = Math.max(0, p.flash - DT);
     p.sx = approach(p.sx, 1, 1.75 * DT);
     p.sy = approach(p.sy, 1, 1.75 * DT);
@@ -688,6 +692,28 @@ class Game {
 
     this.moveH(p.vx * DT);
     this.moveV(p.vy * DT);
+    this.windMove();
+  }
+
+  // Wind pushes you along without changing your speed (like Celeste's WindMover). It can't
+  // push you off a wall you're backed against, doesn't move you while climbing, and ducking
+  // on the ground holds you in place.
+  windMove() {
+    const p = this.p, w = this.room.wind;
+    if (!w || p.state === ST_CLIMB || p.justRespawned) return;
+    const dir = Math.sign(w);
+    if (this.collideAt(p.x - dir * 3, p.y)) return;
+    let amt = w * DT;
+    if (p.ducking && p.onGround) amt = 0;
+    p.rx += amt;
+    let m = roundEven(p.rx);
+    p.rx -= m;
+    const s = sign(m);
+    while (m !== 0) {
+      if (this.collideAt(p.x + s, p.y)) { p.rx = 0; break; }
+      p.x += s;
+      m -= s;
+    }
   }
 
   // ------------------------------------------------------------------ level objects
@@ -766,13 +792,14 @@ class Game {
     for (const r of room.refills) {
       if (r.respawn > 0) continue;
       const rr = { x: r.x - 4, y: r.y - 4, w: 8, h: 8 };
-      if (overlap(hb, rr) && (p.dashes < MAX_DASHES || p.stamina < C.ClimbTiredThreshold)) {
-        p.dashes = MAX_DASHES;
+      const max = r.two ? 2 : MAX_DASHES;
+      if (overlap(hb, rr) && (p.dashes < max || p.stamina < C.ClimbTiredThreshold)) {
+        p.dashes = Math.max(p.dashes, max);
         p.stamina = C.ClimbMaxStamina;
         p.flash = 0.2;
         r.respawn = C.RefillRespawn;
         this.freeze = C.RefillFreeze;
-        this.emit("refill", { x: r.x, y: r.y });
+        this.emit("refill", { x: r.x, y: r.y, two: r.two });
       }
     }
 

@@ -32,6 +32,17 @@ h4 { margin: 0 0 6px; color: #d8cdfc; }
 .logo .sub { display: block; margin-top: 4px; color: #ff9fd8; letter-spacing: 3px; font-size: 13px; text-transform: uppercase; }
 .saveinfo { text-align: center; color: #cfc4f5; font-size: 14px; min-height: 20px; margin-bottom: 8px; }
 
+.chapters { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 8px 0 4px; }
+.chap {
+  min-width: 0; text-align: left; padding: 12px 14px; border-radius: 12px; display: flex; flex-direction: column; gap: 3px;
+  background: linear-gradient(160deg, var(--c1), var(--c2)); border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.chap:hover { filter: brightness(1.15); background: linear-gradient(160deg, var(--c1), var(--c2)); }
+.chap .num { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+.chap .name { font-size: 18px; font-weight: 800; }
+.chap .info { font-size: 12px; opacity: 0.9; min-height: 30px; }
+.chap.locked { filter: grayscale(0.8) brightness(0.6); cursor: not-allowed; }
+.chap .restart { align-self: flex-start; margin-top: 4px; font-size: 11px; text-decoration: underline; opacity: 0.85; cursor: pointer; }
 .menu { display: flex; flex-direction: column; gap: 8px; align-items: center; margin: 10px 0; }
 button {
   font: inherit; color: #efeaff; background: #2f2658; border: 1px solid #5a4a93; border-radius: 10px;

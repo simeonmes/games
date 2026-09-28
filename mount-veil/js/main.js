@@ -6,17 +6,19 @@
 
 const SAVE_KEY = "mountVeil.save.v1";
 const SETTINGS_KEY = "mountVeil.settings.v1";
-const SAVE_VERSION = 1;
+const SAVE_VERSION = 2;
 
 const $ = (id) => document.getElementById(id);
+const chapterById = (id) => CHAPTERS.find((c) => c.id === id);
+const berryCount = (ch) => ch.rooms.reduce((n, r) => n + r.rows.join("").split("*").length - 1, 0);
 
 const App = {
   state: "title",       // title | play | done
   paused: false,
   game: null,
-  save: null,
+  chapter: CHAPTERS[0],
+  save: null,           // { version, collected: [ids], chapters: { id: progress } }
   settings: null,
-  saveT: 0,
   settingsFrom: null,
 
   // ------------------------------------------------------------------ storage
@@ -39,34 +41,52 @@ const App = {
       }
     } catch (e) { /* storage unavailable: defaults */ }
     try { this.save = this.migrate(JSON.parse(localStorage.getItem(SAVE_KEY) || "null")); } catch (e) { this.save = null; }
+    if (!this.save) this.save = this.emptySave();
   },
+
+  emptySave() { return { version: SAVE_VERSION, collected: [], chapters: {} }; },
 
   migrate(s) {
     if (!s || typeof s !== "object") return null;
-    if (s.version !== SAVE_VERSION) return null;   // (future versions would convert here)
+    if (s.version === 1) {
+      // Version 1 had a single chapter: it becomes chapter 1, berry ids get the chapter prefix.
+      s = {
+        version: 2,
+        collected: (s.collected || []).map((id) => `c1/${id}`),
+        chapters: { c1: { room: s.room, spawn: s.spawn, deaths: s.deaths, time: s.time, assistUsed: s.assistUsed, done: s.done, best: s.best, started: true } },
+      };
+    }
+    if (s.version !== SAVE_VERSION || typeof s.chapters !== "object") return null;
     s.collected = Array.isArray(s.collected) ? s.collected.filter((id) => typeof id === "string") : [];
-    s.deaths = +s.deaths || 0; s.time = +s.time || 0;
-    if (!CHAPTER.rooms.some((r) => r.id === s.room)) s.room = CHAPTER.rooms[0].id;
+    for (const [id, c] of Object.entries(s.chapters)) {
+      const ch = chapterById(id);
+      if (!ch || !c) { delete s.chapters[id]; continue; }
+      c.deaths = +c.deaths || 0; c.time = +c.time || 0;
+      if (!ch.rooms.some((r) => r.id === c.room)) { c.room = ch.rooms[0].id; c.spawn = 0; }
+    }
     return s;
   },
 
   writeSettings() { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(this.settings)); } catch (e) { /* ignore */ } },
+  writeSave() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(this.save)); } catch (e) { /* ignore */ } },
 
-  writeSave() {
-    if (!this.save) return;
-    try { localStorage.setItem(SAVE_KEY, JSON.stringify(this.save)); } catch (e) { /* ignore */ }
+  progress(ch) { return this.save.chapters[ch.id]; },
+  unlocked(ch) {
+    const i = CHAPTERS.indexOf(ch);
+    return i === 0 || !!(this.save.chapters[CHAPTERS[i - 1].id] || {}).done;
   },
 
   // Copy the live game's progress into the save.
   capture() {
     const g = this.game;
-    if (!g || !this.save || this.state !== "play") return;
-    this.save.room = g.room.id;
-    this.save.spawn = g.room.spawns.indexOf(g.spawn);
-    this.save.collected = [...g.collected];
-    this.save.deaths = g.deaths;
-    this.save.time = g.time;
-    if (this.assistOn()) this.save.assistUsed = true;
+    if (!g || this.state !== "play") return;
+    const c = this.progress(this.chapter);
+    c.room = g.room.id;
+    c.spawn = g.room.spawns.indexOf(g.spawn);
+    c.deaths = g.deaths;
+    c.time = g.time;
+    if (this.assistOn()) c.assistUsed = true;
+    this.save.collected = [...new Set([...this.save.collected, ...g.collected])];
     this.writeSave();
   },
 
@@ -77,22 +97,25 @@ const App = {
 
   // ------------------------------------------------------------------ flow
 
-  newGame(fromStart) {
-    const prev = this.save;
-    if (fromStart || !prev) {
-      this.save = {
-        version: SAVE_VERSION, room: CHAPTER.rooms[0].id, spawn: 0, deaths: 0, time: 0,
-        collected: prev ? prev.collected : [], assistUsed: false, done: false, best: prev ? prev.best : null,
+  // Play a chapter: carry on where you left off, or start it over.
+  play(ch, fromStart) {
+    if (!this.unlocked(ch)) return;
+    this.chapter = ch;
+    let c = this.progress(ch);
+    const fresh = fromStart || !c || c.done || !c.started;
+    if (fresh) {
+      c = this.save.chapters[ch.id] = {
+        room: ch.rooms[0].id, spawn: 0, deaths: 0, time: 0, assistUsed: false, done: false,
+        best: c ? c.best : null, started: true,
       };
     }
-    const s = this.save;
-    this.game = new Game(CHAPTER, {
-      startRoom: s.room, startSpawn: s.spawn, collected: s.collected, deaths: s.deaths, time: s.time, assist: this.settings.assist,
+    this.game = new Game(ch, {
+      startRoom: c.room, startSpawn: c.spawn, collected: this.save.collected, deaths: c.deaths, time: c.time, assist: this.settings.assist,
     });
     this.state = "play";
     this.paused = false;
     Render.reset(this.game);
-    Render.banner = { text: fromStart || !prev ? CHAPTER.subtitle : this.game.room.name, t: 0 };
+    Render.banner = { text: fresh ? ch.subtitle : this.game.room.name, t: 0 };
     Sound.init();
     Music.playFor(this.game.room.index, this.game.rooms.length);
     this.show(null);
@@ -109,9 +132,10 @@ const App = {
     this.show("title");
   },
 
-  // A calm scene behind the title: the climber waiting at the trailhead.
+  // A calm scene behind the title: the start of the furthest chapter you've reached.
   titleScene() {
-    this.game = new Game(CHAPTER, { quiet: true, collected: this.save ? this.save.collected : [] });
+    const ch = [...CHAPTERS].reverse().find((c) => this.unlocked(c)) || CHAPTERS[0];
+    this.game = new Game(ch, { quiet: true, collected: this.save.collected });
     Render.reset(this.game);
     Render.banner = null;
   },
@@ -125,18 +149,25 @@ const App = {
   },
 
   finish() {
-    const g = this.game, s = this.save;
+    const g = this.game, ch = this.chapter;
     this.capture();
-    s.done = true;
-    const run = { time: g.time, deaths: g.deaths, berries: g.collected.size, assist: !!s.assistUsed };
-    if (!s.best || run.time < s.best.time) s.best = run;
+    const c = this.progress(ch);
+    c.done = true;
+    const got = g.rooms.reduce((n, r) => n + r.berries.filter((b) => g.collected.has(b.id)).length, 0);
+    const run = { time: g.time, deaths: g.deaths, berries: got, assist: !!c.assistUsed };
+    const prevBest = c.best;
+    if (!c.best || run.time < c.best.time) c.best = run;
     this.writeSave();
+    const next = CHAPTERS[CHAPTERS.indexOf(ch) + 1];
     setTimeout(() => {
       this.state = "done";
+      $("doneTitle").textContent = next ? `${ch.name.toUpperCase()} CLEARED` : "SUMMIT REACHED";
       $("doneStats").innerHTML =
         `Time <b>${formatTime(run.time)}</b><br>Deaths <b>${run.deaths}</b><br>Strawberries <b>${run.berries} / ${g.totalBerries()}</b>` +
         (run.assist ? `<br><span class="badge">Assist Mode</span>` : "") +
-        (s.best && s.best !== run ? `<br><small>Best time ${formatTime(s.best.time)}</small>` : "");
+        (prevBest && c.best !== run ? `<br><small>Best time ${formatTime(c.best.time)}</small>` : "") +
+        (next ? `<br><small>Unlocked: ${next.subtitle}</small>` : "");
+      $("nextChapter").hidden = !next;
       this.show("done");
     }, 1600);
   },
@@ -149,29 +180,35 @@ const App = {
   },
 
   refreshTitle() {
-    const s = this.save;
-    const canContinue = s && !s.done && (s.room !== CHAPTER.rooms[0].id || s.time > 1);
-    $("continue").hidden = !canContinue;
-    $("newClimb").textContent = s ? "Climb from the start" : "Climb";
-    const total = CHAPTER.rooms.reduce((n, r) => n + r.rows.join("").split("*").length - 1, 0);
-    if (s) {
-      const room = CHAPTER.rooms.find((r) => r.id === s.room);
-      const parts = [];
-      if (canContinue) parts.push(`At <b>${room.name}</b>`);
-      parts.push(`🍓 ${s.collected.length}/${total}`);
-      if (s.best) parts.push(`Best ${formatTime(s.best.time)}${s.best.assist ? " (assist)" : ""}`);
-      $("saveInfo").innerHTML = parts.join(" · ");
-    } else {
-      $("saveInfo").textContent = "";
-    }
-    const b = this.settings.binds;
-    $("bindText").innerHTML = `${keys(b.jump)} jump · ${keys(b.dash)} dash · ${keys(b.grab)} grab`;
+    const box = $("chapters");
+    box.innerHTML = "";
+    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"] };
+    CHAPTERS.forEach((ch, i) => {
+      const c = this.progress(ch), open = this.unlocked(ch);
+      const got = this.save.collected.filter((id) => id.startsWith(ch.id + "/")).length;
+      const b = document.createElement("button");
+      b.className = "chap" + (open ? "" : " locked");
+      const [c1, c2] = themes[ch.id] || themes.c1;
+      b.style.setProperty("--c1", c1); b.style.setProperty("--c2", c2);
+      let info;
+      if (!open) info = `🔒 Finish ${CHAPTERS[i - 1].name} to unlock`;
+      else if (c && c.started && !c.done) info = `Continue · ${ch.rooms.find((r) => r.id === c.room).name}`;
+      else if (c && c.done) info = `✔ Cleared${c.best ? ` · best ${formatTime(c.best.time)}${c.best.assist ? " (assist)" : ""}` : ""}`;
+      else info = "Start";
+      b.innerHTML = `<span class="num">Chapter ${i + 1}</span><span class="name">${ch.name}</span>` +
+        `<span class="info">${info}<br>🍓 ${got} / ${berryCount(ch)}</span>` +
+        (open && c && c.started && !c.done ? `<span class="restart" data-restart>Start over</span>` : "");
+      b.onclick = (e) => { if (open) this.play(ch, !!e.target.dataset.restart); };
+      box.appendChild(b);
+    });
+    const bb = this.settings.binds;
+    $("bindText").innerHTML = `${keys(bb.jump)} jump · ${keys(bb.dash)} dash · ${keys(bb.grab)} grab`;
   },
 
   refreshPause() {
     const g = this.game;
     $("pauseStats").innerHTML = `${g.room.name}<br>Time <b>${formatTime(g.time)}</b> · Deaths <b>${g.deaths}</b> · 🍓 <b>${g.collected.size}/${g.totalBerries()}</b>` +
-      (this.save.assistUsed || this.assistOn() ? `<span class="badge">Assist</span>` : "");
+      (this.progress(this.chapter).assistUsed || this.assistOn() ? `<span class="badge">Assist</span>` : "");
   },
 
   openSettings(from) {
@@ -258,7 +295,7 @@ const App = {
     a.download = "mount-veil-save.json";
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    $("saveMsg").textContent = this.save ? "Save downloaded." : "Nothing saved yet; downloaded your settings.";
+    $("saveMsg").textContent = "Save downloaded.";
   },
 
   importSave(file) {
@@ -276,7 +313,7 @@ const App = {
           this.applySettings();
         }
         $("saveMsg").textContent = "Save loaded.";
-        if (this.state === "title") this.titleScene();
+        if (this.state === "title") { this.titleScene(); this.refreshTitle(); }
       } catch (e) {
         $("saveMsg").textContent = "That file isn't a save from this game.";
       }
@@ -286,10 +323,11 @@ const App = {
 
   deleteSave() {
     if (!confirm("Delete your Celeste progress, strawberries and best time?")) return;
-    this.save = null;
+    this.save = this.emptySave();
     try { localStorage.removeItem(SAVE_KEY); } catch (e) { /* ignore */ }
     $("saveMsg").textContent = "Save deleted.";
-    if (this.state === "play") { this.state = "title"; this.titleScene(); this.refreshTitle(); this.show("settings"); this.settingsFrom = "title"; }
+    if (this.state === "play") { this.state = "title"; this.titleScene(); this.show("settings"); this.settingsFrom = "title"; }
+    this.refreshTitle();
   },
 
   // ------------------------------------------------------------------ events
@@ -307,8 +345,6 @@ const App = {
   },
 
   build() {
-    $("continue").onclick = () => this.newGame(false);
-    $("newClimb").onclick = () => this.newGame(true);
     $("openSettings").onclick = () => this.openSettings("title");
     $("resume").onclick = () => this.pause(false);
     $("retry").onclick = () => { this.pause(false); this.game.die(); };
@@ -331,7 +367,8 @@ const App = {
     Music.onChange = () => {
       $("musicList").innerHTML = Music.tracks.map((t) => `<li>${t.name.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c])}</li>`).join("");
     };
-    $("again").onclick = () => this.newGame(true);
+    $("again").onclick = () => this.play(this.chapter, true);
+    $("nextChapter").onclick = () => this.play(CHAPTERS[CHAPTERS.indexOf(this.chapter) + 1], true);
     $("toTitle").onclick = () => this.toTitle();
     $("touchPause").onclick = () => this.pause(true);
 
@@ -405,4 +442,4 @@ App.build();
 App.toTitle();
 requestAnimationFrame(loop);
 
-window.__MV = { App, Game, CHAPTER, Render, Input, Music };
+window.__MV = { App, Game, CHAPTERS, Render, Input, Music };

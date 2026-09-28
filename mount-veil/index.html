@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Celeste</title>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -16,12 +16,10 @@
   <div class="card">
     <div class="logo">
       <span class="t1">CELESTE</span>
-      <span class="sub">Chapter 1 · The Foothills</span>
+      <span class="sub">A climb in three chapters</span>
     </div>
-    <div id="saveInfo" class="saveinfo"></div>
+    <div id="chapters" class="chapters"></div>
     <div class="menu">
-      <button id="continue" class="big">Continue</button>
-      <button id="newClimb" class="big alt">Climb</button>
       <button id="openSettings">Settings &amp; Assist Mode</button>
     </div>
     <details class="howto">
@@ -43,6 +41,7 @@
           <p><b>Dash</b> in any of 8 directions. Your hair turns blue when it's used; landing or a green crystal gives it back.</p>
           <p><b>Grab</b> walls to climb. Climbing tires you out (you'll flash red), so rest on the ground.</p>
           <p>Jump off walls. Strawberries follow you and count once you land somewhere safe.</p>
+          <p><b>Chapter 2:</b> wind pushes you around. Crouch on the ground to hold still. <b>Chapter 3:</b> pink crystals give you two dashes.</p>
         </div>
       </div>
     </details>
@@ -115,9 +114,10 @@
 
 <div id="done" class="screen hidden">
   <div class="card small">
-    <h2 class="gold">SUMMIT REACHED</h2>
+    <h2 id="doneTitle" class="gold">SUMMIT REACHED</h2>
     <div id="doneStats" class="stats big"></div>
     <div class="menu">
+      <button id="nextChapter" class="big alt">Next chapter</button>
       <button id="again" class="big">Climb again</button>
       <button id="toTitle">Main menu</button>
     </div>
@@ -136,12 +136,12 @@
 
 <div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to climb</div>
 
-<script src="js/levels.js?v=3"></script>
-<script src="js/sim.js?v=3"></script>
-<script src="js/input.js?v=3"></script>
-<script src="js/audio.js?v=3"></script>
-<script src="js/music.js?v=3"></script>
-<script src="js/render.js?v=3"></script>
-<script src="js/main.js?v=3"></script>
+<script src="js/levels.js?v=4"></script>
+<script src="js/sim.js?v=4"></script>
+<script src="js/input.js?v=4"></script>
+<script src="js/audio.js?v=4"></script>
+<script src="js/music.js?v=4"></script>
+<script src="js/render.js?v=4"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>

@@ -12,6 +12,16 @@ const PAL = {
   coat: "#f0a13c", coatDark: "#b86e1c", skin: "#f5cfa6", legs: "#3b3355", eye: "#1b1726",
 };
 
+// Each chapter has its own rock and sky colours: dusky foothills, an icy ridge, a pink summit.
+const THEMES = {
+  c1: { rock: ["#6b5a8e", "#54466f", "#433859", "#352c48"], edge: "#8e7bb5", under: "#241d33",
+    sky: [["#1b1a3a", "#0b0c22"], ["#4a3470", "#2a2152"], ["#b0607a", "#5a3a70"]], mtn: ["#2d2750", "#3d3363"] },
+  c2: { rock: ["#5f7d99", "#4b6682", "#3b526b", "#2d4056"], edge: "#9cc0e0", under: "#1c2a3a",
+    sky: [["#0f1c33", "#08101f"], ["#2e4a70", "#1d3150"], ["#86aecf", "#4f6f94"]], mtn: ["#22364f", "#314b69"] },
+  c3: { rock: ["#7c5b70", "#654a5c", "#513c4a", "#40303b"], edge: "#c29ab4", under: "#2a1d26",
+    sky: [["#1a1030", "#0c0718"], ["#5b2f5e", "#3a1f45"], ["#e38a5c", "#9a4d62"]], mtn: ["#3a2442", "#523156"] },
+};
+
 const Render = {
   canvas: null, ctx: null, buf: null, b: null, scale: 1, ox: 0, oy: 0,
   cam: { x: 0, y: 0 }, camFrom: null, roomCache: new Map(), game: null,
@@ -46,6 +56,17 @@ const Render = {
     this.oy = Math.floor((H * dpr - VIEW_H * this.scale) / 2);
   },
 
+  theme: THEMES.c1,
+  themeId: null,
+  setTheme(id) {
+    if (this.themeId === id) return;
+    this.themeId = id;
+    this.theme = THEMES[id] || THEMES.c1;
+    PAL.rock = this.theme.rock; PAL.edge = this.theme.edge; PAL.under = this.theme.under;
+    this.mtn[0].c = this.ridgeCanvas[0](this.theme.mtn[0]);
+    this.mtn[1].c = this.ridgeCanvas[1](this.theme.mtn[1]);
+  },
+
   // ------------------------------------------------------------------ backdrop
 
   buildBackdrop() {
@@ -73,9 +94,15 @@ const Render = {
       }
       return c;
     };
+    // Keep each ridge's shape (same random sequence) but allow recolouring per chapter.
+    const shapeSeed = seed;
+    this.ridgeCanvas = [
+      (col) => { seed = shapeSeed; return ridge(col, 70, 95, 55, 14); },
+      (col) => { seed = shapeSeed + 99; return ridge(col, 105, 125, 40, 11); },
+    ];
     this.mtn = [
-      { c: ridge("#2d2750", 70, 95, 55, 14), k: 0.08 },
-      { c: ridge("#3d3363", 105, 125, 40, 11), k: 0.2 },
+      { c: this.ridgeCanvas[0]("#2d2750"), k: 0.08 },
+      { c: this.ridgeCanvas[1]("#3d3363"), k: 0.2 },
     ];
   },
 
@@ -83,9 +110,10 @@ const Render = {
     // Sky colour shifts as you climb: dusk at the trailhead, deep night near the summit.
     const alt = Math.max(0, Math.min(1, -this.cam.y / 800));
     const g = b.createLinearGradient(0, 0, 0, VIEW_H);
-    g.addColorStop(0, mix("#1b1a3a", "#0b0c22", alt));
-    g.addColorStop(0.6, mix("#4a3470", "#2a2152", alt));
-    g.addColorStop(1, mix("#b0607a", "#5a3a70", alt));
+    const sky = this.theme.sky;
+    g.addColorStop(0, mix(sky[0][0], sky[0][1], alt));
+    g.addColorStop(0.6, mix(sky[1][0], sky[1][1], alt));
+    g.addColorStop(1, mix(sky[2][0], sky[2][1], alt));
     b.fillStyle = g;
     b.fillRect(0, 0, VIEW_W, VIEW_H);
     b.fillStyle = "#fff";
@@ -105,20 +133,39 @@ const Render = {
   },
 
   drawSnow(b, dt) {
+    const wind = this.game ? this.game.room.wind || 0 : 0;
+    this.windX = (this.windX || 0) + (wind - (this.windX || 0)) * Math.min(1, dt * 2);
     b.fillStyle = "rgba(235,240,255,0.8)";
     for (const f of this.snow) {
-      f.x -= (18 + f.s * 16) * dt; f.y += (10 + f.s * 14) * dt;
+      f.x += (-18 - f.s * 16 + this.windX * 2.5 * f.s) * dt; f.y += (10 + f.s * 14) * dt;
       f.p += dt;
       const x = ((f.x + Math.sin(f.p) * 3 - this.cam.x * f.s * 0.3) % VIEW_W + VIEW_W) % VIEW_W;
       const y = ((f.y - this.cam.y * f.s * 0.3) % VIEW_H + VIEW_H) % VIEW_H;
       b.fillRect(Math.round(x), Math.round(y), f.s > 1 ? 2 : 1, 1);
+    }
+    // Wind streaks
+    if (Math.abs(this.windX) > 5) {
+      this.streaks = this.streaks || [];
+      if (Math.random() < Math.abs(this.windX) * dt * 0.6) {
+        this.streaks.push({ x: this.windX > 0 ? -30 : VIEW_W + 30, y: Math.random() * VIEW_H, len: 12 + Math.random() * 24, v: this.windX * (5 + Math.random() * 3) });
+      }
+    }
+    if (this.streaks) {
+      b.fillStyle = "rgba(230,240,255,0.35)";
+      for (let i = this.streaks.length - 1; i >= 0; i--) {
+        const w = this.streaks[i];
+        w.x += w.v * dt;
+        if (w.x < -80 || w.x > VIEW_W + 80) { this.streaks.splice(i, 1); continue; }
+        b.fillRect(Math.round(w.x), Math.round(w.y), Math.round(w.len), 1);
+      }
     }
   },
 
   // ------------------------------------------------------------------ room tiles
 
   roomCanvas(game, room) {
-    let c = this.roomCache.get(room.id);
+    const key = game.chapter.id + "/" + room.id;
+    let c = this.roomCache.get(key);
     if (c) return c;
     c = document.createElement("canvas");
     c.width = room.pw; c.height = room.ph;
@@ -132,7 +179,7 @@ const Render = {
         else if ("^v<>".includes(t)) drawSpike(g, px, py, t);
       }
     }
-    this.roomCache.set(room.id, c);
+    this.roomCache.set(key, c);
     return c;
   },
 
@@ -154,6 +201,7 @@ const Render = {
 
   reset(game) {
     this.game = game;
+    this.setTheme(game.chapter.id);
     this.particles.length = 0; this.trails.length = 0; this.hair.length = 0;
     this.orbs = null; this.banner = null;
     this.snapCamera(game);
@@ -185,7 +233,7 @@ const Render = {
         this.shake(0.12, 1);
         Input.rumble(0.3, 80);
         break;
-      case "refill": burst(e.x, e.y, 12, "#8ff5bf", 45, 0.5); break;
+      case "refill": burst(e.x, e.y, 12, e.two ? "#ffa8f5" : "#8ff5bf", 45, 0.5); break;
       case "refillBack": burst(e.x, e.y, 6, "#8ff5bf", 20, 0.3); break;
       case "spring": burst(e.x, e.y, 6, "#ffe08a", 30, 0.3, { angle: -Math.PI / 2, spread: 2 }); this.shake(0.08, 1); break;
       case "crumble": this.shake(0.05, 0.5); break;
@@ -304,8 +352,8 @@ const Render = {
         b.fillRect(x, y - 4, 1, 1); b.fillRect(x - 3, y, 1, 1); b.fillRect(x + 3, y, 1, 1); b.fillRect(x, y + 4, 1, 1);
         continue;
       }
-      b.fillStyle = "#1f7a4d"; diamond(b, x, y, 4);
-      b.fillStyle = "#57e39a"; diamond(b, x, y, 3);
+      b.fillStyle = r.two ? "#9a2f86" : "#1f7a4d"; diamond(b, x, y, 4);
+      b.fillStyle = r.two ? "#ff6def" : "#57e39a"; diamond(b, x, y, 3);
       b.fillStyle = "#d9ffe9"; b.fillRect(x - 1, y - 2, 1, 2);
     }
     for (const be of room.berries) {

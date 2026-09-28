@@ -2,8 +2,9 @@
 // Room checker: proves every room of the chapter can be finished, and every strawberry
 // collected, by searching the real game physics for a sequence of inputs.
 //
-//   node mount-veil/tools/verify.js            check every room
-//   node mount-veil/tools/verify.js 3 7        check rooms 3 and 7
+//   node mount-veil/tools/verify.js            check every room of every chapter
+//   node mount-veil/tools/verify.js c2         check chapter 2
+//   node mount-veil/tools/verify.js c2:3 c3:7  check single rooms
 //   node mount-veil/tools/verify.js --json     also write tools/solutions.json (replayable inputs)
 //
 // It's a best-first search: each step holds one input (run left/right, jump, dash in one of 8
@@ -12,7 +13,7 @@
 
 const path = require("path");
 const fs = require("fs");
-const { CHAPTER } = require("../js/levels.js");
+const { CHAPTERS } = require("../js/levels.js");
 const { Game, ST_DEAD, ST_CLIMB, ST_DASH } = require("../js/sim.js");
 
 const FRAMES = 4;          // frames each input is held for
@@ -50,11 +51,14 @@ function actions(g) {
 }
 
 function run(g, a) {
-  for (let f = 0; f < FRAMES; f++) {
+  // A dash freezes the game for 3 frames and reads its direction afterwards, so dash
+  // inputs are held long enough to cover that.
+  const frames = a.dash ? FRAMES + 4 : FRAMES;
+  for (let f = 0; f < frames; f++) {
     g.step({ mx: a.mx, my: a.my, jump: a.jump, jumpPressed: a.press && f === 0, dashPressed: a.dash && f === 0, grab: a.grab });
     if (g.p.state === ST_DEAD || g.transition || g.done) return f + 1;
   }
-  return FRAMES;
+  return frames;
 }
 
 function key(g) {
@@ -180,6 +184,7 @@ function distToRect(g, r) {
   return dx + dy;
 }
 
+let CHAPTER = null;
 function fresh(roomId) {
   const g = new Game(CHAPTER, { startRoom: roomId, quiet: true });
   g.p.state = 0;
@@ -190,8 +195,9 @@ function fresh(roomId) {
 const solutions = {};
 let failures = 0;
 const t0 = Date.now();
-CHAPTER.rooms.forEach((def, i) => {
-  if (only.length && !only.includes(def.id)) return;
+for (CHAPTER of CHAPTERS) CHAPTER.rooms.forEach((def, i) => {
+  const tag = `${CHAPTER.id}:${def.id}`;
+  if (only.length && !only.includes(CHAPTER.id) && !only.includes(tag)) return;
   const next = CHAPTER.rooms[i + 1];
   let g = fresh(def.id);
   const room = g.room;
@@ -202,9 +208,9 @@ CHAPTER.rooms.forEach((def, i) => {
   const res = search(g, goal);
   const ok = !!res.path;
   if (!ok) failures++;
-  const frames = ok ? res.path.length * FRAMES : 0;
-  console.log(`room ${def.id.padStart(2)} ${def.name.padEnd(18)} ${ok ? "OK  " : "FAIL"} ${ok ? `${(frames / 60).toFixed(1)}s route` : ""} (${res.nodes} states, ${((Date.now() - t) / 1000).toFixed(1)}s)`);
-  if (ok) solutions[def.id] = res.path;
+  const frames = ok ? res.path.reduce((n, a) => n + (a.dash ? FRAMES + 4 : FRAMES), 0) : 0;
+  console.log(`${tag.padEnd(6)} ${def.name.padEnd(18)} ${ok ? "OK  " : "FAIL"} ${ok ? `${(frames / 60).toFixed(1)}s route` : ""} (${res.nodes} states, ${((Date.now() - t) / 1000).toFixed(1)}s)`);
+  if (ok) solutions[tag] = res.path;
 
   room.berries.forEach((b, bi) => {
     g = fresh(def.id);
