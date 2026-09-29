@@ -153,6 +153,7 @@ const App = {
   seen(id) {
     const c = this.progress(this.chapter);
     if (!c) return true;
+    if (!Array.isArray(c.seen)) c.seen = [];
     if (c.seen.includes(id)) return true;
     c.seen.push(id);
     return false;
@@ -245,7 +246,7 @@ const App = {
   openRevisit() {
     const box = $("chapters");
     box.innerHTML = "";
-    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"] };
+    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"] };
     CHAPTERS.forEach((ch, i) => {
       if (!this.done(ch)) return;
       const c = this.progress(ch);

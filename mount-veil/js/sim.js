@@ -44,10 +44,16 @@ const C = {
   ZipShake: 0.1, ZipOutRate: 2, ZipEndWait: 0.5, ZipBackRate: 0.5, ZipStartWait: 0.5,
   // Dream blocks: a dash that touches one within DashAttackTime carries you through it.
   DashAttackTime: 0.3, DreamDashSpeed: 240, DreamDashMinTime: 0.1,
+  // Clouds: springy one-way platforms. Move blocks roll where their arrow points, then crash.
+  CloudLand: 110, CloudSpring: 400, CloudDamp: 12, CloudSink: 3, CloudRespawn: 2.5,
+  MoveSpeed: 60, MoveAccel: 300, MoveShake: 0.15, MoveRespawn: 2.2,
+  // Swap blocks switch ends on every dash. Bubbles hold you, then launch you.
+  SwapSpeed: 360, SwapAccel: 1440, BoostTime: 0.25, BoostRespawn: 1, RedSpeed: 240,
   DeathTime: 0.55, RespawnTime: 0.4, TransitionTime: 0.4,
 };
 
-const ST_NORMAL = 0, ST_CLIMB = 1, ST_DASH = 2, ST_DEAD = 3, ST_RESPAWN = 4, ST_DREAM = 5;
+const ST_NORMAL = 0, ST_CLIMB = 1, ST_DASH = 2, ST_DEAD = 3, ST_RESPAWN = 4, ST_DREAM = 5, ST_BOOST = 6, ST_RED = 7;
+const DIRV = { r: [1, 0], l: [-1, 0], u: [0, -1], d: [0, 1] };
 
 // Hitboxes relative to the climber's feet (bottom centre). The hurtbox is 2 px shorter so
 // spikes feel fair.
@@ -75,8 +81,11 @@ const overlap = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h 
 //   W  winged strawberry: flies away if you dash before touching it
 //   D  dream block: solid, but a dash into it carries you through and refills your dash
 //   T  touch switch       X  gate block: solid until every switch in the room is touched
-// A room can also have `wind` (px/s, + blows right, - blows left) and `zips`: zip movers,
-// given in tiles as { x, y, w, h, tx, ty } (block position and size, then where it travels to).
+//   c  cloud (a run of c is one cloud)   f  pink cloud: breaks after you've used it once
+//   b  green bubble: holds you, then dashes you   B  red bubble: flings you until you hit something
+// A room can also have `wind` (px/s, + blows right, - blows left), and moving blocks given in
+// tiles: `zips` { x, y, w, h, tx, ty } (zip movers: block, then where it travels to),
+// `moves` { x, y, w, h, dir } (move blocks, dir r/l/u/d) and `swaps` { x, y, w, h, tx, ty }.
 function buildRoom(def, index, chapterId) {
   const rows = def.rows, h = rows.length, w = rows[0].length;
   rows.forEach((r, i) => {
@@ -91,9 +100,19 @@ function buildRoom(def, index, chapterId) {
     crumbleAt: new Int16Array(w * h).fill(-1),
     zips: (def.zips || []).map((z) => {
       const sx = x0 + z.x * TILE, sy = y0 + z.y * TILE;
-      return { x: sx, y: sy, fx: sx, fy: sy, w: z.w * TILE, h: z.h * TILE, sx, sy, ex: x0 + z.tx * TILE, ey: y0 + z.ty * TILE, state: 0, t: 0, at: 0 };
+      return { kind: "zip", x: sx, y: sy, fx: sx, fy: sy, w: z.w * TILE, h: z.h * TILE, sx, sy, ex: x0 + z.tx * TILE, ey: y0 + z.ty * TILE, state: 0, t: 0, at: 0 };
     }),
+    moves: (def.moves || []).map((m) => {
+      const sx = x0 + m.x * TILE, sy = y0 + m.y * TILE;
+      return { kind: "move", x: sx, y: sy, fx: sx, fy: sy, w: m.w * TILE, h: m.h * TILE, sx, sy, dir: m.dir, state: 0, t: 0, speed: 0, gone: false };
+    }),
+    swaps: (def.swaps || []).map((m) => {
+      const sx = x0 + m.x * TILE, sy = y0 + m.y * TILE;
+      return { kind: "swap", x: sx, y: sy, fx: sx, fy: sy, w: m.w * TILE, h: m.h * TILE, sx, sy, ex: x0 + m.tx * TILE, ey: y0 + m.ty * TILE, target: 0, speed: 0 };
+    }),
+    clouds: [], boosters: [],
   };
+  room.movers = [...room.zips, ...room.moves, ...room.swaps];
   for (let y = 0; y < h; y++) {
     const row = rows[y].split("");
     for (let x = 0; x < w; x++) {
@@ -105,9 +124,11 @@ function buildRoom(def, index, chapterId) {
       else if (c === "G") room.goal = { x: px, y: py - TILE, w: TILE, h: TILE * 2 };
       else if (c === "T") room.switches.push({ x: px, y: py, on: false });
       else if (c === "X") { room.hasGate = true; continue; }
+      else if (c === "b" || c === "B") room.boosters.push({ x: px + 4, y: py + 4, red: c === "B", respawn: 0 });
+      else if (c === "c" || c === "f") continue;
       else if (c === "#" || c === "=" || c === "%" || c === "D" || "^v<>".includes(c)) continue;
       else if (c !== ".") throw new Error(`room ${def.id}: unknown tile "${c}" at ${x},${y}`);
-      if (c !== "%") row[x] = ".";
+      if (c !== "%" && c !== "c" && c !== "f") row[x] = ".";
     }
     room.grid.push(row);
   }
@@ -120,6 +141,18 @@ function buildRoom(def, index, chapterId) {
       const gi = room.crumbles.length;
       room.crumbles.push({ tx0: x, tx1: x1, ty: y, x: x0 + x * TILE, y: y0 + y * TILE, w: (x1 - x + 1) * TILE, h: TILE, state: 0, t: 0 });
       for (let k = x; k <= x1; k++) { room.crumbleAt[y * w + k] = gi; room.grid[y][k] = "."; }
+    }
+  }
+  // Clouds: each horizontal run of c (or f) is one cloud.
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const c = room.grid[y][x];
+      if ((c !== "c" && c !== "f") || (x > 0 && room.grid[y][x - 1] === c)) continue;
+      let x1 = x;
+      while (x1 + 1 < w && room.grid[y][x1 + 1] === c) x1++;
+      const cy = y0 + y * TILE;
+      room.clouds.push({ x: x0 + x * TILE, y: cy, by: cy, w: (x1 - x + 1) * TILE, fragile: c === "f", d: 0, v: 0, was: false, gone: false, t: 0 });
+      for (let k = x; k <= x1; k++) room.grid[y][k] = ".";
     }
   }
   if (!room.spawns.length) throw new Error(`room ${def.id} has no respawn point (P)`);
@@ -170,7 +203,7 @@ class Game {
       wallSlideTimer: C.WallSlideTime, wallSlideDir: 0, wallSpeedRetained: 0, wallSpeedRetentionTimer: 0,
       wallBoostDir: 0, wallBoostTimer: 0, hopWaitX: 0, hopWaitXSpeed: 0, climbNoMoveTimer: 0, lastClimbMove: 0,
       deadT: 0, respawnT: 0, safeT: 0, sx: 1, sy: 1, flash: 0,
-      liftX: 0, liftY: 0, liftT: 0, dashAttackT: 0, dreamT: 0,
+      liftX: 0, liftY: 0, liftT: 0, dashAttackT: 0, dreamT: 0, boostT: 0, boostCd: 0, booster: null,
       justRespawned: true,   // wind leaves you alone until you first move, as in Celeste
     };
   }
@@ -211,8 +244,8 @@ class Game {
     const x0 = Math.floor(l / TILE), x1 = Math.floor((l + w - 1) / TILE);
     const y0 = Math.floor(t / TILE), y1 = Math.floor((t + h - 1) / TILE);
     for (let gy = y0; gy <= y1; gy++) for (let gx = x0; gx <= x1; gx++) if (this.solidTile(gx, gy)) return true;
-    for (const z of this.room.zips) {
-      if (z !== this.ignoreSolid && l < z.x + z.w && z.x < l + w && t < z.y + z.h && z.y < t + h) return true;
+    for (const z of this.room.movers) {
+      if (z !== this.ignoreSolid && !z.gone && l < z.x + z.w && z.x < l + w && t < z.y + z.h && z.y < t + h) return true;
     }
     return false;
   }
@@ -237,6 +270,7 @@ class Game {
 
   // A jump-through ledge whose top is exactly at the climber's feet.
   jumpThruAt(x, y) {
+    for (const c of this.room.clouds) if (!c.gone && c.y === y && x + 4 > c.x && x - 4 < c.x + c.w) return true;
     if (y % TILE !== 0) return false;
     const gy = y / TILE, x0 = Math.floor((x - 4) / TILE), x1 = Math.floor((x + 3) / TILE);
     for (let gx = x0; gx <= x1; gx++) if (this.tileAt(gx, gy) === "=") return true;
@@ -286,6 +320,7 @@ class Game {
 
   onCollideH() {
     const p = this.p;
+    if (p.state === ST_RED) { p.vx = 0; this.redEnd(); return; }
     if (this.dreamDashCheck(sign(p.vx), 0)) { this.setState(ST_DREAM); return; }
     if (p.state === ST_DASH) {
       // Dashing into a low gap ducks you under it; clipping a ledge lip pushes you round it.
@@ -305,6 +340,7 @@ class Game {
 
   onCollideV() {
     const p = this.p;
+    if (p.state === ST_RED) { p.vy = 0; this.redEnd(); return; }
     if (this.dreamDashCheck(0, sign(p.vy))) { this.setState(ST_DREAM); return; }
     if (p.vy < 0) {
       // Upward corner correction: a head that clips a corner by up to 4 px slides round it.
@@ -466,11 +502,63 @@ class Game {
   startDash() {
     this.p.dashes = Math.max(0, this.p.dashes - 1);
     this.dashBuf = 0;
-    // Winged strawberries you haven't grabbed yet take fright and fly off.
+    this.onDash();
+    return ST_DASH;
+  }
+
+  // Anything that reacts to a dash: winged strawberries take fright, swap blocks switch ends.
+  onDash() {
     for (const b of this.room.berries) {
       if (b.winged && b.state === 0) { b.state = 3; b.flyT = this.time; this.emit("berryFly", { x: b.hx, y: b.hy }); }
     }
-    return ST_DASH;
+    for (const m of this.room.swaps) { m.target ^= 1; m.speed = 0; }
+    if (this.room.swaps.length) this.emit("swap", {});
+  }
+
+  // ------------------------------------------------------------------ bubbles
+
+  enterBoost(bo) {
+    const p = this.p;
+    p.state = ST_BOOST;
+    p.booster = bo;
+    p.boostT = C.BoostTime;
+    p.vx = 0; p.vy = 0; p.rx = 0; p.ry = 0;
+    p.ducking = false;
+    p.dashes = Math.max(p.dashes, MAX_DASHES);
+    p.stamina = C.ClimbMaxStamina;
+    if (!this.collideAt(bo.x, bo.y + 5)) { p.x = bo.x; p.y = bo.y + 5; }
+    this.emit("boostIn", { x: bo.x, y: bo.y, red: bo.red });
+  }
+
+  // Held in the bubble for a moment (or until you press dash), then launched the way you aim.
+  boostUpdate() {
+    const p = this.p;
+    p.boostT -= DT;
+    if (this.dashBuf <= 0 && p.boostT > 0) return;
+    this.dashBuf = 0;
+    const bo = p.booster;
+    bo.respawn = C.BoostRespawn;
+    p.boostCd = 0.2;
+    this.onDash();
+    if (!bo.red) {
+      // A green bubble gives you a free dash.
+      p.state = ST_DASH;
+      this.dashBegin();
+      return;
+    }
+    const a = this.aim();
+    p.state = ST_RED;
+    p.dashDirX = a.x; p.dashDirY = a.y;
+    if (a.x) p.facing = sign(a.x);
+    p.vx = a.x * C.RedSpeed; p.vy = a.y * C.RedSpeed;
+    this.emit("redLaunch", { x: p.x, y: p.y - 6 });
+  }
+
+  redEnd() {
+    const p = this.p;
+    p.state = ST_NORMAL;
+    if (p.vy < 0) p.vy *= C.EndDashUpMult;
+    this.emit("redEnd", { x: p.x, y: p.y - 6 });
   }
 
   normalUpdate() {
@@ -812,10 +900,25 @@ class Game {
     if (p.wallSlideDir !== 0) { p.wallSlideTimer = Math.max(p.wallSlideTimer - DT, 0); p.wallSlideDir = 0; }
     if (this.moveX !== 0 && p.state !== ST_CLIMB && p.state !== ST_DREAM) p.facing = this.moveX;
 
+    if (p.boostCd > 0) p.boostCd -= DT;
     if (p.state === ST_DREAM) {
       const ns = this.dreamUpdate();
       if (ns !== ST_DEAD) this.setState(ns);
       return;
+    }
+    if (p.state === ST_BOOST) {
+      this.boostUpdate();
+      if (p.state === ST_BOOST) return;
+      if (p.state === ST_DASH) { this.dashRoutine(); return; }
+    }
+    if (p.state === ST_RED) {
+      // A red bubble's fling goes straight until it hits something; you can dash out of it.
+      if (this.canDash()) { this.setState(this.startDash()); }
+      else {
+        this.moveH(p.vx * DT);
+        if (p.state === ST_RED) this.moveV(p.vy * DT);
+        return;
+      }
     }
     const before = p.state;
     let ns;
@@ -861,6 +964,10 @@ class Game {
     for (const c of room.crumbles) { c.state = 0; c.t = 0; }
     for (const s of room.springs) s.t = 0;
     for (const z of room.zips) { z.x = z.fx = z.sx; z.y = z.fy = z.sy; z.state = 0; z.t = 0; z.at = 0; }
+    for (const m of room.moves) { m.x = m.fx = m.sx; m.y = m.fy = m.sy; m.state = 0; m.t = 0; m.speed = 0; m.gone = false; }
+    for (const m of room.swaps) { m.x = m.fx = m.sx; m.y = m.fy = m.sy; m.target = 0; m.speed = 0; }
+    for (const c of room.clouds) { c.y = c.by; c.d = 0; c.v = 0; c.was = false; c.gone = false; c.t = 0; }
+    for (const bo of room.boosters) bo.respawn = 0;
     // Switches stay pressed once the gate has opened; before that, dying resets them.
     if (!room.gateOpen) for (const s of room.switches) s.on = false;
     for (const b of room.berries) if (b.state === 3) b.state = 0;
@@ -889,6 +996,67 @@ class Game {
       return wl < z.x + z.w && z.x < wl + b.w && t < z.y + z.h && z.y < t + b.h;
     }
     return false;
+  }
+
+  updateMovers() {
+    this.updateZips();
+    const p = this.p;
+    for (const m of this.room.moves) {
+      if (m.state === 0) {
+        if (this.ridingZip(m)) { m.state = 1; m.t = C.MoveShake; m.speed = 0; this.emit("moveStart", { x: m.x + m.w / 2, y: m.y + m.h / 2 }); }
+      } else if (m.state === 1) {
+        if (m.t > 0) { m.t -= DT; continue; }
+        m.speed = approach(m.speed, C.MoveSpeed, C.MoveAccel * DT);
+        const [dx, dy] = DIRV[m.dir];
+        const nfx = m.fx + dx * m.speed * DT, nfy = m.fy + dy * m.speed * DT;
+        this.ignoreSolid = m;
+        const hit = this.collideRect(Math.round(nfx), Math.round(nfy), m.w, m.h);
+        this.ignoreSolid = null;
+        if (hit) {
+          m.state = 2; m.gone = true; m.t = C.MoveRespawn;
+          this.emit("moveBreak", { x: m.x, y: m.y, w: m.w, h: m.h });
+        } else this.moveZipTo(m, nfx, nfy);
+      } else if ((m.t -= DT) <= 0 && !overlap(this.hitbox(), { x: m.sx, y: m.sy, w: m.w, h: m.h })) {
+        m.x = m.fx = m.sx; m.y = m.fy = m.sy; m.state = 0; m.gone = false; m.speed = 0;
+        this.emit("moveBack", { x: m.x, y: m.y, w: m.w, h: m.h });
+      }
+    }
+    for (const m of this.room.swaps) {
+      const tx = m.target ? m.ex : m.sx, ty = m.target ? m.ey : m.sy;
+      const dist = Math.hypot(tx - m.fx, ty - m.fy);
+      if (dist === 0) continue;
+      m.speed = approach(m.speed, C.SwapSpeed, C.SwapAccel * DT);
+      const step = Math.min(dist, m.speed * DT);
+      this.moveZipTo(m, m.fx + (tx - m.fx) / dist * step, m.fy + (ty - m.fy) / dist * step);
+      if (step >= dist) { m.speed = 0; this.emit("swapStop", { x: m.x + m.w / 2, y: m.y + m.h / 2 }); }
+    }
+    for (const c of this.room.clouds) {
+      if (c.gone) {
+        if ((c.t -= DT) <= 0 && !overlap(this.hitbox(), { x: c.x, y: c.by - 4, w: c.w, h: 10 })) {
+          c.gone = false; c.d = 0; c.v = 0; c.y = c.by; c.was = false;
+          this.emit("cloudBack", { x: c.x + c.w / 2, y: c.y });
+        }
+        continue;
+      }
+      const riding = p.state !== ST_DEAD && p.state !== ST_RESPAWN && p.state !== ST_DREAM && p.vy >= 0 &&
+        p.y === c.y && p.x + 4 > c.x && p.x - 4 < c.x + c.w;
+      if (riding && !c.was) c.v = Math.max(c.v, C.CloudLand);
+      if (!riding && c.was && c.fragile) {
+        c.gone = true; c.t = C.CloudRespawn; c.was = false;
+        this.emit("cloudBreak", { x: c.x, y: c.y, w: c.w });
+        continue;
+      }
+      c.was = riding;
+      c.v += (-(c.d - (riding ? C.CloudSink : 0)) * C.CloudSpring - c.v * C.CloudDamp) * DT;
+      c.d += c.v * DT;
+      const ny = c.by + Math.round(c.d), dy = ny - c.y;
+      if (!dy) continue;
+      c.y = ny;
+      if (riding) {
+        this.shove(0, dy, false);
+        p.liftX = 0; p.liftY = c.v; p.liftT = C.LiftSpeedGraceTime;
+      }
+    }
   }
 
   updateZips() {
@@ -978,7 +1146,7 @@ class Game {
   }
 
   updateObjects() {
-    this.updateZips();
+    this.updateMovers();
     const room = this.room, p = this.p;
     if (p.state === ST_DEAD) return;
     for (const r of room.refills) if (r.respawn > 0 && (r.respawn -= DT) <= 0) this.emit("refillBack", { x: r.x, y: r.y });
@@ -1057,6 +1225,12 @@ class Game {
         this.emit("berryTouch", { x: b.hx, y: b.hy, ghost: b.ghost });
       }
     }
+    for (const bo of room.boosters) {
+      if (bo.respawn > 0) { if (p.state !== ST_BOOST || p.booster !== bo) bo.respawn -= DT; continue; }
+      if (p.state === ST_BOOST || p.state === ST_RED || p.boostCd > 0) continue;
+      if (overlap(hb, { x: bo.x - 7, y: bo.y - 7, w: 14, h: 14 })) { this.enterBoost(bo); break; }
+    }
+
     for (const s of room.switches) {
       if (s.on || !overlap(hb, { x: s.x, y: s.y, w: TILE, h: TILE })) continue;
       s.on = true;
@@ -1132,17 +1306,18 @@ class Game {
     if (dir === "up") {
       // Moving up into a room gives you a jump's worth of lift so you can reach the ledge.
       p.vx = 0;
-      if (p.state === ST_DASH) p.state = ST_NORMAL;
+      if (p.state === ST_DASH || p.state === ST_RED || p.state === ST_BOOST) p.state = ST_NORMAL;
       p.vy = p.varJumpSpeed = C.JumpSpeed;
       p.autoJump = true;
       p.varJumpTimer = C.VarJumpTime;
       p.dashCooldown = 0.2;
     } else if (dir === "down") {
-      if (p.state === ST_DASH) p.state = ST_NORMAL;
+      if (p.state === ST_DASH || p.state === ST_RED || p.state === ST_BOOST) p.state = ST_NORMAL;
       p.vy = Math.max(0, p.vy);
       p.autoJump = false;
       p.varJumpTimer = 0;
     }
+    if (p.state === ST_RED || p.state === ST_BOOST) p.state = ST_NORMAL;
     const from = this.room;
     this.room = next;
     this.resetRoomObjects(next);
@@ -1189,6 +1364,10 @@ class Game {
       br: r.berries.map((b) => b.state), done: this.done, tr: this.transition,
       zp: r.zips.map((z) => [z.x, z.y, z.fx, z.fy, z.state, z.t, z.at]),
       sw: r.switches.map((s) => s.on), go: r.gateOpen,
+      mv: r.moves.map((m) => [m.x, m.y, m.fx, m.fy, m.state, m.t, m.speed, m.gone]),
+      sp: r.swaps.map((m) => [m.x, m.y, m.fx, m.fy, m.target, m.speed]),
+      cl: r.clouds.map((c) => [c.y, c.d, c.v, c.was, c.gone, c.t]),
+      bo: r.boosters.map((b) => b.respawn),
     };
   }
 
@@ -1202,9 +1381,13 @@ class Game {
     s.room.zips.forEach((z, i) => { [z.x, z.y, z.fx, z.fy, z.state, z.t, z.at] = s.zp[i]; });
     s.room.switches.forEach((w, i) => { w.on = s.sw[i]; });
     s.room.gateOpen = s.go;
+    s.room.moves.forEach((m, i) => { [m.x, m.y, m.fx, m.fy, m.state, m.t, m.speed, m.gone] = s.mv[i]; });
+    s.room.swaps.forEach((m, i) => { [m.x, m.y, m.fx, m.fy, m.target, m.speed] = s.sp[i]; });
+    s.room.clouds.forEach((c, i) => { [c.y, c.d, c.v, c.was, c.gone, c.t] = s.cl[i]; });
+    s.room.boosters.forEach((b, i) => { b.respawn = s.bo[i]; });
     this.done = s.done;
     this.transition = s.tr;
   }
 }
 
-if (typeof module !== "undefined") module.exports = { Game, C, DT, TILE, VIEW_W, VIEW_H, ST_NORMAL, ST_CLIMB, ST_DASH, ST_DEAD, ST_RESPAWN, ST_DREAM, MAX_DASHES, HB };
+if (typeof module !== "undefined") module.exports = { Game, C, DT, TILE, VIEW_W, VIEW_H, ST_NORMAL, ST_CLIMB, ST_DASH, ST_DEAD, ST_RESPAWN, ST_DREAM, ST_BOOST, ST_RED, MAX_DASHES, HB };

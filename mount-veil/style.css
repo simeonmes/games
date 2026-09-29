@@ -123,6 +123,8 @@ input[type="range"] { accent-color: #9d7bff; }
   cursor: pointer; touch-action: none;
 }
 .dialog.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.dialog.top { top: max(14px, env(safe-area-inset-top)); bottom: auto; transform: translate(-50%, -12px); }
+.dialog.top.show { transform: translate(-50%, 0); }
 .dialog.radio { border-color: #7fbf8f; }
 .dialog.radio .portrait { filter: saturate(0.6) contrast(1.1); }
 .dialog.memory { border-color: #6ff7ff; background: rgba(8, 20, 34, 0.94); font-style: italic; }

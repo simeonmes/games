@@ -14,7 +14,7 @@
 const path = require("path");
 const fs = require("fs");
 const { CHAPTERS } = require("../js/levels.js");
-const { Game, ST_DEAD, ST_CLIMB, ST_DREAM } = require("../js/sim.js");
+const { Game, ST_DEAD, ST_CLIMB, ST_DREAM, ST_BOOST } = require("../js/sim.js");
 
 const FRAMES = 4;          // frames each input is held for
 const BUDGET = +(process.env.BUDGET || 400000);    // search nodes per goal
@@ -32,6 +32,12 @@ function actions(g) {
   if (p.state === ST_DREAM) {
     return [input(0, 0, false, false, false, false), input(0, 0, true, true, false, false),
       input(1, 0, false, false, false, true), input(-1, 0, false, false, false, true)];
+  }
+  // In a bubble: pick the launch direction (and optionally launch now with dash).
+  if (p.state === ST_BOOST) {
+    out.push(input(0, 0, false, false, false, false));
+    for (const [dx, dy] of DIRS) { out.push(input(dx, dy, false, false, false, false)); out.push(input(dx, dy, false, false, true, false)); }
+    return out;
   }
   for (const mx of [-1, 0, 1]) {
     out.push(input(mx, 0, false, false, false, false));
@@ -76,7 +82,11 @@ function key(g) {
     r.berries.map((b) => b.state).join(""),
     Math.round(p.liftX / 40), Math.round(p.liftY / 40), p.dashAttackT > 0 ? 1 : 0,
     r.zips.map((z) => `${z.state}:${Math.round(z.at * 20)}:${z.state % 2 ? Math.round(z.t * 10) : 0}`).join("/"),
-    r.switches.map((w) => (w.on ? 1 : 0)).join(""), r.gateOpen ? 1 : 0].join(",");
+    r.switches.map((w) => (w.on ? 1 : 0)).join(""), r.gateOpen ? 1 : 0,
+    Math.round(p.boostT * 20), p.boostCd > 0 ? 1 : 0,
+    r.moves.map((m) => `${m.state}:${m.x >> 2},${m.y >> 2}`).join("/"), r.swaps.map((m) => `${m.target}:${m.x >> 2},${m.y >> 2}`).join("/"),
+    r.clouds.map((c) => (c.gone ? "g" : `${c.y - c.by}:${Math.round(c.v / 40)}`)).join("/"),
+    r.boosters.map((b) => (b.respawn > 0 ? 1 : 0)).join("")].join(",");
 }
 
 // Minimal binary heap keyed on .f
@@ -203,8 +213,8 @@ function fresh(roomId) {
 
 // Replay a route and note which of the room's moving parts it relied on.
 function used(roomId, route) {
-  const g = fresh(roomId), room = g.room, zips = new Set();
-  let dreams = 0;
+  const g = fresh(roomId), room = g.room, zips = new Set(), moved = new Set(), clouded = new Set();
+  let dreams = 0, swapped = 0, bubbles = 0;
   for (const a of route) {
     const frames = a.dash ? FRAMES + 4 : FRAMES;
     for (let f = 0; f < frames; f++) {
@@ -212,12 +222,21 @@ function used(roomId, route) {
       g.step({ mx: a.mx, my: a.my, jump: a.jump, jumpPressed: a.press && f === 0, dashPressed: a.dash && f === 0, grab: a.grab });
       room.zips.forEach((z, i) => { if (z.state) zips.add(i); });
       if (g.p.state === ST_DREAM && was !== ST_DREAM) dreams++;
+      if (g.p.state === ST_BOOST && was !== ST_BOOST) bubbles++;
+      room.moves.forEach((m, i) => { if (m.state) moved.add(i); });
+      room.clouds.forEach((c, i) => { if (c.was) clouded.add(i); });
+      if (room.swaps.some((m) => m.speed > 0) && !g._sw) swapped++;
+      g._sw = room.swaps.some((m) => m.speed > 0);
     }
   }
   const out = [];
   if (room.zips.length) out.push(`zips ${zips.size}/${room.zips.length}`);
   if (room.grid.some((r) => r.includes("D"))) out.push(`dreams ${dreams}`);
   if (room.switches.length) out.push(`gate ${room.gateOpen ? "open" : "shut"}`);
+  if (room.moves.length) out.push(`moves ${moved.size}/${room.moves.length}`);
+  if (room.swaps.length) out.push(`swaps ${swapped}`);
+  if (room.boosters.length) out.push(`bubbles ${bubbles}`);
+  if (room.clouds.length) out.push(`clouds ${clouded.size}/${room.clouds.length}`);
   return out.length ? "  [" + out.join(", ") + "]" : "";
 }
 

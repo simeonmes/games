@@ -236,9 +236,142 @@ const SCENES = {
     { card: ["Wren doesn't sleep again that night."] },
   ],
 
+  // ================================================================ Chapter 6: The Lantern Terraces
+  c6_open: [
+    { card: ["Morning.", "Wren climbs out of the hollow onto old terraced fields, strung with paper lanterns."] },
+    { actor: "echo", kind: "echo", room: "1", at: [6, 17], facing: -1 },
+    { wait: 0.8 },
+    { say: "wren", text: "You can walk with me. Just... quietly." },
+    { say: "echo", text: "I'm always quiet. You're just listening now." },
+    { say: "wren", mood: "angry", text: "That's not— fine. Whatever." },
+    { say: "radio", text: "Wren? Oh, thank goodness. You've been off the air all night." },
+    { say: "wren", text: "Sorry. Bad dream." },
+    { say: "radio", text: "Terrace clouds ahead. They'll hold you, then spring back up. Jump as they rise and they'll throw you high." },
+    { say: "radio", text: "The pink ones only hold you once." },
+    { say: "echo", text: "Like most things." },
+  ],
+  c6_w3: { whisper: [
+    { who: "echo", text: "You used to bounce on Isla's bed like this." },
+    { who: "echo", text: "She'd pretend to be angry. She never was." },
+  ] },
+  c6_6: [
+    { actor: "pascal", kind: "pascal", room: "6", at: [33, 20], facing: -1 },
+    { wait: 0.5 },
+    { say: "pascal", text: "Wren! Wait! Wait... hold on... I need a minute. Or ten." },
+    { say: "wren", mood: "shocked", text: "Pascal? You left the city?" },
+    { say: "pascal", text: "Twelve years, and the first time past the gate. I've fallen off three clouds and been glared at by a very rude goat." },
+    { say: "pascal", text: "You were right, you know. Well. You were horrible. But you were a bit right." },
+    { say: "wren", mood: "sad", text: "Pascal, what I said... I wasn't really talking about you. I was talking about me." },
+    { say: "pascal", text: "I figured. Nobody gets that angry about somebody else's father." },
+    { say: "wren", mood: "sad", text: "I'm sorry." },
+    { say: "pascal", text: "Accepted. Completely. Now: the stone carts up ahead. Stand on one and it rolls the way its arrow points, until it hits something." },
+    { say: "pascal", text: "Then it goes CRUNCH, and comes back a bit later. Don't be on it for the crunch." },
+    { say: "pascal", text: "You go on. I climb at the speed of a very careful snail." },
+  ],
+  c6_w9: { whisper: [
+    { who: "pascal", text: "(far below) I'm fine! That was on purpose!" },
+  ] },
+  c6_w10: { whisper: [
+    { who: "radio", text: "Nice rolling, Calder. Mind the crunch." },
+  ] },
+  c6_end: [
+    { say: "wren", text: "The top of the terraces. Look at all those lanterns down in the valley." },
+    { card: ["Far below, one by one, lanterns flicker on.", "They spell out a word: PROUD."] },
+    { say: "wren", mood: "shocked", text: "Tilly... she can't even see me from down there." },
+    { actor: "echo", kind: "echo", room: "12", at: [29, 8], facing: 1 },
+    { wait: 0.6 },
+    { say: "echo", text: "She doesn't need to." },
+    { say: "wren", mood: "sad", text: "Something's in my eye." },
+    { say: "echo", mood: "sad", text: "Mine too. Both of mine." },
+    { say: "radio", text: "Don't you two cry on my radio. It's older than both of you." },
+    { fade: "out" },
+  ],
+
+  // ================================================================ Chapter 7: The Hall of Stillness
+  c7_open: [
+    { card: ["At the top of the terraces stands a temple of pale glass.", "Inside it, nothing moves at all."] },
+    { actor: "pascal", kind: "pascal", room: "1", at: [6, 17], facing: -1 },
+    { wait: 0.5 },
+    { say: "pascal", text: "Oh, I don't like it in here. Listen. No clocks. Not one single tick." },
+    { say: "wren", text: "It's just an old temple." },
+    { say: "echo", text: "It's holding its breath." },
+    { say: "radio", text: "Wr... -emple... don't stay... anything that stops in there... st..." },
+    { say: "wren", mood: "shocked", text: "Tilly? Tilly!" },
+    { say: "pascal", text: "The blocks in here only move when you do. Every time you dash, they swap places. All of them. At once." },
+    { say: "wren", text: "Of course they do." },
+  ],
+  c7_3: [
+    { actor: "pascal", kind: "pascal", room: "3", at: [4, 7], facing: 1 },
+    { wait: 0.5 },
+    { say: "pascal", text: "Wren, look. Over there. That's Dad's workbench. His tools. Exactly how he left them." },
+    { say: "wren", text: "Pascal, it isn't real. Keep walking." },
+    { say: "pascal", text: "Just one second. I only want to—" },
+    { actor: "pascal", kind: "pascalFrozen", room: "3", at: [4, 7], facing: 1, stay: true },
+    { sfx: "freeze" },
+    { shake: 0.3 },
+    { wait: 0.8 },
+    { say: "wren", mood: "shocked", text: "Pascal? PASCAL!" },
+    { say: "echo", text: "He's stuck inside the moment he can't let go of. This place keeps those." },
+    { say: "wren", mood: "angry", text: "How do I get him out?" },
+    { say: "echo", text: "Find out what really happened to his father. The truth is the only thing that moves in here." },
+    { say: "echo", text: "The green bubbles hold you, then dash you. Go." },
+  ],
+  c7_w5: { whisper: [
+    { who: "echo", text: "The red ones don't stop until you hit something." },
+    { who: "echo", text: "You'd know all about that." },
+  ] },
+  c7_8: [
+    { actor: "journal", kind: "journal", room: "8", at: [4, 9], facing: 1 },
+    { wait: 0.6 },
+    { say: "wren", text: "A journal. 'Property of Aurel Ferro, clockmaker.' That's Pascal's father." },
+    { card: ["'Day 40. The summit, at last. I thought I'd feel finished.", "Instead, all I want is to see what's on the other side.'"] },
+    { card: ["'Day 41. I'm not going back.", "Pascal will be fine. He was always more grown-up than me.'"] },
+    { say: "wren", mood: "angry", text: "He didn't die. He just... didn't come back. He CHOSE not to." },
+    { say: "echo", text: "Are you going to tell Pascal?" },
+    { say: "wren", mood: "sad", text: "...Yes. Later. Gently. Not in here." },
+    { remove: "journal" },
+  ],
+  c7_11: [
+    { actor: "pascal", kind: "pascal", room: "11", at: [38, 8], facing: -1 },
+    { wait: 0.5 },
+    { say: "pascal", text: "Wren! There you are. I was standing at Dad's bench for... hours? Then everything just let go of me." },
+    { say: "pascal", text: "Did you find anything? About him?" },
+    { say: "wren", mood: "sad", text: "...Let's get out of this temple first. Then I'll tell you everything. I promise." },
+    { say: "pascal", text: "That sounds like a sit-down-first kind of story." },
+    { say: "wren", text: "It is." },
+  ],
+  c7_12: [
+    { actor: "mirror", kind: "mirror", room: "12", at: [37, 16], facing: 1, stay: true },
+    { wait: 0.6 },
+    { say: "echo", text: "Wren. Stay away from that mirror." },
+  ],
+  c7_end: [
+    { say: "wren", text: "It's a mirror. The whole heart of the temple is one big mirror." },
+    { actor: "echo", kind: "echo", room: "12", at: [35, 16], facing: -1 },
+    { actor: "pascal", kind: "pascal", room: "12", at: [29, 16], facing: 1 },
+    { wait: 0.6 },
+    { say: "wren", text: "It keeps reflections. That's what this whole place does. It keeps things." },
+    { say: "echo", text: "Wren. Don't." },
+    { say: "wren", mood: "angry", text: "I can't finish this climb with you screaming in my ear." },
+    { say: "echo", text: "I haven't said a word since the terraces." },
+    { say: "wren", mood: "angry", text: "You don't have to! I can feel you, every single step. It's so HEAVY." },
+    { say: "echo", mood: "sad", text: "That's not me being heavy, Wren. That's her. I'm just the one carrying her." },
+    { say: "wren", mood: "angry", text: "Then stay here and carry her." },
+    { remove: "echo" },
+    { sfx: "freeze" },
+    { shake: 0.4 },
+    { card: ["The mirror ripples once, and goes still.", "For the first time in eight months, Wren feels light."] },
+    { say: "pascal", text: "Wren? Where did she go?" },
+    { say: "wren", text: "Somewhere quiet." },
+    { say: "pascal", text: "...Are you sure that was a good idea?" },
+    { say: "wren", mood: "happy", text: "I feel fine." },
+    { wait: 1.5 },
+    { card: ["Nobody answers \"not fine\"."] },
+  ],
+
   // Played when the story runs past the last chapter that's been built so far.
   fog: [
-    { card: ["Above the hollow, the path disappears into thick fog.", "Wren will have to wait for it to lift."] },
+    { card: ["Above, the path disappears into thick fog.", "Wren will have to wait for it to lift."] },
     { card: ["(The rest of Wren's climb is on its way.", "Your progress is saved. Come back soon.)"] },
   ],
 };
@@ -246,6 +379,8 @@ const SCENES = {
 // When scenes play: at the start and end of a chapter, the first time you enter a room,
 // and (in Dream Hollow) as each waking light is lit.
 const TRIGGERS = {
+  c6: { start: "c6_open", end: "c6_end", enter: { 3: "c6_w3", 6: "c6_6", 9: "c6_w9", 10: "c6_w10" } },
+  c7: { start: "c7_open", end: "c7_end", enter: { 3: "c7_3", 5: "c7_w5", 8: "c7_8", 11: "c7_11", 12: "c7_12" } },
   c1: { start: "c1_open", end: "c1_end", enter: { 5: "c1_w5", 9: "c1_w9" } },
   c2: { start: "c2_open", end: "c2_end", enter: { 4: "c2_4", 9: "c2_w9" } },
   c3: { start: "c3_open", end: "c3_end", enter: { 7: "c3_w7" } },
@@ -331,6 +466,14 @@ const Story = {
       a.full = s.text; a.typed = 0;
       this.el.dText.textContent = "";
       this.el.dMore.hidden = true;
+      // Keep the box out of the way: if the characters are low on screen, show it at the top.
+      const g = this.game, cam = typeof Render !== "undefined" ? Render.cam : null;
+      let low = false;
+      if (g && cam) {
+        const ys = [g.p.y].concat(this.actors.filter((x) => x.target > 0 && x.room === g.room.id).map((x) => x.y));
+        low = Math.max(...ys) - cam.y > VIEW_H * 0.58;
+      }
+      this.el.dialog.classList.toggle("top", low);
       this.el.dialog.classList.add("show");
     } else if (s.card) {
       this.el.cardText.innerHTML = s.card.map((l) => `<p>${esc(l)}</p>`).join("");
@@ -338,10 +481,11 @@ const Story = {
       this.el.card.classList.add("show");
     } else if (s.actor) {
       const g = this.game, room = g.roomIndex[s.room];
-      this.actors = this.actors.filter((x) => x.id !== s.actor);
+      const old = this.actors.find((x) => x.id === s.actor);   // replacing someone keeps them visible
+      this.actors = this.actors.filter((x) => x !== old);
       this.actors.push({
         id: s.actor, kind: s.kind, room: s.room, stay: !!s.stay, facing: s.facing || 1,
-        x: (room.tx + s.at[0]) * TILE + 4, y: (room.ty + s.at[1]) * TILE, alpha: 0, target: 1,
+        x: (room.tx + s.at[0]) * TILE + 4, y: (room.ty + s.at[1]) * TILE, alpha: old ? old.alpha : 0, target: 1,
       });
       if (typeof Render !== "undefined") Render.effect({ type: "actorIn", x: (room.tx + s.at[0]) * TILE + 4, y: (room.ty + s.at[1]) * TILE - 6, kind: s.kind }, g);
       this.next();
