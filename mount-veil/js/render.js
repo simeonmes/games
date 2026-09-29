@@ -20,6 +20,11 @@ const THEMES = {
     sky: [["#0f1c33", "#08101f"], ["#2e4a70", "#1d3150"], ["#86aecf", "#4f6f94"]], mtn: ["#22364f", "#314b69"] },
   c3: { rock: ["#7c5b70", "#654a5c", "#513c4a", "#40303b"], edge: "#c29ab4", under: "#2a1d26",
     sky: [["#1a1030", "#0c0718"], ["#5b2f5e", "#3a1f45"], ["#e38a5c", "#9a4d62"]], mtn: ["#3a2442", "#523156"] },
+  // Clockwork City: rusty brick under an amber evening. Dream Hollow: violet and teal.
+  c4: { rock: ["#8a5a46", "#6f4838", "#57392d", "#432c23"], edge: "#d59a72", under: "#2a1a14",
+    sky: [["#231a2e", "#120c1a"], ["#6b3b3a", "#3b2230"], ["#f0a35a", "#b0584a"]], mtn: ["#3a2a36", "#553843"] },
+  c5: { rock: ["#4f5f86", "#404e70", "#333f5b", "#283149"], edge: "#8fb0e8", under: "#161c2e",
+    sky: [["#0d0a24", "#060414"], ["#2d1f5c", "#1a1240"], ["#3f7f8f", "#3a3a78"]], mtn: ["#1f1f48", "#2c2e62"] },
 };
 
 const Render = {
@@ -258,6 +263,13 @@ const Render = {
         this.banner = { text: game.room.name, t: 0 };
         break;
       case "complete": burst(e.x + 4, e.y + 4, 30, "#ffd36e", 60, 1.2); break;
+      case "zipStart": this.shake(0.1, 1); Input.rumble(0.3, 100); break;
+      case "zipStop": burst(e.x, e.y, 10, "#ffcf80", 50, 0.4); this.shake(0.15, 2); Input.rumble(0.5, 120); break;
+      case "berryFly": burst(e.x, e.y, 8, "#ffffff", 30, 0.4); break;
+      case "dreamIn": burst(e.x, e.y, 10, "#ff6def", 40, 0.4); break;
+      case "dreamOut": burst(e.x, e.y, 12, "#6ff7ff", 50, 0.45); break;
+      case "switch": burst(e.x, e.y, 10, "#7ff7ff", 40, 0.5); break;
+      case "gate": this.shake(0.25, 2); Input.rumble(0.5, 200); break;
     }
   },
 
@@ -303,7 +315,12 @@ const Render = {
     this.updateHair(game, dt);
     this.drawTrails(b, dt, cx, cy);
     const visible = p.state !== ST_DEAD && p.state !== ST_RESPAWN;
-    if (visible) this.drawClimber(b, game, p.x - cx, p.y - cy, 1);
+    if (p.state === ST_DREAM) {
+      // Inside a dream block you're a bright streak with a sparkly wake.
+      const cols = ["#ff6def", "#6ff7ff", "#fff27a"];
+      this.particles.push({ x: p.x + (Math.random() - 0.5) * 6, y: p.y - 6 + (Math.random() - 0.5) * 6, vx: -p.vx * 0.1, vy: -p.vy * 0.1, life: 0.35, max: 0.35, color: cols[(Math.random() * 3) | 0], g: 0, size: 1 });
+      this.drawClimber(b, game, p.x - cx, p.y - cy, 0.9, "#f4ecff");
+    } else if (visible) this.drawClimber(b, game, p.x - cx, p.y - cy, 1);
     this.drawFollowers(b, game, dt, cx, cy);
     this.drawParticles(b, dt, cx, cy);
     this.drawOrbs(b, dt, cx, cy);
@@ -325,6 +342,16 @@ const Render = {
 
   drawObjects(b, game, room, cx, cy) {
     const t = this.time;
+    this.drawDream(b, game, room, cx, cy);
+    this.drawGate(b, room, cx, cy);
+    for (const s of room.switches) {
+      const x = s.x - cx, y = s.y - cy;
+      b.fillStyle = s.on ? "#7ff7ff" : "#58607a"; diamond(b, x + 4, y + 4, 3);
+      b.fillStyle = s.on ? "#ffffff" : "#8a93ad"; b.fillRect(x + 3, y + 3, 2, 2);
+      if (s.on) { b.globalAlpha = 0.3 + 0.2 * Math.sin(t * 6); b.fillStyle = "#7ff7ff"; diamond(b, x + 4, y + 4, 5); b.globalAlpha = 1; }
+    }
+    for (const z of room.zips) this.drawZipTrack(b, z, cx, cy);
+    for (const z of room.zips) this.drawZip(b, z, cx, cy);
     for (const c of room.crumbles) {
       const shake = c.state === 1 ? Math.round((Math.random() - 0.5) * 2) : 0;
       for (let k = 0; k < c.w / TILE; k++) {
@@ -357,8 +384,18 @@ const Render = {
       b.fillStyle = "#d9ffe9"; b.fillRect(x - 1, y - 2, 1, 2);
     }
     for (const be of room.berries) {
+      if (be.state === 3) {
+        // Frightened off: flutter up and away.
+        const ft = game.time - be.flyT;
+        if (ft > 2) continue;
+        const x = be.hx - cx + Math.sin(ft * 9) * 3, y = be.hy - cy - ft * 70 - ft * ft * 60;
+        drawWings(b, x, y, t, 2);
+        drawBerry(b, x, y, be.ghost);
+        continue;
+      }
       if (be.state !== 0) continue;
       const bob = Math.round(Math.sin(t * 2.5 + be.hx) * 1.5);
+      if (be.winged) drawWings(b, be.hx - cx, be.hy - cy + bob, t, 1);
       drawBerry(b, be.hx - cx, be.hy - cy + bob, be.ghost);
     }
     if (room.goal) {
@@ -370,6 +407,91 @@ const Render = {
       b.fillStyle = `rgba(255,220,140,${0.4 + Math.sin(t * 3) * 0.2})`;
       b.fillRect(x - 2, y + 14, 8, 1);
     }
+  },
+
+  // Dream blocks: a dark window full of drifting coloured stars with a bright rim.
+  drawDream(b, game, room, cx, cy) {
+    if (!room.dreamTiles) {
+      room.dreamTiles = [];
+      for (let y = 0; y < room.h; y++) for (let x = 0; x < room.w; x++) if (room.grid[y][x] === "D") room.dreamTiles.push([x, y]);
+    }
+    if (!room.dreamTiles.length) return;
+    const inside = game.p.state === ST_DREAM, t = this.time;
+    const cols = ["#ff6def", "#6ff7ff", "#fff27a", "#9d7bff", "#ffffff"];
+    const isD = (x, y) => x >= 0 && y >= 0 && x < room.w && y < room.h && room.grid[y][x] === "D";
+    for (const [x, y] of room.dreamTiles) {
+      const px = room.x + x * TILE - cx, py = room.y + y * TILE - cy;
+      if (px < -8 || py < -8 || px > VIEW_W || py > VIEW_H) continue;
+      b.fillStyle = inside ? "#2a1c52" : "#140c2c"; b.fillRect(px, py, 8, 8);
+      const h = hash2(room.tx + x, room.ty + y);
+      for (let k = 0; k < 2; k++) {
+        const hk = h >>> (k * 9);
+        const sx = (hk & 7) + Math.round(Math.sin(t * 0.8 + (hk & 31)) * 1), sy = ((hk >> 3) & 7);
+        b.globalAlpha = 0.5 + 0.5 * Math.sin(t * 3 + (hk & 63));
+        b.fillStyle = cols[(hk >> 6) % cols.length];
+        b.fillRect(px + ((sx % 8) + 8) % 8, py + sy, 1, 1);
+      }
+      b.globalAlpha = 1;
+      b.fillStyle = "#ffffff";
+      if (!isD(x - 1, y)) b.fillRect(px, py, 1, 8);
+      if (!isD(x + 1, y)) b.fillRect(px + 7, py, 1, 8);
+      if (!isD(x, y - 1)) b.fillRect(px, py, 8, 1);
+      if (!isD(x, y + 1)) b.fillRect(px, py + 7, 8, 1);
+    }
+  },
+
+  // Gate blocks: steel with a glowing seam while locked, a faint outline once open.
+  drawGate(b, room, cx, cy) {
+    if (!room.hasGate) return;
+    if (!room.gateTiles) {
+      room.gateTiles = [];
+      for (let y = 0; y < room.h; y++) for (let x = 0; x < room.w; x++) if (room.grid[y][x] === "X") room.gateTiles.push([x, y]);
+    }
+    const lit = room.switches.filter((s) => s.on).length / Math.max(1, room.switches.length);
+    for (const [x, y] of room.gateTiles) {
+      const px = room.x + x * TILE - cx, py = room.y + y * TILE - cy;
+      if (room.gateOpen) {
+        b.fillStyle = "rgba(127,247,255,0.18)";
+        b.fillRect(px, py, 8, 1); b.fillRect(px, py + 7, 8, 1); b.fillRect(px, py, 1, 8); b.fillRect(px + 7, py, 1, 8);
+        continue;
+      }
+      b.fillStyle = "#4a5170"; b.fillRect(px, py, 8, 8);
+      b.fillStyle = "#6d7699"; b.fillRect(px, py, 8, 1); b.fillRect(px, py, 1, 8);
+      b.fillStyle = "#2c3148"; b.fillRect(px, py + 7, 8, 1); b.fillRect(px + 7, py, 1, 8);
+      b.fillStyle = lit > 0 ? `rgba(127,247,255,${0.35 + lit * 0.6})` : "#343a55";
+      b.fillRect(px + 3, py + 2, 2, 4);
+    }
+  },
+
+  drawZipTrack(b, z, cx, cy) {
+    const x0 = z.sx + z.w / 2 - cx, y0 = z.sy + z.h / 2 - cy, x1 = z.ex + z.w / 2 - cx, y1 = z.ey + z.h / 2 - cy;
+    const len = Math.hypot(x1 - x0, y1 - y0), nx = -(y1 - y0) / len, ny = (x1 - x0) / len;
+    b.fillStyle = "#1d1720";
+    for (let i = 0; i <= len; i++) {
+      const x = x0 + (x1 - x0) * i / len, y = y0 + (y1 - y0) * i / len;
+      b.fillRect(Math.round(x + nx * 2), Math.round(y + ny * 2), 1, 1);
+      b.fillRect(Math.round(x - nx * 2), Math.round(y - ny * 2), 1, 1);
+    }
+    for (const [gx, gy] of [[x0, y0], [x1, y1]]) {
+      b.fillStyle = "#3a2f3e"; diamond(b, Math.round(gx), Math.round(gy), 4);
+      b.fillStyle = "#8a7a6a"; diamond(b, Math.round(gx), Math.round(gy), 2);
+    }
+  },
+
+  // The block itself, with a traffic light: yellow waiting, green going, red coming back.
+  drawZip(b, z, cx, cy) {
+    const shake = z.state === 1 || (z.state === 3 && z.t > 0.3) ? Math.round((Math.random() - 0.5) * 2) : 0;
+    const x = z.x - cx + shake, y = z.y - cy;
+    b.fillStyle = "#1f1a24"; b.fillRect(x, y, z.w, z.h);
+    b.fillStyle = "#4b4152"; b.fillRect(x + 1, y + 1, z.w - 2, z.h - 2);
+    b.fillStyle = "#6b5f73"; b.fillRect(x + 1, y + 1, z.w - 2, 1);
+    b.fillStyle = "#2c2533";
+    for (let i = 4; i < z.w - 2; i += 4) b.fillRect(x + i, y + 3, 1, z.h - 5);
+    const light = z.state === 1 || z.state === 2 ? "#62e06a" : z.state === 3 || z.state === 4 ? "#ff5a5a" : "#ffd35a";
+    const lx = x + Math.floor(z.w / 2) - 2, ly = y + Math.floor(z.h / 2) - 2;
+    b.fillStyle = "#15111a"; b.fillRect(lx - 1, ly - 1, 6, 6);
+    b.fillStyle = light; b.fillRect(lx, ly, 4, 4);
+    b.fillStyle = "#ffffff"; b.fillRect(lx, ly, 1, 1);
   },
 
   drawFollowers(b, game, dt, cx, cy) {
@@ -608,6 +730,14 @@ function drawBerry(b, x, y, ghost) {
   b.fillRect(x - 1, y - 1, 1, 1); b.fillRect(x + 1, y + 1, 1, 1);
   b.fillStyle = ghost ? "rgba(150,200,255,0.8)" : "#4cc15a";
   b.fillRect(x - 2, y - 3, 5, 1); b.fillRect(x, y - 4, 1, 1);
+}
+
+function drawWings(b, x, y, t, speed) {
+  x = Math.round(x); y = Math.round(y);
+  const up = Math.sin(t * 14 * speed) > 0;
+  b.fillStyle = "#ffffff";
+  if (up) { b.fillRect(x - 6, y - 4, 3, 1); b.fillRect(x - 5, y - 3, 3, 1); b.fillRect(x + 4, y - 4, 3, 1); b.fillRect(x + 3, y - 3, 3, 1); }
+  else { b.fillRect(x - 6, y, 3, 1); b.fillRect(x - 5, y - 1, 3, 1); b.fillRect(x + 4, y, 3, 1); b.fillRect(x + 3, y - 1, 3, 1); }
 }
 
 function diamond(b, x, y, r) {

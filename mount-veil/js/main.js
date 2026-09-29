@@ -10,7 +10,7 @@ const SAVE_VERSION = 2;
 
 const $ = (id) => document.getElementById(id);
 const chapterById = (id) => CHAPTERS.find((c) => c.id === id);
-const berryCount = (ch) => ch.rooms.reduce((n, r) => n + r.rows.join("").split("*").length - 1, 0);
+const berryCount = (ch) => ch.rooms.reduce((n, r) => n + (r.rows.join("").match(/[*W]/g) || []).length, 0);
 
 const App = {
   state: "title",       // title | play | done
@@ -161,7 +161,7 @@ const App = {
     const next = CHAPTERS[CHAPTERS.indexOf(ch) + 1];
     setTimeout(() => {
       this.state = "done";
-      $("doneTitle").textContent = next ? `${ch.name.toUpperCase()} CLEARED` : "SUMMIT REACHED";
+      $("doneTitle").textContent = next ? `${ch.name.toUpperCase()} CLEARED` : "THE END";
       $("doneStats").innerHTML =
         `Time <b>${formatTime(run.time)}</b><br>Deaths <b>${run.deaths}</b><br>Strawberries <b>${run.berries} / ${g.totalBerries()}</b>` +
         (run.assist ? `<br><span class="badge">Assist Mode</span>` : "") +
@@ -182,7 +182,7 @@ const App = {
   refreshTitle() {
     const box = $("chapters");
     box.innerHTML = "";
-    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"] };
+    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"] };
     CHAPTERS.forEach((ch, i) => {
       const c = this.progress(ch), open = this.unlocked(ch);
       const got = this.save.collected.filter((id) => id.startsWith(ch.id + "/")).length;

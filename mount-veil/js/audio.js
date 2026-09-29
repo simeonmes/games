@@ -87,6 +87,13 @@ const Sound = (() => {
     death: () => { noise(0.4, 0.4, 900, "bandpass", 0.7, 0, 150); tone(440, 0.35, "square", 0.08, 0, 110); },
     respawn: () => { tone(330, 0.25, "sine", 0.1, 0, 660); },
     room: () => {},
+    zipStart: () => { tone(110, 0.12, "square", 0.08); noise(0.5, 0.2, 700, "bandpass", 1, 0.08, 2400); },
+    zipStop: () => { noise(0.18, 0.35, 260, "lowpass", 1); tone(90, 0.15, "square", 0.08); },
+    berryFly: () => { noise(0.25, 0.12, 2500, "bandpass", 2, 0, 5000); tone(1400, 0.2, "sine", 0.05, 0, 2200); },
+    dreamIn: () => { tone(660, 0.3, "sine", 0.1, 0, 990); tone(990, 0.3, "sine", 0.06, 0.05, 1320); },
+    dreamOut: () => { tone(1320, 0.18, "triangle", 0.1, 0, 880); noise(0.12, 0.15, 3000, "highpass"); },
+    switch: (e) => { tone(e.left ? 700 : 1050, 0.15, "triangle", 0.15); tone(e.left ? 1050 : 1575, 0.2, "triangle", 0.1, 0.06); },
+    gate: () => { noise(0.6, 0.3, 200, "lowpass", 1); [392, 523, 659].forEach((f, i) => tone(f, 0.3, "triangle", 0.12, 0.15 + i * 0.08)); },
     complete: () => [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, 0.45, "triangle", 0.16, i * 0.11)),
   };
 

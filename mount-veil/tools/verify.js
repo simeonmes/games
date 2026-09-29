@@ -14,7 +14,7 @@
 const path = require("path");
 const fs = require("fs");
 const { CHAPTERS } = require("../js/levels.js");
-const { Game, ST_DEAD, ST_CLIMB, ST_DASH } = require("../js/sim.js");
+const { Game, ST_DEAD, ST_CLIMB, ST_DREAM } = require("../js/sim.js");
 
 const FRAMES = 4;          // frames each input is held for
 const BUDGET = +(process.env.BUDGET || 400000);    // search nodes per goal
@@ -28,6 +28,11 @@ const DIRS = [[1, 0], [-1, 0], [0, -1], [0, 1], [1, -1], [-1, -1], [1, 1], [-1, 
 
 function actions(g) {
   const p = g.p, out = [];
+  // Inside a dream block you can't steer: all that matters is jumping or grabbing on the way out.
+  if (p.state === ST_DREAM) {
+    return [input(0, 0, false, false, false, false), input(0, 0, true, true, false, false),
+      input(1, 0, false, false, false, true), input(-1, 0, false, false, false, true)];
+  }
   for (const mx of [-1, 0, 1]) {
     out.push(input(mx, 0, false, false, false, false));
     out.push(input(mx, 0, true, false, false, false));
@@ -68,7 +73,10 @@ function key(g) {
   return [p.x >> 1, p.y >> 1, Math.round(p.vx / 20), Math.round(p.vy / 20), p.state, p.dashes, Math.round(p.stamina / 20),
     p.ducking ? 1 : 0, p.dashPhase, p.varJumpTimer > 0 ? 1 : 0, p.forceMoveXTimer > 0 ? 1 : 0, p.wallBoostTimer > 0 ? 1 : 0,
     r.refills.map((x) => (x.respawn > 0 ? 1 : 0)).join(""), r.crumbles.map((c) => c.state).join(""),
-    r.berries.map((b) => b.state).join("")].join(",");
+    r.berries.map((b) => b.state).join(""),
+    Math.round(p.liftX / 40), Math.round(p.liftY / 40), p.dashAttackT > 0 ? 1 : 0,
+    r.zips.map((z) => `${z.state}:${Math.round(z.at * 20)}:${z.state % 2 ? Math.round(z.t * 10) : 0}`).join("/"),
+    r.switches.map((w) => (w.on ? 1 : 0)).join(""), r.gateOpen ? 1 : 0].join(",");
 }
 
 // Minimal binary heap keyed on .f
@@ -116,6 +124,7 @@ function search(g, goal) {
       const path = { a, prev: n.path };
       if (goal.reached(g)) return { nodes, path: unwind(path) };
       if (g.transition || g.done) continue;       // left for some other room
+      if (goal.prune && goal.prune(g)) continue;
       const k = key(g);
       if (seen.has(k)) continue;
       seen.add(k);
@@ -192,6 +201,26 @@ function fresh(roomId) {
   return g;
 }
 
+// Replay a route and note which of the room's moving parts it relied on.
+function used(roomId, route) {
+  const g = fresh(roomId), room = g.room, zips = new Set();
+  let dreams = 0;
+  for (const a of route) {
+    const frames = a.dash ? FRAMES + 4 : FRAMES;
+    for (let f = 0; f < frames; f++) {
+      const was = g.p.state;
+      g.step({ mx: a.mx, my: a.my, jump: a.jump, jumpPressed: a.press && f === 0, dashPressed: a.dash && f === 0, grab: a.grab });
+      room.zips.forEach((z, i) => { if (z.state) zips.add(i); });
+      if (g.p.state === ST_DREAM && was !== ST_DREAM) dreams++;
+    }
+  }
+  const out = [];
+  if (room.zips.length) out.push(`zips ${zips.size}/${room.zips.length}`);
+  if (room.grid.some((r) => r.includes("D"))) out.push(`dreams ${dreams}`);
+  if (room.switches.length) out.push(`gate ${room.gateOpen ? "open" : "shut"}`);
+  return out.length ? "  [" + out.join(", ") + "]" : "";
+}
+
 const solutions = {};
 let failures = 0;
 const t0 = Date.now();
@@ -204,12 +233,22 @@ for (CHAPTER of CHAPTERS) CHAPTER.rooms.forEach((def, i) => {
   const goal = next
     ? { reached: (g) => g.room.id === next.id, dist: airMap(g, room, doorTiles(room, g.roomIndex[next.id])) }
     : { reached: (g) => g.done, dist: airMap(g, room, [[room.goal.x / 8, room.goal.y / 8 + 1]]) };
+  if (room.hasGate) {
+    // A gate room: head for the switches still unlit, then for the door once the gate opens.
+    const toDoor = goal.dist, toSwitch = room.switches.map((s) => airMap(g, room, [[s.x / 8, s.y / 8]]));
+    goal.dist = (g) => {
+      if (g.room.gateOpen) return toDoor(g);
+      let near = 1e6, left = 0;
+      g.room.switches.forEach((s, i) => { if (!s.on) { left++; near = Math.min(near, toSwitch[i](g)); } });
+      return 500 * left + near;
+    };
+  }
   const t = Date.now();
   const res = search(g, goal);
   const ok = !!res.path;
   if (!ok) failures++;
   const frames = ok ? res.path.reduce((n, a) => n + (a.dash ? FRAMES + 4 : FRAMES), 0) : 0;
-  console.log(`${tag.padEnd(6)} ${def.name.padEnd(18)} ${ok ? "OK  " : "FAIL"} ${ok ? `${(frames / 60).toFixed(1)}s route` : ""} (${res.nodes} states, ${((Date.now() - t) / 1000).toFixed(1)}s)`);
+  console.log(`${tag.padEnd(6)} ${def.name.padEnd(18)} ${ok ? "OK  " : "FAIL"} ${ok ? `${(frames / 60).toFixed(1)}s route` : ""} (${res.nodes} states, ${((Date.now() - t) / 1000).toFixed(1)}s)${ok ? used(def.id, res.path) : ""}`);
   if (ok) solutions[tag] = res.path;
 
   room.berries.forEach((b, bi) => {
@@ -221,10 +260,11 @@ for (CHAPTER of CHAPTERS) CHAPTER.rooms.forEach((def, i) => {
     const R = g.room;
     for (let y = 0; y < R.h - 1; y++) for (let x = 0; x < R.w; x++) {
       const t = R.grid[y][x], below = R.grid[y + 1][x];
-      if (t === "." && (below === "#" || below === "=")) safe.push([R.tx + x, R.ty + y]);
+      if (t === "." && "#=DX".includes(below)) safe.push([R.tx + x, R.ty + y]);
     }
     const toSafe = airMap(g, R, safe);
-    const bgoal = { reached: () => berry.state === 2, dist: (g) => (berry.state === 1 ? toSafe(g) : 400 + toBerry(g)) };
+    // A winged strawberry that has flown off is gone until you die, so stop exploring there.
+    const bgoal = { reached: () => berry.state === 2, dist: (g) => (berry.state === 1 ? toSafe(g) : 400 + toBerry(g)), prune: () => berry.state === 3 };
     const br = search(g, bgoal);
     if (!br.path) failures++;
     console.log(`         strawberry ${b.id.padEnd(10)} ${br.path ? "OK  " : "FAIL"} (${br.nodes} states)`);

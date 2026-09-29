@@ -38,10 +38,16 @@ const C = {
   // Springs and objects
   SuperBounceSpeed: -185, BounceVarJumpTime: 0.2,
   RefillRespawn: 2.5, RefillFreeze: 0.05, CrumbleDelay: 0.4, CrumbleRespawn: 2, BerryCollectDelay: 0.15,
+  // Moving blocks hand you their speed when you jump off them (a "lift boost").
+  LiftSpeedGraceTime: 0.16, LiftXCap: 250, LiftYCap: -130,
+  // Zip movers: shake, rush to the end (0.5 s), rest, crawl back (2 s), rest.
+  ZipShake: 0.1, ZipOutRate: 2, ZipEndWait: 0.5, ZipBackRate: 0.5, ZipStartWait: 0.5,
+  // Dream blocks: a dash that touches one within DashAttackTime carries you through it.
+  DashAttackTime: 0.3, DreamDashSpeed: 240, DreamDashMinTime: 0.1,
   DeathTime: 0.55, RespawnTime: 0.4, TransitionTime: 0.4,
 };
 
-const ST_NORMAL = 0, ST_CLIMB = 1, ST_DASH = 2, ST_DEAD = 3, ST_RESPAWN = 4;
+const ST_NORMAL = 0, ST_CLIMB = 1, ST_DASH = 2, ST_DEAD = 3, ST_RESPAWN = 4, ST_DREAM = 5;
 
 // Hitboxes relative to the climber's feet (bottom centre). The hurtbox is 2 px shorter so
 // spikes feel fair.
@@ -51,6 +57,7 @@ const HURT = { normal: { l: -4, t: -11, w: 8, h: 9 }, duck: { l: -4, t: -4, w: 8
 const sign = (v) => (v > 0 ? 1 : v < 0 ? -1 : 0);
 const approach = (v, target, amt) => (v < target ? Math.min(v + amt, target) : Math.max(v - amt, target));
 const lerp = (a, b, t) => a + (b - a) * t;
+const sineIn = (t) => 1 - Math.cos(t * Math.PI / 2);
 // C#'s Math.Round rounds halves to even; match it so sub-pixel movement behaves the same.
 const roundEven = (v) => {
   const r = Math.round(v);
@@ -65,7 +72,11 @@ const overlap = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h 
 //   P  respawn point   s  spring                   o  dash refill crystal
 //   %  crumble block   *  strawberry               G  summit flag (end of the chapter)
 //   O  pink crystal: refills to two dashes
-// A room can also have `wind` (px/s, + blows right, - blows left).
+//   W  winged strawberry: flies away if you dash before touching it
+//   D  dream block: solid, but a dash into it carries you through and refills your dash
+//   T  touch switch       X  gate block: solid until every switch in the room is touched
+// A room can also have `wind` (px/s, + blows right, - blows left) and `zips`: zip movers,
+// given in tiles as { x, y, w, h, tx, ty } (block position and size, then where it travels to).
 function buildRoom(def, index, chapterId) {
   const rows = def.rows, h = rows.length, w = rows[0].length;
   rows.forEach((r, i) => {
@@ -76,7 +87,12 @@ function buildRoom(def, index, chapterId) {
     id: def.id, name: def.name || "", index, tx: def.x, ty: def.y, w, h, wind: def.wind || 0,
     x: x0, y: y0, pw: w * TILE, ph: h * TILE,
     grid: [], spawns: [], springs: [], refills: [], berries: [], crumbles: [], goal: null,
+    switches: [], gateOpen: false, hasGate: false,
     crumbleAt: new Int16Array(w * h).fill(-1),
+    zips: (def.zips || []).map((z) => {
+      const sx = x0 + z.x * TILE, sy = y0 + z.y * TILE;
+      return { x: sx, y: sy, fx: sx, fy: sy, w: z.w * TILE, h: z.h * TILE, sx, sy, ex: x0 + z.tx * TILE, ey: y0 + z.ty * TILE, state: 0, t: 0, at: 0 };
+    }),
   };
   for (let y = 0; y < h; y++) {
     const row = rows[y].split("");
@@ -85,9 +101,11 @@ function buildRoom(def, index, chapterId) {
       if (c === "P") room.spawns.push({ x: px + 4, y: py + TILE });
       else if (c === "s") room.springs.push({ x: px, y: py, t: 0 });
       else if (c === "o" || c === "O") room.refills.push({ x: px + 4, y: py + 4, respawn: 0, two: c === "O" });
-      else if (c === "*") room.berries.push({ id: `${chapterId}/${def.id}:${x},${y}`, hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, state: 0 });
+      else if (c === "*" || c === "W") room.berries.push({ id: `${chapterId}/${def.id}:${x},${y}`, hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, state: 0, winged: c === "W" });
       else if (c === "G") room.goal = { x: px, y: py - TILE, w: TILE, h: TILE * 2 };
-      else if (c === "#" || c === "=" || c === "%" || "^v<>".includes(c)) continue;
+      else if (c === "T") room.switches.push({ x: px, y: py, on: false });
+      else if (c === "X") { room.hasGate = true; continue; }
+      else if (c === "#" || c === "=" || c === "%" || c === "D" || "^v<>".includes(c)) continue;
       else if (c !== ".") throw new Error(`room ${def.id}: unknown tile "${c}" at ${x},${y}`);
       if (c !== "%") row[x] = ".";
     }
@@ -130,6 +148,8 @@ class Game {
     this.berryChain = 0; this.berryChainT = 0;
     this.inp = { mx: 0, my: 0, jump: false, jumpPressed: false, dashPressed: false, grab: false };
     this.moveX = 0;
+    this.ignoreSolid = null;           // the zip mover currently shoving you (don't collide with it)
+    this.passDream = false;            // treat dream blocks as open space (dream dash checks)
     const room = (opts.startRoom && this.roomIndex[opts.startRoom]) || this.rooms[0];
     this.room = room;
     this.spawn = room.spawns[Math.min(opts.startSpawn || 0, room.spawns.length - 1)];
@@ -150,6 +170,7 @@ class Game {
       wallSlideTimer: C.WallSlideTime, wallSlideDir: 0, wallSpeedRetained: 0, wallSpeedRetentionTimer: 0,
       wallBoostDir: 0, wallBoostTimer: 0, hopWaitX: 0, hopWaitXSpeed: 0, climbNoMoveTimer: 0, lastClimbMove: 0,
       deadT: 0, respawnT: 0, safeT: 0, sx: 1, sy: 1, flash: 0,
+      liftX: 0, liftY: 0, liftT: 0, dashAttackT: 0, dreamT: 0,
       justRespawned: true,   // wind leaves you alone until you first move, as in Celeste
     };
   }
@@ -176,8 +197,10 @@ class Game {
     const r = this.roomAtTile(gx, gy);
     // Outside every room is solid rock, except below the current room: that's a pit.
     if (!r) return gy < this.room.ty + this.room.h;
-    const lx = gx - r.tx, ly = gy - r.ty;
-    if (r.grid[ly][lx] === "#") return true;
+    const lx = gx - r.tx, ly = gy - r.ty, c = r.grid[ly][lx];
+    if (c === "#") return true;
+    if (c === "D") return !this.passDream;
+    if (c === "X") return !r.gateOpen;
     const cg = r.crumbleAt[ly * r.w + lx];
     return cg >= 0 && r.crumbles[cg].state !== 2;
   }
@@ -188,7 +211,25 @@ class Game {
     const x0 = Math.floor(l / TILE), x1 = Math.floor((l + w - 1) / TILE);
     const y0 = Math.floor(t / TILE), y1 = Math.floor((t + h - 1) / TILE);
     for (let gy = y0; gy <= y1; gy++) for (let gx = x0; gx <= x1; gx++) if (this.solidTile(gx, gy)) return true;
+    for (const z of this.room.zips) {
+      if (z !== this.ignoreSolid && l < z.x + z.w && z.x < l + w && t < z.y + z.h && z.y < t + h) return true;
+    }
     return false;
+  }
+
+  // Does the rectangle touch a dream block?
+  dreamRect(l, t, w, h) {
+    const x0 = Math.floor(l / TILE), x1 = Math.floor((l + w - 1) / TILE);
+    const y0 = Math.floor(t / TILE), y1 = Math.floor((t + h - 1) / TILE);
+    for (let gy = y0; gy <= y1; gy++) for (let gx = x0; gx <= x1; gx++) if (this.tileAt(gx, gy) === "D") return true;
+    return false;
+  }
+  dreamAt(x, y, b = this.box()) { return this.dreamRect(x + b.l, y + b.t, b.w, b.h); }
+  solidNoDreamAt(x, y) {
+    this.passDream = true;
+    const hit = this.collideAt(x, y);
+    this.passDream = false;
+    return hit;
   }
 
   box() { return this.p.ducking ? HB.duck : HB.normal; }
@@ -245,6 +286,7 @@ class Game {
 
   onCollideH() {
     const p = this.p;
+    if (this.dreamDashCheck(sign(p.vx), 0)) { this.setState(ST_DREAM); return; }
     if (p.state === ST_DASH) {
       // Dashing into a low gap ducks you under it; clipping a ledge lip pushes you round it.
       if (p.onGround && !this.collideAt(p.x + sign(p.vx), p.y, HB.duck)) { p.ducking = true; return; }
@@ -263,6 +305,7 @@ class Game {
 
   onCollideV() {
     const p = this.p;
+    if (this.dreamDashCheck(0, sign(p.vy))) { this.setState(ST_DREAM); return; }
     if (p.vy < 0) {
       // Upward corner correction: a head that clips a corner by up to 4 px slides round it.
       const n = p.state === ST_DASH ? C.DashCornerCorrection : C.UpwardCornerCorrection;
@@ -311,6 +354,18 @@ class Game {
     return { x, y };
   }
   squash(x, y) { this.p.sx = x; this.p.sy = y; }
+  // The speed of whatever moving block you were on, capped: added to every jump.
+  liftBoost() {
+    const p = this.p;
+    let x = p.liftX, y = p.liftY;
+    if (Math.abs(x) > C.LiftXCap) x = C.LiftXCap * sign(x);
+    if (y > 0) y = 0; else if (y < C.LiftYCap) y = C.LiftYCap;
+    return { x, y };
+  }
+  addLift() {
+    const p = this.p, lb = this.liftBoost();
+    p.vx += lb.x; p.vy += lb.y;
+  }
 
   // ------------------------------------------------------------------ jumps
 
@@ -321,6 +376,7 @@ class Game {
     p.wallSlideTimer = C.WallSlideTime; p.wallBoostTimer = 0;
     p.vx += C.JumpHBoost * this.moveX;
     p.vy = C.JumpSpeed;
+    this.addLift();
     p.varJumpSpeed = p.vy;
     this.squash(0.6, 1.4);
     this.emit("jump", { x: p.x, y: p.y });
@@ -335,6 +391,7 @@ class Game {
     if (this.moveX !== 0) { p.forceMoveX = dir; p.forceMoveXTimer = C.WallJumpForceTime; }
     p.vx = C.WallJumpHSpeed * dir;
     p.vy = C.JumpSpeed;
+    this.addLift();
     p.varJumpSpeed = p.vy;
     this.squash(0.6, 1.4);
     this.emit("wallJump", { x: p.x - dir * 4, y: p.y - 5, dir });
@@ -360,6 +417,7 @@ class Game {
       p.ducking = false;
       p.vx *= C.DuckSuperJumpXMult; p.vy *= C.DuckSuperJumpYMult;
     }
+    this.addLift();
     p.varJumpSpeed = p.vy;
     this.squash(0.6, 1.4);
     this.emit("jump", { x: p.x, y: p.y, big: true });
@@ -373,6 +431,7 @@ class Game {
     p.wallSlideTimer = C.WallSlideTime; p.wallBoostTimer = 0;
     p.vx = C.SuperWallJumpH * dir;
     p.vy = C.SuperWallJumpSpeed;
+    this.addLift();
     p.varJumpSpeed = p.vy;
     p.forceMoveX = dir; p.forceMoveXTimer = C.SuperWallJumpForceTime;
     this.squash(0.6, 1.4);
@@ -401,11 +460,16 @@ class Game {
     p.state = ns;
     if (ns === ST_CLIMB) this.climbBegin();
     else if (ns === ST_DASH) this.dashBegin();
+    else if (ns === ST_DREAM) this.dreamBegin();
   }
 
   startDash() {
     this.p.dashes = Math.max(0, this.p.dashes - 1);
     this.dashBuf = 0;
+    // Winged strawberries you haven't grabbed yet take fright and fly off.
+    for (const b of this.room.berries) {
+      if (b.winged && b.state === 0) { b.state = 3; b.flyT = this.time; this.emit("berryFly", { x: b.hx, y: b.hy }); }
+    }
     return ST_DASH;
   }
 
@@ -559,8 +623,72 @@ class Game {
     p.beforeDashX = p.vx; p.beforeDashY = p.vy;
     p.vx = 0; p.vy = 0;
     p.dashDirX = 0; p.dashDirY = 0;
+    p.dashAttackT = C.DashAttackTime;
     if (!p.onGround && p.ducking && this.canUnDuck()) p.ducking = false;
     p.dashPhase = 0;
+  }
+
+  // ------------------------------------------------------------------ dream blocks
+
+  // A dash (or the moment just after one) that bumps a dream block in the direction you
+  // dashed takes you inside. If the block's edge is lined with rock, it nudges you up to
+  // 4 px onto the dream block, like Celeste's DreamDashCheck.
+  dreamDashCheck(dx, dy) {
+    const p = this.p;
+    if (p.dashAttackT <= 0 || (p.state !== ST_DASH && p.state !== ST_NORMAL)) return false;
+    if (!((dx !== 0 && dx === sign(p.dashDirX)) || (dy !== 0 && dy === sign(p.dashDirY)))) return false;
+    const nx = p.x + dx, ny = p.y + dy;
+    if (!this.dreamAt(nx, ny)) return false;
+    if (!this.solidNoDreamAt(nx, ny)) return true;
+    for (let i = 1; i <= 4; i++) {
+      for (const s of [-1, 1]) {
+        const ox = dx ? 0 : i * s, oy = dx ? i * s : 0;
+        if (this.dreamAt(nx + ox, ny + oy) && !this.solidNoDreamAt(nx + ox, ny + oy)) { p.x += ox; p.y += oy; return true; }
+      }
+    }
+    return false;
+  }
+
+  dreamBegin() {
+    const p = this.p;
+    p.vx = p.dashDirX * C.DreamDashSpeed;
+    p.vy = p.dashDirY * C.DreamDashSpeed;
+    p.rx = 0; p.ry = 0;
+    p.stamina = C.ClimbMaxStamina;
+    p.dreamT = C.DreamDashMinTime;
+    p.dashAttackT = 0;
+    this.emit("dreamIn", { x: p.x, y: p.y - 6 });
+  }
+
+  // Inside a dream block you fly straight at dash speed, ignoring everything. Coming out
+  // refills your dash; press jump as you leave for a jump. Coming out into rock is fatal.
+  dreamUpdate() {
+    const p = this.p;
+    p.rx += p.vx * DT; p.ry += p.vy * DT;
+    const mx = roundEven(p.rx), my = roundEven(p.ry);
+    p.rx -= mx; p.ry -= my;
+    p.x += mx; p.y += my;
+    p.dreamT -= DT;
+    if (this.dreamAt(p.x, p.y)) return ST_DREAM;
+    if (this.solidNoDreamAt(p.x, p.y)) {
+      if (this.assist.invincible) {
+        // Assist: bounce back the way you came instead.
+        p.vx = -p.vx; p.vy = -p.vy; p.dashDirX = -p.dashDirX; p.dashDirY = -p.dashDirY;
+        return ST_DREAM;
+      }
+      this.die();
+      return ST_DEAD;
+    }
+    if (p.dreamT > 0) return ST_DREAM;
+    this.freeze = C.RefillFreeze;
+    p.dashes = Math.max(p.dashes, MAX_DASHES);
+    p.flash = 0.1;
+    this.emit("dreamOut", { x: p.x, y: p.y - 6 });
+    if (this.jumpBuf > 0 && p.dashDirX !== 0) this.jump();
+    else p.autoJump = true;
+    // Holding grab toward a wall as you come out catches it.
+    if (this.inp.grab && this.moveX !== 0 && this.climbCheck(this.moveX)) { p.facing = this.moveX; return ST_CLIMB; }
+    return ST_NORMAL;
   }
 
   dashUpdate() {
@@ -630,6 +758,7 @@ class Game {
       return;
     }
     this.updateObjects();
+    if (p.state === ST_DEAD) return;     // crushed by a zip mover
     this.updatePlayer();
     if (p.state === ST_DEAD) return;
     this.interact();
@@ -657,6 +786,8 @@ class Game {
     else if (p.onGround && p.dashes < MAX_DASHES) { p.dashes = MAX_DASHES; p.flash = 0.1; }
     if (p.varJumpTimer > 0) p.varJumpTimer -= DT;
     if (p.dashCooldown > 0) p.dashCooldown -= DT;
+    if (p.dashAttackT > 0) p.dashAttackT -= DT;
+    if (p.liftT > 0 && (p.liftT -= DT) <= 0) { p.liftX = 0; p.liftY = 0; }
 
     if (p.forceMoveXTimer > 0) { p.forceMoveXTimer -= DT; this.moveX = p.forceMoveX; }
     else this.moveX = inp.mx;
@@ -679,8 +810,13 @@ class Game {
       else p.wallSpeedRetentionTimer -= DT;
     }
     if (p.wallSlideDir !== 0) { p.wallSlideTimer = Math.max(p.wallSlideTimer - DT, 0); p.wallSlideDir = 0; }
-    if (this.moveX !== 0 && p.state !== ST_CLIMB) p.facing = this.moveX;
+    if (this.moveX !== 0 && p.state !== ST_CLIMB && p.state !== ST_DREAM) p.facing = this.moveX;
 
+    if (p.state === ST_DREAM) {
+      const ns = this.dreamUpdate();
+      if (ns !== ST_DEAD) this.setState(ns);
+      return;
+    }
     const before = p.state;
     let ns;
     if (p.state === ST_NORMAL) ns = this.normalUpdate();
@@ -691,7 +827,9 @@ class Game {
     if (before === ST_CLIMB && p.state !== ST_CLIMB) this.emit("letGo", {});
 
     this.moveH(p.vx * DT);
+    if (p.state === ST_DREAM) return;
     this.moveV(p.vy * DT);
+    if (p.state === ST_DREAM) return;
     this.windMove();
   }
 
@@ -722,6 +860,10 @@ class Game {
     for (const r of room.refills) r.respawn = 0;
     for (const c of room.crumbles) { c.state = 0; c.t = 0; }
     for (const s of room.springs) s.t = 0;
+    for (const z of room.zips) { z.x = z.fx = z.sx; z.y = z.fy = z.sy; z.state = 0; z.t = 0; z.at = 0; }
+    // Switches stay pressed once the gate has opened; before that, dying resets them.
+    if (!room.gateOpen) for (const s of room.switches) s.on = false;
+    for (const b of room.berries) if (b.state === 3) b.state = 0;
   }
 
   syncBerries() {
@@ -734,8 +876,111 @@ class Game {
     }
   }
 
+  // ------------------------------------------------------------------ zip movers
+
+  // Standing on it, or climbing its side.
+  ridingZip(z) {
+    const p = this.p;
+    if (p.state === ST_DEAD || p.state === ST_RESPAWN || p.state === ST_DREAM) return false;
+    const b = this.box(), l = p.x + b.l, t = p.y + b.t;
+    if (p.y === z.y && l < z.x + z.w && z.x < l + b.w) return true;
+    if (p.state === ST_CLIMB) {
+      const wl = l + p.facing;
+      return wl < z.x + z.w && z.x < wl + b.w && t < z.y + z.h && z.y < t + b.h;
+    }
+    return false;
+  }
+
+  updateZips() {
+    for (const z of this.room.zips) {
+      if (z.state === 0) {
+        if (this.ridingZip(z)) { z.state = 1; z.t = C.ZipShake; this.emit("zipStart", { x: z.x + z.w / 2, y: z.y + z.h / 2 }); }
+      } else if (z.state === 1) {
+        if ((z.t -= DT) <= 0) { z.state = 2; z.at = 0; }
+      } else if (z.state === 2) {
+        z.at = approach(z.at, 1, C.ZipOutRate * DT);
+        const k = sineIn(z.at);
+        this.moveZipTo(z, lerp(z.sx, z.ex, k), lerp(z.sy, z.ey, k));
+        if (z.at >= 1) { z.state = 3; z.t = C.ZipEndWait; this.emit("zipStop", { x: z.x + z.w / 2, y: z.y + z.h / 2 }); }
+      } else if (z.state === 3) {
+        if ((z.t -= DT) <= 0) { z.state = 4; z.at = 0; }
+      } else if (z.state === 4) {
+        z.at = approach(z.at, 1, C.ZipBackRate * DT);
+        const k = sineIn(z.at);
+        this.moveZipTo(z, lerp(z.ex, z.sx, k), lerp(z.ey, z.sy, k));
+        if (z.at >= 1) { z.state = 5; z.t = C.ZipStartWait; }
+      } else if ((z.t -= DT) <= 0) {
+        z.state = 0;
+      }
+    }
+  }
+
+  moveZipTo(z, fx, fy) {
+    const lx = (fx - z.fx) / DT, ly = (fy - z.fy) / DT;
+    z.fx = fx; z.fy = fy;
+    const dx = Math.round(fx) - z.x, dy = Math.round(fy) - z.y;
+    if (dx) this.moveSolid(z, dx, 0, lx, ly);
+    if (dy) this.moveSolid(z, 0, dy, lx, ly);
+  }
+
+  // Move a solid block along one axis (Celeste's Solid.MoveHExact / MoveVExact): anything it
+  // runs into is shoved out of the way and crushed if there's no room; anything riding it
+  // comes along. Either way you pick up its speed for your next jump.
+  moveSolid(z, dx, dy, lx, ly) {
+    const p = this.p;
+    const riding = this.ridingZip(z);
+    z.x += dx; z.y += dy;
+    if (p.state === ST_DEAD || p.state === ST_RESPAWN || p.state === ST_DREAM) return;
+    this.ignoreSolid = z;
+    const hb = this.hitbox();
+    let moved = false;
+    if (overlap(hb, z)) {
+      const amt = dx > 0 ? z.x + z.w - hb.x : dx < 0 ? z.x - (hb.x + hb.w) : dy > 0 ? z.y + z.h - hb.y : z.y - (hb.y + hb.h);
+      if (!this.shove(dx ? amt : 0, dy ? amt : 0, true)) { this.ignoreSolid = null; this.die(); return; }
+      moved = true;
+    } else if (riding) {
+      this.shove(dx, dy, false);
+      moved = true;
+    }
+    this.ignoreSolid = null;
+    if (moved) { p.liftX = lx; p.liftY = ly; p.liftT = C.LiftSpeedGraceTime; }
+  }
+
+  // Move the climber a whole number of pixels. Returns false if a wall stops a push that
+  // mustn't be stopped (a squish) and there's no small wiggle out of it.
+  shove(dx, dy, squish) {
+    const p = this.p;
+    for (const [amt, ax] of [[dx, 1], [dy, 0]]) {
+      const s = sign(amt);
+      for (let m = amt; m !== 0; m -= s) {
+        const nx = p.x + (ax ? s : 0), ny = p.y + (ax ? 0 : s);
+        if (this.collideAt(nx, ny)) {
+          if (!squish) break;
+          this.ignoreSolid = null;
+          return this.wiggle();
+        }
+        p.x = nx; p.y = ny;
+      }
+      if (ax && s) p.rx = 0;
+      if (!ax && s) p.ry = 0;
+    }
+    return true;
+  }
+
+  wiggle() {
+    const p = this.p;
+    for (let d = 1; d <= 3; d++) {
+      for (const [ox, oy] of [[0, -d], [d, 0], [-d, 0], [0, d]]) {
+        if (!this.collideAt(p.x + ox, p.y + oy)) { p.x += ox; p.y += oy; return true; }
+      }
+    }
+    return false;
+  }
+
   updateObjects() {
+    this.updateZips();
     const room = this.room, p = this.p;
+    if (p.state === ST_DEAD) return;
     for (const r of room.refills) if (r.respawn > 0 && (r.respawn -= DT) <= 0) this.emit("refillBack", { x: r.x, y: r.y });
     for (const s of room.springs) if (s.t > 0) s.t -= DT;
     const hb = this.hitbox();
@@ -812,6 +1057,14 @@ class Game {
         this.emit("berryTouch", { x: b.hx, y: b.hy, ghost: b.ghost });
       }
     }
+    for (const s of room.switches) {
+      if (s.on || !overlap(hb, { x: s.x, y: s.y, w: TILE, h: TILE })) continue;
+      s.on = true;
+      const left = room.switches.filter((o) => !o.on).length;
+      this.emit("switch", { x: s.x + 4, y: s.y + 4, left });
+      if (!left && room.hasGate) { room.gateOpen = true; this.emit("gate", {}); }
+    }
+
     const following = this.following();
     const safe = p.onGround && p.state !== ST_DASH && !this.onCrumble();
     this.berryChainT = Math.max(0, this.berryChainT - DT);
@@ -934,6 +1187,8 @@ class Game {
       p: Object.assign({}, this.p), room: r, jb: this.jumpBuf, db: this.dashBuf, fr: this.freeze,
       ref: r.refills.map((x) => x.respawn), cr: r.crumbles.map((c) => [c.state, c.t]),
       br: r.berries.map((b) => b.state), done: this.done, tr: this.transition,
+      zp: r.zips.map((z) => [z.x, z.y, z.fx, z.fy, z.state, z.t, z.at]),
+      sw: r.switches.map((s) => s.on), go: r.gateOpen,
     };
   }
 
@@ -944,9 +1199,12 @@ class Game {
     s.room.refills.forEach((x, i) => { x.respawn = s.ref[i]; });
     s.room.crumbles.forEach((c, i) => { c.state = s.cr[i][0]; c.t = s.cr[i][1]; });
     s.room.berries.forEach((b, i) => { b.state = s.br[i]; });
+    s.room.zips.forEach((z, i) => { [z.x, z.y, z.fx, z.fy, z.state, z.t, z.at] = s.zp[i]; });
+    s.room.switches.forEach((w, i) => { w.on = s.sw[i]; });
+    s.room.gateOpen = s.go;
     this.done = s.done;
     this.transition = s.tr;
   }
 }
 
-if (typeof module !== "undefined") module.exports = { Game, C, DT, TILE, VIEW_W, VIEW_H, ST_NORMAL, ST_CLIMB, ST_DASH, ST_DEAD, ST_RESPAWN, MAX_DASHES, HB };
+if (typeof module !== "undefined") module.exports = { Game, C, DT, TILE, VIEW_W, VIEW_H, ST_NORMAL, ST_CLIMB, ST_DASH, ST_DEAD, ST_RESPAWN, ST_DREAM, MAX_DASHES, HB };
