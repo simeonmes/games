@@ -13,7 +13,9 @@ const chapterById = (id) => CHAPTERS.find((c) => c.id === id);
 const berryCount = (ch) => ch.rooms.reduce((n, r) => n + (r.rows.join("").match(/[*W]/g) || []).length, 0);
 
 const App = {
-  state: "title",       // title | play | done
+  state: "title",       // title | play | scene (a scene outside any chapter) | done
+  mode: "story",        // story: the climb carries on chapter to chapter; revisit: replaying a finished chapter
+  pendingScene: null,   // a scene waiting for the room slide to finish
   paused: false,
   game: null,
   chapter: CHAPTERS[0],
@@ -25,7 +27,7 @@ const App = {
 
   defaultSettings() {
     return {
-      binds: JSON.parse(JSON.stringify(DEFAULT_BINDS)), grabMode: "hold", shake: true, timer: false, muted: false, musicVolume: 0.6,
+      binds: JSON.parse(JSON.stringify(DEFAULT_BINDS)), grabMode: "hold", shake: true, timer: false, muted: false, musicVolume: 0.6, story: true,
       assist: { speed: 1, infiniteStamina: false, airDashes: "default", invincible: false },
     };
   },
@@ -62,6 +64,7 @@ const App = {
       const ch = chapterById(id);
       if (!ch || !c) { delete s.chapters[id]; continue; }
       c.deaths = +c.deaths || 0; c.time = +c.time || 0;
+      if (!Array.isArray(c.seen)) c.seen = [];
       if (!ch.rooms.some((r) => r.id === c.room)) { c.room = ch.rooms[0].id; c.spawn = 0; }
     }
     return s;
@@ -71,10 +74,9 @@ const App = {
   writeSave() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(this.save)); } catch (e) { /* ignore */ } },
 
   progress(ch) { return this.save.chapters[ch.id]; },
-  unlocked(ch) {
-    const i = CHAPTERS.indexOf(ch);
-    return i === 0 || !!(this.save.chapters[CHAPTERS[i - 1].id] || {}).done;
-  },
+  done(ch) { return !!(this.save.chapters[ch.id] || {}).done; },
+  // Where the story is up to: the first chapter not finished yet (null once past the last one).
+  storyChapter() { return CHAPTERS.find((ch) => !this.done(ch)) || null; },
 
   // Copy the live game's progress into the save.
   capture() {
@@ -97,16 +99,17 @@ const App = {
 
   // ------------------------------------------------------------------ flow
 
-  // Play a chapter: carry on where you left off, or start it over.
-  play(ch, fromStart) {
-    if (!this.unlocked(ch)) return;
+  // Play a chapter: carry on where you left off, or start it over. In story mode the
+  // climb runs on into the next chapter; revisiting replays a chapter you've finished.
+  play(ch, fromStart, mode = "story") {
+    this.mode = mode;
     this.chapter = ch;
     let c = this.progress(ch);
-    const fresh = fromStart || !c || c.done || !c.started;
+    const fresh = fromStart || !c || !c.started || (mode === "story" && c.done);
     if (fresh) {
       c = this.save.chapters[ch.id] = {
-        room: ch.rooms[0].id, spawn: 0, deaths: 0, time: 0, assistUsed: false, done: false,
-        best: c ? c.best : null, started: true,
+        room: ch.rooms[0].id, spawn: 0, deaths: 0, time: 0, assistUsed: false, done: !!(c && c.done),
+        best: c ? c.best : null, started: true, seen: [],
       };
     }
     this.game = new Game(ch, {
@@ -114,16 +117,51 @@ const App = {
     });
     this.state = "play";
     this.paused = false;
+    this.pendingScene = null;
     Render.reset(this.game);
-    Render.banner = { text: fresh ? ch.subtitle : this.game.room.name, t: 0 };
+    Story.reset(this.game);
+    Render.banner = fresh ? null : { text: this.game.room.name, t: 0 };
     Sound.init();
     Music.playFor(this.game.room.index, this.game.rooms.length);
     this.show(null);
     this.writeSave();
+    if (fresh) {
+      // A title card for the chapter, then its opening scene.
+      const n = CHAPTERS.indexOf(ch) + 1;
+      const card = [{ card: [`Chapter ${n}`, ch.name], chapter: true }];
+      const trig = TRIGGERS[ch.id] || {};
+      if (this.settings.story && trig.start) Story.play(trig.start, this.game, null, card);
+      else Story.play("_none", this.game, null, card);
+    }
+  },
+
+  // The Begin / Continue button: pick the story up wherever it is.
+  continueStory() {
+    const ch = this.storyChapter();
+    if (!ch) { this.fogEnding(); return; }
+    this.play(ch, false, "story");
+  },
+
+  // Past the last chapter built so far: a quiet scene, then back to the title.
+  fogEnding() {
+    this.state = "scene";
+    this.paused = false;
+    this.show(null);
+    Story.play("fog", this.game, () => this.toTitle());
+  },
+
+  seen(id) {
+    const c = this.progress(this.chapter);
+    if (!c) return true;
+    if (c.seen.includes(id)) return true;
+    c.seen.push(id);
+    return false;
   },
 
   toTitle() {
     this.capture();
+    if (Story.active) Story.finish(true);
+    this.pendingScene = null;
     this.state = "title";
     this.paused = false;
     Music.stop();
@@ -134,7 +172,7 @@ const App = {
 
   // A calm scene behind the title: the start of the furthest chapter you've reached.
   titleScene() {
-    const ch = [...CHAPTERS].reverse().find((c) => this.unlocked(c)) || CHAPTERS[0];
+    const ch = this.storyChapter() || CHAPTERS[CHAPTERS.length - 1];
     this.game = new Game(ch, { quiet: true, collected: this.save.collected });
     Render.reset(this.game);
     Render.banner = null;
@@ -144,7 +182,7 @@ const App = {
     if (this.state !== "play") return;
     this.paused = on ?? !this.paused;
     Music.duck(this.paused);
-    if (this.paused) { this.capture(); this.refreshPause(); this.show("pause"); }
+    if (this.paused) { this.capture(); this.refreshPause(); $("skipScene").hidden = !Story.active; this.show("pause"); }
     else this.show(null);
   },
 
@@ -158,51 +196,70 @@ const App = {
     const prevBest = c.best;
     if (!c.best || run.time < c.best.time) c.best = run;
     this.writeSave();
-    const next = CHAPTERS[CHAPTERS.indexOf(ch) + 1];
-    setTimeout(() => {
+    const summary = () => {
+      if (this.game !== g) return;
       this.state = "done";
-      $("doneTitle").textContent = next ? `${ch.name.toUpperCase()} CLEARED` : "THE END";
+      $("doneTitle").textContent = ch.name;
       $("doneStats").innerHTML =
         `Time <b>${formatTime(run.time)}</b><br>Deaths <b>${run.deaths}</b><br>Strawberries <b>${run.berries} / ${g.totalBerries()}</b>` +
         (run.assist ? `<br><span class="badge">Assist Mode</span>` : "") +
-        (prevBest && c.best !== run ? `<br><small>Best time ${formatTime(c.best.time)}</small>` : "") +
-        (next ? `<br><small>Unlocked: ${next.subtitle}</small>` : "");
-      $("nextChapter").hidden = !next;
+        (prevBest && c.best !== run ? `<br><small>Best time ${formatTime(c.best.time)}</small>` : "");
+      const story = this.mode === "story";
+      $("nextChapter").hidden = !story;
+      $("again").hidden = story;
+      $("toTitle").textContent = story ? "Rest (main menu)" : "Back to menu";
       this.show("done");
-    }, 1600);
+    };
+    const end = (TRIGGERS[ch.id] || {}).end;
+    setTimeout(() => {
+      if (this.game !== g) return;
+      if (end && this.settings.story) Story.play(end, g, summary); else summary();
+    }, 1200);
+  },
+
+  // After a chapter's summary in story mode: straight on up the mountain.
+  onward() {
+    const next = CHAPTERS[CHAPTERS.indexOf(this.chapter) + 1];
+    if (next) this.play(next, true, "story"); else this.fogEnding();
   },
 
   // ------------------------------------------------------------------ UI
 
   show(id) {
-    for (const s of ["title", "pause", "settings", "done"]) $(s).classList.toggle("hidden", s !== id);
+    for (const s of ["title", "pause", "settings", "done", "revisit"]) $(s).classList.toggle("hidden", s !== id);
     $("touch").classList.toggle("hidden", !(id === null && this.state === "play" && this.touchUI));
   },
 
   refreshTitle() {
+    // Only the way forward is shown: no list of chapters, nothing about how far the climb goes.
+    const ch = this.storyChapter(), c = ch && this.progress(ch);
+    const begun = CHAPTERS.some((x) => (this.progress(x) || {}).started);
+    $("continueBtn").textContent = begun ? "Continue" : "Begin";
+    $("where").textContent = !begun ? "" : ch && c && c.started ? `${ch.name} · ${ch.rooms.find((r) => r.id === c.room).name}` : ch ? ch.name : "";
+    $("revisitBtn").hidden = !CHAPTERS.some((x) => this.done(x));
+    const bb = this.settings.binds;
+    $("bindText").innerHTML = `${keys(bb.jump)} jump · ${keys(bb.dash)} dash · ${keys(bb.grab)} grab`;
+  },
+
+  // Places you've already been: only finished chapters appear.
+  openRevisit() {
     const box = $("chapters");
     box.innerHTML = "";
     const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"] };
     CHAPTERS.forEach((ch, i) => {
-      const c = this.progress(ch), open = this.unlocked(ch);
+      if (!this.done(ch)) return;
+      const c = this.progress(ch);
       const got = this.save.collected.filter((id) => id.startsWith(ch.id + "/")).length;
       const b = document.createElement("button");
-      b.className = "chap" + (open ? "" : " locked");
+      b.className = "chap";
       const [c1, c2] = themes[ch.id] || themes.c1;
       b.style.setProperty("--c1", c1); b.style.setProperty("--c2", c2);
-      let info;
-      if (!open) info = `🔒 Finish ${CHAPTERS[i - 1].name} to unlock`;
-      else if (c && c.started && !c.done) info = `Continue · ${ch.rooms.find((r) => r.id === c.room).name}`;
-      else if (c && c.done) info = `✔ Cleared${c.best ? ` · best ${formatTime(c.best.time)}${c.best.assist ? " (assist)" : ""}` : ""}`;
-      else info = "Start";
       b.innerHTML = `<span class="num">Chapter ${i + 1}</span><span class="name">${ch.name}</span>` +
-        `<span class="info">${info}<br>🍓 ${got} / ${berryCount(ch)}</span>` +
-        (open && c && c.started && !c.done ? `<span class="restart" data-restart>Start over</span>` : "");
-      b.onclick = (e) => { if (open) this.play(ch, !!e.target.dataset.restart); };
+        `<span class="info">${c.best ? `Best ${formatTime(c.best.time)}${c.best.assist ? " (assist)" : ""}` : ""}<br>🍓 ${got} / ${berryCount(ch)}</span>`;
+      b.onclick = () => this.play(ch, true, "revisit");
       box.appendChild(b);
     });
-    const bb = this.settings.binds;
-    $("bindText").innerHTML = `${keys(bb.jump)} jump · ${keys(bb.dash)} dash · ${keys(bb.grab)} grab`;
+    this.show("revisit");
   },
 
   refreshPause() {
@@ -224,6 +281,7 @@ const App = {
     $("oShake").checked = st.shake;
     $("oTimer").checked = st.timer;
     $("oSound").checked = !st.muted;
+    $("oStory").checked = st.story !== false;
     $("saveMsg").textContent = "";
     $("musicVol").value = String(st.musicVolume ?? 0.6);
     this.renderBinds();
@@ -240,6 +298,7 @@ const App = {
     st.shake = $("oShake").checked;
     st.timer = $("oTimer").checked;
     st.muted = !$("oSound").checked;
+    st.story = $("oStory").checked;
     this.applySettings();
     this.writeSettings();
     if (this.settingsFrom === "pause") { this.refreshPause(); this.show("pause"); }
@@ -339,9 +398,27 @@ const App = {
       if (this.state === "play") Sound.play(e);
       if (e.type === "room" || e.type === "berry") this.capture();
       if (e.type === "room") Music.playFor(g.room.index, g.rooms.length);
+      if (this.state === "play" && this.settings.story) this.storyEvent(e, g);
       if (e.type === "complete" && this.state === "play") this.finish();
     }
     g.events.length = 0;
+  },
+
+  // Scenes and whispers tied to rooms and switches.
+  storyEvent(e, g) {
+    const trig = TRIGGERS[this.chapter.id];
+    if (!trig) return;
+    if (e.type === "room") {
+      const id = trig.enter && trig.enter[g.room.id];
+      if (id && !this.seen(id)) {
+        if (SCENES[id].whisper) Story.whisper(SCENES[id].whisper);
+        else this.pendingScene = id;
+      }
+    } else if (e.type === "switch") {
+      const lines = trig.switches && trig.switches[g.room.id];
+      const n = g.room.switches.length - e.left - 1;
+      if (lines && lines[n] && !this.seen(`${g.room.id}:light${n}`)) Story.whisper([lines[n]]);
+    }
   },
 
   build() {
@@ -367,18 +444,25 @@ const App = {
     Music.onChange = () => {
       $("musicList").innerHTML = Music.tracks.map((t) => `<li>${t.name.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c])}</li>`).join("");
     };
-    $("again").onclick = () => this.play(this.chapter, true);
-    $("nextChapter").onclick = () => this.play(CHAPTERS[CHAPTERS.indexOf(this.chapter) + 1], true);
+    $("again").onclick = () => this.play(this.chapter, true, "revisit");
+    $("nextChapter").onclick = () => this.onward();
+    $("continueBtn").onclick = () => this.continueStory();
+    $("revisitBtn").onclick = () => this.openRevisit();
+    $("closeRevisit").onclick = () => this.show("title");
+    $("skipScene").onclick = () => { Story.skip(); this.pause(false); };
     $("toTitle").onclick = () => this.toTitle();
     $("touchPause").onclick = () => this.pause(true);
 
     Input.onPause = (code) => {
       if (Input.capture) return;
+      if (Story.active && code === "Enter" && !this.paused) { Story.press(); return; }
       if (this.state === "play") {
         if (code === "Enter" && this.paused) return;
         this.pause();
       } else if (code === "Escape" && !$("settings").classList.contains("hidden")) {
         this.closeSettings();
+      } else if (code === "Escape" && !$("revisit").classList.contains("hidden")) {
+        this.show("title");
       }
     };
     // Show touch controls once the screen is touched.
@@ -404,7 +488,18 @@ function loop(now) {
   last = now;
   const g = App.game;
   let speed = 1;
-  if (App.state === "play" && !App.paused) {
+  Story.tick(dt);
+  $("touch").classList.toggle("scene", !!Story.active);
+  if ((App.state === "play" || App.state === "scene") && !App.paused && Story.active) {
+    // A scene is playing: the game waits, the scene reads the buttons.
+    const inp = Input.frame();
+    Story.update(dt, inp.jumpPressed || inp.dashPressed);
+    acc = 0;
+  } else if (App.state === "play" && !App.paused && App.pendingScene && !g.transition && g.p.state !== ST_DEAD && g.p.state !== ST_RESPAWN) {
+    const id = App.pendingScene;
+    App.pendingScene = null;
+    Story.play(id, g);
+  } else if (App.state === "play" && !App.paused) {
     // Fixed 60 Hz steps, whatever the screen's refresh rate. Assist Mode's game speed
     // simply feeds less time in.
     speed = App.settings.assist.speed;
@@ -433,6 +528,7 @@ function loop(now) {
 // ---------------------------------------------------------------------------- boot
 
 App.load();
+Story.init();
 Music.init();
 Input.init();
 Input.initTouch($("touch"));
@@ -442,4 +538,4 @@ App.build();
 App.toTitle();
 requestAnimationFrame(loop);
 
-window.__MV = { App, Game, CHAPTERS, Render, Input, Music };
+window.__MV = { App, Game, CHAPTERS, Render, Input, Music, Story, SCENES, TRIGGERS };

@@ -93,6 +93,8 @@ const Sound = (() => {
     dreamIn: () => { tone(660, 0.3, "sine", 0.1, 0, 990); tone(990, 0.3, "sine", 0.06, 0.05, 1320); },
     dreamOut: () => { tone(1320, 0.18, "triangle", 0.1, 0, 880); noise(0.12, 0.15, 3000, "highpass"); },
     switch: (e) => { tone(e.left ? 700 : 1050, 0.15, "triangle", 0.15); tone(e.left ? 1050 : 1575, 0.2, "triangle", 0.1, 0.06); },
+    blip: (e) => tone(e.pitch * vary(), 0.045, "square", 0.025),
+    chime: () => [392, 330, 262, 196].forEach((f, i) => { tone(f, 1.6, "sine", 0.18, i * 0.5); tone(f * 2, 1.2, "triangle", 0.05, i * 0.5); }),
     gate: () => { noise(0.6, 0.3, 200, "lowpass", 1); [392, 523, 659].forEach((f, i) => tone(f, 0.3, "triangle", 0.12, 0.15 + i * 0.08)); },
     complete: () => [523, 659, 784, 1047, 1319].forEach((f, i) => tone(f, 0.45, "triangle", 0.16, i * 0.11)),
   };

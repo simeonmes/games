@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Celeste</title>
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -16,10 +16,12 @@
   <div class="card">
     <div class="logo">
       <span class="t1">CELESTE</span>
-      <span class="sub">A climb in five chapters</span>
+      <span class="sub">A climb up Mount Veil</span>
     </div>
-    <div id="chapters" class="chapters"></div>
     <div class="menu">
+      <button id="continueBtn" class="big">Begin</button>
+      <div id="where" class="saveinfo"></div>
+      <button id="revisitBtn" hidden>Revisit</button>
       <button id="openSettings">Settings &amp; Assist Mode</button>
     </div>
     <details class="howto">
@@ -41,8 +43,7 @@
           <p><b>Dash</b> in any of 8 directions. Your hair turns blue when it's used; landing or a green crystal gives it back.</p>
           <p><b>Grab</b> walls to climb. Climbing tires you out (you'll flash red), so rest on the ground.</p>
           <p>Jump off walls. Strawberries follow you and count once you land somewhere safe.</p>
-          <p><b>Chapter 2:</b> wind pushes you around. Crouch on the ground to hold still. <b>Chapter 3:</b> pink crystals give you two dashes.</p>
-          <p><b>Chapter 4:</b> stand on or grab a zip mover and it races along its track; jump just as it stops to be flung. Winged strawberries fly off if you dash. <b>Chapter 5:</b> dash into a dream block to fly through it (your dash comes back), and touch every switch to open the gate.</p>
+          <p>The mountain, and the people on it, will teach you the rest. In a scene, press jump, dash or Enter to continue.</p>
         </div>
       </div>
     </details>
@@ -60,6 +61,7 @@
     <div class="menu">
       <button id="resume" class="big">Resume</button>
       <button id="retry">Retry (respawn)</button>
+      <button id="skipScene" hidden>Skip scene</button>
       <button id="pauseSettings">Settings &amp; Assist Mode</button>
       <button id="quit">Save &amp; quit</button>
     </div>
@@ -84,6 +86,7 @@
         <label><input type="checkbox" id="oShake"> Screen shake &amp; rumble</label>
         <label><input type="checkbox" id="oTimer"> Speedrun timer</label>
         <label><input type="checkbox" id="oSound"> Sound</label>
+        <label><input type="checkbox" id="oStory"> Story scenes</label>
       </section>
       <section>
         <h3>Controls</h3>
@@ -113,12 +116,22 @@
   </div>
 </div>
 
+<div id="revisit" class="screen hidden">
+  <div class="card">
+    <h2>Places you've been</h2>
+    <p class="note" style="text-align:center">Climb a finished chapter again, for strawberries or a better time. Your story carries on from where it is.</p>
+    <div id="chapters" class="chapters"></div>
+    <div class="menu"><button id="closeRevisit">Back</button></div>
+  </div>
+</div>
+
 <div id="done" class="screen hidden">
   <div class="card small">
-    <h2 id="doneTitle" class="gold">SUMMIT REACHED</h2>
+    <div class="kicker">Chapter complete</div>
+    <h2 id="doneTitle" class="gold">Chapter</h2>
     <div id="doneStats" class="stats big"></div>
     <div class="menu">
-      <button id="nextChapter" class="big alt">Next chapter</button>
+      <button id="nextChapter" class="big alt">Continue</button>
       <button id="again" class="big">Climb again</button>
       <button id="toTitle">Main menu</button>
     </div>
@@ -135,14 +148,24 @@
   <button id="touchPause" class="tpause">❚❚</button>
 </div>
 
+<div id="fade" class="fade"></div>
+<div id="whisper" class="whisper"></div>
+<div id="dialog" class="dialog">
+  <canvas id="dPortrait" class="portrait" width="32" height="32"></canvas>
+  <div class="dbody"><div id="dName" class="dname"></div><div id="dText" class="dtext"></div></div>
+  <div id="dMore" class="dmore" hidden>▼</div>
+</div>
+<div id="card" class="storycard"><div id="cardText"></div><div class="dmore">▼</div></div>
+
 <div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to climb</div>
 
-<script src="js/levels.js?v=5"></script>
-<script src="js/sim.js?v=5"></script>
-<script src="js/input.js?v=5"></script>
-<script src="js/audio.js?v=5"></script>
-<script src="js/music.js?v=5"></script>
-<script src="js/render.js?v=5"></script>
-<script src="js/main.js?v=5"></script>
+<script src="js/levels.js?v=6"></script>
+<script src="js/sim.js?v=6"></script>
+<script src="js/input.js?v=6"></script>
+<script src="js/audio.js?v=6"></script>
+<script src="js/music.js?v=6"></script>
+<script src="js/render.js?v=6"></script>
+<script src="js/story.js?v=6"></script>
+<script src="js/main.js?v=6"></script>
 </body>
 </html>

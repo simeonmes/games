@@ -610,7 +610,7 @@ const CHAPTERS = [
       '########################################',
     ] },
   ] },
-  { id: "c3", name: "The Summit", subtitle: "Chapter 3: The Summit", rooms: [
+  { id: "c3", name: "The False Summit", subtitle: "Chapter 3: The False Summit", rooms: [
     { id: "1", name: "Two Dashes", x: 0, y: 0, rows: [
       '#.......................................',
       '#.......................................',

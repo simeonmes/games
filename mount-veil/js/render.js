@@ -33,6 +33,7 @@ const Render = {
   particles: [], trails: [], hair: [], orbs: null, flashT: 0, shakeT: 0, shakeMag: 0,
   sprite: null, sp: null, sky: null, mtn: [], stars: [], snow: [], time: 0,
   banner: null, berryHud: 0, trailT: 0, settings: { shake: true, timer: false },
+  farPeak: 0, farPeakTarget: 0,   // the real summit, revealed at the end of the false summit
 
   init(canvas) {
     this.canvas = canvas;
@@ -129,12 +130,30 @@ const Render = {
       b.fillRect(Math.round(x), Math.round(y), 1, 1);
     }
     b.globalAlpha = 1;
+    if (this.farPeak > 0.01) this.drawFarPeak(b);
     for (const m of this.mtn) {
       const x = -((this.cam.x * m.k) % 960 + 960) % 960;
       const y = Math.round(-this.cam.y * m.k * 0.25 + 20 - alt * 10);
       b.drawImage(m.c, Math.round(x), y);
       b.drawImage(m.c, Math.round(x) + 960, y);
     }
+  },
+
+  // A huge pale mountain behind everything, fading in as the fog lifts.
+  drawFarPeak(b) {
+    b.globalAlpha = this.farPeak * 0.85;
+    const cx = 215, top = 6, base = VIEW_H;
+    for (let y = top; y < base; y++) {
+      const k = (y - top) / (base - top);
+      const half = Math.round(8 + k * 150 + Math.sin(y * 0.3) * 2);
+      b.fillStyle = y < top + 34 ? "#e9eefc" : k < 0.45 ? "#8c86b8" : "#6a6494";
+      b.fillRect(cx - half, y, half * 2, 1);
+      if (y < top + 34 && y > top + 4) { b.fillStyle = "#b9c0e0"; b.fillRect(cx, y, Math.round(half * 0.9), 1); }
+    }
+    b.globalAlpha = this.farPeak * 0.3;
+    b.fillStyle = "#ffffff";
+    b.fillRect(0, 0, VIEW_W, VIEW_H);
+    b.globalAlpha = 1;
   },
 
   drawSnow(b, dt) {
@@ -209,6 +228,7 @@ const Render = {
     this.setTheme(game.chapter.id);
     this.particles.length = 0; this.trails.length = 0; this.hair.length = 0;
     this.orbs = null; this.banner = null;
+    this.farPeak = this.farPeakTarget = 0;
     this.snapCamera(game);
     this.resetHair(game.p);
   },
@@ -270,6 +290,9 @@ const Render = {
       case "dreamOut": burst(e.x, e.y, 12, "#6ff7ff", 50, 0.45); break;
       case "switch": burst(e.x, e.y, 10, "#7ff7ff", 40, 0.5); break;
       case "gate": this.shake(0.25, 2); Input.rumble(0.5, 200); break;
+      case "actorIn": case "actorOut":
+        burst(e.x, e.y, 10, e.kind === "echo" ? "#c9c0ee" : e.kind === "lumen" ? "#fff1c8" : "#e7ecff", 30, 0.5);
+        break;
     }
   },
 
@@ -279,6 +302,7 @@ const Render = {
 
   frame(game, dt) {
     this.time += dt;
+    this.farPeak += (this.farPeakTarget - this.farPeak) * Math.min(1, dt * 0.8);
     const b = this.b, p = game.p;
 
     // Camera: smooth follow (Celeste's 1 - 0.01^dt), slide between rooms.
@@ -312,6 +336,7 @@ const Render = {
       this.drawObjects(b, game, room, cx, cy);
     }
 
+    this.drawActors(b, cx, cy);
     this.updateHair(game, dt);
     this.drawTrails(b, dt, cx, cy);
     const visible = p.state !== ST_DEAD && p.state !== ST_RESPAWN;
@@ -492,6 +517,21 @@ const Render = {
     b.fillStyle = "#15111a"; b.fillRect(lx - 1, ly - 1, 6, 6);
     b.fillStyle = light; b.fillRect(lx, ly, 4, 4);
     b.fillStyle = "#ffffff"; b.fillRect(lx, ly, 1, 1);
+  },
+
+  // Story characters, standing where the current scene put them.
+  drawActors(b, cx, cy) {
+    if (typeof Story === "undefined") return;
+    for (const a of Story.actors) {
+      if (a.alpha <= 0) continue;
+      const x = Math.round(a.x - cx), y = Math.round(a.y - cy);
+      if (x < -20 || x > VIEW_W + 20 || y < -20 || y > VIEW_H + 30) continue;
+      b.save();
+      b.translate(x, y);
+      if (a.facing < 0) b.scale(-1, 1);
+      drawActor(b, a.kind, a.alpha, this.time);
+      b.restore();
+    }
   },
 
   drawFollowers(b, game, dt, cx, cy) {
@@ -730,6 +770,53 @@ function drawBerry(b, x, y, ghost) {
   b.fillRect(x - 1, y - 1, 1, 1); b.fillRect(x + 1, y + 1, 1, 1);
   b.fillStyle = ghost ? "rgba(150,200,255,0.8)" : "#4cc15a";
   b.fillRect(x - 2, y - 3, 5, 1); b.fillRect(x, y - 4, 1, 1);
+}
+
+// Characters, drawn facing right with their feet at (0, 0).
+function drawActor(b, kind, alpha, t) {
+  const r = (c, x, y, w, h) => { b.fillStyle = c; b.fillRect(x, y, w, h); };
+  if (kind === "echo") {
+    // Wren's shape, pale and blurred, flickering slightly.
+    b.globalAlpha = alpha * (0.7 + 0.15 * Math.sin(t * 7));
+    r("#c9c0ee", -5, -12, 3, 5); r("#c9c0ee", -6, -9, 2, 4);             // hair
+    r("#d7d3ee", -3, -6, 6, 4); r("#b8b2d8", -3, -3, 6, 1);              // coat
+    r("#8e86b8", -2, -2, 1, 2); r("#8e86b8", 1, -2, 1, 2);               // legs
+    r("#eceaff", -2, -10, 5, 4); r("#c9c0ee", -2, -11, 5, 2);           // head
+    r("#3b2f70", 1, -8, 1, 1);
+    b.globalAlpha = alpha * 0.25;
+    r("#c9c0ee", -4 + Math.round(Math.sin(t * 3) * 2), -14, 1, 1);
+    r("#c9c0ee", 3 + Math.round(Math.cos(t * 2) * 2), -12, 1, 1);
+  } else if (kind === "tilly") {
+    b.globalAlpha = alpha;
+    r("#5a4030", -3, -2, 6, 2);                                          // skirt
+    r("#3e6b52", -4, -7, 7, 5); r("#2f5540", -4, -3, 7, 1);              // shawl
+    r("#e8c39e", -2, -10, 5, 3);                                         // face
+    r("#d9d6d0", -3, -12, 6, 2); r("#d9d6d0", -2, -13, 3, 1);            // hair and bun
+    r("#2a2020", 1, -9, 1, 1);
+    r("#6a5a4a", 3, -6, 1, 3);                                           // lantern
+    const glow = 0.35 + 0.1 * Math.sin(t * 5);
+    b.globalAlpha = alpha * glow; r("#ffd98a", 1, -5, 5, 5); b.globalAlpha = alpha;
+    r("#ffe7a0", 2, -3, 3, 3);
+  } else if (kind === "pascal") {
+    b.globalAlpha = alpha;
+    r("#3b3355", -2, -3, 1, 3); r("#3b3355", 1, -3, 1, 3);              // legs
+    r("#e8e0d0", -3, -9, 6, 6); r("#8a5a3a", -2, -8, 4, 5);              // shirt and apron
+    r("#d9a57a", -2, -13, 5, 4);                                         // face
+    r("#3a281c", -3, -15, 6, 2); r("#3a281c", -3, -13, 1, 2);            // hair
+    r("#c9a25a", -2, -14, 5, 1); r("#8fd3e8", 1, -14, 1, 1);             // goggles
+    r("#1a1410", 1, -12, 1, 1);
+  } else if (kind === "lumen") {
+    const bob = Math.round(Math.sin(t * 2.2) * 2), flap = Math.sin(t * 9) > 0 ? 1 : 0;
+    b.globalAlpha = alpha * 0.25; r("#fff1c8", -9, -20 + bob, 18, 16);   // glow
+    b.globalAlpha = alpha * 0.55;
+    r("#e6dcff", -9, -17 + bob - flap, 6, 8); r("#e6dcff", 3, -17 + bob - flap, 6, 8);   // wings
+    r("#fff1c8", -7, -15 + bob - flap, 2, 3); r("#fff1c8", 5, -15 + bob - flap, 2, 3);
+    b.globalAlpha = alpha;
+    r("#efe8ff", -3, -15 + bob, 6, 7); r("#ffffff", -2, -16 + bob, 4, 1);  // body
+    r("#1a1430", -2, -13 + bob, 1, 2); r("#1a1430", 1, -13 + bob, 1, 2);   // eyes
+    r("#d9c9ff", -2, -19 + bob, 1, 3); r("#d9c9ff", 1, -19 + bob, 1, 3);   // antennae
+  }
+  b.globalAlpha = 1;
 }
 
 function drawWings(b, x, y, t, speed) {
