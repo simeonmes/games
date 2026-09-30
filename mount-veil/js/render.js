@@ -77,7 +77,7 @@ const Render = {
   setTheme(id) {
     if (this.themeId === id) return;
     this.themeId = id;
-    this.theme = THEMES[id] || THEMES.c1;
+    this.theme = THEMES[id] || THEMES[String(id).replace(/b$/, "")] || THEMES.c1;
     PAL.rock = this.theme.rock; PAL.edge = this.theme.edge; PAL.under = this.theme.under;
     this.mtn[0].c = this.ridgeCanvas[0](this.theme.mtn[0]);
     this.mtn[1].c = this.ridgeCanvas[1](this.theme.mtn[1]);
@@ -309,6 +309,9 @@ const Render = {
       case "swapStop": this.shake(0.06, 1); break;
       case "boostIn": burst(e.x, e.y, 8, e.red ? "#ff5a6a" : "#5ae07a", 30, 0.35); break;
       case "redLaunch": this.shake(0.1, 1); break;
+      case "cassette": burst(e.x, e.y, 18, "#ff9ad8", 50, 0.7); this.shake(0.15, 1); break;
+      case "heart": burst(e.x, e.y, 24, game.chapter.base ? "#ff5a7a" : "#5aa8ff", 60, 0.9); this.shake(0.2, 2); break;
+      case "goldenTouch": case "golden": burst(e.x, e.y, 16, "#ffd24a", 50, 0.6); break;
       case "flyIn": burst(e.x, e.y, 14, "#ffe08a", 45, 0.5); break;
       case "flyOut": burst(e.x, e.y, 8, "#fff4c8", 25, 0.4); break;
       case "bump": burst(e.x, e.y, 14, "#bfe8ff", 55, 0.4); this.shake(0.12, 2); Input.rumble(0.4, 90); break;
@@ -413,6 +416,9 @@ const Render = {
     for (const c of room.clouds) this.drawCloud(b, c, cx, cy);
     for (const bo of room.boosters) this.drawBubble(b, game, bo, cx, cy);
     for (const f of room.feathers) this.drawFeather(b, f, cx, cy);
+    for (const it of room.items) if (!it.got) this.drawItem(b, it, cx, cy, game.chapter.base);
+    const gb = game.golden;
+    if (gb && gb.state === 0 && gb.room === room) drawBerry(b, gb.hx - cx, gb.hy - cy + Math.round(Math.sin(this.time * 2.5) * 1.5), false, true);
     for (const bu of room.bumpers) this.drawBumper(b, bu, cx, cy);
     for (const c of room.crumbles) {
       const shake = c.state === 1 ? Math.round((Math.random() - 0.5) * 2) : 0;
@@ -571,6 +577,26 @@ const Render = {
     }
   },
 
+  // Cassettes and crystal hearts (blue in A-sides, red in B-sides), with a slow glow.
+  drawItem(b, it, cx, cy, bside) {
+    const x = Math.round(it.x - cx), y = Math.round(it.y - cy + Math.sin(this.time * 2 + it.x) * 1.5);
+    b.globalAlpha = it.ghost ? 0.45 : 1;
+    if (it.kind === "cassette") {
+      b.fillStyle = "rgba(255,120,200,0.25)"; diamond(b, x, y, 8);
+      b.fillStyle = "#2a2233"; b.fillRect(x - 6, y - 4, 12, 8);
+      b.fillStyle = bside ? "#ff7090" : "#ff9ad8"; b.fillRect(x - 5, y - 3, 10, 3);
+      b.fillStyle = "#e8e2ff"; b.fillRect(x - 3, y + 1, 2, 2); b.fillRect(x + 1, y + 1, 2, 2);
+    } else {
+      const col = bside ? ["#ff5a7a", "#ffb0c0"] : ["#5aa8ff", "#c0e4ff"];
+      b.fillStyle = `rgba(${bside ? "255,90,122" : "90,168,255"},${0.2 + 0.15 * Math.sin(this.time * 3)})`; diamond(b, x, y, 9);
+      b.fillStyle = col[0];
+      b.fillRect(x - 4, y - 3, 3, 2); b.fillRect(x + 1, y - 3, 3, 2); b.fillRect(x - 5, y - 2, 11, 3); b.fillRect(x - 4, y + 1, 9, 1);
+      b.fillRect(x - 3, y + 2, 7, 1); b.fillRect(x - 2, y + 3, 5, 1); b.fillRect(x - 1, y + 4, 3, 1); b.fillRect(x, y + 5, 1, 1);
+      b.fillStyle = col[1]; b.fillRect(x - 3, y - 2, 2, 1); b.fillRect(x - 4, y - 1, 1, 1);
+    }
+    b.globalAlpha = 1;
+  },
+
   drawFeather(b, f, cx, cy) {
     const x = Math.round(f.x - cx), y = Math.round(f.y - cy + Math.sin(this.time * 3 + f.x) * 1.5);
     if (f.respawn > 0) { b.fillStyle = "rgba(255,220,120,0.25)"; b.fillRect(x, y, 1, 1); return; }
@@ -688,6 +714,14 @@ const Render = {
   drawFollowers(b, game, dt, cx, cy) {
     const tr = game.trail;
     let i = 0;
+    const gb = game.golden;
+    if (gb && gb.state === 1) {
+      // The golden strawberry follows closest.
+      const pt = tr[Math.min(tr.length - 1, 8)];
+      if (pt) { const k = 1 - Math.pow(0.0005, dt); gb.x += (pt.x - 6 * game.p.facing - gb.x) * k; gb.y += (pt.y - 8 - gb.y) * k; }
+      drawBerry(b, Math.round(gb.x - cx), Math.round(gb.y - cy), false, true);
+      i++;
+    }
     for (const be of game.following()) {
       const pt = tr[Math.min(tr.length - 1, 10 + i * 10)];
       if (pt) {
@@ -847,7 +881,7 @@ const Render = {
       if (a <= 0) this.banner = null;
       else { ctx.globalAlpha = a; text(this.banner.text, ox + 8 * s, oy + 8 * s, "left", "#e8e2ff"); ctx.globalAlpha = 1; }
     }
-    if (this.berryHud > 0 || game.paused) {
+    if ((this.berryHud > 0 || game.paused) && game.totalBerries() > 0) {
       this.berryHud -= dt;
       const a = Math.min(1, Math.max(this.berryHud, game.paused ? 1 : 0));
       ctx.globalAlpha = a;
@@ -913,9 +947,10 @@ function drawSpike(g, px, py, t) {
   }
 }
 
-function drawBerry(b, x, y, ghost) {
+function drawBerry(b, x, y, ghost, gold) {
   x = Math.round(x); y = Math.round(y);
-  b.fillStyle = ghost ? "rgba(111,160,255,0.75)" : "#d8323f";
+  if (gold) { b.fillStyle = "rgba(255,215,90,0.3)"; diamond(b, x, y, 6); }
+  b.fillStyle = gold ? "#f0b020" : ghost ? "rgba(111,160,255,0.75)" : "#d8323f";
   b.fillRect(x - 2, y - 1, 5, 3); b.fillRect(x - 1, y + 2, 3, 1); b.fillRect(x - 1, y - 2, 3, 1);
   b.fillStyle = ghost ? "rgba(200,220,255,0.8)" : "#ff9a8a";
   b.fillRect(x - 1, y - 1, 1, 1); b.fillRect(x + 1, y + 1, 1, 1);

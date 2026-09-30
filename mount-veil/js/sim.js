@@ -88,6 +88,7 @@ const overlap = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h 
 //   c  cloud (a run of c is one cloud)   f  pink cloud: breaks after you've used it once
 //   b  green bubble: holds you, then dashes you   B  red bubble: flings you until you hit something
 //   F  feather: fly for two seconds               U  bumper: knocks you away
+//   K  cassette tape (unlocks the chapter's B-side)   H  crystal heart
 // `dashes: 2` gives every dash refill in the room two dashes. `water: { speed, delay }` floods
 // the room from the bottom once you start moving.
 // A room can also have `wind` (px/s, + blows right, - blows left), and moving blocks given in
@@ -102,7 +103,7 @@ function buildRoom(def, index, chapterId) {
   const room = {
     id: def.id, name: def.name || "", index, tx: def.x, ty: def.y, w, h, wind: def.wind || 0,
     x: x0, y: y0, pw: w * TILE, ph: h * TILE,
-    grid: [], spawns: [], springs: [], refills: [], berries: [], crumbles: [], goal: null,
+    grid: [], spawns: [], springs: [], refills: [], berries: [], crumbles: [], goal: null, items: [],
     switches: [], gateOpen: false, hasGate: false,
     crumbleAt: new Int16Array(w * h).fill(-1),
     zips: (def.zips || []).map((z) => {
@@ -132,6 +133,7 @@ function buildRoom(def, index, chapterId) {
       else if (c === "o" || c === "O") room.refills.push({ x: px + 4, y: py + 4, respawn: 0, two: c === "O" });
       else if (c === "*" || c === "W") room.berries.push({ id: `${chapterId}/${def.id}:${x},${y}`, hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, state: 0, winged: c === "W" });
       else if (c === "G") room.goal = { x: px, y: py - TILE, w: TILE, h: TILE * 2 };
+      else if (c === "K" || c === "H") room.items.push({ kind: c === "K" ? "cassette" : "heart", x: px + 4, y: py + 4, got: false });
       else if (c === "T") room.switches.push({ x: px, y: py, on: false });
       else if (c === "X") { room.hasGate = true; continue; }
       else if (c === "b" || c === "B") room.boosters.push({ x: px + 4, y: py + 4, red: c === "B", respawn: 0 });
@@ -191,6 +193,16 @@ class Game {
     this.transition = null;
     this.trail = [];                   // recent climber positions, for following strawberries
     this.berryChain = 0; this.berryChainT = 0;
+    // Things already in the save show as see-through "ghosts" (like collected strawberries).
+    this.owned = new Set(opts.owned || []);
+    for (const r of this.rooms) for (const it of r.items) it.ghost = this.owned.has(it.kind);
+    // A golden strawberry waits at the start of a replayed chapter: carry it to the end
+    // without dying. It only counts if it's with you at the finish.
+    this.golden = null;
+    if (opts.golden) {
+      const r0 = this.rooms[0], sp = r0.spawns[0];
+      this.golden = { x: sp.x + 14, y: sp.y - 14, hx: sp.x + 14, hy: sp.y - 14, state: 0, room: r0 };
+    }
     this.inp = { mx: 0, my: 0, jump: false, jumpPressed: false, dashPressed: false, grab: false };
     this.moveX = 0;
     this.ignoreSolid = null;           // the zip mover currently shoving you (don't collide with it)
@@ -1372,8 +1384,20 @@ class Game {
       p.safeT = 0;
     }
 
+    for (const it of room.items) {
+      if (it.got || !overlap(hb, { x: it.x - 6, y: it.y - 6, w: 12, h: 12 })) continue;
+      it.got = true;
+      this.emit(it.kind, { x: it.x, y: it.y, ghost: it.ghost });
+    }
+    const gb = this.golden;
+    if (gb && gb.state === 0 && gb.room === room && overlap(hb, { x: gb.hx - 5, y: gb.hy - 5, w: 10, h: 10 })) {
+      gb.state = 1;
+      this.emit("goldenTouch", { x: gb.hx, y: gb.hy });
+    }
+
     if (room.goal && overlap(hb, room.goal)) {
       this.done = true;
+      if (gb && gb.state === 1) { gb.state = 2; this.emit("golden", { x: p.x, y: p.y - 10 }); }
       this.emit("complete", { x: room.goal.x, y: room.goal.y });
     }
   }
@@ -1451,6 +1475,7 @@ class Game {
     p.deadT = C.DeathTime;
     this.deaths++;
     this.emit("death", { x: p.x, y: p.y - 6, dashes: p.dashes });
+    if (this.golden && this.golden.state === 1) this.emit("goldenLost", {});
     for (const b of this.following()) { b.state = 0; b.x = b.hx; b.y = b.hy; }
   }
 
@@ -1475,6 +1500,7 @@ class Game {
       p: Object.assign({}, this.p), room: r, jb: this.jumpBuf, db: this.dashBuf, fr: this.freeze,
       ref: r.refills.map((x) => x.respawn), cr: r.crumbles.map((c) => [c.state, c.t]),
       br: r.berries.map((b) => b.state), done: this.done, tr: this.transition,
+      it: r.items.map((i) => i.got),
       zp: r.zips.map((z) => [z.x, z.y, z.fx, z.fy, z.state, z.t, z.at]),
       sw: r.switches.map((s) => s.on), go: r.gateOpen,
       mv: r.moves.map((m) => [m.x, m.y, m.fx, m.fy, m.state, m.t, m.speed, m.gone]),
@@ -1493,6 +1519,7 @@ class Game {
     s.room.refills.forEach((x, i) => { x.respawn = s.ref[i]; });
     s.room.crumbles.forEach((c, i) => { c.state = s.cr[i][0]; c.t = s.cr[i][1]; });
     s.room.berries.forEach((b, i) => { b.state = s.br[i]; });
+    s.room.items.forEach((x, i) => { x.got = s.it[i]; });
     s.room.zips.forEach((z, i) => { [z.x, z.y, z.fx, z.fy, z.state, z.t, z.at] = s.zp[i]; });
     s.room.switches.forEach((w, i) => { w.on = s.sw[i]; });
     s.room.gateOpen = s.go;

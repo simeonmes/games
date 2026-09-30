@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Celeste</title>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -22,6 +22,7 @@
       <button id="continueBtn" class="big">Begin</button>
       <div id="where" class="saveinfo"></div>
       <button id="revisitBtn" hidden>Revisit</button>
+      <button id="journalBtn" hidden>Journal</button>
       <button id="openSettings">Settings &amp; Assist Mode</button>
     </div>
     <details class="howto">
@@ -119,9 +120,17 @@
 <div id="revisit" class="screen hidden">
   <div class="card">
     <h2>Places you've been</h2>
-    <p class="note" style="text-align:center">Climb a finished chapter again, for strawberries or a better time. Your story carries on from where it is.</p>
+    <p class="note" style="text-align:center">Climb a finished chapter again, for strawberries or a better time. A golden strawberry waits at the start: carry it to the end without dying. Find a chapter's hidden cassette to open its B-Side. Your story carries on from where it is.</p>
     <div id="chapters" class="chapters"></div>
     <div class="menu"><button id="closeRevisit">Back</button></div>
+  </div>
+</div>
+
+<div id="journal" class="screen hidden">
+  <div class="card">
+    <h2>Journal</h2>
+    <div id="journalBody"></div>
+    <div class="menu"><button id="closeJournal">Back</button></div>
   </div>
 </div>
 
@@ -159,13 +168,13 @@
 
 <div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to climb</div>
 
-<script src="js/levels.js?v=8"></script>
-<script src="js/sim.js?v=8"></script>
-<script src="js/input.js?v=8"></script>
-<script src="js/audio.js?v=8"></script>
-<script src="js/music.js?v=8"></script>
-<script src="js/render.js?v=8"></script>
-<script src="js/story.js?v=8"></script>
-<script src="js/main.js?v=8"></script>
+<script src="js/levels.js?v=9"></script>
+<script src="js/sim.js?v=9"></script>
+<script src="js/input.js?v=9"></script>
+<script src="js/audio.js?v=9"></script>
+<script src="js/music.js?v=9"></script>
+<script src="js/render.js?v=9"></script>
+<script src="js/story.js?v=9"></script>
+<script src="js/main.js?v=9"></script>
 </body>
 </html>

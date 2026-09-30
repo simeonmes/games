@@ -9,7 +9,13 @@ const SETTINGS_KEY = "mountVeil.settings.v1";
 const SAVE_VERSION = 2;
 
 const $ = (id) => document.getElementById(id);
-const chapterById = (id) => CHAPTERS.find((c) => c.id === id);
+// B-sides are harder remixes of each chapter (ids like "c1b"), unlocked by its cassette.
+const BSIDE_LIST = typeof BSIDES !== "undefined" ? BSIDES : [];
+const ALL_CHAPTERS = CHAPTERS.concat(BSIDE_LIST);
+const chapterById = (id) => ALL_CHAPTERS.find((c) => c.id === id);
+const baseId = (ch) => ch.base || ch.id;
+const bsideOf = (ch) => BSIDE_LIST.find((b) => b.base === ch.id);
+const THEME_COLORS = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"], c8: ["#2a3a60", "#0c1224"], c9: ["#d07aa0", "#6a5a9a"] };
 const berryCount = (ch) => ch.rooms.reduce((n, r) => n + (r.rows.join("").match(/[*W]/g) || []).length, 0);
 
 const App = {
@@ -46,7 +52,7 @@ const App = {
     if (!this.save) this.save = this.emptySave();
   },
 
-  emptySave() { return { version: SAVE_VERSION, collected: [], chapters: {} }; },
+  emptySave() { return { version: SAVE_VERSION, collected: [], chapters: {}, items: { cassettes: [], hearts: [], goldens: [] }, stats: { deaths: 0 } }; },
 
   migrate(s) {
     if (!s || typeof s !== "object") return null;
@@ -60,6 +66,12 @@ const App = {
     }
     if (s.version !== SAVE_VERSION || typeof s.chapters !== "object") return null;
     s.collected = Array.isArray(s.collected) ? s.collected.filter((id) => typeof id === "string") : [];
+    // Collectibles and lifetime stats (added later: older saves start them empty).
+    const it = s.items && typeof s.items === "object" ? s.items : {};
+    s.items = {};
+    for (const k of ["cassettes", "hearts", "goldens"]) s.items[k] = Array.isArray(it[k]) ? it[k].filter((x) => typeof x === "string") : [];
+    if (!s.stats || typeof s.stats !== "object") s.stats = { deaths: Object.values(s.chapters || {}).reduce((n, c) => n + (+(c && c.deaths) || 0), 0) };
+    s.stats.deaths = +s.stats.deaths || 0;
     for (const [id, c] of Object.entries(s.chapters)) {
       const ch = chapterById(id);
       if (!ch || !c) { delete s.chapters[id]; continue; }
@@ -101,9 +113,11 @@ const App = {
 
   // Play a chapter: carry on where you left off, or start it over. In story mode the
   // climb runs on into the next chapter; revisiting replays a chapter you've finished.
-  play(ch, fromStart, mode = "story") {
+  play(ch, fromStart, mode = "story", opts = {}) {
     this.mode = mode;
     this.chapter = ch;
+    // Replaying a finished chapter offers its golden strawberry.
+    const golden = mode === "revisit" && this.done(ch);
     let c = this.progress(ch);
     const fresh = fromStart || !c || !c.started || (mode === "story" && c.done);
     if (fresh) {
@@ -112,8 +126,12 @@ const App = {
         best: c ? c.best : null, started: true, seen: [],
       };
     }
+    const owned = [];
+    if (this.save.items.cassettes.includes(baseId(ch))) owned.push("cassette");
+    if (this.save.items.hearts.includes(ch.id)) owned.push("heart");
     this.game = new Game(ch, {
       startRoom: c.room, startSpawn: c.spawn, collected: this.save.collected, deaths: c.deaths, time: c.time, assist: this.settings.assist,
+      owned, golden: golden && fresh,
     });
     this.state = "play";
     this.paused = false;
@@ -125,10 +143,10 @@ const App = {
     Music.playFor(this.game.room.index, this.game.rooms.length);
     this.show(null);
     this.writeSave();
-    if (fresh) {
+    if (fresh && !opts.quick) {
       // A title card for the chapter, then its opening scene.
-      const n = CHAPTERS.indexOf(ch) + 1;
-      const card = [{ card: [`Chapter ${n}`, ch.name], chapter: true }];
+      const n = CHAPTERS.findIndex((x) => x.id === baseId(ch)) + 1;
+      const card = [{ card: [ch.base ? `Chapter ${n} · B-Side` : `Chapter ${n}`, ch.name], chapter: true }];
       const trig = TRIGGERS[ch.id] || {};
       if (this.settings.story && trig.start) Story.play(trig.start, this.game, null, card);
       else Story.play("_none", this.game, null, card);
@@ -213,6 +231,8 @@ const App = {
     this.capture();
     const c = this.progress(ch);
     c.done = true;
+    // A B-side ends with its red crystal heart.
+    if (ch.base && this.addItem("hearts", ch.id)) Story.whisper([{ who: "memory", text: "A red crystal heart!" }]);
     const got = g.rooms.reduce((n, r) => n + r.berries.filter((b) => g.collected.has(b.id)).length, 0);
     const run = { time: g.time, deaths: g.deaths, berries: got, assist: !!c.assistUsed };
     const prevBest = c.best;
@@ -221,11 +241,12 @@ const App = {
     const summary = () => {
       if (this.game !== g) return;
       this.state = "done";
-      $("doneTitle").textContent = ch.name;
+      $("doneTitle").textContent = ch.base ? `${ch.name} · B-Side` : ch.name;
       $("doneStats").innerHTML =
         `Time <b>${formatTime(run.time)}</b><br>Deaths <b>${run.deaths}</b><br>Strawberries <b>${run.berries} / ${g.totalBerries()}</b>` +
         (run.assist ? `<br><span class="badge">Assist Mode</span>` : "") +
-        (prevBest && c.best !== run ? `<br><small>Best time ${formatTime(c.best.time)}</small>` : "");
+        (prevBest && c.best !== run ? `<br><small>Best time ${formatTime(c.best.time)}</small>` : "") +
+        `<br>${this.itemIcons(ch)}`;
       const story = this.mode === "story";
       $("nextChapter").hidden = !story;
       $("again").hidden = story;
@@ -250,7 +271,7 @@ const App = {
   // ------------------------------------------------------------------ UI
 
   show(id) {
-    for (const s of ["title", "pause", "settings", "done", "revisit"]) $(s).classList.toggle("hidden", s !== id);
+    for (const s of ["title", "pause", "settings", "done", "revisit", "journal"]) $(s).classList.toggle("hidden", s !== id);
     $("touch").classList.toggle("hidden", !(id === null && this.state === "play" && this.touchUI));
   },
 
@@ -261,29 +282,102 @@ const App = {
     $("continueBtn").textContent = begun ? "Continue" : "Begin";
     $("where").textContent = !begun ? "" : ch && c && c.started ? `${ch.name} · ${ch.rooms.find((r) => r.id === c.room).name}` : ch ? ch.name : "";
     $("revisitBtn").hidden = !CHAPTERS.some((x) => this.done(x));
+    $("journalBtn").hidden = !CHAPTERS.some((x) => (this.progress(x) || {}).started);
     const bb = this.settings.binds;
     $("bindText").innerHTML = `${keys(bb.jump)} jump · ${keys(bb.dash)} dash · ${keys(bb.grab)} grab`;
   },
 
-  // Places you've already been: only finished chapters appear.
+  // Places you've already been: only finished chapters appear, each with its B-side once
+  // you've found the chapter's cassette.
   openRevisit() {
     const box = $("chapters");
     box.innerHTML = "";
-    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"], c8: ["#2a3a60", "#0c1224"], c9: ["#d07aa0", "#6a5a9a"] };
     CHAPTERS.forEach((ch, i) => {
       if (!this.done(ch)) return;
-      const c = this.progress(ch);
+      const c = this.progress(ch), b = bsideOf(ch), cb = b && this.progress(b);
       const got = this.save.collected.filter((id) => id.startsWith(ch.id + "/")).length;
-      const b = document.createElement("button");
-      b.className = "chap";
-      const [c1, c2] = themes[ch.id] || themes.c1;
-      b.style.setProperty("--c1", c1); b.style.setProperty("--c2", c2);
-      b.innerHTML = `<span class="num">Chapter ${i + 1}</span><span class="name">${ch.name}</span>` +
-        `<span class="info">${c.best ? `Best ${formatTime(c.best.time)}${c.best.assist ? " (assist)" : ""}` : ""}<br>🍓 ${got} / ${berryCount(ch)}</span>`;
-      b.onclick = () => this.play(ch, true, "revisit");
-      box.appendChild(b);
+      const card = document.createElement("div");
+      card.className = "chap";
+      const [c1, c2] = THEME_COLORS[ch.id] || THEME_COLORS.c1;
+      card.style.setProperty("--c1", c1); card.style.setProperty("--c2", c2);
+      card.innerHTML = `<span class="num">Chapter ${i + 1}</span><span class="name">${ch.name}</span>` +
+        `<span class="info">${c.best ? `Best ${formatTime(c.best.time)}${c.best.assist ? " (assist)" : ""}` : ""}<br>🍓 ${got} / ${berryCount(ch)} ${this.itemIcons(ch)}</span>`;
+      const row = document.createElement("div");
+      row.className = "sides";
+      const a = document.createElement("button");
+      a.className = "small"; a.textContent = "A-Side";
+      a.onclick = () => this.play(ch, true, "revisit");
+      row.appendChild(a);
+      if (b && this.save.items.cassettes.includes(ch.id)) {
+        const bb = document.createElement("button");
+        bb.className = "small bside"; bb.textContent = cb && cb.done ? `B-Side · ${formatTime(cb.best.time)}` : "B-Side";
+        bb.onclick = () => this.play(b, true, "revisit");
+        row.appendChild(bb);
+      }
+      card.appendChild(row);
+      box.appendChild(card);
     });
     this.show("revisit");
+  },
+
+  addItem(kind, id) {
+    if (this.save.items[kind].includes(id)) return false;
+    this.save.items[kind].push(id);
+    this.writeSave();
+    return true;
+  },
+
+  // Little icons for what you've found in a chapter: crystal hearts, cassette, goldens.
+  itemIcons(ch) {
+    const it = this.save.items, b = bsideOf(ch.base ? chapterById(ch.base) : ch), a = ch.base ? chapterById(ch.base) : ch;
+    const on = (x, t, title) => `<span class="icon ${x ? "" : "off"}" title="${title}">${t}</span>`;
+    return on(it.hearts.includes(a.id), "💙", "Crystal heart") + on(it.cassettes.includes(a.id), "📼", "Cassette") +
+      on(b && it.hearts.includes(b.id), "❤️", "B-Side heart") + on(it.goldens.includes(a.id), "⭐", "Golden strawberry") +
+      (b ? on(it.goldens.includes(b.id), "🌟", "B-Side golden strawberry") : "");
+  },
+
+  // The journal: every chapter's records, lifetime totals and the stamps you've earned.
+  openJournal() {
+    const it = this.save.items, rows = [];
+    let berriesGot = 0, berriesAll = 0, time = 0;
+    // Only places you've reached are listed, so the journal never gives away how far the climb goes.
+    CHAPTERS.forEach((ch, i) => {
+      const c = this.progress(ch) || {}, b = bsideOf(ch), cb = b ? this.progress(b) || {} : {};
+      if (!c.started) return;
+      const got = this.save.collected.filter((id) => id.startsWith(ch.id + "/")).length, all = berryCount(ch);
+      berriesGot += got; berriesAll += all;
+      if (c.best) time += c.best.time;
+      const seen = true;
+      rows.push(`<tr><td>${i + 1}. ${ch.name}</td><td>${got}/${all}</td>` +
+        `<td>${c.best ? formatTime(c.best.time) : "–"}</td><td>${c.best ? c.best.deaths : "–"}</td>` +
+        `<td>${cb.best ? formatTime(cb.best.time) : it.cassettes.includes(ch.id) ? "open" : "–"}</td><td>${seen ? this.itemIcons(ch) : ""}</td></tr>`);
+    });
+    const done = (id) => this.done(chapterById(id));
+    const nb = (id) => BSIDE_LIST.filter((b) => it[id].includes(b.id)).length;
+    const na = (id) => CHAPTERS.filter((c) => it[id].includes(c.id)).length;
+    const stamps = [
+      ["First Steps", "Finish the Foothills", done("c1")],
+      ["False Summit", "Reach the false summit", done("c3")],
+      ["True Summit", "Finish Wren's climb", !!this.save.epilogue],
+      ["Berry Picker", "Collect 25 strawberries", berriesGot >= 25],
+      ["Berry Farmer", "Collect 75 strawberries", berriesGot >= 75],
+      ["Every Last One", "Collect every strawberry", this.save.collected.length >= CHAPTERS.reduce((n, ch) => n + berryCount(ch), 0)],
+      ["Mixtape", "Find a cassette", it.cassettes.length >= 1],
+      ["Full Collection", "Find every cassette", it.cassettes.length >= CHAPTERS.length],
+      ["Heartfelt", "Find a crystal heart", it.hearts.length >= 1],
+      ["Blue Hearts", "Every A-side crystal heart", na("hearts") >= CHAPTERS.length],
+      ["Red Hearts", "Clear every B-side", nb("hearts") >= BSIDE_LIST.length],
+      ["Golden", "Win a golden strawberry", it.goldens.length >= 1],
+      ["Golden Mountain", "Every A-side golden strawberry", na("goldens") >= CHAPTERS.length],
+      ["Stubborn", "Die 500 times", this.save.stats.deaths >= 500],
+      ["Unstoppable", "Die 2000 times", this.save.stats.deaths >= 2000],
+    ];
+    $("journalBody").innerHTML =
+      `<p class="stats">Strawberries <b>${berriesGot} / ${berriesAll}</b> · Crystal hearts <b>${it.hearts.length}</b> · ` +
+      `Cassettes <b>${it.cassettes.length}</b> · Golden strawberries <b>${it.goldens.length}</b> · Deaths <b>${this.save.stats.deaths}</b> · Best times total <b>${formatTime(time)}</b></p>` +
+      `<div class="tablewrap"><table class="jt"><tr><th>Chapter</th><th>🍓</th><th>Best</th><th>Deaths</th><th>B-Side</th><th>Found</th></tr>${rows.join("")}</table></div>` +
+      `<h3>Stamps</h3><div class="stamps">${stamps.map(([n, d, ok]) => `<div class="stamp ${ok ? "got" : ""}"><b>${ok ? n : "?"}</b><span>${d}</span></div>`).join("")}</div>`;
+    this.show("journal");
   },
 
   refreshPause() {
@@ -423,9 +517,26 @@ const App = {
       if (e.type === "room" || e.type === "berry") this.capture();
       if (e.type === "room") Music.playFor(g.room.index, g.rooms.length);
       if (this.state === "play" && this.settings.story) this.storyEvent(e, g);
+      if (this.state === "play") this.itemEvent(e, g);
       if (e.type === "complete" && this.state === "play") this.finish();
     }
     g.events.length = 0;
+  },
+
+  // Cassettes, crystal hearts, golden strawberries and the lifetime death count.
+  itemEvent(e, g) {
+    const ch = this.chapter, note = (text) => Story.whisper([{ who: "memory", text }]);
+    if (e.type === "death") this.save.stats.deaths++;
+    else if (e.type === "cassette" && this.addItem("cassettes", baseId(ch))) note(`A cassette tape! The B-Side of ${ch.name} is now open in Revisit.`);
+    else if (e.type === "heart" && this.addItem("hearts", ch.id)) note("A crystal heart!");
+    else if (e.type === "golden" && this.addItem("goldens", ch.id)) note("The golden strawberry is yours!");
+    else if (e.type === "goldenTouch") note("A golden strawberry. Carry it to the end without dying.");
+    else if (e.type === "goldenLost") this.goldenRestart = true;
+    else if (e.type === "respawn" && this.goldenRestart) {
+      // Dropping the golden strawberry sends you back to the start of the chapter.
+      this.goldenRestart = false;
+      this.play(ch, true, this.mode, { quick: true });
+    }
   },
 
   // Scenes and whispers tied to rooms and switches.
@@ -472,6 +583,8 @@ const App = {
     $("nextChapter").onclick = () => this.onward();
     $("continueBtn").onclick = () => this.continueStory();
     $("revisitBtn").onclick = () => this.openRevisit();
+    $("journalBtn").onclick = () => this.openJournal();
+    $("closeJournal").onclick = () => this.show("title");
     $("closeRevisit").onclick = () => this.show("title");
     $("skipScene").onclick = () => { Story.skip(); this.pause(false); };
     $("toTitle").onclick = () => this.toTitle();
@@ -485,7 +598,7 @@ const App = {
         this.pause();
       } else if (code === "Escape" && !$("settings").classList.contains("hidden")) {
         this.closeSettings();
-      } else if (code === "Escape" && !$("revisit").classList.contains("hidden")) {
+      } else if (code === "Escape" && (!$("revisit").classList.contains("hidden") || !$("journal").classList.contains("hidden"))) {
         this.show("title");
       }
     };
@@ -562,4 +675,4 @@ App.build();
 App.toTitle();
 requestAnimationFrame(loop);
 
-window.__MV = { App, Game, CHAPTERS, Render, Input, Music, Story, SCENES, TRIGGERS };
+window.__MV = { App, Game, CHAPTERS, BSIDES: BSIDE_LIST, Render, Input, Music, Story, SCENES, TRIGGERS };

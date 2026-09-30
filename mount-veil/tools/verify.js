@@ -13,7 +13,7 @@
 
 const path = require("path");
 const fs = require("fs");
-const { CHAPTERS } = require("../js/levels.js");
+const { CHAPTERS, BSIDES = [] } = require("../js/levels.js");
 const { Game, ST_DEAD, ST_CLIMB, ST_DREAM, ST_BOOST, ST_FLY } = require("../js/sim.js");
 
 const FRAMES = 4;          // frames each input is held for
@@ -259,7 +259,7 @@ function used(roomId, route) {
 const solutions = {};
 let failures = 0;
 const t0 = Date.now();
-for (CHAPTER of CHAPTERS) CHAPTER.rooms.forEach((def, i) => {
+for (CHAPTER of CHAPTERS.concat(BSIDES)) CHAPTER.rooms.forEach((def, i) => {
   const tag = `${CHAPTER.id}:${def.id}`;
   if (only.length && !only.includes(CHAPTER.id) && !only.includes(tag)) return;
   const next = CHAPTER.rooms[i + 1];
@@ -303,6 +303,16 @@ for (CHAPTER of CHAPTERS) CHAPTER.rooms.forEach((def, i) => {
     const br = search(g, bgoal);
     if (!br.path) failures++;
     console.log(`         strawberry ${b.id.padEnd(10)} ${br.path ? "OK  " : "FAIL"} (${br.nodes} states)`);
+  });
+
+  // Cassettes and crystal hearts: touching one is enough.
+  room.items.forEach((it0, ii) => {
+    g = fresh(def.id);
+    const it = g.room.items[ii];
+    const toIt = airMap(g, g.room, [[Math.floor(it.x / 8), Math.floor(it.y / 8)]]);
+    const r = search(g, { reached: () => it.got, dist: toIt });
+    if (!r.path) failures++;
+    console.log(`         ${it.kind.padEnd(10)} ${`${Math.floor((it.x - g.room.x) / 8)},${Math.floor((it.y - g.room.y) / 8)}`.padEnd(10)} ${r.path ? "OK  " : "FAIL"} (${r.nodes} states)`);
   });
 });
 console.log(`${failures ? `${failures} problem(s)` : "Every room and strawberry is reachable"} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);

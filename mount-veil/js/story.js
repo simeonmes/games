@@ -425,7 +425,7 @@ const SCENES = {
     { say: "wren", text: "...Will you climb with me? Properly. Out loud." },
     { say: "echo", mood: "happy", text: "Out loud." },
     { card: ["Wren reaches out. The Echo takes her hand.", "Something settles in her chest, warm and doubled, like a second heartbeat."] },
-    { sfx: "heart" },
+    { sfx: "heartbeat" },
     { say: "echo", mood: "happy", text: "Two dashes, Wren. One for you, one for me. For good this time." },
   ],
   c8_w7: { whisper: [
