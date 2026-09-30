@@ -53,6 +53,10 @@ const C = {
   FlyTime: 2, FlyStartSpeed: 250, FlyTargetSpeed: 140, FlySlowSpeed: 91, FlyAccel: 1000, FlyRotate: 320 * Math.PI / 180,
   FlyEndX: 160, FlyEndMinY: -100, FlyEndMaxY: 60, FeatherRespawn: 3,
   BumperSpeed: 280, BumperRespawn: 0.6, LaunchHold: 0.2,
+  // Furnace blocks charge the way you dash into them; lanterns let you glide; ink seekers hunt.
+  KevinSpeed: 240, KevinAccel: 600, KevinWait: 0.6, KevinReturn: 60,
+  GlideFall: 24, GlideFastFall: 110, LanternRespawn: 1.5,
+  SeekSight: 104, SeekSpeed: 88, SeekAccel: 320, SeekStun: 1.5, SeekKnock: 180, SeekBounce: -160,
   DeathTime: 0.55, RespawnTime: 0.4, TransitionTime: 0.4,
 };
 
@@ -89,6 +93,12 @@ const overlap = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h 
 //   b  green bubble: holds you, then dashes you   B  red bubble: flings you until you hit something
 //   F  feather: fly for two seconds               U  bumper: knocks you away
 //   K  cassette tape (unlocks the chapter's B-side)   H  crystal heart
+//   Q  core switch: flips the mountain between hot and cold
+//   L  lava rock: deadly when hot, solid when cold    I  ice: gone when hot, solid when cold
+//   J  paper lantern: hold grab to carry it and glide  Y  ink seeker: hunts you if it sees you
+// `kevins` are furnace blocks { x, y, w, h }: dash into one and it charges away from you.
+// `chase: { delay }` sends the Echo after you, retracing your steps `delay` seconds behind.
+// `core: "hot" | "cold"` is the temperature a chamber of the Heart starts at.
 // `dashes: 2` gives every dash refill in the room two dashes. `water: { speed, delay }` floods
 // the room from the bottom once you start moving.
 // A room can also have `wind` (px/s, + blows right, - blows left), and moving blocks given in
@@ -118,11 +128,16 @@ function buildRoom(def, index, chapterId) {
       const sx = x0 + m.x * TILE, sy = y0 + m.y * TILE;
       return { kind: "swap", x: sx, y: sy, fx: sx, fy: sy, w: m.w * TILE, h: m.h * TILE, sx, sy, ex: x0 + m.tx * TILE, ey: y0 + m.ty * TILE, target: 0, speed: 0 };
     }),
-    clouds: [], boosters: [], feathers: [], bumpers: [], dashes: def.dashes || MAX_DASHES,
+    kevins: (def.kevins || []).map((m) => {
+      const sx = x0 + m.x * TILE, sy = y0 + m.y * TILE;
+      return { kind: "kevin", x: sx, y: sy, fx: sx, fy: sy, w: m.w * TILE, h: m.h * TILE, sx, sy, state: 0, t: 0, speed: 0, dx: 0, dy: 0 };
+    }),
+    clouds: [], boosters: [], feathers: [], bumpers: [], cores: [], lanterns: [], seekers: [], coreTiles: [],
+    chase: def.chase || null, dashes: def.dashes || MAX_DASHES, core: def.core || null,
     // A still pool (`level`, in rows) or a flood that rises from below the room.
     water: def.water ? { speed: def.water.speed || 0, delay: def.water.delay || 0, base: def.water.level ? y0 + def.water.level * TILE : y0 + h * TILE + 12, y: 0, t: 0 } : null,
   };
-  room.movers = [...room.zips, ...room.moves, ...room.swaps];
+  room.movers = [...room.zips, ...room.moves, ...room.swaps, ...room.kevins];
   if (room.water) room.water.y = room.water.base;
   for (let y = 0; y < h; y++) {
     const row = rows[y].split("");
@@ -134,6 +149,10 @@ function buildRoom(def, index, chapterId) {
       else if (c === "*" || c === "W") room.berries.push({ id: `${chapterId}/${def.id}:${x},${y}`, hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, state: 0, winged: c === "W" });
       else if (c === "G") room.goal = { x: px, y: py - TILE, w: TILE, h: TILE * 2 };
       else if (c === "K" || c === "H") room.items.push({ kind: c === "K" ? "cassette" : "heart", x: px + 4, y: py + 4, got: false });
+      else if (c === "Q") room.cores.push({ x: px + 4, y: py + 4, touching: false });
+      else if (c === "J") room.lanterns.push({ x: px + 4, y: py + 4, respawn: 0 });
+      else if (c === "Y") room.seekers.push({ hx: px + 4, hy: py + 4, x: px + 4, y: py + 4, rx: 0, ry: 0, vx: 0, vy: 0, state: 0, t: 0 });
+      else if (c === "L" || c === "I") { room.coreTiles.push([x, y, c]); continue; }
       else if (c === "T") room.switches.push({ x: px, y: py, on: false });
       else if (c === "X") { room.hasGate = true; continue; }
       else if (c === "b" || c === "B") room.boosters.push({ x: px + 4, y: py + 4, red: c === "B", respawn: 0 });
@@ -206,10 +225,14 @@ class Game {
     this.inp = { mx: 0, my: 0, jump: false, jumpPressed: false, dashPressed: false, grab: false };
     this.moveX = 0;
     this.ignoreSolid = null;           // the zip mover currently shoving you (don't collide with it)
+    this.core = "hot";                 // the Heart of Veil: hot or cold (each chamber sets its own)
+    this.coreAtEntry = this.core;
+    this.hist = null;                  // your recent steps, for the Echo to retrace (chase rooms)
     this.passDream = false;            // treat dream blocks as open space (dream dash checks)
     const room = (opts.startRoom && this.roomIndex[opts.startRoom]) || this.rooms[0];
     this.room = room;
     this.spawn = room.spawns[Math.min(opts.startSpawn || 0, room.spawns.length - 1)];
+    if (room.core) this.core = this.coreAtEntry = room.core;
     this.p = this.newPlayer(this.spawn);
     this.resetRoomObjects(room);
     this.syncBerries();
@@ -228,7 +251,7 @@ class Game {
       wallBoostDir: 0, wallBoostTimer: 0, hopWaitX: 0, hopWaitXSpeed: 0, climbNoMoveTimer: 0, lastClimbMove: 0,
       deadT: 0, respawnT: 0, safeT: 0, sx: 1, sy: 1, flash: 0,
       liftX: 0, liftY: 0, liftT: 0, dashAttackT: 0, dreamT: 0, boostT: 0, boostCd: 0, booster: null,
-      flyT: 0, flyAng: 0, flySpeed: 0, launchT: 0,
+      flyT: 0, flyAng: 0, flySpeed: 0, launchT: 0, holding: null,
       justRespawned: true,   // wind leaves you alone until you first move, as in Celeste
     };
   }
@@ -259,6 +282,7 @@ class Game {
     if (c === "#") return true;
     if (c === "D") return !this.passDream;
     if (c === "X") return !r.gateOpen;
+    if (c === "L" || c === "I") return this.core === "cold";
     const cg = r.crumbleAt[ly * r.w + lx];
     return cg >= 0 && r.crumbles[cg].state !== 2;
   }
@@ -347,6 +371,7 @@ class Game {
     const p = this.p;
     if (p.state === ST_RED) { p.vx = 0; this.redEnd(); return; }
     if (p.state === ST_FLY) { p.vx = 0; return; }
+    if (p.dashAttackT > 0 && (p.state === ST_DASH || p.state === ST_NORMAL)) this.kevinHit(sign(p.vx), 0);
     if (this.dreamDashCheck(sign(p.vx), 0)) { this.setState(ST_DREAM); return; }
     if (p.state === ST_DASH) {
       // Dashing into a low gap ducks you under it; clipping a ledge lip pushes you round it.
@@ -368,6 +393,7 @@ class Game {
     const p = this.p;
     if (p.state === ST_RED) { p.vy = 0; this.redEnd(); return; }
     if (p.state === ST_FLY) { p.vy = 0; return; }
+    if (p.dashAttackT > 0 && (p.state === ST_DASH || p.state === ST_NORMAL)) this.kevinHit(0, sign(p.vy));
     if (this.dreamDashCheck(0, sign(p.vy))) { this.setState(ST_DREAM); return; }
     if (p.vy < 0) {
       // Upward corner correction: a head that clips a corner by up to 4 px slides round it.
@@ -581,6 +607,102 @@ class Game {
     this.emit("redLaunch", { x: p.x, y: p.y - 6 });
   }
 
+  // ------------------------------------------------------------------ the Heart of Veil
+
+  dropLantern() {
+    const p = this.p, l = p.holding;
+    l.respawn = C.LanternRespawn;
+    p.holding = null;
+    this.emit("lanternDrop", { x: p.x, y: p.y - 12 });
+  }
+
+  // A dash that slams into a furnace block sends it charging the same way.
+  kevinHit(dx, dy) {
+    const p = this.p, b = this.box();
+    for (const k of this.room.kevins) {
+      if (k.state === 1 || k.state === 2) continue;
+      const l = p.x + b.l + dx, t = p.y + b.t + dy;
+      if (l < k.x + k.w && k.x < l + b.w && t < k.y + k.h && k.y < t + b.h) {
+        k.state = 1; k.dx = dx; k.dy = dy; k.speed = 0;
+        this.emit("kevin", { x: k.x + k.w / 2, y: k.y + k.h / 2 });
+        return;
+      }
+    }
+  }
+
+  updateKevins() {
+    for (const k of this.room.kevins) {
+      if (k.state === 1) {
+        k.speed = approach(k.speed, C.KevinSpeed, C.KevinAccel * DT);
+        const nfx = k.fx + k.dx * k.speed * DT, nfy = k.fy + k.dy * k.speed * DT;
+        this.ignoreSolid = k;
+        const hit = this.collideRect(Math.round(nfx), Math.round(nfy), k.w, k.h);
+        this.ignoreSolid = null;
+        if (hit) { k.state = 2; k.t = C.KevinWait; this.emit("kevinStop", { x: k.x + k.w / 2, y: k.y + k.h / 2 }); }
+        else this.moveZipTo(k, nfx, nfy);
+      } else if (k.state === 2) {
+        if ((k.t -= DT) <= 0) k.state = 3;
+      } else if (k.state === 3) {
+        const dist = Math.hypot(k.sx - k.fx, k.sy - k.fy);
+        if (dist < 0.5) { this.moveZipTo(k, k.sx, k.sy); k.state = 0; continue; }
+        const step = Math.min(dist, C.KevinReturn * DT);
+        this.moveZipTo(k, k.fx + (k.sx - k.fx) / dist * step, k.fy + (k.sy - k.fy) / dist * step);
+      }
+    }
+  }
+
+  // Ink seekers drift about until they see you (close, with nothing solid in the way), then
+  // hunt you down. Dash into one to knock it away (and bounce off it with your dash back).
+  updateSeekers() {
+    const p = this.p, cx = p.x, cy = p.y - 6;
+    for (const s of this.room.seekers) {
+      if (s.state === 2) {
+        s.vx = approach(s.vx, 0, 300 * DT); s.vy = approach(s.vy, 0, 300 * DT);
+        if ((s.t -= DT) <= 0) s.state = 0;
+      } else {
+        const dx = cx - s.x, dy = cy - s.y, d = Math.hypot(dx, dy);
+        const sees = p.state !== ST_DEAD && p.state !== ST_RESPAWN && d < C.SeekSight && this.lineOfSight(s.x, s.y, cx, cy);
+        if (sees) { s.state = 1; s.t = 1.2; }
+        else if (s.state === 1 && (s.t -= DT) <= 0) s.state = 0;
+        const tx = s.state === 1 ? cx : s.hx, ty = s.state === 1 ? cy : s.hy;
+        const ex = tx - s.x, ey = ty - s.y, el = Math.hypot(ex, ey) || 1;
+        const max = s.state === 1 ? C.SeekSpeed : 30;
+        s.vx = approach(s.vx, (ex / el) * max, C.SeekAccel * DT);
+        s.vy = approach(s.vy, (ey / el) * max, C.SeekAccel * DT);
+        if (s.state === 0 && el < 2) { s.vx = 0; s.vy = 0; }
+      }
+      // Move, stopping at walls.
+      for (const ax of ["x", "y"]) {
+        const rk = ax === "x" ? "rx" : "ry", vk = ax === "x" ? "vx" : "vy";
+        s[rk] += s[vk] * DT;
+        let m = roundEven(s[rk]);
+        s[rk] -= m;
+        const st = sign(m);
+        while (m !== 0) {
+          const nx = ax === "x" ? s.x + st : s.x, ny = ax === "y" ? s.y + st : s.y;
+          if (this.collideRect(nx - 5, ny - 5, 10, 10)) { s[vk] = 0; s[rk] = 0; break; }
+          s.x = nx; s.y = ny; m -= st;
+        }
+      }
+    }
+  }
+
+  lineOfSight(x0, y0, x1, y1) {
+    const n = Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 4);
+    for (let i = 1; i < n; i++) if (this.solidPoint(x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n)) return false;
+    return true;
+  }
+
+  // The Echo retraces your path `delay` seconds behind you.
+  chaser() {
+    const c = this.room.chase;
+    if (!c || !this.hist) return null;
+    let n = this.hist, back = Math.round(c.delay * 60);
+    if (n.n < back) return null;
+    while (back-- > 0 && n.prev) n = n.prev;
+    return n;
+  }
+
   // ------------------------------------------------------------------ feathers and bumpers
 
   enterFly() {
@@ -659,7 +781,7 @@ class Game {
     const p = this.p, inp = this.inp, moveX = this.moveX;
 
     // Grab a wall
-    if (inp.grab && !this.isTired() && !p.ducking && p.vy >= 0 && sign(p.vx) !== -p.facing && this.climbCheck(p.facing)) {
+    if (inp.grab && !p.holding && !this.isTired() && !p.ducking && p.vy >= 0 && sign(p.vx) !== -p.facing && this.climbCheck(p.facing)) {
       p.ducking = false;
       return ST_CLIMB;
     }
@@ -697,6 +819,8 @@ class Game {
         }
         if (p.wallSlideDir !== 0) max = lerp(C.MaxFall, C.WallSlideStartMax, p.wallSlideTimer / C.WallSlideTime);
       }
+      // Carrying a lantern, you drift down slowly (hold down to sink faster).
+      if (p.holding) max = inp.my === 1 ? C.GlideFastFall : C.GlideFall;
       // Half gravity at the top of a held jump: the floaty apex.
       const mult = Math.abs(p.vy) < C.HalfGravThreshold && (inp.jump || p.autoJump) ? 0.5 : 1;
       p.vy = approach(p.vy, max, C.Gravity * mult * DT);
@@ -944,6 +1068,10 @@ class Game {
     this.updateObjects();
     if (p.state === ST_DEAD) return;     // crushed by a zip mover
     this.updatePlayer();
+    if (this.room.chase && !this.p.justRespawned && this.p.state !== ST_DEAD) {
+      const h = this.hist;
+      this.hist = { x: this.p.x, y: this.p.y, f: this.p.facing, prev: h && h.n < 400 ? h : null, n: h ? h.n + 1 : 0 };
+    }
     if (p.state === ST_DEAD) return;
     this.interact();
     if (p.state === ST_DEAD || this.done) return;
@@ -998,6 +1126,7 @@ class Game {
 
     if (p.boostCd > 0) p.boostCd -= DT;
     if (p.launchT > 0) p.launchT -= DT;
+    if (p.holding && (!inp.grab || (p.state !== ST_NORMAL && p.state !== ST_DASH) || this.dashBuf > 0)) this.dropLantern();
     if (p.state === ST_FLY) {
       const ns = this.flyUpdate();
       if (ns === ST_FLY) {
@@ -1067,6 +1196,11 @@ class Game {
   // ------------------------------------------------------------------ level objects
 
   resetRoomObjects(room) {
+    this.hist = null;
+    for (const k of room.kevins) { k.x = k.fx = k.sx; k.y = k.fy = k.sy; k.state = 0; k.t = 0; k.speed = 0; }
+    for (const s of room.seekers) { s.x = s.hx; s.y = s.hy; s.vx = s.vy = s.rx = s.ry = 0; s.state = 0; s.t = 0; }
+    for (const q of room.cores) q.touching = true;
+    for (const l of room.lanterns) l.respawn = 0;
     if (room.water) { room.water.y = room.water.base; room.water.t = 0; }
     for (const f of room.feathers) f.respawn = 0;
     for (const b of room.bumpers) b.respawn = 0;
@@ -1110,6 +1244,8 @@ class Game {
 
   updateMovers() {
     this.updateZips();
+    this.updateKevins();
+    this.updateSeekers();
     const p = this.p;
     const w = this.room.water;
     if (w && w.speed && !p.justRespawned) {
@@ -1306,6 +1442,41 @@ class Game {
         else { r = { x: X + 5, y: Y, w: 3, h: 8 }; into = p.vx >= 0; }
         if (into && overlap(hr, r)) { this.die(); return; }
       }
+      // Lava rock burns while the mountain is hot.
+      if (this.core === "hot" && room.coreTiles.length) {
+        for (let gy = y0; gy <= y1; gy++) for (let gx = x0; gx <= x1; gx++) if (this.tileAt(gx, gy) === "L") { this.die(); return; }
+      }
+      const ch = this.chaser();
+      if (ch && overlap(hr, { x: ch.x - 3, y: ch.y - 10, w: 6, h: 8 })) { this.die(); return; }
+      for (const s of room.seekers) {
+        if (s.state === 2 || !overlap(hr, { x: s.x - 5, y: s.y - 5, w: 10, h: 10 })) continue;
+        if (p.state === ST_DASH || p.dashAttackT > 0) {
+          const kx = sign(s.x - p.x) || p.facing;
+          s.state = 2; s.t = C.SeekStun; s.vx = kx * C.SeekKnock; s.vy = -60;
+          p.vy = C.SeekBounce; p.autoJump = true; p.varJumpTimer = 0.1; p.varJumpSpeed = p.vy;
+          if (p.state === ST_DASH) p.state = ST_NORMAL;
+          p.dashes = Math.max(p.dashes, this.room.dashes);
+          this.freeze = C.RefillFreeze;
+          this.emit("seekerHit", { x: s.x, y: s.y });
+        } else { this.die(); return; }
+      }
+    }
+    for (const q of room.cores) {
+      const on = overlap(hb, { x: q.x - 6, y: q.y - 6, w: 12, h: 12 });
+      if (on && !q.touching) {
+        this.core = this.core === "hot" ? "cold" : "hot";
+        // Cooling or melting under you: don't leave the climber stuck inside new ice.
+        if (this.collideAt(p.x, p.y)) this.core = this.core === "hot" ? "cold" : "hot";
+        else this.emit("core", { x: q.x, y: q.y, mode: this.core });
+      }
+      q.touching = on;
+    }
+    for (const l of room.lanterns) {
+      if (l.respawn > 0) { if (p.holding !== l) l.respawn -= DT; continue; }
+      if (!p.holding && this.inp.grab && p.state === ST_NORMAL && overlap(hb, { x: l.x - 6, y: l.y - 6, w: 12, h: 12 })) {
+        p.holding = l; l.respawn = 1e9;
+        this.emit("lanternGrab", { x: l.x, y: l.y });
+      }
     }
 
     for (const s of room.springs) {
@@ -1457,6 +1628,9 @@ class Game {
     if (p.state === ST_RED || p.state === ST_BOOST) p.state = ST_NORMAL;
     const from = this.room;
     this.room = next;
+    if (next.core) this.core = next.core;
+    this.coreAtEntry = this.core;
+    if (p.holding) { p.holding.respawn = 0; p.holding = null; }
     this.resetRoomObjects(next);
     let best = next.spawns[0], bd = Infinity;
     for (const s of next.spawns) {
@@ -1481,6 +1655,7 @@ class Game {
 
   respawn() {
     const sp = this.spawn, old = this.p;
+    this.core = this.coreAtEntry;
     this.resetRoomObjects(this.room);
     const p = this.newPlayer(sp);
     // Face into the room.
@@ -1509,6 +1684,9 @@ class Game {
       bo: r.boosters.map((b) => b.respawn),
       fe: r.feathers.map((f) => f.respawn), bu: r.bumpers.map((b) => b.respawn),
       wa: r.water ? [r.water.y, r.water.t] : null,
+      kv: r.kevins.map((k) => [k.x, k.y, k.fx, k.fy, k.state, k.t, k.speed, k.dx, k.dy]),
+      sk: r.seekers.map((q) => [q.x, q.y, q.rx, q.ry, q.vx, q.vy, q.state, q.t]),
+      co: this.core, ct: r.cores.map((q) => q.touching), ln: r.lanterns.map((l) => l.respawn), hi: this.hist,
     };
   }
 
@@ -1530,6 +1708,12 @@ class Game {
     s.room.feathers.forEach((f, i) => { f.respawn = s.fe[i]; });
     s.room.bumpers.forEach((b, i) => { b.respawn = s.bu[i]; });
     if (s.wa) { s.room.water.y = s.wa[0]; s.room.water.t = s.wa[1]; }
+    s.room.kevins.forEach((k, i) => { [k.x, k.y, k.fx, k.fy, k.state, k.t, k.speed, k.dx, k.dy] = s.kv[i]; });
+    s.room.seekers.forEach((q, i) => { [q.x, q.y, q.rx, q.ry, q.vx, q.vy, q.state, q.t] = s.sk[i]; });
+    this.core = s.co;
+    s.room.cores.forEach((q, i) => { q.touching = s.ct[i]; });
+    s.room.lanterns.forEach((l, i) => { l.respawn = s.ln[i]; });
+    this.hist = s.hi;
     this.done = s.done;
     this.transition = s.tr;
   }

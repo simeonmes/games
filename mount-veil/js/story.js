@@ -13,6 +13,8 @@ const WHO = {
   radio: { name: "Tilly (radio)", voice: 380, portrait: "tilly", radio: true },
   pascal: { name: "Pascal", voice: 440 },
   lumen: { name: "Lumen", voice: 700 },
+  aurel: { name: "Aurel Ferro", voice: 240 },
+  isla: { name: "Isla (letter)", voice: 600, portrait: null },
   memory: { name: "", voice: 0, portrait: null },
 };
 
@@ -562,8 +564,131 @@ const SCENES = {
   ],
   fog2: [
     { card: ["Weeks later, a letter arrives at Tilly's cabin, addressed to Wren.", "It smells of smoke and ice."] },
-    { card: ["The mountain isn't finished with her yet.", "(More of Wren's story is on its way. Your progress is saved.)"] },
   ],
+
+  // ================================================================ Chapter 10: The Heart of Veil
+  c10_open: [
+    { card: ["The letter is signed 'A. Ferro'.", "Inside is a map of a path that goes down into the mountain, not up."] },
+    { wait: 0.4 },
+    { say: "wren", mood: "shocked", text: "Pascal's dad. He's alive." },
+    { say: "radio", text: "Wren, I don't like this. That path goes into Veil, not up it. Nobody maps the inside." },
+    { say: "wren", text: "He wrote 'Come and see.' That's all. Three words, after twelve years." },
+    { say: "radio", text: "...Then go and see. But go carefully." },
+    { say: "radio", text: "Old climbers talk about switches in the deep rock. Touch one and the whole mountain turns hot, or cold." },
+    { say: "radio", text: "Hot, the red rock burns and the ice melts away. Cold, the rock cools to stone you can stand on, and the ice sets hard." },
+    { say: "radio", text: "And the heavy blocks with the angry faces: dash into one and it charges the other way. Don't be in front of it." },
+    { say: "wren", text: "Sure. Normal mountain things." },
+  ],
+  c10_w2: { whisper: [
+    { who: "wren", text: "Freezing, then burning. Like it can't make up its mind." },
+    { who: "radio", text: "Sounds like somebody I know." },
+  ] },
+  c10_w3: { whisper: [
+    { who: "radio", text: "Hear that knocking? Furnace blocks. Hit them from the side you want them to go." },
+  ] },
+  c10_6: [
+    { actor: "aurel", kind: "aurel", room: "6", at: [32, 20], facing: -1 },
+    { wait: 0.8 },
+    { say: "aurel", text: "You're not Pascal." },
+    { say: "wren", text: "I'm Wren. Your son's friend. Mr. Ferro... he waited twelve years. He stopped every clock in the city." },
+    { say: "aurel", text: "I know. I felt every one of those years." },
+    { say: "aurel", text: "I reached the summit, and I felt nothing. So I kept going, in, looking for whatever was supposed to be there." },
+    { say: "aurel", text: "I found the heart of the mountain. It burns, then it freezes, then it burns again. That's all it does." },
+    { say: "wren", mood: "angry", text: "And you stayed? You let him think you were dead!" },
+    { say: "aurel", text: "Anger is warm. I lived in the warm rooms for years. Then the cold ones, when being angry got too tiring." },
+    { say: "aurel", text: "Numb is easier than sorry." },
+    { say: "wren", mood: "sad", text: "I know. I did it for eight months." },
+    { say: "aurel", text: "Then you know it doesn't hold." },
+    { say: "aurel", text: "I wrote to you the day I heard someone had climbed past the summit and come back down. I thought: if she could..." },
+    { say: "aurel", text: "Meet me at the heart. I want to show you something before I decide." },
+    { remove: "aurel" },
+  ],
+  c10_w8: { whisper: [
+    { who: "wren", text: "This is what numb feels like from the outside. Cold, and very quiet." },
+    { who: "wren", text: "Keep moving." },
+  ] },
+  c10_w10: { whisper: [
+    { who: "radio", text: "It's getting hotter, I can hear it hissing through the radio. Climb!" },
+  ] },
+  c10_end: [
+    { card: ["The Heart of Veil.", "A crystal the size of a house, beating slowly: hot, then cold, then hot."] },
+    { actor: "aurel", kind: "aurel", room: "12", at: [34, 16], facing: -1 },
+    { sfx: "heartbeat" },
+    { wait: 1 },
+    { say: "aurel", text: "Twelve years I've watched it. Hot, then cold. Anger, then nothing." },
+    { say: "wren", text: "It isn't nothing, though. Listen to it. It's beating. It's alive." },
+    { wait: 1 },
+    { say: "aurel", text: "Pascal was seven when I left." },
+    { say: "wren", mood: "happy", text: "He's nineteen. He builds clocks that run too fast. He started a journal, like yours. 'Day one. Today I stopped waiting.'" },
+    { say: "aurel", text: "He'll be angry with me." },
+    { say: "wren", text: "Probably. For a while. Let him." },
+    { say: "wren", mood: "sad", text: "Being angry at someone who's still there is so much better than the other thing." },
+    { wait: 1 },
+    { say: "aurel", text: "...Will you walk me down?" },
+    { say: "wren", mood: "happy", text: "Every step." },
+    { fade: "out" },
+    { sfx: "chime" },
+    { card: ["In the city below the mountain, the Clock Tower chimes the hour,", "and in the small shop beneath it, two clockmakers start to argue."] },
+    { card: ["It is the best argument either of them has ever had."] },
+  ],
+
+  // ================================================================ Chapter 11: Letters
+  c11_open: [
+    { card: ["A year after the climb.", "Isla's flat, on the last day of the lease."] },
+    { say: "wren", text: "Last box. Then I hand the keys back." },
+    { card: ["Under the bed: a shoebox, taped shut.", "'FOR WREN. DO NOT OPEN UNTIL WE CLIMB VEIL.'"] },
+    { say: "wren", mood: "shocked", text: "...Isla, you absolute idiot." },
+    { say: "wren", mood: "sad", text: "Letters. Dozens of them. She wrote them for years, and never sent one." },
+    { card: ["Wren unfolds the first letter, and the ink starts to run.", "The paper becomes a mountain."] },
+    { say: "wren", text: "Okay. Lanterns. If I grab one and hold on, I'll drift down slowly instead of falling." },
+    { say: "wren", text: "And the ink blots chase anything they can see. Dash into them to knock them back. Don't let them catch me." },
+  ],
+  c11_11: [
+    { card: ["The last envelope is empty.", "Just a stamp, and Wren's name, in Isla's handwriting."] },
+    { say: "wren", mood: "sad", text: "She was going to write one more." },
+    { say: "wren", text: "...Then I will." },
+  ],
+  c11_end: [
+    { say: "wren", text: "Okay. My turn." },
+    { card: ["Dear Isla,", "I kept the jacket. I kept the calendar. I kept everything."] },
+    { card: ["I didn't answer the phone, and I'll be sorry about that forever.", "But I'm going to be other things too. You'd want that."] },
+    { card: ["I climbed Veil. I went first. I know you'd have let me.", "Love you, you idiot. — Wren"] },
+    { actor: "lantern", kind: "paperLantern", room: "12", at: [9, 16], facing: 1 },
+    { card: ["She folds the letter into a paper lantern,", "and lets the mountain wind carry it up."] },
+    { wait: 0.6 },
+    { remove: "lantern" },
+    { wait: 1.5 },
+    { say: "radio", text: "Wren? You've gone quiet on me. Everything alright?" },
+    { say: "wren", mood: "happy", text: "Everything's alright. Coming home, Tilly." },
+    { fade: "out" },
+  ],
+
+  // After the last letter.
+  finale: [
+    { card: ["Mount Veil", "A fan-made tribute to Celeste"], chapter: true },
+    { card: ["Wren · Tilly · Pascal · Aurel · Lumen · The Echo", "and Isla, who went first in every way but one."] },
+    { card: ["Thank you for climbing."] },
+  ],
+  fog3: [
+    { card: ["Wren's story is complete.", "The mountain is still there, whenever you want to climb it again."] },
+  ],
+
+  c2_w5: { whisper: [
+    { who: "echo", text: "Keep up, Wren. I'm right behind you." },
+    { who: "echo", text: "I always am." },
+  ] },
+  c3_w6: { whisper: [
+    { who: "echo", text: "You can't outrun me. I'm you." },
+  ] },
+  c11_l2: { whisper: [{ who: "isla", text: "Dear Wren. You're six, and you just told me the moon follows you home. It doesn't. I didn't have the heart to say." }] },
+  c11_l3: { whisper: [{ who: "isla", text: "Dear Wren. Your shadow is called Gerald now. Gerald is not allowed at the dinner table. House rules." }] },
+  c11_l4: { whisper: [{ who: "isla", text: "Dear Wren. You beat me in a race today. I did not let you win. (I let you win.)" }] },
+  c11_l5: { whisper: [{ who: "isla", text: "Dear Wren. You wrote I HATE YOU on the kitchen calendar. On my birthday. In pen. I kept the calendar." }] },
+  c11_l6: { whisper: [{ who: "isla", text: "Dear Wren. I heard your recital from the car park. I couldn't find a space. You were perfect. I never told you." }] },
+  c11_l7: { whisper: [{ who: "isla", text: "Dear Wren. You got so quiet this year, and I got so loud. I don't know how to meet you in the middle." }] },
+  c11_l8: { whisper: [{ who: "isla", text: "Dear Wren. 'Someday' is a real day. I looked it up. It's between Saturday and Sunday." }] },
+  c11_l9: { whisper: [{ who: "isla", text: "Dear Wren. Keep the green jacket. I'm never giving it back, so technically it's already yours." }] },
+  c11_l10: { whisper: [{ who: "isla", text: "Dear Wren. When we climb Veil, I'm going to let you go first. Don't tell anyone." }] },
 
   // Played when the story runs past the last chapter that's been built so far.
   fog: [
@@ -588,8 +713,13 @@ const TRIGGERS = {
   c6: { start: "c6_open", end: "c6_end", enter: { 3: "c6_w3", 6: "c6_6", 9: "c6_w9", 10: "c6_w10" } },
   c7: { start: "c7_open", end: "c7_end", enter: { 3: "c7_3", 5: "c7_w5", 8: "c7_8", 11: "c7_11", 12: "c7_12" } },
   c1: { start: "c1_open", end: "c1_end", enter: { 5: "c1_w5", 9: "c1_w9" } },
-  c2: { start: "c2_open", end: "c2_end", enter: { 4: "c2_4", 9: "c2_w9" } },
-  c3: { start: "c3_open", end: "c3_end", enter: { 7: "c3_w7" } },
+  c2: { start: "c2_open", end: "c2_end", enter: { 4: "c2_4", 5: "c2_w5", 9: "c2_w9" } },
+  c3: { start: "c3_open", end: "c3_end", enter: { 6: "c3_w6", 7: "c3_w7" } },
+  c10: { start: "c10_open", end: "c10_end", enter: { 2: "c10_w2", 3: "c10_w3", 6: "c10_6", 8: "c10_w8", 10: "c10_w10" } },
+  c11: {
+    start: "c11_open", end: "c11_end",
+    enter: { 2: "c11_l2", 3: "c11_l3", 4: "c11_l4", 5: "c11_l5", 6: "c11_l6", 7: "c11_l7", 8: "c11_l8", 9: "c11_l9", 10: "c11_l10", 11: "c11_11" },
+  },
   c4: { start: "c4_open", end: "c4_end", enter: { 4: "c4_w4", 10: "c4_10" } },
   c5: {
     start: "c5_open", end: "c5_end", enter: { 4: "c5_4", 8: "c5_w8" },
@@ -793,7 +923,7 @@ function drawPortrait(canvas, who, mood) {
   const g = canvas.getContext("2d");
   canvas.width = 32; canvas.height = 32;
   const r = (c, x, y, w, h) => { g.fillStyle = c; g.fillRect(x, y, w, h); };
-  const bg = { wren: ["#4a2a4a", "#2a1830"], echo: ["#2a2850", "#161430"], shadow: ["#15121f", "#0a0810"], tilly: ["#2f4a3a", "#1a2a20"], pascal: ["#4a3624", "#261a10"], lumen: ["#3a3070", "#1c1840"] }[who] || ["#333", "#111"];
+  const bg = { wren: ["#4a2a4a", "#2a1830"], echo: ["#2a2850", "#161430"], shadow: ["#15121f", "#0a0810"], tilly: ["#2f4a3a", "#1a2a20"], pascal: ["#4a3624", "#261a10"], aurel: ["#4a2a1c", "#1c1008"], lumen: ["#3a3070", "#1c1840"] }[who] || ["#333", "#111"];
   const grad = g.createLinearGradient(0, 0, 0, 32);
   grad.addColorStop(0, bg[0]); grad.addColorStop(1, bg[1]);
   g.fillStyle = grad; g.fillRect(0, 0, 32, 32);
@@ -815,6 +945,7 @@ function drawPortrait(canvas, who, mood) {
     shadow: { hair: "#2a2438", hairD: "#1c1828", skin: "#2e2840", eye: "#b8b0e0", coat: "#24202f" },
     tilly: { hair: "#d9d6d0", hairD: "#a9a6a0", skin: "#e8c39e", eye: "#2a2020", coat: "#3e6b52" },
     pascal: { hair: "#3a281c", hairD: "#24180f", skin: "#d9a57a", eye: "#1a1410", coat: "#8a5a3a" },
+    aurel: { hair: "#b8b4ae", hairD: "#8a8680", skin: "#d4a07a", eye: "#1a1410", coat: "#5a3a2a" },
   }[who];
   // Shoulders and coat
   r(P.coat, 5, 26, 22, 6);
@@ -836,6 +967,10 @@ function drawPortrait(canvas, who, mood) {
     r(P.hairD, 9, 4, 2, 2); r(P.hairD, 14, 3, 3, 2); r(P.hairD, 20, 4, 2, 2);
     r("#c9a25a", 9, 8, 14, 2); r("#8fd3e8", 11, 8, 3, 2); r("#8fd3e8", 18, 8, 3, 2);   // goggles
     r("#b8805a", 11, 17, 1, 1); r("#b8805a", 20, 17, 1, 1); r("#b8805a", 12, 18, 1, 1);  // freckles
+  } else if (who === "aurel") {
+    r(P.hair, 8, 5, 16, 4); r(P.hairD, 7, 7, 2, 8); r(P.hairD, 23, 7, 2, 8); r(P.hair, 10, 4, 12, 1);
+    r(P.hair, 9, 18, 14, 5); r(P.hair, 11, 23, 10, 2); r(P.hairD, 13, 25, 6, 1);   // beard
+    r("#c9a25a", 19, 12, 4, 4); r("#8fd3e8", 20, 13, 2, 2);                       // loupe
   }
   // Eyes, brows and mouth by mood
   const ey = 14;

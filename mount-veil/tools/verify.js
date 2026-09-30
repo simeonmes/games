@@ -59,7 +59,8 @@ function actions(g) {
     }
   }
   const nearWall = g.collideAt(p.x + 3, p.y) || g.collideAt(p.x - 3, p.y);
-  if (nearWall || p.state === ST_CLIMB) {
+  // Lanterns are carried by holding grab, so grab matters anywhere in a lantern room.
+  if (nearWall || p.state === ST_CLIMB || g.room.lanterns.length) {
     for (const mx of [-1, 0, 1]) for (const my of [-1, 0, 1]) {
       out.push(input(mx, my, false, false, false, true));
       out.push(input(mx, my, true, true, false, true));
@@ -96,7 +97,11 @@ function key(g) {
     r.boosters.map((b) => (b.respawn > 0 ? 1 : 0)).join(""),
     p.state === ST_FLY ? `${Math.round(p.flyT * 5)}:${Math.round(p.flyAng / (Math.PI / 8))}:${Math.round(p.flySpeed / 30)}` : "",
     p.launchT > 0 ? 1 : 0, r.feathers.map((f) => (f.respawn > 0 ? 1 : 0)).join(""), r.bumpers.map((b) => (b.respawn > 0 ? 1 : 0)).join(""),
-    r.water ? Math.round(r.water.y / 4) : ""].join(",");
+    r.water ? Math.round(r.water.y / 4) : "",
+    g.core, p.holding ? 1 : 0, r.lanterns.map((l) => (l.respawn > 0 ? 1 : 0)).join(""),
+    r.kevins.map((k) => `${k.state}:${k.x >> 2},${k.y >> 2}`).join("/"),
+    r.seekers.map((q) => `${q.state}:${q.x >> 2},${q.y >> 2}`).join("/"),
+    (() => { const c = g.chaser(); return c ? `${c.x >> 2},${c.y >> 2}` : (g.hist ? `h${g.hist.n}` : ""); })()].join(",");
 }
 
 // Minimal binary heap keyed on .f
@@ -224,7 +229,8 @@ function fresh(roomId) {
 // Replay a route and note which of the room's moving parts it relied on.
 function used(roomId, route) {
   const g = fresh(roomId), room = g.room, zips = new Set(), moved = new Set(), clouded = new Set();
-  let dreams = 0, swapped = 0, bubbles = 0, flights = 0, bumps = 0;
+  let dreams = 0, swapped = 0, bubbles = 0, flights = 0, bumps = 0, flips = 0, carried = false;
+  const charged = new Set();
   for (const a of route) {
     const frames = a.dash ? FRAMES + 4 : FRAMES;
     for (let f = 0; f < frames; f++) {
@@ -235,6 +241,10 @@ function used(roomId, route) {
       if (g.p.state === ST_BOOST && was !== ST_BOOST) bubbles++;
       if (g.p.state === ST_FLY && was !== ST_FLY) flights++;
       if (g.p.launchT > 0 && !g._lt) bumps++;
+      if (g.core !== g._core && g._core) flips++;
+      g._core = g.core;
+      room.kevins.forEach((k, i) => { if (k.state) charged.add(i); });
+      if (g.p.holding) carried = true;
       g._lt = g.p.launchT > 0;
       room.moves.forEach((m, i) => { if (m.state) moved.add(i); });
       room.clouds.forEach((c, i) => { if (c.was) clouded.add(i); });
@@ -253,6 +263,11 @@ function used(roomId, route) {
   if (room.feathers.length) out.push(`feathers ${flights}`);
   if (room.bumpers.length) out.push(`bumps ${bumps}`);
   if (room.water) out.push("water");
+  if (room.cores.length) out.push(`flips ${flips}`);
+  if (room.kevins.length) out.push(`furnaces ${charged.size}/${room.kevins.length}`);
+  if (room.lanterns.length) out.push(`lantern ${carried ? "yes" : "no"}`);
+  if (room.seekers.length) out.push(`seekers ${room.seekers.length}`);
+  if (room.chase) out.push("chased");
   return out.length ? "  [" + out.join(", ") + "]" : "";
 }
 

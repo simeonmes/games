@@ -69,8 +69,10 @@ const Music = {
   target() { return this.muted ? 0 : this.volume * (this.ducked ? 0.35 : 1); },
 
   // Pick the song for this room and fade to it if it's a different one.
-  playFor(roomIndex, roomCount) {
-    if (!this.tracks.length) return;
+  // Without songs of your own, the built-in chiptune soundtrack (chip.js) plays instead.
+  playFor(roomIndex, roomCount, chapterId) {
+    if (!this.tracks.length) { if (chapterId) Chip.play(chapterId, roomIndex / Math.max(1, roomCount - 1)); return; }
+    Chip.stop();
     const n = this.tracks.length;
     const idx = Math.min(n - 1, Math.floor((roomIndex * n) / roomCount));
     if (idx === this.cur && !this.audio.paused) { this.fadeTo(this.target()); return; }
@@ -86,13 +88,14 @@ const Music = {
   },
 
   stop() {
+    Chip.stop();
     if (!this.audio) return;
     this.fadeTo(0, () => { this.audio.pause(); this.cur = -1; });
   },
 
-  duck(on) { this.ducked = on; if (this.cur >= 0) this.fadeTo(this.target()); },
-  setVolume(v) { this.volume = v; if (this.cur >= 0) this.audio.volume = this.target(); },
-  setMuted(m) { this.muted = m; if (this.audio && this.cur >= 0) this.audio.volume = this.target(); },
+  duck(on) { this.ducked = on; Chip.duck(on); if (this.cur >= 0) this.fadeTo(this.target()); },
+  setVolume(v) { this.volume = v; Chip.setVolume(v); if (this.cur >= 0) this.audio.volume = this.target(); },
+  setMuted(m) { this.muted = m; Chip.setMuted(m); if (this.audio && this.cur >= 0) this.audio.volume = this.target(); },
 
   fadeTo(v, done) {
     clearInterval(this.fadeTimer);

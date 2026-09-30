@@ -15,7 +15,7 @@ const ALL_CHAPTERS = CHAPTERS.concat(BSIDE_LIST);
 const chapterById = (id) => ALL_CHAPTERS.find((c) => c.id === id);
 const baseId = (ch) => ch.base || ch.id;
 const bsideOf = (ch) => BSIDE_LIST.find((b) => b.base === ch.id);
-const THEME_COLORS = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"], c8: ["#2a3a60", "#0c1224"], c9: ["#d07aa0", "#6a5a9a"] };
+const THEME_COLORS = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"], c8: ["#2a3a60", "#0c1224"], c9: ["#d07aa0", "#6a5a9a"], c10: ["#d0503a", "#2a5aa0"], c11: ["#8a6ad0", "#3a2a50"] };
 const berryCount = (ch) => ch.rooms.reduce((n, r) => n + (r.rows.join("").match(/[*W]/g) || []).length, 0);
 
 const App = {
@@ -33,7 +33,7 @@ const App = {
 
   defaultSettings() {
     return {
-      binds: JSON.parse(JSON.stringify(DEFAULT_BINDS)), grabMode: "hold", shake: true, timer: false, muted: false, musicVolume: 0.6, story: true,
+      binds: JSON.parse(JSON.stringify(DEFAULT_BINDS)), grabMode: "hold", shake: true, timer: false, muted: false, musicVolume: 0.6, chiptune: true, story: true,
       assist: { speed: 1, infiniteStamina: false, airDashes: "default", invincible: false },
     };
   },
@@ -140,7 +140,7 @@ const App = {
     Story.reset(this.game);
     Render.banner = fresh ? null : { text: this.game.room.name, t: 0 };
     Sound.init();
-    Music.playFor(this.game.room.index, this.game.rooms.length);
+    Music.playFor(this.game.room.index, this.game.rooms.length, this.chapter.id);
     this.show(null);
     this.writeSave();
     if (fresh && !opts.quick) {
@@ -156,7 +156,8 @@ const App = {
   // The Begin / Continue button: pick the story up wherever it is.
   continueStory() {
     const ch = this.storyChapter();
-    if (!ch) { if (this.done(CHAPTERS[CHAPTERS.length - 1]) && !this.save.epilogue) this.epilogue(); else this.fogEnding(); return; }
+    if (this.needsEpilogue()) { this.epilogue(); return; }
+    if (!ch) { if (!this.save.finale) this.finale(); else this.fogEnding(); return; }
     this.play(ch, false, "story");
   },
 
@@ -165,7 +166,23 @@ const App = {
     this.state = "scene";
     this.paused = false;
     this.show(null);
-    Story.play(this.save.epilogue ? "fog2" : "fog", this.game, () => this.toTitle());
+    Story.play(this.storyChapter() ? "fog" : "fog3", this.game, () => this.toTitle());
+  },
+
+  // The epilogue plays between the true summit and the letter that starts Chapter 10.
+  needsEpilogue() { return this.done(chapterById("c9")) && !this.save.epilogue; },
+
+  // After the last letter: the credits, then back to the title.
+  finale() {
+    this.state = "scene";
+    this.paused = false;
+    this.show(null);
+    Music.stop();
+    Story.play("finale", this.game, () => {
+      this.save.finale = true;
+      this.writeSave();
+      Story.play("fog3", this.game, () => this.toTitle());
+    });
   },
 
   // After the true summit: three days later, at Tilly's cabin by the trailhead.
@@ -185,7 +202,10 @@ const App = {
     Story.play("epilogue", this.game, () => {
       this.save.epilogue = true;
       this.writeSave();
-      Story.play("fog2", this.game, () => this.toTitle());
+      Story.play("fog2", this.game, () => {
+        const next = this.storyChapter();
+        if (next) this.play(next, false, "story"); else this.toTitle();
+      });
     });
   },
 
@@ -263,8 +283,9 @@ const App = {
   // After a chapter's summary in story mode: straight on up the mountain.
   onward() {
     const next = CHAPTERS[CHAPTERS.indexOf(this.chapter) + 1];
-    if (next) this.play(next, true, "story");
-    else if (this.chapter.id === "c9" && !this.save.epilogue) this.epilogue();
+    if (this.needsEpilogue()) this.epilogue();
+    else if (next) this.play(next, true, "story");
+    else if (!this.save.finale) this.finale();
     else this.fogEnding();
   },
 
@@ -358,7 +379,9 @@ const App = {
     const stamps = [
       ["First Steps", "Finish the Foothills", done("c1")],
       ["False Summit", "Reach the false summit", done("c3")],
-      ["True Summit", "Finish Wren's climb", !!this.save.epilogue],
+      ["True Summit", "Reach the true summit", !!this.save.epilogue],
+      ["Two Clockmakers", "Bring someone home", done("c10")],
+      ["Dear Isla", "Write back", done("c11")],
       ["Berry Picker", "Collect 25 strawberries", berriesGot >= 25],
       ["Berry Farmer", "Collect 75 strawberries", berriesGot >= 75],
       ["Every Last One", "Collect every strawberry", this.save.collected.length >= CHAPTERS.reduce((n, ch) => n + berryCount(ch), 0)],
@@ -402,6 +425,7 @@ const App = {
     $("oStory").checked = st.story !== false;
     $("saveMsg").textContent = "";
     $("musicVol").value = String(st.musicVolume ?? 0.6);
+    $("oChip").checked = st.chiptune !== false;
     this.renderBinds();
     this.show("settings");
   },
@@ -417,6 +441,7 @@ const App = {
     st.timer = $("oTimer").checked;
     st.muted = !$("oSound").checked;
     st.story = $("oStory").checked;
+    st.chiptune = $("oChip").checked;
     this.applySettings();
     this.writeSettings();
     if (this.settingsFrom === "pause") { this.refreshPause(); this.show("pause"); }
@@ -433,6 +458,7 @@ const App = {
     Sound.muted = st.muted;
     Music.setMuted(st.muted);
     Music.setVolume(st.musicVolume ?? 0.6);
+    Chip.setEnabled(st.chiptune !== false);
     if (this.game) this.game.assist = st.assist;
   },
 
@@ -515,7 +541,7 @@ const App = {
       Render.effect(e, g);
       if (this.state === "play") Sound.play(e);
       if (e.type === "room" || e.type === "berry") this.capture();
-      if (e.type === "room") Music.playFor(g.room.index, g.rooms.length);
+      if (e.type === "room") Music.playFor(g.room.index, g.rooms.length, this.chapter.id);
       if (this.state === "play" && this.settings.story) this.storyEvent(e, g);
       if (this.state === "play") this.itemEvent(e, g);
       if (e.type === "complete" && this.state === "play") this.finish();

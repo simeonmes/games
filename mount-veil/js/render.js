@@ -33,6 +33,11 @@ const THEMES = {
   // Undertow: a black-blue gorge at night. The True Summit: pale rock under a pink dawn.
   c8: { rock: ["#34405a", "#2a3449", "#212a3b", "#19202e"], edge: "#6f8fb8", under: "#0a0e16",
     sky: [["#04060c", "#020306"], ["#0c1424", "#060a14"], ["#1a2a40", "#10182a"]], mtn: ["#0c1220", "#141c2e"] },
+  // The Heart of Veil: black basalt and ember light. Letters: paper-white under a starry violet.
+  c10: { rock: ["#4a3a3a", "#3a2c2c", "#2c2020", "#201616"], edge: "#ff9a5a", under: "#120a0a", lava: true,
+    sky: [["#1a0808", "#0a0404"], ["#4a1410", "#2a0a08"], ["#a0401a", "#60200e"]], mtn: ["#2a1010", "#3a1814"] },
+  c11: { rock: ["#c8c0d8", "#aea6c2", "#948ca8", "#7a738e"], edge: "#ffffff", under: "#4a4460",
+    sky: [["#140f30", "#0a0820"], ["#3a2a6a", "#241a4a"], ["#8a6ab8", "#5a4a8a"]], mtn: ["#2a2250", "#3a3068"] },
   c9: { rock: ["#9a8aa8", "#80728f", "#685c78", "#524861"], edge: "#ffe0f0", under: "#3a3048",
     sky: [["#3a4a8a", "#6a8ad0"], ["#c07aa0", "#f0a0b0"], ["#ffd0a0", "#fff0d0"]], mtn: ["#7a6a9a", "#a08ab8"] },
 };
@@ -78,6 +83,7 @@ const Render = {
     if (this.themeId === id) return;
     this.themeId = id;
     this.theme = THEMES[id] || THEMES[String(id).replace(/b$/, "")] || THEMES.c1;
+    this.lavaWater = !!this.theme.lava;
     PAL.rock = this.theme.rock; PAL.edge = this.theme.edge; PAL.under = this.theme.under;
     this.mtn[0].c = this.ridgeCanvas[0](this.theme.mtn[0]);
     this.mtn[1].c = this.ridgeCanvas[1](this.theme.mtn[1]);
@@ -312,12 +318,17 @@ const Render = {
       case "cassette": burst(e.x, e.y, 18, "#ff9ad8", 50, 0.7); this.shake(0.15, 1); break;
       case "heart": burst(e.x, e.y, 24, game.chapter.base ? "#ff5a7a" : "#5aa8ff", 60, 0.9); this.shake(0.2, 2); break;
       case "goldenTouch": case "golden": burst(e.x, e.y, 16, "#ffd24a", 50, 0.6); break;
+      case "core": burst(e.x, e.y, 20, e.mode === "hot" ? "#ff7a2a" : "#7ad0ff", 60, 0.6); this.shake(0.2, 2); this.flashT = 0.08; break;
+      case "kevin": this.shake(0.1, 1); break;
+      case "kevinStop": burst(e.x, e.y, 12, "#ff9a5a", 50, 0.5); this.shake(0.2, 2); Input.rumble(0.5, 150); break;
+      case "seekerHit": burst(e.x, e.y, 14, "#6a5a9a", 50, 0.5); this.shake(0.1, 1); break;
+      case "lanternGrab": burst(e.x, e.y, 8, "#ffd98a", 25, 0.4); break;
       case "flyIn": burst(e.x, e.y, 14, "#ffe08a", 45, 0.5); break;
       case "flyOut": burst(e.x, e.y, 8, "#fff4c8", 25, 0.4); break;
       case "bump": burst(e.x, e.y, 14, "#bfe8ff", 55, 0.4); this.shake(0.12, 2); Input.rumble(0.4, 90); break;
       case "redEnd": burst(e.x, e.y, 8, "#ff5a6a", 40, 0.35); this.shake(0.1, 1); break;
       case "actorIn": case "actorOut":
-        burst(e.x, e.y, 10, e.kind === "echo" ? "#c9c0ee" : e.kind === "lumen" ? "#fff1c8" : "#e7ecff", 30, 0.5);
+        burst(e.x, e.y, 10, e.kind === "echo" ? "#c9c0ee" : e.kind === "lumen" || e.kind === "paperLantern" ? "#fff1c8" : e.kind === "aurel" ? "#ffb070" : "#e7ecff", 30, 0.5);
         break;
     }
   },
@@ -378,6 +389,7 @@ const Render = {
       this.particles.push({ x: p.x + (Math.random() - 0.5) * 6, y: p.y - 6 + (Math.random() - 0.5) * 6, vx: -p.vx * 0.1, vy: -p.vy * 0.1, life: 0.35, max: 0.35, color: cols[(Math.random() * 3) | 0], g: 0, size: 1 });
       this.drawClimber(b, game, p.x - cx, p.y - cy, 0.9, "#f4ecff");
     } else if (visible) this.drawClimber(b, game, p.x - cx, p.y - cy, 1);
+    if (visible && p.holding) drawLantern(b, p.x - cx, p.y - cy - 14, this.time);
     this.drawFollowers(b, game, dt, cx, cy);
     this.drawWater(b, game.room, cx, cy);
     this.drawParticles(b, dt, cx, cy);
@@ -416,6 +428,19 @@ const Render = {
     for (const c of room.clouds) this.drawCloud(b, c, cx, cy);
     for (const bo of room.boosters) this.drawBubble(b, game, bo, cx, cy);
     for (const f of room.feathers) this.drawFeather(b, f, cx, cy);
+    this.drawCoreTiles(b, game, room, cx, cy);
+    for (const q of room.cores) this.drawCoreSwitch(b, game, q, cx, cy);
+    for (const k of room.kevins) this.drawKevin(b, k, cx, cy);
+    for (const l of room.lanterns) if (l.respawn <= 0) drawLantern(b, l.x - cx, l.y - cy + Math.sin(this.time * 2 + l.x) * 1.5, this.time);
+    for (const s of room.seekers) this.drawSeeker(b, game, s, cx, cy);
+    if (room === game.room) {
+      const ch = game.chaser();
+      if (ch) {
+        b.save(); b.translate(Math.round(ch.x - cx), Math.round(ch.y - cy)); if (ch.f < 0) b.scale(-1, 1);
+        drawActor(b, "echo", 0.95, this.time); b.restore();
+        if (Math.random() < 0.5) this.particles.push({ x: ch.x + (Math.random() - 0.5) * 6, y: ch.y - 6 + (Math.random() - 0.5) * 8, vx: 0, vy: -10, life: 0.4, max: 0.4, color: "#9a8ad0", g: 0, size: 1 });
+      }
+    }
     for (const it of room.items) if (!it.got) this.drawItem(b, it, cx, cy, game.chapter.base);
     const gb = game.golden;
     if (gb && gb.state === 0 && gb.room === room) drawBerry(b, gb.hx - cx, gb.hy - cy + Math.round(Math.sin(this.time * 2.5) * 1.5), false, true);
@@ -597,6 +622,71 @@ const Render = {
     b.globalAlpha = 1;
   },
 
+  // Lava rock glows when hot and freezes blue when cold; ice melts to an outline when hot.
+  drawCoreTiles(b, game, room, cx, cy) {
+    const hot = game.core === "hot", t = this.time;
+    for (const [x, y, c] of room.coreTiles) {
+      const px = room.x + x * TILE - cx, py = room.y + y * TILE - cy;
+      if (px < -8 || py < -8 || px > VIEW_W || py > VIEW_H) continue;
+      if (c === "L") {
+        if (hot) {
+          b.fillStyle = "#c83a10"; b.fillRect(px, py, 8, 8);
+          b.fillStyle = `rgba(255,${170 + Math.round(60 * Math.sin(t * 4 + x + y))},60,0.9)`;
+          b.fillRect(px + ((x * 3 + y) % 5), py + 1 + ((x + y * 2) % 4), 3, 2);
+          b.fillStyle = "#ffcf6a"; b.fillRect(px, py, 8, 1);
+        } else {
+          b.fillStyle = "#3a5070"; b.fillRect(px, py, 8, 8);
+          b.fillStyle = "#6a90c0"; b.fillRect(px, py, 8, 1); b.fillRect(px + 2, py + 3, 2, 1);
+        }
+      } else if (hot) {
+        b.fillStyle = "rgba(150,220,255,0.25)"; b.fillRect(px, py, 8, 1); b.fillRect(px, py + 7, 8, 1);
+      } else {
+        b.fillStyle = "#9ad8f0"; b.fillRect(px, py, 8, 8);
+        b.fillStyle = "#e0f6ff"; b.fillRect(px, py, 8, 1); b.fillRect(px + 1, py + 2, 1, 3);
+        b.fillStyle = "#6ab0d0"; b.fillRect(px, py + 7, 8, 1);
+      }
+    }
+  },
+
+  drawCoreSwitch(b, game, q, cx, cy) {
+    const x = Math.round(q.x - cx), y = Math.round(q.y - cy), hot = game.core === "hot";
+    b.fillStyle = hot ? "rgba(255,120,40,0.3)" : "rgba(120,200,255,0.3)"; diamond(b, x, y, 8);
+    b.fillStyle = "#2a2230"; diamond(b, x, y, 5);
+    b.fillStyle = hot ? "#ff7a2a" : "#7ad0ff"; diamond(b, x, y, 3);
+    b.fillStyle = "#ffffff"; b.fillRect(x - 1, y - 2, 1, 1);
+  },
+
+  // Furnace blocks: dark iron with an angry glowing face that flares when they charge.
+  drawKevin(b, k, cx, cy) {
+    const shake = k.state === 2 && k.t > 0.3 ? Math.round((Math.random() - 0.5) * 2) : 0;
+    const x = k.x - cx + shake, y = k.y - cy, mad = k.state === 1 || k.state === 2;
+    b.fillStyle = "#1a1214"; b.fillRect(x, y, k.w, k.h);
+    b.fillStyle = mad ? "#6a2418" : "#3a2a2c"; b.fillRect(x + 1, y + 1, k.w - 2, k.h - 2);
+    b.fillStyle = mad ? "#ff7a2a" : "#8a6a5a";
+    b.fillRect(x, y, k.w, 1); b.fillRect(x, y + k.h - 1, k.w, 1); b.fillRect(x, y, 1, k.h); b.fillRect(x + k.w - 1, y, 1, k.h);
+    const fx = x + Math.floor(k.w / 2), fy = y + Math.floor(k.h / 2);
+    b.fillStyle = mad ? "#ffcf6a" : "#c9a080";
+    b.fillRect(fx - 5, fy - 3, 3, 2); b.fillRect(fx + 2, fy - 3, 3, 2);
+    if (mad) { b.fillRect(fx - 6, fy - 5, 3, 1); b.fillRect(fx + 3, fy - 5, 3, 1); }
+    b.fillRect(fx - 3, fy + 2, 6, mad ? 2 : 1);
+  },
+
+  // Ink seekers: a wobbling blot with one pale eye (it turns red when it's hunting you).
+  drawSeeker(b, game, s, cx, cy) {
+    const x = Math.round(s.x - cx), y = Math.round(s.y - cy), t = this.time, hunt = s.state === 1;
+    b.globalAlpha = s.state === 2 ? 0.5 + 0.3 * Math.sin(t * 20) : 1;
+    b.fillStyle = "#120c20";
+    for (let a = 0; a < 10; a++) {
+      const ang = a / 10 * Math.PI * 2, r = 5 + Math.sin(t * 6 + a * 1.7) * 1.5;
+      b.fillRect(Math.round(x + Math.cos(ang) * r) - 1, Math.round(y + Math.sin(ang) * r) - 1, 3, 3);
+    }
+    b.fillRect(x - 4, y - 4, 9, 9);
+    b.fillStyle = hunt ? "#ff5a7a" : "#e8e2ff";
+    const ex = Math.round(Math.max(-2, Math.min(2, (game.p.x - s.x) / 20)));
+    b.fillRect(x - 1 + ex, y - (hunt ? 1 : 2), 3, hunt ? 2 : 3);
+    b.globalAlpha = 1;
+  },
+
   drawFeather(b, f, cx, cy) {
     const x = Math.round(f.x - cx), y = Math.round(f.y - cy + Math.sin(this.time * 3 + f.x) * 1.5);
     if (f.respawn > 0) { b.fillStyle = "rgba(255,220,120,0.25)"; b.fillRect(x, y, 1, 1); return; }
@@ -627,8 +717,8 @@ const Render = {
     if (!w) return;
     const top = Math.round(w.y - cy), bottom = room.y + room.ph - cy + 20;
     if (top > VIEW_H) return;
-    b.fillStyle = "rgba(10,30,44,0.88)"; b.fillRect(0, Math.max(0, top), VIEW_W, bottom - top);
-    b.fillStyle = "rgba(90,200,220,0.7)";
+    b.fillStyle = this.lavaWater ? "rgba(90,20,8,0.9)" : "rgba(10,30,44,0.88)"; b.fillRect(0, Math.max(0, top), VIEW_W, bottom - top);
+    b.fillStyle = this.lavaWater ? "rgba(255,150,60,0.85)" : "rgba(90,200,220,0.7)";
     for (let x = 0; x < VIEW_W; x += 2) {
       const h = Math.round(Math.sin((x + cx) * 0.12 + this.time * 4) * 1.5);
       b.fillRect(x, top + h, 2, 1);
@@ -991,6 +1081,24 @@ function drawActor(b, kind, alpha, t) {
     r("#3a281c", -3, -15, 6, 2); r("#3a281c", -3, -13, 1, 2);            // hair
     r("#c9a25a", -2, -14, 5, 1); r("#8fd3e8", 1, -14, 1, 1);             // goggles
     r("#1a1410", 1, -12, 1, 1);
+  } else if (kind === "aurel") {
+    // Pascal's father: taller, grey-bearded, a heavy forge coat, a clockmaker's loupe.
+    b.globalAlpha = alpha;
+    r("#2a2438", -2, -3, 1, 3); r("#2a2438", 1, -3, 1, 3);              // legs
+    r("#5a3a2a", -3, -11, 7, 8); r("#3e281c", -3, -4, 7, 1);             // coat
+    r("#c98a4a", 3, -9, 1, 4);                                           // tongs at his belt
+    r("#d4a07a", -2, -15, 5, 4);                                         // face
+    r("#b8b4ae", -3, -17, 6, 2); r("#b8b4ae", -3, -15, 1, 3);            // grey hair
+    r("#d0ccc6", -1, -12, 4, 2); r("#d0ccc6", 0, -10, 2, 1);             // beard
+    r("#c9a25a", 1, -14, 2, 1); r("#1a1410", 2, -14, 1, 1);              // loupe and eye
+    b.globalAlpha = alpha * (0.2 + 0.1 * Math.sin(t * 4)); r("#ff9a4a", -4, -12, 9, 10);
+  } else if (kind === "paperLantern") {
+    // A paper lantern with a letter tucked inside, drifting slowly upward.
+    const lift = Math.round(Math.sin(t * 1.6) * 2);
+    b.globalAlpha = alpha * (0.25 + 0.1 * Math.sin(t * 5)); r("#ffd98a", -6, -16 + lift, 12, 13);
+    b.globalAlpha = alpha;
+    r("#f4e6c8", -3, -13 + lift, 6, 8); r("#e8c890", -3, -6 + lift, 6, 1); r("#e8c890", -3, -13 + lift, 6, 1);
+    r("#ffe7a0", -1, -10 + lift, 2, 3);
   } else if (kind === "pascalFrozen") {
     // Pascal caught in the temple: pale, glassy and perfectly still.
     b.globalAlpha = alpha;
@@ -1030,6 +1138,15 @@ function drawActor(b, kind, alpha, t) {
     r("#d9c9ff", -2, -19 + bob, 1, 3); r("#d9c9ff", 1, -19 + bob, 1, 3);   // antennae
   }
   b.globalAlpha = 1;
+}
+
+function drawLantern(b, x, y, t) {
+  x = Math.round(x); y = Math.round(y);
+  b.fillStyle = `rgba(255,220,140,${0.25 + 0.1 * Math.sin(t * 4)})`; diamond(b, x, y, 7);
+  b.fillStyle = "#f4ecd8"; b.fillRect(x - 3, y - 3, 7, 7);
+  b.fillStyle = "#ffd98a"; b.fillRect(x - 2, y - 2, 5, 5);
+  b.fillStyle = "#c9a060"; b.fillRect(x - 3, y - 4, 7, 1); b.fillRect(x - 3, y + 4, 7, 1);
+  b.fillStyle = "#8a7050"; b.fillRect(x - 1, y - 2, 1, 4); b.fillRect(x + 1, y, 1, 2);
 }
 
 function drawWings(b, x, y, t, speed) {

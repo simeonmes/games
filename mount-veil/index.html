@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Celeste</title>
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -97,6 +97,7 @@
       <section>
         <h3>Music</h3>
         <p class="note">Play your own songs while you climb. Pick audio files from your device (MP3, M4A, OGG, WAV…). They stay in this browser and are never uploaded. With several songs, the music changes as you climb higher, in file-name order.</p>
+        <label><input type="checkbox" id="oChip"> Built-in soundtrack (plays when you haven't chosen songs)</label>
         <button id="addMusic" class="small">Choose songs…</button>
         <button id="clearMusic" class="small danger">Remove songs</button>
         <input type="file" id="musicFile" accept="audio/*,.mp3,.m4a,.ogg,.wav,.flac,.opus" multiple hidden>
@@ -168,13 +169,14 @@
 
 <div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to climb</div>
 
-<script src="js/levels.js?v=9"></script>
-<script src="js/sim.js?v=9"></script>
-<script src="js/input.js?v=9"></script>
-<script src="js/audio.js?v=9"></script>
-<script src="js/music.js?v=9"></script>
-<script src="js/render.js?v=9"></script>
-<script src="js/story.js?v=9"></script>
-<script src="js/main.js?v=9"></script>
+<script src="js/levels.js?v=10"></script>
+<script src="js/sim.js?v=10"></script>
+<script src="js/input.js?v=10"></script>
+<script src="js/audio.js?v=10"></script>
+<script src="js/chip.js?v=10"></script>
+<script src="js/music.js?v=10"></script>
+<script src="js/render.js?v=10"></script>
+<script src="js/story.js?v=10"></script>
+<script src="js/main.js?v=10"></script>
 </body>
 </html>
