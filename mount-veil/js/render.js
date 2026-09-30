@@ -30,6 +30,11 @@ const THEMES = {
     sky: [["#2a1a30", "#140c1c"], ["#8a4a3a", "#5a2e38"], ["#ffb65a", "#e07a4a"]], mtn: ["#4a2e3a", "#6a3e40"] },
   c7: { rock: ["#3e6a70", "#30565c", "#26464b", "#1d373b"], edge: "#8fe0e0", under: "#0e1e22",
     sky: [["#08141a", "#040a0e"], ["#12303a", "#0a2028"], ["#2f6f78", "#1e4a58"]], mtn: ["#143038", "#1e424c"] },
+  // Undertow: a black-blue gorge at night. The True Summit: pale rock under a pink dawn.
+  c8: { rock: ["#34405a", "#2a3449", "#212a3b", "#19202e"], edge: "#6f8fb8", under: "#0a0e16",
+    sky: [["#04060c", "#020306"], ["#0c1424", "#060a14"], ["#1a2a40", "#10182a"]], mtn: ["#0c1220", "#141c2e"] },
+  c9: { rock: ["#9a8aa8", "#80728f", "#685c78", "#524861"], edge: "#ffe0f0", under: "#3a3048",
+    sky: [["#3a4a8a", "#6a8ad0"], ["#c07aa0", "#f0a0b0"], ["#ffd0a0", "#fff0d0"]], mtn: ["#7a6a9a", "#a08ab8"] },
 };
 
 const Render = {
@@ -304,6 +309,9 @@ const Render = {
       case "swapStop": this.shake(0.06, 1); break;
       case "boostIn": burst(e.x, e.y, 8, e.red ? "#ff5a6a" : "#5ae07a", 30, 0.35); break;
       case "redLaunch": this.shake(0.1, 1); break;
+      case "flyIn": burst(e.x, e.y, 14, "#ffe08a", 45, 0.5); break;
+      case "flyOut": burst(e.x, e.y, 8, "#fff4c8", 25, 0.4); break;
+      case "bump": burst(e.x, e.y, 14, "#bfe8ff", 55, 0.4); this.shake(0.12, 2); Input.rumble(0.4, 90); break;
       case "redEnd": burst(e.x, e.y, 8, "#ff5a6a", 40, 0.35); this.shake(0.1, 1); break;
       case "actorIn": case "actorOut":
         burst(e.x, e.y, 10, e.kind === "echo" ? "#c9c0ee" : e.kind === "lumen" ? "#fff1c8" : "#e7ecff", 30, 0.5);
@@ -353,6 +361,9 @@ const Render = {
 
     this.drawActors(b, cx, cy);
     this.updateHair(game, dt);
+    if (p.state === ST_FLY) {
+      this.particles.push({ x: p.x + (Math.random() - 0.5) * 6, y: p.y - 6 + (Math.random() - 0.5) * 6, vx: -p.vx * 0.15, vy: -p.vy * 0.15, life: 0.4, max: 0.4, color: Math.random() < 0.5 ? "#ffe08a" : "#fff4c8", g: 0, size: 1 });
+    }
     this.drawTrails(b, dt, cx, cy);
     const visible = p.state !== ST_DEAD && p.state !== ST_RESPAWN;
     if (p.state === ST_RED) {
@@ -365,6 +376,7 @@ const Render = {
       this.drawClimber(b, game, p.x - cx, p.y - cy, 0.9, "#f4ecff");
     } else if (visible) this.drawClimber(b, game, p.x - cx, p.y - cy, 1);
     this.drawFollowers(b, game, dt, cx, cy);
+    this.drawWater(b, game.room, cx, cy);
     this.drawParticles(b, dt, cx, cy);
     this.drawOrbs(b, dt, cx, cy);
     this.drawSnow(b, dt);
@@ -400,6 +412,8 @@ const Render = {
     for (const m of room.moves) this.drawMove(b, m, cx, cy);
     for (const c of room.clouds) this.drawCloud(b, c, cx, cy);
     for (const bo of room.boosters) this.drawBubble(b, game, bo, cx, cy);
+    for (const f of room.feathers) this.drawFeather(b, f, cx, cy);
+    for (const bu of room.bumpers) this.drawBumper(b, bu, cx, cy);
     for (const c of room.crumbles) {
       const shake = c.state === 1 ? Math.round((Math.random() - 0.5) * 2) : 0;
       for (let k = 0; k < c.w / TILE; k++) {
@@ -554,6 +568,44 @@ const Render = {
       if (a.facing < 0) b.scale(-1, 1);
       drawActor(b, a.kind, a.alpha, this.time);
       b.restore();
+    }
+  },
+
+  drawFeather(b, f, cx, cy) {
+    const x = Math.round(f.x - cx), y = Math.round(f.y - cy + Math.sin(this.time * 3 + f.x) * 1.5);
+    if (f.respawn > 0) { b.fillStyle = "rgba(255,220,120,0.25)"; b.fillRect(x, y, 1, 1); return; }
+    b.globalAlpha = 0.25 + 0.1 * Math.sin(this.time * 5); b.fillStyle = "#ffe08a"; diamond(b, x, y, 6); b.globalAlpha = 1;
+    b.fillStyle = "#ffd24a";
+    for (let i = 0; i < 7; i++) b.fillRect(x - 3 + i, y + 3 - i, 2, 1);   // quill
+    b.fillStyle = "#fff4c8";
+    for (let i = 0; i < 5; i++) b.fillRect(x - 2 + i, y + 1 - i, 1, 2);
+    b.fillStyle = "#c98a1a"; b.fillRect(x - 4, y + 4, 1, 1);
+  },
+
+  drawBumper(b, bu, cx, cy) {
+    const x = Math.round(bu.x - cx), y = Math.round(bu.y - cy);
+    const hit = bu.respawn > 0, pulse = Math.sin(this.time * 4) * 0.5 + 0.5;
+    b.fillStyle = hit ? "#5a3a6a" : "#2c1f4a"; diamond(b, x, y, 7); b.fillRect(x - 5, y - 5, 11, 11);
+    b.fillStyle = hit ? "#ff9ad8" : `rgba(120,200,255,${0.6 + pulse * 0.4})`;
+    for (let a = 0; a < 20; a++) {
+      const ang = a / 20 * Math.PI * 2;
+      b.fillRect(Math.round(x + Math.cos(ang) * 7), Math.round(y + Math.sin(ang) * 7), 1, 1);
+    }
+    b.fillStyle = hit ? "#ffd0ee" : "#bfe8ff"; b.fillRect(x - 2, y - 2, 4, 4);
+    b.fillStyle = "#ffffff"; b.fillRect(x - 1, y - 1, 2, 2);
+  },
+
+  // Rising dark water, with a restless bright surface.
+  drawWater(b, room, cx, cy) {
+    const w = room.water;
+    if (!w) return;
+    const top = Math.round(w.y - cy), bottom = room.y + room.ph - cy + 20;
+    if (top > VIEW_H) return;
+    b.fillStyle = "rgba(10,30,44,0.88)"; b.fillRect(0, Math.max(0, top), VIEW_W, bottom - top);
+    b.fillStyle = "rgba(90,200,220,0.7)";
+    for (let x = 0; x < VIEW_W; x += 2) {
+      const h = Math.round(Math.sin((x + cx) * 0.12 + this.time * 4) * 1.5);
+      b.fillRect(x, top + h, 2, 1);
     }
   },
 
@@ -914,6 +966,13 @@ function drawActor(b, kind, alpha, t) {
     b.globalAlpha = alpha * (0.4 + 0.3 * Math.sin(t * 2));
     r("#e8ffff", -5, -16, 10, 17);
     b.globalAlpha = alpha; r("#ffffff", 2 + Math.round(Math.sin(t) * 2), -12, 1, 1);
+  } else if (kind === "cairn" || kind === "cairnClip") {
+    b.globalAlpha = alpha;
+    r("#8a8298", -5, -3, 10, 3); r("#a39cb2", -4, -6, 8, 3); r("#bdb6ca", -3, -9, 6, 3); r("#d4cee0", -2, -11, 4, 2);
+    if (kind === "cairnClip") {
+      r("#d8323f", -1, -13, 3, 2); r("#e8e8f0", 1, -13, 1, 1);
+      b.globalAlpha = alpha * (0.25 + 0.2 * Math.sin(t * 3)); r("#ffd0a0", -4, -16, 8, 6);
+    }
   } else if (kind === "journal") {
     b.globalAlpha = alpha * (0.3 + 0.2 * Math.sin(t * 4)); r("#ffe7a0", -5, -8, 10, 8);
     b.globalAlpha = alpha;

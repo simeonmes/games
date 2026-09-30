@@ -49,10 +49,14 @@ const C = {
   MoveSpeed: 60, MoveAccel: 300, MoveShake: 0.15, MoveRespawn: 2.2,
   // Swap blocks switch ends on every dash. Bubbles hold you, then launch you.
   SwapSpeed: 360, SwapAccel: 1440, BoostTime: 0.25, BoostRespawn: 1, RedSpeed: 240,
+  // Feathers: fly for 2 s, steering towards where you hold. Bumpers knock you away.
+  FlyTime: 2, FlyStartSpeed: 250, FlyTargetSpeed: 140, FlySlowSpeed: 91, FlyAccel: 1000, FlyRotate: 320 * Math.PI / 180,
+  FlyEndX: 160, FlyEndMinY: -100, FlyEndMaxY: 60, FeatherRespawn: 3,
+  BumperSpeed: 280, BumperRespawn: 0.6, LaunchHold: 0.2,
   DeathTime: 0.55, RespawnTime: 0.4, TransitionTime: 0.4,
 };
 
-const ST_NORMAL = 0, ST_CLIMB = 1, ST_DASH = 2, ST_DEAD = 3, ST_RESPAWN = 4, ST_DREAM = 5, ST_BOOST = 6, ST_RED = 7;
+const ST_NORMAL = 0, ST_CLIMB = 1, ST_DASH = 2, ST_DEAD = 3, ST_RESPAWN = 4, ST_DREAM = 5, ST_BOOST = 6, ST_RED = 7, ST_FLY = 8;
 const DIRV = { r: [1, 0], l: [-1, 0], u: [0, -1], d: [0, 1] };
 
 // Hitboxes relative to the climber's feet (bottom centre). The hurtbox is 2 px shorter so
@@ -83,6 +87,9 @@ const overlap = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h 
 //   T  touch switch       X  gate block: solid until every switch in the room is touched
 //   c  cloud (a run of c is one cloud)   f  pink cloud: breaks after you've used it once
 //   b  green bubble: holds you, then dashes you   B  red bubble: flings you until you hit something
+//   F  feather: fly for two seconds               U  bumper: knocks you away
+// `dashes: 2` gives every dash refill in the room two dashes. `water: { speed, delay }` floods
+// the room from the bottom once you start moving.
 // A room can also have `wind` (px/s, + blows right, - blows left), and moving blocks given in
 // tiles: `zips` { x, y, w, h, tx, ty } (zip movers: block, then where it travels to),
 // `moves` { x, y, w, h, dir } (move blocks, dir r/l/u/d) and `swaps` { x, y, w, h, tx, ty }.
@@ -110,9 +117,12 @@ function buildRoom(def, index, chapterId) {
       const sx = x0 + m.x * TILE, sy = y0 + m.y * TILE;
       return { kind: "swap", x: sx, y: sy, fx: sx, fy: sy, w: m.w * TILE, h: m.h * TILE, sx, sy, ex: x0 + m.tx * TILE, ey: y0 + m.ty * TILE, target: 0, speed: 0 };
     }),
-    clouds: [], boosters: [],
+    clouds: [], boosters: [], feathers: [], bumpers: [], dashes: def.dashes || MAX_DASHES,
+    // A still pool (`level`, in rows) or a flood that rises from below the room.
+    water: def.water ? { speed: def.water.speed || 0, delay: def.water.delay || 0, base: def.water.level ? y0 + def.water.level * TILE : y0 + h * TILE + 12, y: 0, t: 0 } : null,
   };
   room.movers = [...room.zips, ...room.moves, ...room.swaps];
+  if (room.water) room.water.y = room.water.base;
   for (let y = 0; y < h; y++) {
     const row = rows[y].split("");
     for (let x = 0; x < w; x++) {
@@ -125,6 +135,8 @@ function buildRoom(def, index, chapterId) {
       else if (c === "T") room.switches.push({ x: px, y: py, on: false });
       else if (c === "X") { room.hasGate = true; continue; }
       else if (c === "b" || c === "B") room.boosters.push({ x: px + 4, y: py + 4, red: c === "B", respawn: 0 });
+      else if (c === "F") room.feathers.push({ x: px + 4, y: py + 4, respawn: 0 });
+      else if (c === "U") room.bumpers.push({ x: px + 4, y: py + 4, respawn: 0 });
       else if (c === "c" || c === "f") continue;
       else if (c === "#" || c === "=" || c === "%" || c === "D" || "^v<>".includes(c)) continue;
       else if (c !== ".") throw new Error(`room ${def.id}: unknown tile "${c}" at ${x},${y}`);
@@ -196,7 +208,7 @@ class Game {
   newPlayer(sp) {
     return {
       x: sp.x, y: sp.y, rx: 0, ry: 0, vx: 0, vy: 0, facing: 1, state: ST_NORMAL,
-      onGround: true, ducking: false, dashes: MAX_DASHES, stamina: C.ClimbMaxStamina,
+      onGround: true, ducking: false, dashes: this.room.dashes, stamina: C.ClimbMaxStamina,
       jumpGrace: 0, varJumpTimer: 0, varJumpSpeed: 0, autoJump: false, maxFall: C.MaxFall,
       dashCooldown: 0, dashRefillCooldown: 0, dashPhase: 0, dashWait: 0, dashDirX: 0, dashDirY: 0,
       beforeDashX: 0, beforeDashY: 0, forceMoveX: 0, forceMoveXTimer: 0,
@@ -204,6 +216,7 @@ class Game {
       wallBoostDir: 0, wallBoostTimer: 0, hopWaitX: 0, hopWaitXSpeed: 0, climbNoMoveTimer: 0, lastClimbMove: 0,
       deadT: 0, respawnT: 0, safeT: 0, sx: 1, sy: 1, flash: 0,
       liftX: 0, liftY: 0, liftT: 0, dashAttackT: 0, dreamT: 0, boostT: 0, boostCd: 0, booster: null,
+      flyT: 0, flyAng: 0, flySpeed: 0, launchT: 0,
       justRespawned: true,   // wind leaves you alone until you first move, as in Celeste
     };
   }
@@ -321,6 +334,7 @@ class Game {
   onCollideH() {
     const p = this.p;
     if (p.state === ST_RED) { p.vx = 0; this.redEnd(); return; }
+    if (p.state === ST_FLY) { p.vx = 0; return; }
     if (this.dreamDashCheck(sign(p.vx), 0)) { this.setState(ST_DREAM); return; }
     if (p.state === ST_DASH) {
       // Dashing into a low gap ducks you under it; clipping a ledge lip pushes you round it.
@@ -341,6 +355,7 @@ class Game {
   onCollideV() {
     const p = this.p;
     if (p.state === ST_RED) { p.vy = 0; this.redEnd(); return; }
+    if (p.state === ST_FLY) { p.vy = 0; return; }
     if (this.dreamDashCheck(0, sign(p.vy))) { this.setState(ST_DREAM); return; }
     if (p.vy < 0) {
       // Upward corner correction: a head that clips a corner by up to 4 px slides round it.
@@ -483,7 +498,7 @@ class Game {
     p.vy = p.varJumpSpeed = C.SuperBounceSpeed;
     p.ducking = false;
     this.setState(ST_NORMAL);
-    p.dashes = Math.max(p.dashes, MAX_DASHES);
+    p.dashes = Math.max(p.dashes, this.room.dashes);
     p.stamina = C.ClimbMaxStamina;
     this.squash(0.6, 1.4);
   }
@@ -524,7 +539,7 @@ class Game {
     p.boostT = C.BoostTime;
     p.vx = 0; p.vy = 0; p.rx = 0; p.ry = 0;
     p.ducking = false;
-    p.dashes = Math.max(p.dashes, MAX_DASHES);
+    p.dashes = Math.max(p.dashes, this.room.dashes);
     p.stamina = C.ClimbMaxStamina;
     if (!this.collideAt(bo.x, bo.y + 5)) { p.x = bo.x; p.y = bo.y + 5; }
     this.emit("boostIn", { x: bo.x, y: bo.y, red: bo.red });
@@ -552,6 +567,73 @@ class Game {
     if (a.x) p.facing = sign(a.x);
     p.vx = a.x * C.RedSpeed; p.vy = a.y * C.RedSpeed;
     this.emit("redLaunch", { x: p.x, y: p.y - 6 });
+  }
+
+  // ------------------------------------------------------------------ feathers and bumpers
+
+  enterFly() {
+    const p = this.p;
+    if (p.state === ST_FLY) { p.flyT = C.FlyTime; return; }
+    const moving = Math.hypot(p.vx, p.vy) > 1;
+    const a = this.inp.mx || this.inp.my ? this.aim() : moving ? { x: p.vx, y: p.vy } : { x: 0, y: -1 };
+    p.state = ST_FLY;
+    p.flyT = C.FlyTime;
+    p.flyAng = Math.atan2(a.y, a.x);
+    p.flySpeed = C.FlyStartSpeed;
+    p.ducking = false;
+    p.dashes = Math.max(p.dashes, this.room.dashes);
+    p.stamina = C.ClimbMaxStamina;
+    this.emit("flyIn", { x: p.x, y: p.y - 6 });
+  }
+
+  // Flying: you turn towards where you're holding (at most 320°/s) and cruise; let go and you
+  // slow down. When the feather runs out you keep a little of the speed. Dashing ends it early.
+  flyUpdate() {
+    const p = this.p, inp = this.inp;
+    if (this.canDash()) return this.startDash();
+    p.flyT -= DT;
+    if (p.flyT <= 0) {
+      p.vx = Math.max(-C.FlyEndX, Math.min(C.FlyEndX, p.vx));
+      p.vy = Math.max(C.FlyEndMinY, Math.min(C.FlyEndMaxY, p.vy));
+      this.emit("flyOut", { x: p.x, y: p.y - 6 });
+      return ST_NORMAL;
+    }
+    const steer = inp.mx || inp.my;
+    if (steer) {
+      const a = this.aim(), want = Math.atan2(a.y, a.x);
+      let d = want - p.flyAng;
+      while (d > Math.PI) d -= Math.PI * 2;
+      while (d < -Math.PI) d += Math.PI * 2;
+      p.flyAng += Math.max(-C.FlyRotate * DT, Math.min(C.FlyRotate * DT, d));
+    }
+    p.flySpeed = approach(p.flySpeed, steer ? C.FlyTargetSpeed : C.FlySlowSpeed, C.FlyAccel * DT);
+    p.vx = Math.cos(p.flyAng) * p.flySpeed;
+    p.vy = Math.sin(p.flyAng) * p.flySpeed;
+    if (p.vx) p.facing = sign(p.vx);
+    return ST_FLY;
+  }
+
+  // A bumper throws you straight away from its centre (snapped to up or sideways when
+  // close), refilling your dash, like Celeste's ExplodeLaunch.
+  bump(b) {
+    const p = this.p;
+    let dx = p.x - b.x, dy = p.y - 5.5 - b.y;
+    const len = Math.hypot(dx, dy);
+    if (len < 0.01) { dx = 0; dy = -1; } else { dx /= len; dy /= len; }
+    if (dy <= -0.7) { dx = 0; dy = -1; }
+    else if (dy <= 0.65 && dy >= -0.55) { dy = 0; dx = sign(dx) || 1; }
+    p.vx = C.BumperSpeed * dx; p.vy = C.BumperSpeed * dy;
+    if (p.vy <= 50) { p.vy = Math.min(-150, p.vy); p.autoJump = true; }
+    if (p.vx && this.inp.mx === sign(p.vx)) p.vx *= 1.2;
+    if (p.state !== ST_NORMAL) p.state = ST_NORMAL;
+    p.varJumpTimer = 0;
+    p.dashes = Math.max(p.dashes, this.room.dashes);
+    p.stamina = C.ClimbMaxStamina;
+    p.dashCooldown = 0.2;
+    p.launchT = C.LaunchHold;
+    this.freeze = C.RefillFreeze;
+    b.respawn = C.BumperRespawn;
+    this.emit("bump", { x: b.x, y: b.y });
   }
 
   redEnd() {
@@ -585,7 +667,9 @@ class Game {
       p.vx = approach(p.vx, 0, C.DuckFriction * DT);
     } else {
       const mult = p.onGround ? 1 : C.AirMult;
-      if (Math.abs(p.vx) > C.MaxRun && sign(p.vx) === moveX) p.vx = approach(p.vx, C.MaxRun * moveX, C.RunReduce * mult * DT);
+      // Just after a bumper launch, keep the speed unless you steer against it.
+      if (p.launchT > 0 && moveX !== -sign(p.vx)) { /* hold */ }
+      else if (Math.abs(p.vx) > C.MaxRun && sign(p.vx) === moveX) p.vx = approach(p.vx, C.MaxRun * moveX, C.RunReduce * mult * DT);
       else p.vx = approach(p.vx, C.MaxRun * moveX, C.RunAccel * mult * DT);
     }
 
@@ -769,7 +853,7 @@ class Game {
     }
     if (p.dreamT > 0) return ST_DREAM;
     this.freeze = C.RefillFreeze;
-    p.dashes = Math.max(p.dashes, MAX_DASHES);
+    p.dashes = Math.max(p.dashes, this.room.dashes);
     p.flash = 0.1;
     this.emit("dreamOut", { x: p.x, y: p.y - 6 });
     if (this.jumpBuf > 0 && p.dashDirX !== 0) this.jump();
@@ -853,7 +937,7 @@ class Game {
     if (p.state === ST_DEAD || this.done) return;
     this.checkBounds();
     if (this.assist.infiniteStamina) p.stamina = C.ClimbMaxStamina;
-    if (this.assist.airDashes === "infinite" && p.state !== ST_DASH) p.dashes = MAX_DASHES;
+    if (this.assist.airDashes === "infinite" && p.state !== ST_DASH) p.dashes = Math.max(p.dashes, this.room.dashes);
   }
 
   updatePlayer() {
@@ -871,7 +955,7 @@ class Game {
       p.jumpGrace -= DT;
     }
     if (p.dashRefillCooldown > 0) p.dashRefillCooldown -= DT;
-    else if (p.onGround && p.dashes < MAX_DASHES) { p.dashes = MAX_DASHES; p.flash = 0.1; }
+    else if (p.onGround && p.dashes < this.room.dashes) { p.dashes = this.room.dashes; p.flash = 0.1; }
     if (p.varJumpTimer > 0) p.varJumpTimer -= DT;
     if (p.dashCooldown > 0) p.dashCooldown -= DT;
     if (p.dashAttackT > 0) p.dashAttackT -= DT;
@@ -901,6 +985,17 @@ class Game {
     if (this.moveX !== 0 && p.state !== ST_CLIMB && p.state !== ST_DREAM) p.facing = this.moveX;
 
     if (p.boostCd > 0) p.boostCd -= DT;
+    if (p.launchT > 0) p.launchT -= DT;
+    if (p.state === ST_FLY) {
+      const ns = this.flyUpdate();
+      if (ns === ST_FLY) {
+        this.moveH(p.vx * DT);
+        this.moveV(p.vy * DT);
+        return;
+      }
+      this.setState(ns);
+      if (p.state === ST_DASH) { this.dashRoutine(); this.moveH(p.vx * DT); this.moveV(p.vy * DT); return; }
+    }
     if (p.state === ST_DREAM) {
       const ns = this.dreamUpdate();
       if (ns !== ST_DEAD) this.setState(ns);
@@ -960,6 +1055,9 @@ class Game {
   // ------------------------------------------------------------------ level objects
 
   resetRoomObjects(room) {
+    if (room.water) { room.water.y = room.water.base; room.water.t = 0; }
+    for (const f of room.feathers) f.respawn = 0;
+    for (const b of room.bumpers) b.respawn = 0;
     for (const r of room.refills) r.respawn = 0;
     for (const c of room.crumbles) { c.state = 0; c.t = 0; }
     for (const s of room.springs) s.t = 0;
@@ -1001,6 +1099,11 @@ class Game {
   updateMovers() {
     this.updateZips();
     const p = this.p;
+    const w = this.room.water;
+    if (w && w.speed && !p.justRespawned) {
+      if (w.t < w.delay) w.t += DT;
+      else w.y = Math.max(this.room.y - 16, w.y - w.speed * DT);
+    }
     for (const m of this.room.moves) {
       if (m.state === 0) {
         if (this.ridingZip(m)) { m.state = 1; m.t = C.MoveShake; m.speed = 0; this.emit("moveStart", { x: m.x + m.w / 2, y: m.y + m.h / 2 }); }
@@ -1205,7 +1308,7 @@ class Game {
     for (const r of room.refills) {
       if (r.respawn > 0) continue;
       const rr = { x: r.x - 4, y: r.y - 4, w: 8, h: 8 };
-      const max = r.two ? 2 : MAX_DASHES;
+      const max = r.two ? 2 : this.room.dashes;
       if (overlap(hb, rr) && (p.dashes < max || p.stamina < C.ClimbTiredThreshold)) {
         p.dashes = Math.max(p.dashes, max);
         p.stamina = C.ClimbMaxStamina;
@@ -1225,6 +1328,16 @@ class Game {
         this.emit("berryTouch", { x: b.hx, y: b.hy, ghost: b.ghost });
       }
     }
+    for (const f of room.feathers) {
+      if (f.respawn > 0) { f.respawn -= DT; continue; }
+      if (p.state !== ST_DREAM && overlap(hb, { x: f.x - 6, y: f.y - 6, w: 12, h: 12 })) { f.respawn = C.FeatherRespawn; this.enterFly(); }
+    }
+    for (const b of room.bumpers) {
+      if (b.respawn > 0) { b.respawn -= DT; continue; }
+      if (p.state !== ST_DREAM && p.state !== ST_BOOST && overlap(hb, { x: b.x - 8, y: b.y - 8, w: 16, h: 16 })) { this.bump(b); break; }
+    }
+    if (room.water && !this.assist.invincible && p.y - 3 > room.water.y) { this.die(); return; }
+
     for (const bo of room.boosters) {
       if (bo.respawn > 0) { if (p.state !== ST_BOOST || p.booster !== bo) bo.respawn -= DT; continue; }
       if (p.state === ST_BOOST || p.state === ST_RED || p.boostCd > 0) continue;
@@ -1368,6 +1481,8 @@ class Game {
       sp: r.swaps.map((m) => [m.x, m.y, m.fx, m.fy, m.target, m.speed]),
       cl: r.clouds.map((c) => [c.y, c.d, c.v, c.was, c.gone, c.t]),
       bo: r.boosters.map((b) => b.respawn),
+      fe: r.feathers.map((f) => f.respawn), bu: r.bumpers.map((b) => b.respawn),
+      wa: r.water ? [r.water.y, r.water.t] : null,
     };
   }
 
@@ -1385,9 +1500,12 @@ class Game {
     s.room.swaps.forEach((m, i) => { [m.x, m.y, m.fx, m.fy, m.target, m.speed] = s.sp[i]; });
     s.room.clouds.forEach((c, i) => { [c.y, c.d, c.v, c.was, c.gone, c.t] = s.cl[i]; });
     s.room.boosters.forEach((b, i) => { b.respawn = s.bo[i]; });
+    s.room.feathers.forEach((f, i) => { f.respawn = s.fe[i]; });
+    s.room.bumpers.forEach((b, i) => { b.respawn = s.bu[i]; });
+    if (s.wa) { s.room.water.y = s.wa[0]; s.room.water.t = s.wa[1]; }
     this.done = s.done;
     this.transition = s.tr;
   }
 }
 
-if (typeof module !== "undefined") module.exports = { Game, C, DT, TILE, VIEW_W, VIEW_H, ST_NORMAL, ST_CLIMB, ST_DASH, ST_DEAD, ST_RESPAWN, ST_DREAM, ST_BOOST, ST_RED, MAX_DASHES, HB };
+if (typeof module !== "undefined") module.exports = { Game, C, DT, TILE, VIEW_W, VIEW_H, ST_NORMAL, ST_CLIMB, ST_DASH, ST_DEAD, ST_RESPAWN, ST_DREAM, ST_BOOST, ST_RED, ST_FLY, MAX_DASHES, HB };

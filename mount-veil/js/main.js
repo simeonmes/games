@@ -138,7 +138,7 @@ const App = {
   // The Begin / Continue button: pick the story up wherever it is.
   continueStory() {
     const ch = this.storyChapter();
-    if (!ch) { this.fogEnding(); return; }
+    if (!ch) { if (this.done(CHAPTERS[CHAPTERS.length - 1]) && !this.save.epilogue) this.epilogue(); else this.fogEnding(); return; }
     this.play(ch, false, "story");
   },
 
@@ -147,7 +147,28 @@ const App = {
     this.state = "scene";
     this.paused = false;
     this.show(null);
-    Story.play("fog", this.game, () => this.toTitle());
+    Story.play(this.save.epilogue ? "fog2" : "fog", this.game, () => this.toTitle());
+  },
+
+  // After the true summit: three days later, at Tilly's cabin by the trailhead.
+  epilogue() {
+    this.state = "scene";
+    this.paused = false;
+    this.game = new Game(CHAPTERS[0], { quiet: true, collected: this.save.collected });
+    Render.reset(this.game);
+    Render.banner = null;
+    Story.reset(this.game);
+    const n = new Set(this.save.collected).size;
+    Story.vars = {
+      berries: n === 1 ? "one" : String(n),
+      berryLine: n === 0 ? "None! Well. At least you're honest." : n < 30 ? "Hm. That's a small pot of tea." : n < 100 ? "Now that's a proper pot of tea." : "Good grief. That's tea until spring.",
+    };
+    this.show(null);
+    Story.play("epilogue", this.game, () => {
+      this.save.epilogue = true;
+      this.writeSave();
+      Story.play("fog2", this.game, () => this.toTitle());
+    });
   },
 
   seen(id) {
@@ -221,7 +242,9 @@ const App = {
   // After a chapter's summary in story mode: straight on up the mountain.
   onward() {
     const next = CHAPTERS[CHAPTERS.indexOf(this.chapter) + 1];
-    if (next) this.play(next, true, "story"); else this.fogEnding();
+    if (next) this.play(next, true, "story");
+    else if (this.chapter.id === "c9" && !this.save.epilogue) this.epilogue();
+    else this.fogEnding();
   },
 
   // ------------------------------------------------------------------ UI
@@ -246,7 +269,7 @@ const App = {
   openRevisit() {
     const box = $("chapters");
     box.innerHTML = "";
-    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"] };
+    const themes = { c1: ["#6a3fd0", "#3a2470"], c2: ["#2f6fa8", "#1b3a5c"], c3: ["#c0507a", "#5a2448"], c4: ["#c0703a", "#5a2e1c"], c5: ["#4a4ad0", "#1c5a6a"], c6: ["#c0902a", "#6a3a1c"], c7: ["#2a8a90", "#123a44"], c8: ["#2a3a60", "#0c1224"], c9: ["#d07aa0", "#6a5a9a"] };
     CHAPTERS.forEach((ch, i) => {
       if (!this.done(ch)) return;
       const c = this.progress(ch);

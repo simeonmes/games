@@ -369,6 +369,202 @@ const SCENES = {
     { card: ["Nobody answers \"not fine\"."] },
   ],
 
+  // ================================================================ Chapter 8: Undertow
+  c8_open: [
+    { card: ["Past the temple runs a narrow ridge.", "Wren takes it light and fast, the way she used to."] },
+    { card: ["Too fast."] },
+    { card: ["The ledge gives way,", "and the gorge swallows her whole."] },
+    { wait: 0.6 },
+    { say: "wren", mood: "shocked", text: "...Ow." },
+    { say: "wren", text: "Okay. Okay. I'm fine." },
+    { wait: 1.4 },
+    { say: "wren", mood: "sad", text: "...That's where you'd say 'not fine'." },
+    { wait: 1 },
+    { say: "radio", text: "—ren? Wren! Your signal dropped right off my map. Where are you?" },
+    { say: "wren", mood: "sad", text: "The bottom of the gorge. I fell, Tilly. All the way down." },
+    { say: "radio", text: "Are you hurt?" },
+    { say: "wren", mood: "sad", text: "Not really. I just... I keep missing jumps I never used to miss." },
+    { say: "radio", text: "Listen to me. The river under the gorge rises at night. That water is cold and it is fast. You need to climb. Now." },
+  ],
+  c8_w2: { whisper: [
+    { who: "radio", text: "Up. Keep going up. Don't look at the water." },
+  ] },
+  c8_3: [
+    { say: "radio", text: "Are you somewhere dry?" },
+    { say: "wren", text: "For now." },
+    { say: "radio", text: "Then I'm going to tell you something I've never told anyone who climbed past my porch." },
+    { say: "radio", text: "I tried Veil three times. The first time I turned back, I said it was the weather." },
+    { say: "radio", text: "The second time, I blamed my knee. My knee was fine." },
+    { say: "radio", text: "The third time I was carrying my husband's ashes. I meant to leave him at the top. He always wanted to see it." },
+    { say: "radio", text: "I got as far as the false summit, and I couldn't open my hands. So I came down." },
+    { say: "radio", text: "And I've spent forty years drawing maps of that mountain instead of climbing it." },
+    { say: "wren", mood: "sad", text: "Tilly... why are you telling me this?" },
+    { say: "radio", text: "Because you sound like someone who put down something heavy, and found out it was holding her up." },
+    { wait: 1.2 },
+    { say: "wren", mood: "sad", text: "..." },
+    { say: "radio", text: "Those glowing orbs down there knock you away when you hit them. Fall onto one and it'll throw you high. Go on." },
+  ],
+  c8_w4: { whisper: [
+    { who: "wren", text: "'Something heavy that was holding her up.'" },
+    { who: "wren", text: "...Great. Now the RADIO is doing it." },
+  ] },
+  c8_6: [
+    { card: ["High on the gorge wall, rainwater has pooled in the rock.", "Wren looks down into it, and sees herself. Only it isn't quite her."] },
+    { actor: "echo", kind: "echo", room: "6", at: [26, 20], facing: 1 },
+    { wait: 1 },
+    { say: "wren", mood: "shocked", text: "You... you're here? I left you in the mirror." },
+    { say: "echo", text: "You left a reflection in a mirror. I'm not a reflection. I'm you." },
+    { say: "wren", mood: "sad", text: "I thought if I left you behind, it would stop hurting." },
+    { say: "echo", text: "Did it?" },
+    { say: "wren", mood: "sad", text: "No. It just went quiet. And then I couldn't jump." },
+    { say: "echo", text: "I'm not here to stop you, Wren. I never was." },
+    { say: "echo", text: "I'm the part of you that loved her enough for it to hurt." },
+    { say: "echo", text: "You keep trying to leave me behind, and I keep being the only one who remembers her properly." },
+    { say: "wren", mood: "sad", text: "I don't know how to carry her." },
+    { say: "echo", text: "You don't have to carry her alone. That's what I'm for." },
+    { say: "wren", text: "...Will you climb with me? Properly. Out loud." },
+    { say: "echo", mood: "happy", text: "Out loud." },
+    { card: ["Wren reaches out. The Echo takes her hand.", "Something settles in her chest, warm and doubled, like a second heartbeat."] },
+    { sfx: "heart" },
+    { say: "echo", mood: "happy", text: "Two dashes, Wren. One for you, one for me. For good this time." },
+  ],
+  c8_w7: { whisper: [
+    { who: "echo", text: "See? Two." },
+    { who: "wren", text: "Two." },
+  ] },
+  c8_w8: { whisper: [
+    { who: "echo", text: "Golden feathers! Grab one, then hold where you want to fly." },
+    { who: "echo", text: "Let go and you slow down. Dash to jump off early." },
+  ] },
+  c8_w10: { whisper: [
+    { who: "echo", text: "The water's faster here. Don't stop." },
+    { who: "wren", text: "Not stopping. Not sinking." },
+  ] },
+  c8_end: [
+    { say: "wren", mood: "happy", text: "The rim. We made it out." },
+    { actor: "pascal", kind: "pascal", room: "12", at: [11, 10], facing: -1 },
+    { wait: 0.5 },
+    { say: "pascal", text: "Wren! I heard you fall. I came as fast as a careful snail can!" },
+    { say: "pascal", text: "...Your hair's pink." },
+    { say: "wren", mood: "happy", text: "Long story." },
+    { actor: "echo", kind: "echo", room: "12", at: [3, 10], facing: 1 },
+    { wait: 0.6 },
+    { say: "echo", mood: "happy", text: "Hello, Pascal." },
+    { say: "pascal", text: "Oh! Hello! You're back! Both of you! Is that normal? It feels normal." },
+    { say: "wren", mood: "sad", text: "Pascal. I promised you a sit-down-first story." },
+    { say: "wren", mood: "sad", text: "Your dad's journal was in the temple. He made it to the summit. And then he kept going, past it. He chose not to come back." },
+    { wait: 1.5 },
+    { say: "pascal", text: "..." },
+    { say: "pascal", text: "I think I knew. For about eleven of the twelve years." },
+    { say: "pascal", text: "Every clock in that city was right. I was the only thing in it that had stopped." },
+    { say: "wren", mood: "sad", text: "I'm so sorry." },
+    { say: "pascal", text: "Don't be. It's lighter, knowing. Isn't that strange?" },
+    { say: "echo", text: "Not strange at all." },
+    { fade: "out" },
+  ],
+
+  // ================================================================ Chapter 9: The True Summit
+  c9_open: [
+    { card: ["Dawn, at the last camp below the true summit."] },
+    { actor: "pascal", kind: "pascal", room: "1", at: [8, 18], facing: -1 },
+    { actor: "echo", kind: "echo", room: "1", at: [5, 18], facing: 1 },
+    { wait: 0.8 },
+    { say: "pascal", text: "I'll come as far as the old cairn. Then the rest is yours." },
+    { say: "echo", text: "Ready?" },
+    { say: "wren", text: "No." },
+    { say: "echo", mood: "happy", text: "Me neither. Let's go." },
+    { say: "radio", text: "Morning, you two. Three. I can hear Pascal breathing." },
+    { say: "pascal", text: "Hello, Tilly!" },
+    { say: "radio", text: "Everything the mountain has taught you, you'll need up there. All of it." },
+  ],
+  c9_w2: { whisper: [
+    { who: "radio", text: "Crosswind today. Keep low, and don't trust the crumbling stuff." },
+  ] },
+  c9_5: [
+    { actor: "pascal", kind: "pascal", room: "5", at: [3, 5], facing: 1 },
+    { wait: 0.5 },
+    { say: "pascal", text: "This is as far as I go. My knees have filed a formal complaint." },
+    { say: "pascal", text: "I started a journal. Like Dad's. I'm leaving it here on the cairn, for whoever comes next." },
+    { card: ["'Pascal Ferro. Day one.", "Today I stopped waiting.'"] },
+    { say: "wren", mood: "happy", text: "That's a good first page." },
+    { say: "pascal", text: "Go on. Go and finish it. And Wren? Come back down. Please." },
+    { say: "wren", text: "I will. I promise." },
+  ],
+  c9_w8: { whisper: [
+    { who: "radio", text: "Wren... this is it. This is as high as I ever got." },
+    { who: "radio", text: "Right about where you are, I sat down and cried, and then I turned around." },
+    { who: "radio", text: "Go past it. For me." },
+  ] },
+  c9_w10: { whisper: [
+    { who: "echo", text: "Almost there." },
+    { who: "wren", text: "Don't say 'almost'." },
+  ] },
+  c9_w11: { whisper: [
+    { who: "radio", text: "Whatever you're carrying, you're allowed to put it down at the top." },
+    { who: "radio", text: "Not leave it. Put it down." },
+  ] },
+  c9_end: [
+    { say: "wren", text: "Is this it? Is this really the top?" },
+    { actor: "echo", kind: "echo", room: "12", at: [33, 13], facing: -1 },
+    { actor: "cairn", kind: "cairn", room: "12", at: [36, 13], facing: 1 },
+    { wait: 1 },
+    { say: "echo", text: "Nothing left to climb." },
+    { say: "wren", mood: "sad", text: "I thought I'd feel finished." },
+    { say: "echo", text: "Nobody feels finished. You just feel here." },
+    { say: "wren", mood: "sad", text: "...I brought my phone all the way up. I think I knew why." },
+    { card: ["One new voicemail.", "Isla — 11:52 PM"] },
+    { say: "echo", text: "Together?" },
+    { say: "wren", text: "Together." },
+    { sfx: "voicemail" },
+    { wait: 1 },
+    { card: ["\"Hey. It's me. So... keep the jacket, okay?", "It looks better on you anyway.\""] },
+    { card: ["\"I'm not mad. I was never mad, you idiot.", "I just wanted to hear your voice before I went to sleep.\""] },
+    { card: ["\"Call me back whenever. No rush.", "Love you.\""] },
+    { wait: 1.5 },
+    { say: "wren", mood: "sad", text: "She wasn't angry." },
+    { say: "wren", mood: "sad", text: "She was never angry. Eight months, and she was never angry." },
+    { say: "echo", mood: "sad", text: "No. You were. At yourself." },
+    { say: "wren", mood: "happy", text: "...Yeah." },
+    { actor: "cairn", kind: "cairnClip", room: "12", at: [36, 13], facing: 1, stay: true },
+    { card: ["Wren clips the red hairclip to the summit cairn,", "where the sun will find it every morning."] },
+    { remove: "echo" },
+    { card: ["The Echo doesn't leave.", "She just stops being separate."] },
+    { say: "radio", text: "Wren? ...Wren, did you make it?" },
+    { say: "wren", mood: "happy", text: "I made it, Tilly. We made it." },
+    { wait: 1 },
+    { say: "radio", text: "...Then come home. I'll put the kettle on." },
+    { fade: "out" },
+  ],
+
+  // Epilogue, at the trailhead where it began. {berries} and {berryLine} are filled in.
+  epilogue: [
+    { card: ["Three days later.", "Tilly's cabin, at the foot of Mount Veil."] },
+    { actor: "tilly", kind: "tilly", room: "1", at: [11, 18], facing: -1, stay: true },
+    { actor: "pascal", kind: "pascal", room: "1", at: [14, 18], facing: -1, stay: true },
+    { wait: 0.8 },
+    { say: "tilly", text: "Well? Where are they?" },
+    { say: "wren", text: "Where are what?" },
+    { say: "tilly", text: "The strawberries. I asked you for strawberries, on the very first night." },
+    { say: "wren", mood: "happy", text: "Oh! Right. I, um. I got {berries}." },
+    { say: "tilly", text: "{berryLine}" },
+    { say: "tilly", text: "I finished the map, by the way." },
+    { card: ["The last page of Tilly's map shows the true summit,", "drawn in Wren's handwriting."] },
+    { say: "pascal", text: "And I made you a clock! It runs a bit fast. Like you." },
+    { say: "wren", mood: "happy", text: "It's perfect." },
+    { wait: 1 },
+    { say: "wren", text: "Tilly, can I borrow your phone? I want to leave a message." },
+    { card: ["Wren calls a number she's never going to delete.", "It goes to voicemail."] },
+    { say: "wren", text: "Hey, Isla. It's me. I climbed it." },
+    { say: "wren", mood: "sad", text: "I'm not fine. But I'm okay. Both of me." },
+    { say: "wren", mood: "happy", text: "Love you, you idiot." },
+    { fade: "out" },
+    { card: ["Mount Veil", "A fan-made tribute to Celeste"], chapter: true },
+  ],
+  fog2: [
+    { card: ["Weeks later, a letter arrives at Tilly's cabin, addressed to Wren.", "It smells of smoke and ice."] },
+    { card: ["The mountain isn't finished with her yet.", "(More of Wren's story is on its way. Your progress is saved.)"] },
+  ],
+
   // Played when the story runs past the last chapter that's been built so far.
   fog: [
     { card: ["Above, the path disappears into thick fog.", "Wren will have to wait for it to lift."] },
@@ -379,6 +575,16 @@ const SCENES = {
 // When scenes play: at the start and end of a chapter, the first time you enter a room,
 // and (in Dream Hollow) as each waking light is lit.
 const TRIGGERS = {
+  c8: { start: "c8_open", end: "c8_end", enter: { 2: "c8_w2", 3: "c8_3", 4: "c8_w4", 6: "c8_6", 7: "c8_w7", 8: "c8_w8", 10: "c8_w10" } },
+  c9: {
+    start: "c9_open", end: "c9_end", enter: { 2: "c9_w2", 5: "c9_5", 8: "c9_w8", 10: "c9_w10", 11: "c9_w11" },
+    switches: {
+      6: [
+        { who: "memory", text: "Isla teaching Wren to ride a bike, running behind her, not letting go until she already had." },
+        { who: "memory", text: "Isla asleep on the couch, the TV still on, one sock missing. Wren tucking a blanket over her." },
+      ],
+    },
+  },
   c6: { start: "c6_open", end: "c6_end", enter: { 3: "c6_w3", 6: "c6_6", 9: "c6_w9", 10: "c6_w10" } },
   c7: { start: "c7_open", end: "c7_end", enter: { 3: "c7_3", 5: "c7_w5", 8: "c7_8", 11: "c7_11", 12: "c7_12" } },
   c1: { start: "c1_open", end: "c1_end", enter: { 5: "c1_w5", 9: "c1_w9" } },
@@ -412,6 +618,7 @@ const Story = {
   active: null,     // the scene playing: { id, steps, i, t, onDone, typed, full }
   actors: [],       // characters standing in the world: { id, kind, room, x, y, facing, alpha, target, stay }
   whispers: [],     // queued subtitle lines
+  vars: {},         // values filled into {name} placeholders in the script
   whisperT: 0,
   game: null,
   el: {},
@@ -463,7 +670,7 @@ const Story = {
       const pk = w.portrait === undefined ? s.say : w.portrait;
       this.el.dPortrait.hidden = !pk;
       if (pk) drawPortrait(this.el.dPortrait, pk, s.mood || "normal");
-      a.full = s.text; a.typed = 0;
+      a.full = s.text.replace(/\{(\w+)\}/g, (m, k) => (k in this.vars ? this.vars[k] : m)); a.typed = 0;
       this.el.dText.textContent = "";
       this.el.dMore.hidden = true;
       // Keep the box out of the way: if the characters are low on screen, show it at the top.

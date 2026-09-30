@@ -14,7 +14,7 @@
 const path = require("path");
 const fs = require("fs");
 const { CHAPTERS } = require("../js/levels.js");
-const { Game, ST_DEAD, ST_CLIMB, ST_DREAM, ST_BOOST } = require("../js/sim.js");
+const { Game, ST_DEAD, ST_CLIMB, ST_DREAM, ST_BOOST, ST_FLY } = require("../js/sim.js");
 
 const FRAMES = 4;          // frames each input is held for
 const BUDGET = +(process.env.BUDGET || 400000);    // search nodes per goal
@@ -34,6 +34,13 @@ function actions(g) {
       input(1, 0, false, false, false, true), input(-1, 0, false, false, false, true)];
   }
   // In a bubble: pick the launch direction (and optionally launch now with dash).
+  // Flying on a feather: steer in any of 8 directions, let go, or dash out.
+  if (p.state === ST_FLY) {
+    out.push(input(0, 0, false, false, false, false));
+    for (const [dx, dy] of DIRS) out.push(input(dx, dy, false, false, false, false));
+    if (p.dashes > 0 && p.dashCooldown <= 0) for (const [dx, dy] of DIRS) out.push(input(dx, dy, false, false, true, false));
+    return out;
+  }
   if (p.state === ST_BOOST) {
     out.push(input(0, 0, false, false, false, false));
     for (const [dx, dy] of DIRS) { out.push(input(dx, dy, false, false, false, false)); out.push(input(dx, dy, false, false, true, false)); }
@@ -86,7 +93,10 @@ function key(g) {
     Math.round(p.boostT * 20), p.boostCd > 0 ? 1 : 0,
     r.moves.map((m) => `${m.state}:${m.x >> 2},${m.y >> 2}`).join("/"), r.swaps.map((m) => `${m.target}:${m.x >> 2},${m.y >> 2}`).join("/"),
     r.clouds.map((c) => (c.gone ? "g" : `${c.y - c.by}:${Math.round(c.v / 40)}`)).join("/"),
-    r.boosters.map((b) => (b.respawn > 0 ? 1 : 0)).join("")].join(",");
+    r.boosters.map((b) => (b.respawn > 0 ? 1 : 0)).join(""),
+    p.state === ST_FLY ? `${Math.round(p.flyT * 5)}:${Math.round(p.flyAng / (Math.PI / 8))}:${Math.round(p.flySpeed / 30)}` : "",
+    p.launchT > 0 ? 1 : 0, r.feathers.map((f) => (f.respawn > 0 ? 1 : 0)).join(""), r.bumpers.map((b) => (b.respawn > 0 ? 1 : 0)).join(""),
+    r.water ? Math.round(r.water.y / 4) : ""].join(",");
 }
 
 // Minimal binary heap keyed on .f
@@ -214,7 +224,7 @@ function fresh(roomId) {
 // Replay a route and note which of the room's moving parts it relied on.
 function used(roomId, route) {
   const g = fresh(roomId), room = g.room, zips = new Set(), moved = new Set(), clouded = new Set();
-  let dreams = 0, swapped = 0, bubbles = 0;
+  let dreams = 0, swapped = 0, bubbles = 0, flights = 0, bumps = 0;
   for (const a of route) {
     const frames = a.dash ? FRAMES + 4 : FRAMES;
     for (let f = 0; f < frames; f++) {
@@ -223,6 +233,9 @@ function used(roomId, route) {
       room.zips.forEach((z, i) => { if (z.state) zips.add(i); });
       if (g.p.state === ST_DREAM && was !== ST_DREAM) dreams++;
       if (g.p.state === ST_BOOST && was !== ST_BOOST) bubbles++;
+      if (g.p.state === ST_FLY && was !== ST_FLY) flights++;
+      if (g.p.launchT > 0 && !g._lt) bumps++;
+      g._lt = g.p.launchT > 0;
       room.moves.forEach((m, i) => { if (m.state) moved.add(i); });
       room.clouds.forEach((c, i) => { if (c.was) clouded.add(i); });
       if (room.swaps.some((m) => m.speed > 0) && !g._sw) swapped++;
@@ -237,6 +250,9 @@ function used(roomId, route) {
   if (room.swaps.length) out.push(`swaps ${swapped}`);
   if (room.boosters.length) out.push(`bubbles ${bubbles}`);
   if (room.clouds.length) out.push(`clouds ${clouded.size}/${room.clouds.length}`);
+  if (room.feathers.length) out.push(`feathers ${flights}`);
+  if (room.bumpers.length) out.push(`bumps ${bumps}`);
+  if (room.water) out.push("water");
   return out.length ? "  [" + out.join(", ") + "]" : "";
 }
 
