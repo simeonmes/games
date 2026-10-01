@@ -768,6 +768,25 @@ const Render = (() => {
       ctx.fillText("FREE PLAY", cw / 2, y + h / 2 + 1);
     }
 
+    // big final-seconds countdown in the middle of the field
+    if (game.mode !== "freeplay" && game.state === "play" && !game.overtime &&
+        game.clockRunning && game.clock > 0 && game.clock <= 10) {
+      const n = Math.ceil(game.clock - 1e-6);
+      const t = n - game.clock; // 0 → 1 through each second
+      const fs = Math.min(cw, ch) * 0.34 * (1.25 - 0.25 * Math.min(1, t * 4));
+      ctx.save();
+      ctx.globalAlpha = 0.55 * (1 - t * 0.6);
+      ctx.font = `900 ${fs}px "Segoe UI", system-ui, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.lineWidth = fs * 0.05;
+      ctx.strokeStyle = "rgba(8,12,24,0.9)";
+      ctx.strokeText(String(n), cw / 2, ch / 2);
+      ctx.fillStyle = n <= 3 ? "#ff5d5d" : "#ffffff";
+      ctx.fillText(String(n), cw / 2, ch / 2);
+      ctx.restore();
+    }
+
     // boost gauges for local players
     const locals = game.cars.filter((c) => c.human);
     const gr = clamp(Math.min(cw, ch) * 0.07, 28, 52);
