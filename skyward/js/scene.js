@@ -20,14 +20,19 @@ const ATMOS = [
 const COLOR_KEYS = ["top", "hor", "bot", "sun", "sky", "gnd"];
 const NUM_KEYS = ["fog", "sunEl", "sunAz", "sunI", "hemiI", "stars", "exp", "rain", "snow", "aurora"];
 
+for (const a of ATMOS) for (const key of COLOR_KEYS) a[key] = new THREE.Color(a[key]);
+const OUT = {};
+for (const key of COLOR_KEYS) OUT[key] = new THREE.Color();
+
+// (Reuses one result object, so it makes no garbage every frame.)
 function atmosAt(y) {
   let i = 0;
   while (i < ATMOS.length - 1 && y > ATMOS[i + 1].y) i++;
   const a = ATMOS[i], b = ATMOS[Math.min(i + 1, ATMOS.length - 1)];
   // Hold each zone's look, then blend over the 30 m before the next one starts.
   const k = b === a ? 0 : THREE.MathUtils.smoothstep(y, b.y - 30, b.y);
-  const out = {};
-  for (const key of COLOR_KEYS) out[key] = new THREE.Color(a[key]).lerp(new THREE.Color(b[key]), k);
+  const out = OUT;
+  for (const key of COLOR_KEYS) out[key].copy(a[key]).lerp(b[key], k);
   for (const key of NUM_KEYS) out[key] = (a[key] || 0) + ((b[key] || 0) - (a[key] || 0)) * k;
   return out;
 }
@@ -107,7 +112,9 @@ function makeGeo(part, M) {
 // ------------------------------------------------------------------------------ the scene
 
 export class Scene3D {
-  constructor(renderer, course, M) {
+  constructor(renderer, course, M, opts = {}) {
+    this.cheap = !!opts.cheap;
+    this._dir = new THREE.Vector3(); this._ld = new THREE.Vector3();
     this.renderer = renderer;
     this.course = course;
     this.M = M;
@@ -138,7 +145,7 @@ export class Scene3D {
       const geo = makeGeo(part, M);
       if (!geo) continue;
       // Group by material and by 80 m height band, so each band can be culled.
-      const band = Math.floor(part.p[1] / 80);
+      const band = Math.floor(part.p[1] / 40);
       const key = part.m + "|" + band;
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(geo);
@@ -210,6 +217,13 @@ export class Scene3D {
     this.scene.add(this.sun, this.sun.target);
   }
 
+  // Fewer clouds and no rain/snow streak overload on the lowest setting.
+  setDetail(low) {
+    this.clouds.count = low ? Math.floor(this.cloudCount * 0.55) : this.cloudCount;
+    this.rain.geometry.setDrawRange(0, low ? 700 * 2 : Infinity);
+    this.snow.geometry.setDrawRange(0, low ? 450 : Infinity);
+  }
+
   setShadows(size) {
     this.renderer.shadowMap.enabled = size > 0;
     this.sun.castShadow = size > 0;
@@ -227,17 +241,22 @@ export class Scene3D {
       for (let i = 0; i < n; i++) puffs.push([x + R(-1, 1) * size * 1.4, y + R(-0.2, 0.4) * size * 0.6, z + R(-1, 1) * size, size * R(0.5, 1)]);
     };
     // A sea of cloud just below the floating isles, and a cloud floor under the junkyard.
-    for (let i = 0; i < 260; i++) { const a = R(0, 6.28), r = R(20, 700); cluster(Math.cos(a) * r, R(238, 262), Math.sin(a) * r, R(8, 22)); }
-    for (let i = 0; i < 220; i++) { const a = R(0, 6.28), r = R(60, 900); cluster(Math.cos(a) * r, R(395, 410), Math.sin(a) * r, R(14, 34)); }
-    for (let i = 0; i < 110; i++) { const a = R(0, 6.28), r = R(120, 800); cluster(Math.cos(a) * r, R(140, 700), Math.sin(a) * r, R(6, 18)); }
-    const geo = new THREE.IcosahedronGeometry(1, 2);
-    const mat = new THREE.MeshStandardMaterial({ color: "#ffffff", roughness: 1, emissive: "#8090a8", emissiveIntensity: 0.35, flatShading: false });
+    // (The solid cloud floors below do most of the work, so the puffs can be sparse.)
+    for (let i = 0; i < 120; i++) { const a = R(0, 6.28), r = R(20, 650); cluster(Math.cos(a) * r, R(240, 258), Math.sin(a) * r, R(8, 22)); }
+    for (let i = 0; i < 90; i++) { const a = R(0, 6.28), r = R(60, 850); cluster(Math.cos(a) * r, R(397, 408), Math.sin(a) * r, R(14, 34)); }
+    for (let i = 0; i < 70; i++) { const a = R(0, 6.28), r = R(120, 800); cluster(Math.cos(a) * r, R(140, 700), Math.sin(a) * r, R(6, 18)); }
+    for (let i = puffs.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [puffs[i], puffs[j]] = [puffs[j], puffs[i]]; }
+    const geo = new THREE.IcosahedronGeometry(1, 1);
+    const mat = this.cheap
+      ? new THREE.MeshLambertMaterial({ color: "#ffffff", emissive: "#8090a8", emissiveIntensity: 0.35 })
+      : new THREE.MeshStandardMaterial({ color: "#ffffff", roughness: 1, emissive: "#8090a8", emissiveIntensity: 0.35 });
     const inst = new THREE.InstancedMesh(geo, mat, puffs.length);
     const m = new THREE.Matrix4(), q = new THREE.Quaternion();
     puffs.forEach(([x, y, z, s], i) => { m.compose(new THREE.Vector3(x, y, z), q, new THREE.Vector3(s * 1.3, s * 0.6, s)); inst.setMatrixAt(i, m); });
     inst.receiveShadow = false;
     this.scene.add(inst);
     this.clouds = inst;
+    this.cloudCount = puffs.length;
     // Solid cloud floors: seen from above as a sea of cloud, invisible from underneath.
     const c = document.createElement("canvas"); c.width = c.height = 256;
     const g = c.getContext("2d");
@@ -302,6 +321,7 @@ export class Scene3D {
 
   buildScenery() {
     const R = (a, b) => a + Math.random() * (b - a);
+    const far = [];   // merged into a few meshes at the end, so they cost few draw calls
     // Distant floating islands around the isles zone.
     const isleMat = this.M.grass, rockMat = this.M.rock;
     for (let i = 0; i < 40; i++) {
@@ -312,7 +332,7 @@ export class Scene3D {
       const g = new THREE.Group(); g.add(top, under);
       if (Math.random() < 0.6) { const t = new THREE.Mesh(new THREE.IcosahedronGeometry(s * 0.3, 1), this.M.leaf); t.position.set(s * 0.3, s * 0.35, 0); g.add(t); }
       g.position.set(Math.cos(a) * r, y, Math.sin(a) * r);
-      this.scene.add(g);
+      far.push(g);
     }
     // Snowy peaks rising through the clouds around the ice zone.
     const peakMat = new THREE.MeshStandardMaterial({ color: "#8a98b0", roughness: 1, flatShading: true });
@@ -325,7 +345,7 @@ export class Scene3D {
       const g = new THREE.Group(); g.add(peak, cap);
       g.position.set(Math.cos(a) * r, 300 + h * 0.5 + R(0, 120), Math.sin(a) * r);
       g.rotation.y = R(0, 3);
-      this.scene.add(g);
+      far.push(g);
     }
     // Distant cranes on the construction site's skyline.
     for (let i = 0; i < 8; i++) {
@@ -335,8 +355,9 @@ export class Scene3D {
       const jib = new THREE.Mesh(new THREE.BoxGeometry(60, 2.5, 2.5), this.M.lattice); jib.position.set(18, 160, 0);
       g.add(mast, jib);
       g.position.set(Math.cos(a) * r, 0, Math.sin(a) * r); g.rotation.y = R(0, 6.28);
-      this.scene.add(g);
+      far.push(g);
     }
+    this.mergeStatic(far);
     // Aurora ribbons over the ice zone.
     this.auroraU = { time: { value: 0 }, strength: { value: 0 } };
     const aMat = new THREE.ShaderMaterial({
@@ -349,12 +370,32 @@ export class Scene3D {
           gl_FragColor = vec4(c * band * strength, band * strength); }`,
     });
     for (let i = 0; i < 3; i++) {
-      const geo = new THREE.PlaneGeometry(1600, 260, 60, 1);
+      const geo = new THREE.PlaneGeometry(900, 160, 60, 1);
       const pos = geo.attributes.position;
-      for (let k = 0; k < pos.count; k++) pos.setZ(k, Math.sin(pos.getX(k) * 0.004 + i) * 200);
+      for (let k = 0; k < pos.count; k++) pos.setZ(k, Math.sin(pos.getX(k) * 0.007 + i) * 110);
       const mesh = new THREE.Mesh(geo, aMat);
-      mesh.position.set(R(-300, 300), 760 + i * 50, -900 + i * 120);
+      mesh.position.set(R(-200, 200), 770 + i * 40, -420 + i * 60);
       mesh.rotation.y = R(-0.4, 0.4);
+      this.scene.add(mesh);
+    }
+  }
+
+  // Bake groups of meshes into one mesh per material.
+  mergeStatic(groups) {
+    const byMat = new Map();
+    for (const g of groups) {
+      g.updateMatrixWorld(true);
+      g.traverse((o) => {
+        if (!o.isMesh) return;
+        let geo = o.geometry.clone().applyMatrix4(o.matrixWorld);
+        if (geo.index) geo = geo.toNonIndexed();
+        if (!byMat.has(o.material)) byMat.set(o.material, []);
+        byMat.get(o.material).push(geo);
+      });
+    }
+    for (const [mat, geos] of byMat) {
+      const mesh = new THREE.Mesh(mergeGeometries(geos, false), mat);
+      for (const g of geos) g.dispose();
       this.scene.add(mesh);
     }
   }
@@ -413,13 +454,15 @@ export class Scene3D {
     u.top.value.copy(A.top); u.hor.value.copy(A.hor); u.bot.value.copy(A.bot); u.sunCol.value.copy(A.sun);
     u.stars.value = A.stars; u.time.value = this.time; u.planet.value = THREE.MathUtils.smoothstep(focus.y, 700, 820);
     const el = THREE.MathUtils.degToRad(A.sunEl), az = THREE.MathUtils.degToRad(A.sunAz);
-    const dir = new THREE.Vector3(Math.cos(el) * Math.sin(az), Math.sin(el), Math.cos(el) * Math.cos(az));
+    const dir = this._dir.set(Math.cos(el) * Math.sin(az), Math.sin(el), Math.cos(el) * Math.cos(az));
     u.sunDir.value.copy(dir);
     this.sky.position.copy(camera.position);
     this.scene.fog.color.copy(A.hor).lerp(A.top, 0.15);
     this.scene.fog.density = A.fog;
+    const far = Math.max(250, Math.min(5000, 2.4 / A.fog));
+    if (Math.abs(camera.far - far) > 10) { camera.far = far; camera.updateProjectionMatrix(); }
     // Keep the sun's shadow box around the climber.
-    const lightDir = new THREE.Vector3(dir.x, Math.max(dir.y, 0.35), dir.z).normalize();
+    const lightDir = this._ld.set(dir.x, Math.max(dir.y, 0.35), dir.z).normalize();
     this.sun.position.set(focus.x + lightDir.x * 100, focus.y + lightDir.y * 100, focus.z + lightDir.z * 100);
     this.sun.target.position.copy(focus);
     this.sun.color.copy(A.sun);
@@ -437,8 +480,8 @@ export class Scene3D {
       this.rainData.forEach((r, i) => {
         r[1] -= dt * 28;
         if (r[1] < -20) r[1] += 40;
-        const x = cp.x + r[0], y = cp.y + r[1], z = cp.z + r[2];
-        pos.set([x, y, z, x + 0.05, y + 0.9, z], i * 6);
+        const x = cp.x + r[0], y = cp.y + r[1], z = cp.z + r[2], k = i * 6;
+        pos[k] = x; pos[k + 1] = y; pos[k + 2] = z; pos[k + 3] = x + 0.05; pos[k + 4] = y + 0.9; pos[k + 5] = z;
       });
       this.rain.geometry.attributes.position.needsUpdate = true;
       this.rain.material.opacity = 0.35 * A.rain;
@@ -449,7 +492,8 @@ export class Scene3D {
       this.snowData.forEach((s, i) => {
         s[1] -= dt * 1.6;
         if (s[1] < -15) s[1] += 30;
-        pos.set([cp.x + s[0] + Math.sin(this.time + s[3]) * 0.6, cp.y + s[1], cp.z + s[2] + Math.cos(this.time * 0.7 + s[3]) * 0.6], i * 3);
+        const k = i * 3;
+        pos[k] = cp.x + s[0] + Math.sin(this.time + s[3]) * 0.6; pos[k + 1] = cp.y + s[1]; pos[k + 2] = cp.z + s[2] + Math.cos(this.time * 0.7 + s[3]) * 0.6;
       });
       this.snow.geometry.attributes.position.needsUpdate = true;
       this.snow.material.opacity = 0.9 * A.snow;

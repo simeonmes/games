@@ -17,6 +17,8 @@ const $ = (id) => document.getElementById(id);
 const SAVE_KEY = "skyward.save.v1", SETTINGS_KEY = "skyward.settings.v1";
 const STEP = 1 / 120;
 const touchDevice = matchMedia("(pointer: coarse)").matches;
+// Chromebooks, phones and small laptops have modest graphics chips: start them on Medium.
+const modestDevice = touchDevice || /CrOS/.test(navigator.userAgent) || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
 
 const fmtTime = (t) => {
   const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = Math.floor(t % 60);
@@ -32,7 +34,7 @@ const Game = {
     this.loadSettings();
     this.loadSave();
     const canvas = $("view");
-    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: this.settings.quality !== "low", powerPreference: "high-performance" });
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: this.settings.quality === "high", powerPreference: "high-performance" });
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -40,8 +42,11 @@ const Game = {
 
     this.course = buildCourse();
     this.world = new World(this.course);
-    this.M = makeMaterials();
-    this.view = new Scene3D(this.renderer, this.course, this.M);
+    // On Low, simpler lighting maths for every surface (decided when the page loads).
+    this.M = makeMaterials(this.settings.quality === "low");
+    this.resScale = 1;
+    this.perf = { t: 0, frames: 0, slow: 0 };
+    this.view = new Scene3D(this.renderer, this.course, this.M, { cheap: this.settings.quality === "low" });
     this.topCollider = this.course.colliders[this.course.route[this.course.route.length - 1]];
 
     this.climber = new Climber();
@@ -89,7 +94,7 @@ const Game = {
   // ------------------------------------------------------------------ settings and save
 
   loadSettings() {
-    const def = { quality: touchDevice ? "medium" : "high", sens: 1, invertY: false, fov: 70, easy: false, music: 0.5, sfx: 0.8, timer: true };
+    const def = { quality: modestDevice ? "medium" : "high", autoQuality: true, sens: 1, invertY: false, fov: 70, easy: false, music: 0.5, sfx: 0.8, timer: true };
     try { this.settings = Object.assign(def, JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}")); } catch (e) { this.settings = def; }
   },
   writeSettings() { try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(this.settings)); } catch (e) { /* ignore */ } },
@@ -117,9 +122,10 @@ const Game = {
   applySettings() {
     const st = this.settings;
     const q = st.quality;
-    this.pixelRatio = Math.min(devicePixelRatio || 1, q === "high" ? 2 : q === "medium" ? 1.5 : 1);
-    this.renderer.setPixelRatio(this.pixelRatio);
+    this.pixelRatio = Math.min(devicePixelRatio || 1, q === "high" ? 2 : q === "medium" ? 1.25 : 1);
+    this.renderer.shadowMap.type = q === "high" ? THREE.PCFSoftShadowMap : THREE.PCFShadowMap;
     this.view.setShadows(q === "high" ? 2048 : q === "medium" ? 1024 : 0);
+    this.view.setDetail(q === "low");
     this.useBloom = q === "high";
     this.camera.fov = st.fov;
     this.camera.updateProjectionMatrix();
@@ -134,8 +140,9 @@ const Game = {
 
   resize() {
     const w = innerWidth, h = innerHeight;
+    this.renderer.setPixelRatio(this.pixelRatio * this.resScale);
     this.renderer.setSize(w, h, false);
-    this.composer.setPixelRatio(this.pixelRatio);
+    this.composer.setPixelRatio(this.pixelRatio * this.resScale);
     this.composer.setSize(w, h);
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
@@ -220,13 +227,16 @@ const Game = {
     this.settingsFrom = from;
     const st = this.settings;
     $("sQuality").value = st.quality; $("sSens").value = st.sens; $("sInvert").checked = st.invertY; $("sFov").value = st.fov;
+    $("sAuto").checked = st.autoQuality !== false;
     $("sEasy").checked = st.easy; $("sMusic").value = st.music; $("sSfx").value = st.sfx; $("sTimer").checked = st.timer;
     this.show("settings");
   },
 
   closeSettings() {
     const st = this.settings;
+    if (st.quality !== $("sQuality").value) this.resScale = 1;
     st.quality = $("sQuality").value; st.sens = +$("sSens").value; st.invertY = $("sInvert").checked; st.fov = +$("sFov").value;
+    st.autoQuality = $("sAuto").checked;
     st.easy = $("sEasy").checked; st.music = +$("sMusic").value; st.sfx = +$("sSfx").value; st.timer = $("sTimer").checked;
     this.writeSettings();
     this.applySettings();
@@ -392,9 +402,38 @@ const Game = {
     this.camera.lookAt(st.x * 0.4, st.y + 30, st.z * 0.4);
   },
 
+  // Keep it smooth: if frames are slow, draw at a lower resolution; if that's not
+  // enough, turn the graphics setting down a step. Speeds back up when there's room.
+  adapt(raw) {
+    const pf = this.perf;
+    if (this.state !== "play" || raw > 0.25) { pf.t = 0; pf.frames = 0; return; }
+    pf.t += raw; pf.frames++;
+    if (pf.t < 1.5) return;
+    const fps = pf.frames / pf.t;
+    pf.t = 0; pf.frames = 0;
+    if (!this.settings.autoQuality) return;
+    const minScale = 0.55;
+    if (fps < 45) {
+      if (this.resScale > minScale) { this.resScale = Math.max(minScale, this.resScale * 0.85); this.resize(); }
+      else if (++pf.slow >= 2 && this.settings.quality !== "low") {
+        pf.slow = 0;
+        this.settings.quality = this.settings.quality === "high" ? "medium" : "low";
+        this.resScale = 0.8;
+        this.writeSettings();
+        this.applySettings();
+        this.toast(`Graphics set to ${this.settings.quality} for smoother play`);
+      }
+    } else if (fps > 57) {
+      pf.slow = 0;
+      if (this.resScale < 1) { this.resScale = Math.min(1, this.resScale * 1.07); this.resize(); }
+    }
+  },
+
   frame(now) {
-    const dt = Math.min(0.05, (now - this.last) / 1000);
+    const raw = (now - this.last) / 1000;
+    const dt = Math.min(0.05, raw);
     this.last = now;
+    this.adapt(raw);
     const p = this.player;
     let inp = null;
     if (this.state === "play") {
@@ -437,7 +476,8 @@ const Game = {
     this.climber.animate(dt, this.state === "title" ? "idle" : st, sp, p.vy);
     if (st === "run" && Math.floor(before / Math.PI) !== Math.floor(this.climber.phase / Math.PI)) Audio.play({ type: "step", soft: p.ground && /grass|snow|dirt|sofa/.test(p.ground.m || "") });
 
-    this.view.update(dt, this.camera, this.state === "title" ? new THREE.Vector3(this.course.start.x, this.course.start.y, this.course.start.z) : r.position);
+    if (!this._startV) this._startV = new THREE.Vector3(this.course.start.x, this.course.start.y, this.course.start.z);
+    this.view.update(dt, this.camera, this.state === "title" ? this._startV : r.position);
     Audio.update({ y: p.y, vy: p.vy, zone: this.state === "title" ? "slums" : zoneAt(p.y).id, rain: this.view.A ? this.view.A.rain : 0, zip: !!p.zip });
     if (this.state === "play" || this.state === "paused") this.hud();
 
@@ -450,13 +490,16 @@ const Game = {
     const p = this.player, s = this.save;
     const h = Math.max(0, Math.floor(p.y));
     if (h !== this._h) { this._h = h; $("hudHeight").textContent = h + " m"; }
-    $("hudBar").style.height = Math.min(100, (Math.max(0, p.y) / TOP_Y) * 100) + "%";
-    $("hudBest").style.bottom = Math.min(100, (s.best / TOP_Y) * 100) + "%";
+    // Only touch the page when something actually changed (cheaper on slow machines).
+    const bar = Math.round(Math.min(100, (Math.max(0, p.y) / TOP_Y) * 100) * 4) / 4, best = Math.round(Math.min(100, (s.best / TOP_Y) * 100) * 4) / 4;
+    if (bar !== this._bar) { this._bar = bar; $("hudBar").style.height = bar + "%"; }
+    if (best !== this._best) { this._best = best; $("hudBest").style.bottom = best + "%"; }
     const z = zoneAt(p.y).name;
     if (z !== this._z) { this._z = z; $("hudZone").textContent = z; }
-    $("hudTimer").textContent = fmtTime(s.time);
-    $("hudFalls").textContent = `Falls ${s.falls}`;
-    $("hudDucks").textContent = `🦆 ${s.ducks.length}/${this.ducks.length}`;
+    const tm = fmtTime(s.time);
+    if (tm !== this._tm) { this._tm = tm; $("hudTimer").textContent = tm; }
+    const info = s.falls + "|" + s.ducks.length;
+    if (info !== this._info) { this._info = info; $("hudFalls").textContent = `Falls ${s.falls}`; $("hudDucks").textContent = `🦆 ${s.ducks.length}/${this.ducks.length}`; }
   },
 };
 

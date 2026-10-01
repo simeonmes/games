@@ -257,17 +257,22 @@ function foil() {
 
 // ------------------------------------------------------------------------------ the set
 
-export function makeMaterials() {
+// cheap: simpler lighting (Lambert instead of physically based), for slow computers.
+export function makeMaterials(cheap = false) {
   const M = {};
   const std = (name, map, o = {}) => {
-    const m = new THREE.MeshStandardMaterial({ map: map ? tex(map) : null, roughness: 0.85, metalness: 0, ...o.p });
+    let m;
+    if (cheap) {
+      const { roughness, metalness, ...rest } = o.p || {};
+      m = new THREE.MeshLambertMaterial({ map: map ? tex(map) : null, ...rest });
+    } else m = new THREE.MeshStandardMaterial({ map: map ? tex(map) : null, roughness: 0.85, metalness: 0, ...o.p });
     if (o.color) m.color = new THREE.Color(o.color);
     m.userData.tm = o.tm || 2;
     M[name] = m;
     return m;
   };
   const glow = (name, color, intensity = 2.2) => {
-    M[name] = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: intensity, roughness: 0.4 });
+    M[name] = cheap ? new THREE.MeshLambertMaterial({ color, emissive: color, emissiveIntensity: intensity }) : new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: intensity, roughness: 0.4 });
     M[name].userData.tm = 1;
   };
 
