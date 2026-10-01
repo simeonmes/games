@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1a0f08">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Moto X3M — fan tribute</title>
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="menu" class="screen">
+  <div class="card">
+    <div class="logo">
+      <span class="t1">MOTO <b>X3M</b></span>
+      <span class="fan">unofficial fan tribute</span>
+    </div>
+    <div class="total" id="totalStars"></div>
+
+    <div class="label">Levels</div>
+    <div id="levels" class="levels"></div>
+
+    <div class="label">Bike</div>
+    <div id="bikes" class="bikes"></div>
+
+    <details class="howto">
+      <summary>How to play</summary>
+      <div class="cols">
+        <div>
+          <h4>Keyboard</h4>
+          <p><kbd>↑</kbd> or <kbd>W</kbd> gas</p>
+          <p><kbd>↓</kbd> or <kbd>S</kbd> brake (hold when stopped to reverse)</p>
+          <p><kbd>←</kbd> or <kbd>A</kbd> lean back · <kbd>→</kbd> or <kbd>D</kbd> lean forward</p>
+          <p><kbd>R</kbd> restart level · <kbd>Esc</kbd> pause · <kbd>M</kbd> sound</p>
+          <p>Menus: arrow keys to move, <kbd>Enter</kbd> to pick. No mouse needed.</p>
+        </div>
+        <div>
+          <h4>Touch &amp; gamepad</h4>
+          <p>Touch: ◀ ▶ lean on the left, ▼ brake and ▲ gas on the right.</p>
+          <p>Gamepad: RT or A gas, LT or B brake, stick or d-pad to lean, Start to pause.</p>
+        </div>
+        <div>
+          <h4>Tips</h4>
+          <p>Land on both wheels. If your helmet touches anything, you crash and go back to the last checkpoint, but the clock keeps running.</p>
+          <p>Every full flip you land takes <b>0.5 s</b> off your time.</p>
+          <p>Beat the star times for up to 3 stars per level. Stars unlock faster bikes.</p>
+          <p>Saws and spikes are deadly, TNT blows up, and cracked planks fall soon after you touch them.</p>
+        </div>
+      </div>
+    </details>
+
+    <div class="foot">
+      <a class="link" href="../index.html">← All games</a>
+      <button id="mute" class="link">Sound: On</button>
+      <span>Fan-made tribute. Not affiliated with MadPuffers.</span>
+    </div>
+  </div>
+</div>
+
+<div id="pause" class="screen hidden">
+  <div class="card small">
+    <h2>PAUSED</h2>
+    <button id="resume" class="play">RESUME</button>
+    <button id="restart" class="secondary">Restart level <kbd>R</kbd></button>
+    <button id="quit" class="secondary">Level select</button>
+  </div>
+</div>
+
+<div id="results" class="screen hidden">
+  <div class="card small">
+    <h2 id="resTitle">LEVEL COMPLETE</h2>
+    <div id="resStars" class="bigstars"></div>
+    <div class="restime" id="resTime"></div>
+    <div class="resline" id="resBest"></div>
+    <div class="resline" id="resInfo"></div>
+    <div class="resline unlock" id="resUnlock"></div>
+    <button id="next" class="play">NEXT LEVEL</button>
+    <button id="retry" class="secondary">Retry <kbd>R</kbd></button>
+    <button id="toLevels" class="secondary">Level select <kbd>Esc</kbd></button>
+  </div>
+</div>
+
+<div id="rotate" class="rotate"><div>↻</div>Turn your phone sideways to play</div>
+
+<script src="js/input.js?v=1"></script>
+<script src="js/audio.js?v=1"></script>
+<script src="js/sim.js?v=1"></script>
+<script src="js/levels.js?v=1"></script>
+<script src="js/autopilot.js?v=1"></script>
+<script src="js/render.js?v=1"></script>
+<script src="js/main.js?v=1"></script>
+</body>
+</html>
