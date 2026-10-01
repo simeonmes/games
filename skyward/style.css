@@ -1,0 +1,66 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #121a36; color: #f4f2ff; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-user-select: none; user-select: none; touch-action: none; }
+#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+.hidden { display: none !important; }
+
+#loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(#121a36, #4a2a4a); z-index: 50; }
+.logo, h1 { font-weight: 900; letter-spacing: 0.18em; }
+.logo { font-size: 48px; }
+
+/* Menus */
+.screen { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(8, 10, 24, 0.35); z-index: 20; padding: 16px; }
+.panel { background: rgba(14, 16, 34, 0.82); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 18px; padding: 26px 28px; width: min(460px, 100%); max-height: 100%; overflow: auto; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45); }
+.titlePanel { text-align: center; background: rgba(14, 16, 34, 0.55); }
+#title { background: linear-gradient(transparent 40%, rgba(8, 10, 24, 0.5)); align-items: flex-end; padding-bottom: 6vh; }
+h1 { font-size: clamp(38px, 8vw, 66px); letter-spacing: 0.12em; margin: 0 -0.12em 0 0; background: linear-gradient(#fff, #ffc890); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 4px 30px rgba(255, 160, 100, 0.25); }
+h2 { margin: 0 0 6px; }
+.tag { margin: 0 0 8px; opacity: 0.85; }
+.home { align-self: flex-start; color: #cfc8ff; text-decoration: none; font-size: 14px; opacity: 0.8; }
+button { font: inherit; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 12px 16px; cursor: pointer; transition: transform 0.1s, background 0.2s; }
+button:hover { background: rgba(255, 255, 255, 0.22); }
+button:active { transform: scale(0.97); }
+button.big { background: linear-gradient(#ff9a5a, #e8603a); border: none; font-size: 20px; padding: 14px; box-shadow: 0 6px 20px rgba(232, 96, 58, 0.4); }
+button.ghost { background: transparent; }
+button.small { padding: 8px 12px; font-size: 14px; flex: 1; }
+.row { display: flex; gap: 8px; }
+.stats { line-height: 1.6; margin: 4px 0 0; }
+.stats:empty { display: none; }
+.note { font-size: 12px; opacity: 0.6; margin: 6px 0 0; }
+label { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; }
+label input[type="range"] { flex: 1; max-width: 200px; }
+select { font: inherit; padding: 6px; border-radius: 8px; background: #22263e; color: #fff; border: 1px solid #444a6a; }
+.keys { border-collapse: collapse; font-size: 14px; }
+.keys td { padding: 5px 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; }
+.keys td:first-child { font-weight: 700; white-space: nowrap; color: #ffc890; }
+.tips { font-size: 14px; line-height: 1.5; padding-left: 18px; margin: 4px 0; }
+
+/* HUD */
+#hud { position: fixed; top: calc(14px + env(safe-area-inset-top)); left: calc(14px + env(safe-area-inset-left)); display: flex; gap: 12px; pointer-events: none; z-index: 5; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); }
+.meter { position: relative; width: 8px; height: 150px; border-radius: 4px; background: rgba(255, 255, 255, 0.18); overflow: visible; }
+#hudBar { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(#ffe0a0, #ff8a4a); border-radius: 4px; }
+#hudBest { position: absolute; left: -4px; width: 16px; height: 2px; background: #fff; box-shadow: 0 0 6px #fff; }
+#hudHeight { font-size: 42px; font-weight: 900; line-height: 1; letter-spacing: 0.02em; }
+#hudZone { font-size: 14px; opacity: 0.85; margin-top: 2px; }
+.hudRow { display: flex; gap: 12px; font-size: 13px; opacity: 0.85; margin-top: 6px; }
+.hint { font-size: 12px; opacity: 0.6; margin-top: 4px; }
+#toast { position: fixed; left: 50%; top: 24%; transform: translateX(-50%); font-size: 22px; font-weight: 800; opacity: 0; pointer-events: none; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7); z-index: 6; white-space: nowrap; }
+#toast.big { font-size: 34px; }
+#toast.show { animation: toast 2.4s ease-out; }
+@keyframes toast { 0% { opacity: 0; transform: translate(-50%, 10px); } 10%, 70% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; } }
+#banner { position: fixed; left: 0; right: 0; top: 36%; text-align: center; opacity: 0; pointer-events: none; z-index: 6; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6); }
+#bannerName { font-size: clamp(30px, 6vw, 56px); font-weight: 900; letter-spacing: 0.08em; }
+#bannerSub { font-size: 18px; opacity: 0.8; letter-spacing: 0.3em; }
+#banner.show { animation: banner 4.5s ease-out; }
+@keyframes banner { 0% { opacity: 0; letter-spacing: 0.3em; } 15%, 70% { opacity: 1; letter-spacing: 0.08em; } 100% { opacity: 0; } }
+
+/* Touch */
+#touch { position: fixed; inset: 0; z-index: 4; }
+#touchPad { position: absolute; inset: 0; }
+#stick { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.08); left: 40px; bottom: 60px; pointer-events: none; opacity: 0.5; }
+#stick.on { opacity: 1; }
+#knob { position: absolute; left: 30px; top: 30px; width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.55); }
+#btnJump, #btnSprint { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.18); border: 2px solid rgba(255, 255, 255, 0.4); font-size: 15px; }
+#btnJump { right: calc(28px + env(safe-area-inset-right)); bottom: calc(40px + env(safe-area-inset-bottom)); width: 92px; height: 92px; }
+#btnSprint { right: calc(132px + env(safe-area-inset-right)); bottom: calc(30px + env(safe-area-inset-bottom)); width: 66px; height: 66px; font-size: 12px; }
+#btnJump.down, #btnSprint.down { background: rgba(255, 160, 90, 0.55); }
+@media (max-width: 600px) { #hudHeight { font-size: 30px; } .meter { height: 100px; } }

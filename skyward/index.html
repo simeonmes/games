@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#121a36">
+<title>Skyward</title>
+<link rel="stylesheet" href="style.css?v=1">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div id="loading"><div class="logo">SKYWARD</div><p>Building the climb…</p></div>
+
+<!-- In-game HUD -->
+<div id="hud" class="hidden">
+  <div class="meter"><div id="hudBar"></div><div id="hudBest" title="Your best height"></div></div>
+  <div class="hudMain">
+    <div id="hudHeight">0 m</div>
+    <div id="hudZone"></div>
+    <div class="hudRow"><span id="hudTimer"></span><span id="hudFalls"></span><span id="hudDucks"></span></div>
+    <div id="cpHint" class="hint">R / △ — back to checkpoint</div>
+  </div>
+</div>
+<div id="toast"></div>
+<div id="banner"><div id="bannerName"></div><div id="bannerSub"></div></div>
+
+<!-- Touch controls -->
+<div id="touch" class="hidden">
+  <div id="touchPad"></div>
+  <div id="stick"><div id="knob"></div></div>
+  <button id="btnSprint">Sprint</button>
+  <button id="btnJump">Jump</button>
+</div>
+
+<!-- Title -->
+<div id="title" class="screen hidden">
+  <div class="panel titlePanel">
+    <a class="home" href="../index.html">← All games</a>
+    <h1>SKYWARD</h1>
+    <p class="tag">One climb. No checkpoints. How high can you go?</p>
+    <button id="playBtn" class="big">Start climbing</button>
+    <button id="newBtn" class="ghost">New climb</button>
+    <div class="row">
+      <button class="small openSettings" data-from="title">Settings</button>
+      <button id="helpBtn" class="small">How to play</button>
+    </div>
+    <p id="titleStats" class="stats"></p>
+    <p class="note">A fan-made game inspired by <i>Only Up!</i> — an original world, built in code.</p>
+  </div>
+</div>
+
+<!-- How to play -->
+<div id="help" class="screen hidden">
+  <div class="panel">
+    <h2>How to play</h2>
+    <table class="keys">
+      <tr><td>Move</td><td>W A S D / arrows · left stick · joystick (left side)</td></tr>
+      <tr><td>Look</td><td>Mouse (click the game first) · right stick · drag on the right side</td></tr>
+      <tr><td>Jump</td><td>Space · A / ✕ · Jump button</td></tr>
+      <tr><td>Sprint</td><td>Shift · bumpers / triggers · push the joystick all the way, or Sprint</td></tr>
+      <tr><td>Zoom</td><td>Mouse wheel</td></tr>
+      <tr><td>Pause</td><td>Esc · Start</td></tr>
+    </table>
+    <ul class="tips">
+      <li>Jump at a ledge that's a bit too high and you'll grab it and pull yourself up.</li>
+      <li>Mushrooms bounce you high. Fans blow you up into the sky. Grab zip lines by jumping into them.</li>
+      <li>Ice is slippery, cardboard and cracked ice crumble, conveyor belts drag you, and wind gusts push you.</li>
+      <li>In space, gravity is weaker: you'll jump much further.</li>
+      <li>There are 12 rubber ducks hidden just off the path.</li>
+      <li>Too hard? Turn on <b>Easy mode</b> in Settings for checkpoints.</li>
+    </ul>
+    <button id="helpBack">Back</button>
+  </div>
+</div>
+
+<!-- Pause -->
+<div id="pause" class="screen hidden">
+  <div class="panel">
+    <h2>Paused</h2>
+    <button id="resumeBtn" class="big">Resume</button>
+    <button id="cpBtn" class="ghost easyOnly">Back to checkpoint</button>
+    <button class="openSettings" data-from="pause">Settings</button>
+    <button id="menuBtn" class="ghost">Main menu</button>
+  </div>
+</div>
+
+<!-- Settings -->
+<div id="settings" class="screen hidden">
+  <div class="panel">
+    <h2>Settings</h2>
+    <label>Graphics <select id="sQuality"><option value="high">High (shadows + glow)</option><option value="medium">Medium</option><option value="low">Low (fastest)</option></select></label>
+    <label>Look sensitivity <input type="range" id="sSens" min="0.3" max="2.5" step="0.1"></label>
+    <label><input type="checkbox" id="sInvert"> Invert up/down look</label>
+    <label>Field of view <input type="range" id="sFov" min="55" max="95" step="1"></label>
+    <label><input type="checkbox" id="sEasy"> Easy mode: checkpoint flags (R / △ to go back)</label>
+    <label><input type="checkbox" id="sTimer"> Show timer</label>
+    <label>Music <input type="range" id="sMusic" min="0" max="1" step="0.05"></label>
+    <label>Sounds <input type="range" id="sSfx" min="0" max="1" step="0.05"></label>
+    <button id="setBack">Done</button>
+  </div>
+</div>
+
+<!-- The top -->
+<div id="end" class="screen hidden">
+  <div class="panel">
+    <h2 id="endTitle">You made it to the top.</h2>
+    <p id="endStats" class="stats"></p>
+    <button id="endKeep" class="big">Keep exploring</button>
+    <button id="endMenu" class="ghost">Main menu</button>
+  </div>
+</div>
+
+<script type="module" src="js/main.js?v=1"></script>
+</body>
+</html>
