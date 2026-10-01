@@ -323,10 +323,12 @@ class Car {
         desired = clamp(wrapAngle(Math.atan2(inp.aim.y, inp.aim.x) - this.ang) * 10, -P.AIR_ROT_MAX, P.AIR_ROT_MAX);
       } else if (Math.abs(inp.sy) > 0.25) {
         // Pitch like Rocket League: down tilts the nose up (toward the roof), up tilts
-        // it down, whichever way the car is facing or rolled.
+        // it down, whichever way the car is facing or rolled. Keyboard flips this
+        // (W = nose up) through inp.pitch.
         const n = this.nose(), u = this.up();
         const noseUpDir = Math.sign(n.x * u.y - n.y * u.x) || 1;
-        desired = clamp(inp.sy, -1, 1) * noseUpDir * P.AIR_ROT_MAX;
+        const pitch = inp.pitch !== undefined ? inp.pitch : inp.sy;
+        desired = clamp(pitch, -1, 1) * noseUpDir * P.AIR_ROT_MAX;
       } else if (Math.abs(inp.sx) > 0.25) {
         // Left/right points the nose that way.
         desired = clamp(wrapAngle(Math.atan2(0, inp.sx) - this.ang) * 10, -P.AIR_ROT_MAX, P.AIR_ROT_MAX);

@@ -62,6 +62,7 @@ const Input = (() => {
     if (sx && sy) { sx *= Math.SQRT1_2; sy *= Math.SQRT1_2; }
     return {
       sx, sy,
+      pitch: -sy, // in the air W tilts the nose up, S tilts it down
       jump: consumeTap(map.jump) || any(map.jump),
       boost: any(map.boost),
       rollL: any(map.rollL) || anyLatched(map.left),
@@ -209,8 +210,9 @@ const Input = (() => {
   function merge(a, b) {
     if (!b) return a;
     const useB = Math.hypot(b.sx, b.sy) > Math.hypot(a.sx, a.sy);
+    const w = useB ? b : a;
     return {
-      sx: useB ? b.sx : a.sx, sy: useB ? b.sy : a.sy,
+      sx: w.sx, sy: w.sy, pitch: w.pitch,
       jump: a.jump || b.jump, boost: a.boost || b.boost,
       rollL: a.rollL || b.rollL, rollR: a.rollR || b.rollR,
     };
