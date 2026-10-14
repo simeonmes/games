@@ -6,6 +6,8 @@
 // Changing the number starts every player over: saves under an older key are thrown away.
 const SAVE_VERSION = 3;
 const SAVE_KEY = "packrips-fan-v" + SAVE_VERSION;
+const ACCOUNTS_KEY = "packrips-accounts-v" + SAVE_VERSION; // which accounts exist, which one is playing, and the sound setting
+const accountKey = (id) => SAVE_KEY + ":" + id; // each account's game is saved under its own key
 const START_CASH = 10; // all the money there is: it cannot be topped up
 const DAILY = Sim.PACKS[0]; // one of these is free every day
 const RECENT = 40; // pulls remembered for the showroom
@@ -24,7 +26,7 @@ const cents = (v) => Math.round(v * 100) / 100; // keeps the balance free of flo
 const pct = (chance) => parseFloat((100 * chance).toFixed(1)) + "%";
 const today = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
 
-const game = {
+const fresh = () => ({
   cash: START_CASH,
   spent: 0, // on packs
   sold: 0, // from selling cards
@@ -39,19 +41,44 @@ const game = {
   pack: DAILY.id, // the pack in the middle of the carousel
   view: "packs",
   binderSet: "", // "" shows every card owned
-};
+});
+const game = fresh();
+let accounts = { current: "", made: 0, list: [] }; // list: { id, name }; made counts every account ever started, for names
 let rip = null; // the pack being opened: { pack, cost, pulls, i, stage }, each pull with a `done` of "sold" or "vault"
 let look = null; // the collection card on screen: { set, n, variant }
 let styleDraft = null; // the style picked on the pack-style sheet, before Apply
 
 // ------------------------------------------------------------------ saves
 
+function readJSON(key) {
+  try { return JSON.parse(localStorage.getItem(key) || "null"); } catch (_) { return null; }
+}
+
+function writeAccounts() {
+  try { localStorage.setItem(ACCOUNTS_KEY, JSON.stringify({ ...accounts, muted: Sound.muted })); } catch (_) { /* storage unavailable */ }
+}
+
 function loadSave() {
-  let s = null;
-  try {
-    for (let v = 1; v < SAVE_VERSION; v++) localStorage.removeItem("packrips-fan-v" + v);
-    s = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
-  } catch (_) { /* storage unavailable */ }
+  try { for (let v = 1; v < SAVE_VERSION; v++) localStorage.removeItem("packrips-fan-v" + v); } catch (_) { /* storage unavailable */ }
+  const a = readJSON(ACCOUNTS_KEY);
+  if (a && Array.isArray(a.list) && a.list.some((x) => x.id === a.current)) {
+    accounts = { current: a.current, made: a.made || a.list.length, list: a.list };
+    Sound.setMuted(!!a.muted);
+  } else {
+    // First run, or a save from before accounts: whatever was there becomes Account 1.
+    accounts = { current: "a1", made: 1, list: [{ id: "a1", name: "Account 1" }] };
+    const old = readJSON(SAVE_KEY);
+    if (old) {
+      Sound.setMuted(!!old.muted);
+      try { localStorage.setItem(accountKey("a1"), JSON.stringify(old)); localStorage.removeItem(SAVE_KEY); } catch (_) { /* storage unavailable */ }
+    }
+    writeAccounts();
+  }
+  applySave(readJSON(accountKey(accounts.current)));
+}
+
+function applySave(s) {
+  Object.assign(game, fresh(), { view: game.view });
   if (!s || s.v !== SAVE_VERSION) return;
   for (const k of ["cash", "spent", "sold", "pulled", "free"]) if (typeof s[k] === "number" && isFinite(s[k])) game[k] = s[k];
   for (const k of ["packs", "owned", "styles"]) if (s[k] && typeof s[k] === "object") game[k] = s[k];
@@ -60,13 +87,12 @@ function loadSave() {
   if (typeof s.daily === "string") game.daily = s.daily;
   if (Sim.packById[s.pack]) game.pack = s.pack;
   if (SETS[s.binderSet]) game.binderSet = s.binderSet;
-  Sound.setMuted(!!s.muted);
 }
 
 function writeSave() {
   const { cash, spent, sold, pulled, packs, free, best, recent, owned, daily, styles, pack, binderSet } = game;
   try {
-    localStorage.setItem(SAVE_KEY, JSON.stringify({ v: SAVE_VERSION, cash, spent, sold, pulled, packs, free, best, recent, owned, daily, styles, pack, binderSet, muted: Sound.muted }));
+    localStorage.setItem(accountKey(accounts.current), JSON.stringify({ v: SAVE_VERSION, cash, spent, sold, pulled, packs, free, best, recent, owned, daily, styles, pack, binderSet }));
   } catch (_) { /* storage unavailable */ }
 }
 
@@ -98,9 +124,10 @@ function sellCard(setId, n, variant) {
 }
 
 // Every printing held of a set: { set, card, variant, count, value of one copy }.
-function holdings(setId) {
+// `owned` is the playing account's unless another account's is passed.
+function holdings(setId, owned = game.owned) {
   const out = [];
-  for (const [key, count] of Object.entries(game.owned[setId] || {})) {
+  for (const [key, count] of Object.entries(owned[setId] || {})) {
     const [n, variant] = key.split("|");
     const card = cardOf(setId, n);
     if (card && card.p[variant] != null) out.push({ set: SETS[setId], card, variant, count, value: card.p[variant] });
@@ -108,7 +135,7 @@ function holdings(setId) {
   return out;
 }
 
-const allHoldings = () => Object.keys(game.owned).flatMap(holdings);
+const allHoldings = (owned = game.owned) => Object.keys(owned).flatMap((id) => holdings(id, owned));
 const worth = (held) => held.reduce((sum, h) => sum + h.count * h.value, 0);
 const uniqueCards = (setId) => new Set(holdings(setId).map((h) => h.card.n)).size;
 
@@ -251,7 +278,7 @@ function buy(pack, free) {
   } else {
     if (game.cash < pack.price) {
       const have = allHoldings().length;
-      return toast(have ? "Not enough money. Sell cards from your collection." : dailyReady() ? "Not enough money. Claim your free daily pack in Rewards." : "Not enough money. Your next free pack comes tomorrow.");
+      return toast(have ? "Not enough money. Sell cards from your collection." : dailyReady() ? "Not enough money. Claim your free daily pack in Rewards." : "Not enough money. Your next free pack comes tomorrow, or start a new account.");
     }
     game.cash = cents(game.cash - pack.price);
     game.spent = cents(game.spent + pack.price);
@@ -576,7 +603,7 @@ function renderAccount() {
   const held = worth(allHoldings()), net = game.cash + held - START_CASH;
   const stat = (v, label) => `<div class="stat"><b>${v}</b><span>${label}</span></div>`;
   $("account").innerHTML = `<h1>Account</h1>
-    <div class="stat big"><b class="${net >= 0 ? "pos" : "neg"}">${signed(net)}</b><span>You started with ${money(START_CASH)} and now hold ${money(game.cash + held)} in cash and cards. The balance cannot be topped up.</span></div>
+    <div class="stat big"><b class="${net >= 0 ? "pos" : "neg"}">${signed(net)}</b><span>You started with ${money(START_CASH)} and now hold ${money(game.cash + held)} in cash and cards. The balance cannot be topped up, but you can start a new account below and keep this one.</span></div>
     <div class="stats">
       ${stat(money(game.cash), "balance")}
       ${stat(money(held), "cards in your vault")}
@@ -585,6 +612,11 @@ function renderAccount() {
       ${stat(money(game.pulled), "market value pulled")}
       ${stat(money(game.sold), "from selling cards")}
     </div>
+    <h3>Accounts</h3>
+    <div class="accts">${accounts.list.map(acctRow).join("")}</div>
+    <div class="tools">
+      <button class="chip" data-act="newacct">+ New account · ${money(START_CASH)}</button>
+    </div>
     <div class="tools">
       <button class="chip" data-act="mute">${Sound.muted ? "🔇 Sound off" : "🔊 Sound on"}</button>
       <a class="chip" href="../index.html">‹ Back to Games</a>
@@ -592,6 +624,72 @@ function renderAccount() {
     <p class="fine">Play money only: nothing here can be bought, sold or cashed out. The catalogue holds ${Sim.count().toLocaleString("en-US")} card printings from ${SET_IDS.length} sets, priced on ${esc(window.PACK_DATA.priced)}.
     Unofficial fan project, not affiliated with, endorsed or sponsored by Nintendo, The Pokémon Company, Game Freak, Creatures or any pack-opening app.
     Card images and price snapshots come from <a href="https://tcgdex.dev" target="_blank" rel="noopener">TCGdex</a>.</p>`;
+}
+
+// Each account keeps its own money, cards, stats and daily pack. Starting a new one never touches the others.
+
+function acctRow(a) {
+  const on = a.id === accounts.current;
+  const s = on ? game : readJSON(accountKey(a.id)) || {};
+  const cash = typeof s.cash === "number" ? s.cash : START_CASH;
+  const total = cash + worth(allHoldings(s.owned || {}));
+  return `<div class="acct${on ? " on" : ""}">
+    <div><b>${esc(a.name)}</b><span class="dim">${money(cash)} cash · ${money(total)} total</span></div>
+    <button class="round" data-act="renameacct" data-id="${a.id}" title="Rename">✎</button>
+    ${on ? `<span class="tag">Playing</span>` : `<button class="chip" data-act="switchacct" data-id="${a.id}">Play</button>`}
+  </div>`;
+}
+
+function switchAccount(id) {
+  writeSave();
+  accounts.current = id;
+  writeAccounts();
+  applySave(readJSON(accountKey(id)));
+  if ($("rail")) $("packs").innerHTML = ""; // the carousel is rebuilt around this account's pack
+  closeModal();
+  show("account");
+}
+
+function newAccount() {
+  const id = "a" + ++accounts.made;
+  accounts.list.push({ id, name: "Account " + accounts.made });
+  switchAccount(id);
+  writeSave();
+  Sound.buy();
+  toast(`New account started with ${money(START_CASH)}. Your old one is saved.`);
+}
+
+function showRename(id) {
+  const a = accounts.list.find((x) => x.id === id);
+  const others = accounts.list.length > 1 && id !== accounts.current;
+  openModal(`<h2>Account</h2>
+    <p>Name</p>
+    <input id="acctName" class="field" maxlength="24" value="${esc(a.name)}">
+    <button class="buy" data-act="saveacct" data-id="${id}">Save</button>
+    ${others ? `<button class="chip danger wide" data-act="delacct" data-id="${id}">Delete this account</button>` : ""}`);
+  $("acctName").select();
+}
+
+function renameAccount(id) {
+  const name = $("acctName").value.trim();
+  if (name) accounts.list.find((x) => x.id === id).name = name;
+  writeAccounts();
+  closeModal();
+  renderAccount();
+}
+
+function deleteAccount(t) {
+  const id = t.dataset.id;
+  if (!t.dataset.sure) {
+    t.dataset.sure = "1";
+    t.textContent = "Tap again to delete it for good";
+    return;
+  }
+  accounts.list = accounts.list.filter((x) => x.id !== id);
+  try { localStorage.removeItem(accountKey(id)); } catch (_) { /* storage unavailable */ }
+  writeAccounts();
+  closeModal();
+  renderAccount();
 }
 
 // ------------------------------------------------------------------ input
@@ -619,7 +717,12 @@ const ACTIONS = {
   page(t) { rip.i += Number(t.dataset.d); renderRip(); },
   cinfo: showCardInfo,
   close: closeModal,
-  mute() { Sound.setMuted(!Sound.muted); writeSave(); renderAccount(); },
+  mute() { Sound.setMuted(!Sound.muted); writeAccounts(); renderAccount(); },
+  newacct: newAccount,
+  switchacct(t) { Sound.tap(); switchAccount(t.dataset.id); },
+  renameacct: (t) => showRename(t.dataset.id),
+  saveacct: (t) => renameAccount(t.dataset.id),
+  delacct: deleteAccount,
   card(t) { look = { set: t.dataset.set, n: t.dataset.n, variant: t.dataset.v }; renderLook(); },
   dupes: () => sellPage(true),
   sellall: () => sellPage(false),
@@ -640,6 +743,7 @@ document.addEventListener("change", (e) => {
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") return closeModal();
+  if (e.key === "Enter" && e.target.id === "acctName") return renameAccount(document.querySelector("[data-act=saveacct]").dataset.id);
   if (!$("modal").classList.contains("hidden")) return;
   if (wheel) {
     // Arrows turn the wheel a pack at a time; Enter or Space takes the one in front.

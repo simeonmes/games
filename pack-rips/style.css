@@ -378,6 +378,19 @@ main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
 .stat span { font-size: 13px; color: var(--muted); line-height: 1.4; }
 .stat.big b { font-size: 34px; }
 
+.accts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.acct { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+.acct.on { border-color: var(--orange); }
+.acct div { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.acct div b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.acct div span { font-size: 13px; font-variant-numeric: tabular-nums; }
+.acct .tag { padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; color: #fff; background: var(--orange); }
+.field {
+  display: block; width: 100%; margin-bottom: 14px; padding: 12px 14px; border-radius: 12px; font: inherit; font-size: 16px; color: var(--ink);
+  background: #0d1011; border: 1px solid var(--line);
+}
+.chip.wide { display: block; width: 100%; margin-top: 10px; }
+
 .toast {
   position: fixed; left: 50%; bottom: 96px; z-index: 40; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
   max-width: min(440px, 90vw); padding: 11px 20px; border-radius: 999px; font-weight: 700; font-size: 14px; text-align: center;
