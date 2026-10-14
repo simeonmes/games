@@ -1,12 +1,13 @@
 "use strict";
-// Game flow: the pack carousel, pack styles, opening a pack and selling or vaulting its
-// card, the showroom, the collection, the daily reward, the account page and saves.
+// Game flow: the pack carousel, pack styles, buying a pack, choosing one off the wheel,
+// ripping it open and selling or vaulting its card, the showroom, the collection, the daily reward, the account page and saves.
 // All money here is play money.
 
 const SAVE_KEY = "packrips-fan-v2";
 const START_CASH = 10; // all the money there is: it cannot be topped up
 const DAILY = Sim.PACKS[0]; // one of these is free every day
 const RECENT = 40; // pulls remembered for the showroom
+const FLIP_AT = 760; // ms into a card's reveal when it turns face up; style.css times the same moment
 
 const SETS = Sim.setup(window.PACK_DATA);
 const SET_IDS = Object.keys(SETS);
@@ -37,7 +38,7 @@ const game = {
   view: "packs",
   binderSet: "", // "" shows every card owned
 };
-let rip = null; // the pack being opened: { pack, cost, pulls, i }, each pull with a `done` of "sold" or "vault"
+let rip = null; // the pack being opened: { pack, cost, pulls, i, stage }, each pull with a `done` of "sold" or "vault"
 let look = null; // the collection card on screen: { set, n, variant }
 let styleDraft = null; // the style picked on the pack-style sheet, before Apply
 
@@ -178,7 +179,7 @@ function onRail() {
       const d = Math.abs(slot.offsetLeft + slot.offsetWidth / 2 - mid);
       if (d < gap) { gap = d; best = slot; }
     }
-    if (best && best.dataset.pack !== game.pack) { game.pack = best.dataset.pack; renderInfo(); }
+    if (best && best.dataset.pack !== game.pack) { game.pack = best.dataset.pack; Sound.tick(); renderInfo(); }
   });
 }
 
@@ -266,25 +267,125 @@ function buy(pack, free) {
   writeSave();
   updateWallet();
   rip = { pack, cost, pulls, i: 0 };
+  Sound.buy();
   $("rip").classList.remove("hidden");
-  $("rip").innerHTML = `<button class="stage" data-act="reveal" title="Open">${packHTML(pack)}</button>`;
-  Sound.tear();
-  const mine = rip;
-  setTimeout(() => { if (rip === mine && $("rip").querySelector(".stage")) reveal(); }, 1500); // unless tapped meanwhile
+  showWheel();
 }
 
-function reveal() {
-  if (!rip || !$("rip").querySelector(".stage")) return;
-  renderRip();
-  Sound.flip();
-  Sound.hit(Math.max(...rip.pulls.map((p) => p.rank)));
+// ---- step 1: the wheel. Every pack on it is the one just bought; the player spins it
+// and taps the one to open.
+
+const WHEEL = 8, STEP = 360 / WHEEL, DRIFT = 0.22; // packs on the wheel, degrees between them, idle degrees per frame
+let wheel = null; // { angle, vel, drag, moved, step, target }
+
+function showWheel() {
+  const packs = Array.from({ length: WHEEL }, (_, k) => `<button class="wp" data-act="choose" data-k="${k}" style="--k:${k}">${packHTML(rip.pack)}</button>`);
+  $("rip").innerHTML = `<div class="step"><h2>Choose your pack</h2>
+    <div class="scene" id="scene" data-act="front"><div class="ring" id="ring">${packs.join("")}</div></div>
+    <p class="hint">Spin the wheel, then tap the pack you want</p></div>`;
+  wheel = { angle: 0, vel: 6, drag: null, moved: 0, step: 0, target: null };
+  requestAnimationFrame(spin);
 }
+
+function spin() {
+  const w = wheel, ring = $("ring");
+  if (!w || !ring) return;
+  if (w.target != null) {
+    // Bring the chosen pack round to the front, then move on.
+    const d = w.target - w.angle;
+    w.angle += d * 0.16;
+    if (Math.abs(d) < 0.5) { wheel = null; return showTear(); }
+  } else if (!w.drag) {
+    w.angle += w.vel;
+    w.vel += (DRIFT - w.vel) * 0.04; // a flick dies down to a slow drift
+  }
+  const step = Math.round(w.angle / STEP);
+  if (step !== w.step) { w.step = step; Sound.tick(); }
+  ring.style.transform = `translateZ(calc(var(--r) * -1)) rotateY(${w.angle}deg)`;
+  // Packs dim as they turn away from the front.
+  for (const wp of ring.children) {
+    const facing = Math.cos(((wp.dataset.k * STEP + w.angle) * Math.PI) / 180);
+    wp.style.filter = `brightness(${0.3 + 0.7 * Math.max(0, facing)})`;
+  }
+  requestAnimationFrame(spin);
+}
+
+const frontPack = () => ((Math.round(-wheel.angle / STEP) % WHEEL) + WHEEL) % WHEEL;
+
+function choose(k) {
+  const w = wheel;
+  if (!w || w.target != null || w.moved > 8) return; // the end of a drag is not a tap
+  w.target = -k * STEP + 360 * Math.round((w.angle + k * STEP) / 360);
+  Sound.pick();
+}
+
+// ---- step 2: tearing the chosen pack open, with a swipe across its top or a tap.
+
+let tearing = null; // { x, width, p } while a finger is on the pack
+
+function showTear() {
+  rip.stage = "tear";
+  const pack = packHTML(rip.pack);
+  $("rip").innerHTML = `<div class="step"><h2>Rip it open</h2>
+    <div class="tpack" id="tpack"><span class="tp top">${pack}</span><span class="tp body">${pack}</span><i class="cut"></i></div>
+    <p class="hint">Swipe across the top of the pack</p></div>`;
+}
+
+function ripOpen() {
+  const t = $("tpack");
+  if (!t || t.classList.contains("ripped")) return;
+  t.style.setProperty("--p", 1);
+  t.classList.add("ripped");
+  Sound.tear();
+  const mine = rip;
+  setTimeout(() => { if (rip === mine) renderRip(); }, 520);
+}
+
+document.addEventListener("pointerdown", (e) => {
+  if (wheel && e.target.closest("#scene")) {
+    wheel.drag = { x: e.clientX, angle: wheel.angle, last: e.clientX };
+    wheel.moved = 0;
+    wheel.vel = 0;
+  }
+  const t = e.target.closest("#tpack");
+  if (t && !t.classList.contains("ripped")) tearing = { x: e.clientX, width: t.offsetWidth, p: 0 };
+});
+
+document.addEventListener("pointermove", (e) => {
+  if (wheel && wheel.drag && wheel.target == null) {
+    const d = wheel.drag;
+    wheel.angle = d.angle + (e.clientX - d.x) * 0.45;
+    wheel.vel = (e.clientX - d.last) * 0.45;
+    wheel.moved = Math.max(wheel.moved, Math.abs(e.clientX - d.x));
+    d.last = e.clientX;
+  }
+  if (tearing && $("tpack")) {
+    const p = Math.min(1, Math.abs(e.clientX - tearing.x) / (tearing.width * 0.75));
+    if (Math.floor(p * 8) !== Math.floor(tearing.p * 8)) Sound.scratch();
+    tearing.p = p;
+    $("tpack").style.setProperty("--p", p);
+    if (p >= 1) { tearing = null; ripOpen(); }
+  }
+});
+
+for (const type of ["pointerup", "pointercancel"]) {
+  document.addEventListener(type, () => {
+    if (wheel) wheel.drag = null;
+    if (!tearing) return;
+    // A tap rips the pack too; a swipe that stops short springs back.
+    const p = tearing.p;
+    tearing = null;
+    if (p < 0.04 || p > 0.55) ripOpen(); else if ($("tpack")) $("tpack").style.setProperty("--p", 0);
+  });
+}
+
+// ---- step 3: the card.
 
 // The card screen, shared by a pack's cards and by cards opened from the collection.
 function cardScreen(c) {
-  return `<div class="cs">
+  return `<div class="cs${c.intro ? " intro" : ""}">
     <div class="cs-top"><button class="round" data-act="back" title="Back">←</button>${c.bonus ? `<span class="bonus">BONUS CARD</span>` : ""}<button class="round" data-act="cinfo" title="About this card">i</button></div>
-    <div class="cs-card g-${c.color || "none"}">${cardImg(c.card, "high")}</div>
+    <div class="cs-card"><i class="rays"></i><i class="burst"></i><div class="flipper"><span class="cback"></span>${cardImg(c.card, "high")}</div></div>
     ${c.pager || ""}
     <div class="cs-val">${money(c.value)}</div>
     <div class="cs-name">${esc(c.card.name)} #${esc(c.card.n)}</div>
@@ -293,11 +394,22 @@ function cardScreen(c) {
   </div>`;
 }
 
+// A card's first showing plays the reveal: it rises face down while the screen takes on
+// the colour of its payout range, then turns over.
 function renderRip() {
   const p = rip.pulls[rip.i], n = rip.pulls.length, diff = p.value - rip.cost;
+  const intro = !p.seen;
+  p.seen = true;
+  rip.stage = "card";
+  $("rip").dataset.bg = p.color;
+  if (intro) {
+    const mine = rip, at = rip.i;
+    Sound.swell(p.rank);
+    setTimeout(() => { if (rip === mine && rip.i === at) { Sound.flip(); Sound.hit(p.rank); } }, FLIP_AT);
+  }
   const note = p.bonus ? "A bonus card on top of your pull" : rip.cost ? `<span class="${diff >= 0 ? "pos" : "neg"}">${signed(diff)}</span> against the ${short(rip.cost)} pack` : "From your free daily pack";
   const pager = n > 1 ? `<div class="pager"><button data-act="page" data-d="-1"${rip.i ? "" : " disabled"}>‹</button><span>${rip.i + 1} / ${n}</span><button data-act="page" data-d="1"${rip.i < n - 1 ? "" : " disabled"}>›</button></div>` : "";
-  $("rip").innerHTML = cardScreen({ ...p, pager, note, keep: "Vault", done: p.done === "sold" ? `Sold for ${money(p.value)}` : p.done ? "In your vault" : "" });
+  $("rip").innerHTML = cardScreen({ ...p, intro, pager, note, keep: "Vault", done: p.done === "sold" ? `Sold for ${money(p.value)}` : p.done ? "In your vault" : "" });
 }
 
 // Sell or vault the card on screen, then move to the pack's next undecided card.
@@ -325,6 +437,8 @@ function settle(sell) {
 // Leaving a pack keeps whatever was not sold.
 function closeRip() {
   rip = null;
+  wheel = null;
+  delete $("rip").dataset.bg;
   $("rip").classList.add("hidden");
   $("rip").innerHTML = "";
   show(game.view);
@@ -336,6 +450,7 @@ function renderLook() {
   const card = cardOf(look.set, look.n), n = copies(look.set, look.n, look.variant);
   if (!card || !n) return closeLook();
   $("rip").classList.remove("hidden");
+  delete $("rip").dataset.bg;
   $("rip").innerHTML = cardScreen({ card, value: card.p[look.variant], note: `${esc(SETS[look.set].name)} · ${Sim.PRINTING[look.variant]}${n > 1 ? ` · ×${n} in your vault` : ""}`, keep: "Keep" });
 }
 
@@ -477,11 +592,11 @@ function renderAccount() {
 // ------------------------------------------------------------------ input
 
 const ACTIONS = {
-  view: (t) => show(t.dataset.view),
-  pick: (t) => pick(t.dataset.pack),
+  view(t) { Sound.tap(); show(t.dataset.view); },
+  pick(t) { if (t.dataset.pack !== game.pack) Sound.tick(); pick(t.dataset.pack); },
   inside: showInside,
   style() { styleDraft = null; showStyle(); },
-  draft(t) { styleDraft = t.dataset.style; showStyle(); },
+  draft(t) { Sound.tap(); styleDraft = t.dataset.style; showStyle(); },
   apply() {
     if (styleDraft) game.styles[game.pack] = styleDraft;
     styleDraft = null;
@@ -491,7 +606,8 @@ const ACTIONS = {
   },
   buy: () => buy(Sim.packById[game.pack], false),
   daily: () => buy(DAILY, true),
-  reveal,
+  choose: (t) => choose(Number(t.dataset.k)),
+  front: () => choose(frontPack()), // a tap between packs takes the one in front
   sell: () => settle(true),
   vault: () => settle(false),
   back: () => (look ? closeLook() : closeRip()),
@@ -520,7 +636,13 @@ document.addEventListener("change", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") return closeModal();
   if (!$("modal").classList.contains("hidden")) return;
-  if (rip && $("rip").querySelector(".stage") && (e.key === " " || e.key === "Enter")) { e.preventDefault(); return reveal(); }
+  if (wheel) {
+    // Arrows turn the wheel a pack at a time; Enter or Space takes the one in front.
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") wheel.vel = e.key === "ArrowLeft" ? -4.3 : 4.3;
+    if (e.key === " " || e.key === "Enter") { e.preventDefault(); wheel.moved = 0; choose(frontPack()); }
+    return;
+  }
+  if (rip && rip.stage === "tear" && (e.key === " " || e.key === "Enter")) { e.preventDefault(); return ripOpen(); }
   if (rip || look || game.view !== "packs") return;
   if (e.key === "ArrowLeft") step(-1);
   if (e.key === "ArrowRight") step(1);
