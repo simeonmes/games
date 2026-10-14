@@ -3,7 +3,9 @@
 // ripping it open and selling or vaulting its card, the showroom, the collection, the daily reward, the account page and saves.
 // All money here is play money.
 
-const SAVE_KEY = "packrips-fan-v2";
+// Changing the number starts every player over: saves under an older key are thrown away.
+const SAVE_VERSION = 3;
+const SAVE_KEY = "packrips-fan-v" + SAVE_VERSION;
 const START_CASH = 10; // all the money there is: it cannot be topped up
 const DAILY = Sim.PACKS[0]; // one of these is free every day
 const RECENT = 40; // pulls remembered for the showroom
@@ -46,8 +48,11 @@ let styleDraft = null; // the style picked on the pack-style sheet, before Apply
 
 function loadSave() {
   let s = null;
-  try { s = JSON.parse(localStorage.getItem(SAVE_KEY) || "null"); } catch (_) { /* storage unavailable */ }
-  if (!s || s.v !== 2) return;
+  try {
+    for (let v = 1; v < SAVE_VERSION; v++) localStorage.removeItem("packrips-fan-v" + v);
+    s = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
+  } catch (_) { /* storage unavailable */ }
+  if (!s || s.v !== SAVE_VERSION) return;
   for (const k of ["cash", "spent", "sold", "pulled", "free"]) if (typeof s[k] === "number" && isFinite(s[k])) game[k] = s[k];
   for (const k of ["packs", "owned", "styles"]) if (s[k] && typeof s[k] === "object") game[k] = s[k];
   if (s.best && SETS[s.best.set]) game.best = s.best;
@@ -61,7 +66,7 @@ function loadSave() {
 function writeSave() {
   const { cash, spent, sold, pulled, packs, free, best, recent, owned, daily, styles, pack, binderSet } = game;
   try {
-    localStorage.setItem(SAVE_KEY, JSON.stringify({ v: 2, cash, spent, sold, pulled, packs, free, best, recent, owned, daily, styles, pack, binderSet, muted: Sound.muted }));
+    localStorage.setItem(SAVE_KEY, JSON.stringify({ v: SAVE_VERSION, cash, spent, sold, pulled, packs, free, best, recent, owned, daily, styles, pack, binderSet, muted: Sound.muted }));
   } catch (_) { /* storage unavailable */ }
 }
 
