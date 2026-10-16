@@ -197,7 +197,8 @@ const Gauge = (() => {
 
 // ---------- game state ----------
 
-let game = null;     // the dive in progress
+let game = null;     // the solo dive in progress
+let curRound = null; // the prompt on screen, solo or in a room
 let timerId = 0, countdownId = 0;
 
 function clearTimers() { clearInterval(timerId); clearInterval(countdownId); timerId = countdownId = 0; }
@@ -268,19 +269,28 @@ function headerHTML() {
 }
 
 function showPrompt() {
+  playRound({
+    pi: promptAt(game.idx), secs: ROUND_SECS, header: headerHTML(),
+    label: game.mode === "daily" ? `Prompt ${game.idx + 1} of ${DAILY_COUNT}` : `Prompt ${game.idx + 1}`,
+    onResolve: soloResolve,
+  });
+}
+
+// Puts a prompt on screen with its timer and answer box. When an answer is accepted or time
+// runs out, calls onResolve(hit, typed, round) with hit null on a timeout.
+function playRound({ pi, secs, header, label, onResolve }) {
   clearTimers();
-  const pi = promptAt(game.idx);
   const bank = bankFor(pi);
-  const round = { pi, bank, left: ROUND_SECS, tried: new Set(), wrong: [], over: false, endsAt: 0 };
-  game.round = round;
+  const round = { pi, bank, secs, tried: new Set(), wrong: [], over: false, endsAt: 0, onResolve };
+  curRound = round;
   screen.className = "play";
   screen.innerHTML = `
-    ${headerHTML()}
+    ${header}
     <div class="card prompt-card">
       <div class="timer"><div class="bar"></div></div>
-      <div class="q-num">${game.mode === "daily" ? `Prompt ${game.idx + 1} of ${DAILY_COUNT}` : `Prompt ${game.idx + 1}`}</div>
+      <div class="q-num">${label}</div>
       <h2 class="q">${esc(PROMPTS[pi][0])}</h2>
-      <div class="clock"><span id="secs">${ROUND_SECS}</span><small>s</small></div>
+      <div class="clock"><span id="secs">${secs}</span><small>s</small></div>
       <form id="ansForm" autocomplete="off">
         <input id="ans" type="text" maxlength="60" placeholder="Type an answer…" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="Your answer">
         <button type="submit" class="btn dive">Dive</button>
@@ -293,15 +303,14 @@ function showPrompt() {
   input.addEventListener("input", () => Sound.play("key"));
   $("#ansForm").addEventListener("submit", e => { e.preventDefault(); guess(input.value); });
 
-  round.endsAt = performance.now() + ROUND_SECS * 1000;
-  let lastSec = ROUND_SECS;
+  round.endsAt = performance.now() + secs * 1000;
+  let lastSec = secs;
   timerId = setInterval(() => {
     const left = Math.max(0, (round.endsAt - performance.now()) / 1000);
-    round.left = left;
     const sec = Math.ceil(left);
     const bar = screen.querySelector(".timer .bar");
     if (bar) {
-      bar.style.width = (left / ROUND_SECS * 100) + "%";
+      bar.style.width = (left / secs * 100) + "%";
       bar.classList.toggle("low", left <= 8);
       bar.classList.toggle("crit", left <= 5);
     }
@@ -311,7 +320,7 @@ function showPrompt() {
       if (s) { s.textContent = sec; s.parentNode.classList.toggle("crit", sec <= 5); }
       if (sec <= 5 && sec > 0) Sound.play("tick", sec <= 3);
     }
-    if (left <= 0) resolve(null, "");
+    if (left <= 0) endRound(null, "");
   }, 50);
 }
 
@@ -325,7 +334,7 @@ function feedback(msg, cls) {
 }
 
 function guess(raw) {
-  const r = game && game.round;
+  const r = curRound;
   if (!r || r.over) return;
   const typed = raw.trim();
   const input = $("#ans");
@@ -338,7 +347,7 @@ function guess(raw) {
     return;
   }
   const hit = Match.find(r.bank, typed);
-  if (hit) return resolve(hit, typed);
+  if (hit) return endRound(hit, typed);
 
   r.tried.add(k);
   r.wrong.push(typed);
@@ -351,55 +360,70 @@ function guess(raw) {
   input.value = "";
 }
 
-function resolve(hit, typed) {
-  const r = game.round;
-  if (r.over) return;
+function endRound(hit, typed) {
+  const r = curRound;
+  if (!r || r.over) return;
   r.over = true;
   clearTimers();
+  Sound.play(hit ? "tier" : "timeout", hit && hit.tier);
+  if (hit && hit.tier === "k") { save.krillions++; persist(); }
+  r.onResolve(hit, typed, r);
+}
+
+// Swaps the answer box for the result area and returns that element.
+function revealArea(hit) {
+  const card = screen.querySelector(".prompt-card");
+  card.classList.add("revealed");
+  card.style.setProperty("--tier", hit ? TIERS[hit.tier].color : "#8a96b5");
+  const form = card.querySelector("form"), fb = $("#fb");
+  if (form) form.remove();
+  if (fb) fb.remove();
+  const box = document.createElement("div");
+  box.className = "reveal";
+  card.appendChild(box);
+  return box;
+}
+
+function badgeHTML(hit, typed, missText) {
+  if (!hit) return `<div class="badge none" style="--c:#8a96b5"><span class="tier-name">Out of air</span><span class="tier-pts">+0</span></div>
+    <div class="sink">${missText}</div>`;
+  const T = TIERS[hit.tier];
+  return `<div class="you">You said <b>${esc(typed)}</b>${Match.norm(typed) !== Match.norm(hit.shown) ? ` <span class="as">(${esc(hit.shown)})</span>` : ""}</div>
+    <div class="badge ${hit.tier === "k" ? "krill" : ""}" style="--c:${T.color}">
+      <span class="tier-name">${T.name}</span>
+      <span class="tier-pts">+${T.pts}</span>
+    </div>
+    <div class="sink">▼ ${fmt(T.pts * METRES_PER_PT)} m deeper</div>`;
+}
+
+// The prompt's rarest answer and a few deep cuts, so every round teaches something.
+function rarestHTML(bank, found) {
+  const rarest = bank.entries.find(e => e.tier === "k");
+  const deeps = bank.entries.filter(e => e.tier === "d" && !found.includes(e.shown));
+  const sample = shuffled(deeps.length, Math.random).slice(0, 3).map(i => deeps[i].shown);
+  return `<div class="rarest">
+    ${found.includes(rarest.shown) ? `<div>The one in a krillion was found: <b style="color:${TIERS.k.color}">${esc(rarest.shown)}</b></div>` :
+      `<div>The one in a krillion: <b style="color:${TIERS.k.color}">${esc(rarest.shown)}</b></div>`}
+    ${sample.length ? `<div class="cuts">Deep cuts: ${sample.map(esc).join(" · ")}</div>` : ""}
+  </div>`;
+}
+
+function soloResolve(hit, typed, r) {
   const pick = { pi: r.pi, ans: hit ? hit.shown : null, typed, tier: hit ? hit.tier : null };
   game.picks.push(pick);
   if (game.mode === "daily") persist();
   if (!hit && game.mode === "infinite") game.tanks--;
-  if (hit && hit.tier === "k") { save.krillions++; persist(); }
 
-  const pts = hit ? TIERS[hit.tier].pts : 0;
   const depth = totalPts(game.picks) * METRES_PER_PT;
   if (game.mode === "infinite") Gauge.setMax(Math.max(7000, Math.ceil((depth + 1500) / 1000) * 1000));
   Sea.set(depth);
-  Sound.play(hit ? "tier" : "timeout", hit && hit.tier);
-
-  const rarest = r.bank.entries.find(e => e.tier === "k");
-  const deeps = r.bank.entries.filter(e => e.tier === "d" && e !== hit);
-  const sample = shuffled(deeps.length, Math.random).slice(0, 3).map(i => deeps[i].shown);
   const last = game.mode === "daily" ? game.picks.length >= DAILY_COUNT : game.tanks <= 0;
-  const T = hit && TIERS[hit.tier];
 
-  const card = screen.querySelector(".prompt-card");
-  card.classList.add("revealed");
-  card.style.setProperty("--tier", T ? T.color : "#8a96b5");
-  card.querySelector("form").remove();
-  $("#fb").remove();
-  const box = document.createElement("div");
-  box.className = "reveal";
+  const box = revealArea(hit);
   box.innerHTML = `
-    ${hit ? `
-      <div class="you">You said <b>${esc(typed)}</b>${Match.norm(typed) !== Match.norm(hit.shown) ? ` <span class="as">(${esc(hit.shown)})</span>` : ""}</div>
-      <div class="badge ${hit.tier === "k" ? "krill" : ""}" style="--c:${T.color}">
-        <span class="tier-name">${T.name}</span>
-        <span class="tier-pts">+${T.pts}</span>
-      </div>
-      <div class="sink">▼ ${fmt(pts * METRES_PER_PT)} m deeper</div>
-    ` : `
-      <div class="badge none" style="--c:#8a96b5"><span class="tier-name">Out of air</span><span class="tier-pts">+0</span></div>
-      <div class="sink">${game.mode === "infinite" ? `Air tank lost · ${game.tanks} left` : "No points for this one"}</div>
-    `}
-    <div class="rarest">
-      ${hit && hit.tier === "k" ? `<div>You found the one in a krillion!</div>` :
-        `<div>The one in a krillion: <b style="color:${TIERS.k.color}">${esc(rarest.shown)}</b></div>`}
-      ${sample.length ? `<div class="cuts">Deep cuts: ${sample.map(esc).join(" · ")}</div>` : ""}
-    </div>
+    ${badgeHTML(hit, typed, game.mode === "infinite" ? `Air tank lost · ${game.tanks} left` : "No points for this one")}
+    ${rarestHTML(r.bank, hit ? [hit.shown] : [])}
     <button class="btn primary" id="next">${last ? "See results" : "Next prompt"} <kbd>↵</kbd></button>`;
-  card.appendChild(box);
   screen.querySelector(".hud").outerHTML = headerHTML();
   const next = $("#next");
   next.focus({ preventScroll: true });
@@ -550,6 +574,10 @@ function home() {
       <span class="i-title">Infinite Dive</span>
       <span class="i-sub">Endless prompts until three run out of air${save.bestInfinite ? ` · best ${fmt(save.bestInfinite * METRES_PER_PT)} m` : ""}</span>
     </button>
+    <button class="card infinite friends" id="friends">
+      <span class="i-title">Play with friends</span>
+      <span class="i-sub">Live rooms: share a code, dive the same prompts together and see everyone's answers</span>
+    </button>
     <div class="stats">
       <div><b>${streak}</b><span>Streak</span></div>
       <div><b>${fmt(save.bestDaily * METRES_PER_PT)}</b><span>Best (m)</span></div>
@@ -568,6 +596,7 @@ function home() {
     finish();
   });
   $("#infinite").addEventListener("click", () => { Sound.init(); startInfinite(); });
+  $("#friends").addEventListener("click", () => { Sound.init(); Sound.play("tap"); Room.open(); });
   $("#how").addEventListener("click", () => { Sound.init(); Sound.play("tap"); howTo(); });
   $("#mute").addEventListener("click", e => { Sound.init(); e.target.textContent = Sound.toggle() ? "Sound off" : "Sound on"; Sound.play("tap"); });
   if ($("#cd")) runCountdown($("#cd"));
@@ -586,6 +615,7 @@ function howTo() {
       <li>If your answer isn't in the bank, you lose <b>${WRONG_COST} seconds</b>, then try again.</li>
       <li>Your first accepted answer locks in. <b>Rarer answers score more.</b></li>
       <li>Every point takes you <b>${METRES_PER_PT} m</b> deeper. Seven perfect answers reach 7,000 m.</li>
+      <li>In a room with friends, an answer nobody else gave earns a <b>+15</b> bonus.</li>
     </ol>
     <div class="tier-table">${TIER_ORDER.map(t => `<div style="--c:${TIERS[t].color}"><span>${TIERS[t].name}</span><b>${TIERS[t].pts}</b></div>`).join("")}</div>
     <p class="small">“Too Clever” is for answers that are technically right but dodge the question, like <i>tomato</i> for a fruit.

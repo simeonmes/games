@@ -257,3 +257,80 @@ kbd { font: inherit; font-size: 12px; opacity: 0.7; border: 1px solid rgba(255, 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* ---------- rooms ---------- */
+.card.friends .i-title::after { content: " ⇄"; }
+.room-card { display: flex; flex-direction: column; gap: 14px; }
+.r-title { margin: 0; font-size: 28px; font-weight: 900; }
+.r-sub { margin: 0; color: var(--muted); line-height: 1.45; font-size: 15px; }
+.r-sub b { color: #ffd84a; }
+.field { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.field input, .join-row input {
+  font: inherit; font-size: 18px; font-weight: 700; color: var(--text); text-transform: none; letter-spacing: normal;
+  padding: 12px 14px; border-radius: 12px; border: 2px solid var(--glass-line); background: rgba(0, 8, 24, 0.55); outline: none; min-width: 0;
+}
+.field input:focus, .join-row input:focus { border-color: var(--sea); }
+.join-row { display: flex; gap: 8px; }
+.join-row input { flex: 1; text-transform: uppercase; letter-spacing: 8px; text-align: center; font-size: 24px; font-weight: 900; }
+.join-row input::placeholder { letter-spacing: 6px; color: var(--dim); }
+.or { display: flex; align-items: center; gap: 10px; color: var(--dim); font-size: 13px; }
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--glass-line); }
+.rerr { min-height: 20px; color: #ff8a8a; font-weight: 700; font-size: 14px; line-height: 1.4; }
+.rerr.info { color: var(--sea); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+
+.code-label { text-align: center; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+.code-big { display: flex; justify-content: center; gap: 8px; }
+.code-big span {
+  width: 58px; height: 70px; display: grid; place-items: center; border-radius: 14px;
+  font-size: 40px; font-weight: 900; background: rgba(0, 8, 24, 0.5); border: 2px solid var(--glass-line); color: var(--sea);
+}
+.plist-head { display: flex; justify-content: space-between; font-weight: 800; margin-top: 4px; }
+.plist-head span { color: var(--muted); font-weight: 600; }
+.plist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.plist li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: rgba(0, 8, 24, 0.35); animation: rise 0.3s ease; }
+.pn { font-weight: 700; flex: 1; overflow-wrap: anywhere; }
+.tag { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); color: var(--muted); }
+.tag.you { background: rgba(125, 251, 230, 0.15); color: var(--sea); }
+.pdot { width: 12px; height: 12px; border-radius: 50%; display: block; flex: none; border: 2px solid var(--c); background: transparent; transition: background 0.2s; }
+.pdot.done { background: var(--c); box-shadow: 0 0 8px color-mix(in srgb, var(--c) 60%, transparent); }
+.setting { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 700; }
+.seg { display: flex; border: 1px solid var(--glass-line); border-radius: 12px; overflow: hidden; }
+.seg button { border: 0; background: none; padding: 8px 16px; font-weight: 800; cursor: pointer; color: var(--muted); }
+.seg button.on { background: var(--sea); color: #04213a; }
+.hint { text-align: center; color: var(--muted); font-size: 14px; line-height: 1.4; }
+.wait-host::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--sea); animation: pulse 0.8s ease-in-out infinite alternate; vertical-align: middle; }
+.wait { color: var(--muted); font-size: 15px; line-height: 1.5; }
+
+.answers { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.answers li {
+  display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "dot name pills" "dot ans pills";
+  align-items: center; gap: 0 10px; padding: 10px 12px; border-radius: 12px; background: rgba(0, 8, 24, 0.35); animation: rise 0.35s ease backwards;
+}
+.answers li:nth-child(2) { animation-delay: 0.08s; } .answers li:nth-child(3) { animation-delay: 0.16s; } .answers li:nth-child(4) { animation-delay: 0.24s; }
+.answers li.me { outline: 1px solid rgba(125, 251, 230, 0.4); }
+.answers .pdot { grid-area: dot; }
+.an { grid-area: name; font-size: 12px; color: var(--muted); font-weight: 700; }
+.aa { grid-area: ans; font-weight: 800; font-size: 17px; overflow-wrap: anywhere; }
+.aa i { color: var(--dim); font-weight: 400; text-decoration: line-through; }
+.pills { grid-area: pills; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.pill.only { --c: #ffd84a; }
+.standings { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.standings li { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 10px; font-size: 14px; }
+.standings li.me { background: rgba(125, 251, 230, 0.08); }
+.rk { width: 18px; color: var(--dim); font-weight: 800; }
+.sn { flex: 1; font-weight: 700; overflow-wrap: anywhere; }
+.sd { font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.podium { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.podium li {
+  display: grid; grid-template-columns: 34px auto 1fr auto; grid-template-areas: "medal dot name depth" "medal dot best depth";
+  align-items: center; gap: 0 10px; padding: 12px 14px; border-radius: 14px; background: rgba(0, 8, 24, 0.35);
+}
+.podium li.me { outline: 1px solid rgba(125, 251, 230, 0.45); }
+.medal { grid-area: medal; font-size: 24px; text-align: center; font-weight: 900; color: var(--muted); }
+.podium .pdot { grid-area: dot; }
+.podium .pn { grid-area: name; font-size: 17px; }
+.pd { grid-area: depth; text-align: right; font-weight: 900; font-size: 18px; font-variant-numeric: tabular-nums; }
+.pd small { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+.pb { grid-area: best; font-size: 13px; color: var(--muted); }
