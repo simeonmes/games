@@ -537,3 +537,28 @@ const PROMPTS = [
     c: "the opening ceremony|closing ceremony|the torch relay|medal ceremony|eating contest|napping",
   }],
 ];
+
+// The small label shown above each prompt.
+const CATEGORIES = {
+  "Name a cheese": "Cuisine", "Name a fruit": "Cuisine", "Name a dog breed": "Animals", "Name a country in Africa": "Geography",
+  "Name a musical instrument": "Music", "Name a planet, moon or dwarf planet": "Space", "Name a bird": "Animals",
+  "Name a pasta shape": "Cuisine", "Name a chemical element": "Science", "Name a dinosaur": "Prehistory",
+  "Name a vegetable": "Cuisine", "Name a sport": "Sport", "Name a color": "Art", "Name a US state": "Geography",
+  "Name a capital city": "Geography", "Name a Greek god or goddess": "Mythology", "Name a flower": "Nature",
+  "Name a tree": "Nature", "Name an ocean creature": "The Sea", "Name a fish you can eat": "Cuisine",
+  "Name a board game": "Games", "Name a spice or herb": "Cuisine", "Name a gemstone": "Earth", "Name a mammal": "Animals",
+  "Name an insect": "Animals", "Name a car brand": "Machines", "Name a dessert": "Cuisine", "Name a breakfast food": "Cuisine",
+  "Name a Shakespeare play": "Literature", "Name a bone in the human body": "The Body", "Name something in a kitchen": "Home",
+  "Name a programming language": "Tech", "Name a superhero": "Comics", "Name a type of sandwich": "Cuisine",
+  "Name a famous painter": "Art", "Name a musical genre": "Music", "Name a mythical creature": "Mythology",
+  "Name a type of hat": "Fashion", "Name a type of weather": "Earth", "Name something you'd find at the beach": "Places",
+  "Name a Harry Potter character": "Books", "Name a Pokémon": "Games", "Name a word that rhymes with 'cat'": "Words",
+  "Name a word that starts with 'Z'": "Words", "Name a cut of beef": "Cuisine", "Name a famous scientist": "Science",
+  "Name an animal that lives in Australia": "Animals", "Name a candy": "Cuisine", "Name a NATO phonetic alphabet word": "Words",
+  "Name a Disney animated movie": "Film", "Name a type of nut": "Cuisine", "Name a unit of measurement": "Science",
+  "Name a cocktail": "Drinks", "Name a fabric": "Fashion", "Name a famous river": "Geography", "Name a martial art": "Sport",
+  "Name a famous composer": "Music", "Name a soup": "Cuisine", "Name a famous mountain": "Geography", "Name a card game": "Games",
+  "Name an organ in the human body": "The Body", "Name a type of bread": "Cuisine", "Name a famous ship": "History",
+  "Name a type of rock or mineral": "Earth", "Name an Olympic event": "Sport",
+};
+const categoryOf = pi => CATEGORIES[PROMPTS[pi][0]] || "Trivia";

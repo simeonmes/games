@@ -1,27 +1,33 @@
 "use strict";
-// Live rooms: one player hosts, friends join with a four-letter code, and everyone dives the
+// Live rooms: one player hosts, friends join with a six-digit code, and everyone dives the
 // same prompts at the same time over peer-to-peer connections (PeerJS; its free public server
 // only introduces the browsers to each other). The host's browser runs the room: it picks the
 // prompts, scores every answer itself and sends out the results. An answer nobody else in the
 // room gave earns a bonus.
 
 const Room = (() => {
-  const PROTO = 1;
-  const CODE_CHARS = "BCDFGHJKLMNPQRSTVWXZ";
+  const PROTO = 2;
   const ID_PREFIX = "krillion-room-";
-  const COLORS = ["#ff4f86", "#7dfbe6", "#ffd84a", "#63b7ff", "#b98cff", "#ff8a3d", "#45e0a0", "#ff9e9e"];
+  const COLORS = ["#ff4f86", "#7fe3f5", "#ffd23f", "#63b7ff", "#c79bff", "#ff8a3d", "#45e0a0", "#ff9e9e"];
   const MAX_PLAYERS = COLORS.length;
   const ONLY_YOU = 15;
   const GRACE = 3;          // seconds the host waits past the timer for slow connections
-  const COUNTS = [5, 7, 10];
+  const COUNTS = [5, 7, 10, 15];
+  const TIMES = [15, 20, 25, 30];
+  const ADJ = ["Salty", "Drifting", "Sunken", "Brine", "Coral", "Murky", "Tidal", "Glowing", "Bubbly", "Sleepy", "Rogue", "Lucky", "Deep", "Stormy", "Pearl", "Inky"];
+  const ANIMAL = ["Krill", "Squid", "Eel", "Urchin", "Otter", "Narwhal", "Puffer", "Walrus", "Shrimp", "Manta", "Seal", "Clam", "Lobster", "Gull", "Orca", "Octopus"];
 
   let peer = null, role = null, code = "", me = "", hostConn = null, leaving = false, joinTimer = 0;
   let H = null;             // host only: the room's real state
   let view = null;          // everyone: the latest room snapshot from the host
   let ui = "";              // which room screen is showing
   let roundI = -1;          // index of the prompt on screen
+  let picks = [];           // this player's results, for the progress squares
   let myName = "";
+  let createOpts = { count: 7, secs: ROUND_SECS };
   try { myName = localStorage.getItem("krillion.name") || ""; } catch (e) {}
+  const randomName = () => ADJ[Math.floor(Math.random() * ADJ.length)] + ANIMAL[Math.floor(Math.random() * ANIMAL.length)] + Math.floor(Math.random() * 90 + 10);
+  if (!myName) myName = randomName();
 
   const urlParam = k => new URLSearchParams(location.search).get(k);
 
@@ -51,63 +57,86 @@ const Room = (() => {
     return `${location.origin}${location.pathname}?room=${code}${extra}`;
   }
 
-  const newCode = () => Array.from({ length: 4 }, () => CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)]).join("");
-  const cleanCode = s => (s || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4);
+  const newCode = () => String(Math.floor(100000 + Math.random() * 900000));
+  const cleanCode = s => (s || "").replace(/\D/g, "").slice(0, 6);
   const meP = () => view && view.players.find(p => p.id === me);
 
   // ---------- connecting ----------
 
   function open(prefill) {
     clearTimers();
+    curRound = null;
+    onQuit = null;
     ui = "connect";
-    Sea.set(0);
+    Scene.banners(false);
+    Scene.set(0, true);
     screen.className = "room";
     const join = cleanCode(prefill);
     screen.innerHTML = `
-      <div class="card room-card">
-        <h2 class="r-title">Play with friends</h2>
-        <p class="r-sub">Everyone dives the same prompts at the same time. Answers nobody else in the room gave earn <b>+${ONLY_YOU}</b>.</p>
-        <label class="field"><span>Your name</span>
-          <input id="name" type="text" maxlength="16" placeholder="Diver" value="${esc(myName)}" autocomplete="off" spellcheck="false"></label>
-        ${join ? "" : `<button class="btn primary big" id="create">Create a room</button>
-        <div class="or"><span>or join a room</span></div>`}
-        <form id="joinForm" class="join-row" autocomplete="off">
-          <input id="code" type="text" maxlength="4" placeholder="CODE" value="${join}" autocapitalize="characters" spellcheck="false" aria-label="Room code">
-          <button class="btn ${join ? "primary" : ""}" type="submit" id="joinBtn">Join</button>
+      <div class="topbar"><span></span>${muteBtn()}</div>
+      <div class="panel room-panel">
+        <h2 class="rtitle">Dive together</h2>
+        <p class="rsub">Same prompts, same clock, one shared ocean. An answer nobody else in the room gave sinks you <b>+${ONLY_YOU}</b> further.</p>
+        <div class="namehead"><span>Your name</span><b>Your best: ${fmtM(bestDepth())}</b></div>
+        <div class="namerow">
+          <input id="name" type="text" maxlength="16" value="${esc(myName)}" autocomplete="off" spellcheck="false" aria-label="Your name">
+          <button class="nbtn" id="shuffle">Shuffle</button>
+        </div>
+        <div class="rcard ${join ? "" : "open"}" id="createCard">
+          <button class="rcard-head" id="createHead"><span><b>Create a room</b><small>Prompts per dive, time to guess</small></span><i>+</i></button>
+          <div class="rcard-body">
+            <div class="opt"><span>Prompts</span><div class="seg2 sm" id="optCount">${COUNTS.map(n => `<button data-v="${n}" class="${n === createOpts.count ? "on" : ""}">${n}</button>`).join("")}</div></div>
+            <div class="opt"><span>Seconds</span><div class="seg2 sm" id="optSecs">${TIMES.map(n => `<button data-v="${n}" class="${n === createOpts.secs ? "on" : ""}">${n}</button>`).join("")}</div></div>
+            <button class="pbtn" id="create">Create room ▶</button>
+          </div>
+        </div>
+        <div class="joinhead">Join a private room</div>
+        <form id="joinForm" class="joinrow" autocomplete="off">
+          <input id="code" type="text" inputmode="numeric" maxlength="6" placeholder="6-digit code" value="${join}" spellcheck="false" aria-label="Room code">
+          <button class="${join ? "pbtn" : "nbtn"}" type="submit" id="joinBtn">Join</button>
         </form>
         <div id="rerr" class="rerr" aria-live="polite"></div>
-      </div>
-      <button class="btn ghost" id="back">‹ Back</button>`;
+        <button class="nbtn wide" id="back">◀ Dive on your own</button>
+      </div>`;
     const nameIn = $("#name"), codeIn = $("#code");
     codeIn.addEventListener("input", () => { codeIn.value = cleanCode(codeIn.value); });
-    if ($("#create")) $("#create").addEventListener("click", () => { Sound.init(); create(); });
+    $("#shuffle").addEventListener("click", () => { Sound.play("tap"); nameIn.value = randomName(); takeName(); });
+    $("#createHead").addEventListener("click", () => { Sound.play("tap"); $("#createCard").classList.toggle("open"); });
+    const seg = (id, key) => $(id).querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      Sound.play("tap");
+      createOpts[key] = +b.dataset.v;
+      $(id).querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
+    }));
+    seg("#optCount", "count");
+    seg("#optSecs", "secs");
+    $("#create").addEventListener("click", () => { Sound.init(); create(); });
     $("#joinForm").addEventListener("submit", e => {
       e.preventDefault();
       Sound.init();
       const c = cleanCode(codeIn.value);
-      if (c.length !== 4) return error("Room codes are four letters.");
+      if (c.length !== 6) return error("Room codes are six digits.");
       joinRoom(c);
     });
-    $("#back").addEventListener("click", () => { cleanup(); home(); });
-    (join || myName ? (join ? $("#joinBtn") : $("#create")) : nameIn).focus();
+    $("#back").addEventListener("click", () => { Sound.play("tap"); cleanup(); home(); });
+    (join ? $("#joinBtn") : $("#create")).focus({ preventScroll: true });
   }
 
   function takeName() {
-    const n = ($("#name") && $("#name").value.trim()) || myName || `Diver ${Math.floor(Math.random() * 90 + 10)}`;
+    const n = ($("#name") && $("#name").value.trim()) || myName || randomName();
     myName = n.slice(0, 16);
     try { localStorage.setItem("krillion.name", myName); } catch (e) {}
     return myName;
   }
 
   function busy(msg) {
-    screen.querySelectorAll(".room-card button, .room-card input").forEach(b => { b.disabled = true; });
+    screen.querySelectorAll(".room-panel button, .room-panel input").forEach(b => { b.disabled = true; });
     const e = $("#rerr");
     if (e) { e.className = "rerr info"; e.textContent = msg; }
   }
 
   function error(msg) {
     if (!$("#rerr")) open(code);
-    screen.querySelectorAll(".room-card button, .room-card input").forEach(b => { b.disabled = false; });
+    screen.querySelectorAll(".room-panel button, .room-panel input").forEach(b => { b.disabled = false; });
     const e = $("#rerr");
     if (e) { e.className = "rerr"; e.textContent = msg; }
     Sound.play("wrong");
@@ -115,7 +144,7 @@ const Room = (() => {
 
   function errText(err) {
     const t = err && err.type;
-    if (t === "peer-unavailable") return `There's no room with code ${code}. Check the code with your host.`;
+    if (t === "peer-unavailable") return `There's no room ${code}. Check the code with your host.`;
     if (t === "browser-incompatible") return "This browser can't make peer-to-peer connections. Try Chrome, Edge, Firefox or Safari.";
     if (t === "network" || t === "server-error" || t === "socket-error" || t === "socket-closed")
       return "Couldn't reach the matchmaking server. Check your internet connection and try again.";
@@ -137,7 +166,7 @@ const Room = (() => {
       peer = p; role = "host"; me = id; leaving = false;
       H = {
         players: [{ id, name: myName, color: COLORS[0], score: 0, picks: [], conn: null }],
-        count: 7, phase: "lobby", prompts: [], i: -1, answers: {}, timer: 0, lastReveal: null,
+        count: createOpts.count, secs: createOpts.secs, phase: "lobby", prompts: [], i: -1, answers: {}, timer: 0, lastReveal: null,
       };
       p.on("connection", hostOnConn);
       history.replaceState(null, "", inviteLink());
@@ -194,7 +223,7 @@ const Room = (() => {
     clearTimeout(joinTimer);
     if (H) clearTimeout(H.timer);
     const p = peer;
-    peer = null; role = null; hostConn = null; H = null; view = null; ui = ""; roundI = -1;
+    peer = null; role = null; hostConn = null; H = null; view = null; ui = ""; roundI = -1; picks = [];
     if (p && !p.destroyed) { leaving = true; try { p.destroy(); } catch (e) {} }
     if (urlParam("room")) history.replaceState(null, "", location.pathname + (urlParam("peer") ? `?peer=${encodeURIComponent(urlParam("peer"))}` : ""));
   }
@@ -221,7 +250,7 @@ const Room = (() => {
 
   function snapshot() {
     return {
-      t: "room", code, phase: H.phase, i: H.i, total: H.prompts.length || H.count, count: H.count,
+      t: "room", code, phase: H.phase, i: H.i, total: H.prompts.length || H.count, count: H.count, secs: H.secs,
       players: H.players.map(p => ({ id: p.id, name: p.name, color: p.color, score: p.score, host: p.id === me, done: H.phase !== "prompt" || p.waiting || !!H.answers[p.id] })),
     };
   }
@@ -230,6 +259,7 @@ const Room = (() => {
     onMsg(msg);
   }
   const hostSync = () => broadcast(snapshot());
+  const allIn = () => H.players.every(p => p.waiting || H.answers[p.id]);
 
   function hostOnConn(conn) {
     conn.on("data", m => hostReceive(conn.peer, m, conn));
@@ -255,11 +285,11 @@ const Room = (() => {
       if (H.phase === "reveal" && H.lastReveal) conn.send(H.lastReveal);
     } else if (m.t === "answer") {
       if (H.phase !== "prompt" || m.i !== H.i || H.answers[id] || !H.players.some(p => p.id === id)) return;
-      H.answers[id] = { typed: String(m.typed || "").slice(0, 60) };
+      H.answers[id] = { typed: String(m.typed || "").slice(0, 60), how: m.how === "pass" ? "pass" : m.typed ? "hit" : "time" };
       hostSync();
       if (allIn()) {
         const i = H.i;
-        setTimeout(() => hostClose(i), 600);
+        setTimeout(() => hostClose(i), 900);
       }
     }
   }
@@ -272,8 +302,6 @@ const Room = (() => {
     hostSync();
     if (H.phase === "prompt" && allIn()) hostClose(H.i);
   }
-
-  const allIn = () => H.players.every(p => p.waiting || H.answers[p.id]);
 
   function hostStart() {
     H.prompts = shuffled(PROMPTS.length, Math.random).slice(0, H.count);
@@ -290,10 +318,10 @@ const Room = (() => {
     H.lastReveal = null;
     H.players.forEach(p => { p.waiting = false; });
     const i = H.i;
-    broadcast({ t: "prompt", i, pi: H.prompts[i], secs: ROUND_SECS, total: H.prompts.length });
+    broadcast({ t: "prompt", i, pi: H.prompts[i], secs: H.secs, total: H.prompts.length });
     hostSync();
     clearTimeout(H.timer);
-    H.timer = setTimeout(() => hostClose(i), (ROUND_SECS + GRACE) * 1000);
+    H.timer = setTimeout(() => hostClose(i), (COUNTDOWN + H.secs + GRACE) * 1000);
   }
 
   // Scores the prompt. The host checks every typed answer against the bank itself.
@@ -307,28 +335,27 @@ const Room = (() => {
       return a && a.typed ? Match.find(bank, a.typed) : null;
     });
     const rows = divers.map((p, n) => {
-      const hit = hits[n];
+      const hit = hits[n], a = H.answers[p.id];
       const others = hits.filter((h, m) => m !== n && h === hit).length;
       const pts = hit ? TIERS[hit.tier].pts : 0;
       const bonus = hit && divers.length > 1 && others === 0 ? ONLY_YOU : 0;
       p.score += pts + bonus;
       p.picks.push(hit ? { shown: hit.shown, tier: hit.tier } : null);
       return {
-        id: p.id, name: p.name, color: p.color, typed: H.answers[p.id] ? H.answers[p.id].typed : "",
-        shown: hit ? hit.shown : null, tier: hit ? hit.tier : null, pts, bonus, shared: hit ? others : 0,
+        id: p.id, name: p.name, color: p.color, typed: a ? a.typed : "", how: hit ? "hit" : a ? a.how : "time",
+        shown: hit ? hit.shown : null, tier: hit ? hit.tier : null, pts, bonus,
       };
     });
     H.phase = "reveal";
     H.lastReveal = { t: "reveal", i, pi, total: H.prompts.length, rows, last: i + 1 >= H.prompts.length };
-    hostSync();
+    hostSync();                 // scores reach everyone before the reveal that shows them
     broadcast(H.lastReveal);
   }
 
   function hostEnd() {
     H.phase = "end";
-    const order = TIER_ORDER;
     const players = H.players.slice().sort((a, b) => b.score - a.score).map(p => {
-      const best = p.picks.filter(Boolean).sort((a, b) => order.indexOf(b.tier) - order.indexOf(a.tier))[0] || null;
+      const best = p.picks.filter(Boolean).sort((a, b) => TIER_ORDER.indexOf(b.tier) - TIER_ORDER.indexOf(a.tier))[0] || null;
       return { id: p.id, name: p.name, color: p.color, score: p.score, best };
     });
     hostSync();
@@ -367,52 +394,44 @@ const Room = (() => {
     }
   }
 
-  function header() {
-    const p = meP();
-    const dots = view ? view.players.map(q => `<i class="pdot ${q.done ? "done" : ""}" style="--c:${q.color}" title="${esc(q.name)}${q.done ? " · locked in" : ""}"></i>`).join("") : "";
-    return `<div class="hud">
-      <div class="hud-l">Room <b>${code}</b></div>
-      <div class="hud-m">${dots}</div>
-      <div class="hud-r"><b>${fmt(p ? p.score : 0)}</b> pts</div>
-    </div>`;
+  const dotsHTML = () => view ? view.players.map(q => `<i class="pdot ${q.done ? "done" : ""}" style="--c:${q.color}" title="${esc(q.name)}"></i>`).join("") : "";
+
+  function hud(i, total) {
+    return hudHTML(squaresHTML(total, picks, i), `Room ${code} · ${Math.min(i + 1, total)} of ${total}`) +
+      `<div class="pstrip" id="pstrip">${dotsHTML()}</div>`;
   }
 
   function renderLobby() {
     ui = "lobby";
     clearTimers();
     curRound = null;
-    Sea.set(0);
+    onQuit = leave;
+    picks = [];
+    Scene.banners(false);
+    Scene.set(0, true);
     const isHost = role === "host";
     screen.className = "room";
     screen.innerHTML = `
-      <div class="card room-card">
-        <div class="code-label">Room code</div>
+      <div class="topbar"><span></span>${muteBtn()}</div>
+      <div class="panel room-panel">
+        <div class="codehead">Room code</div>
         <div class="code-big" aria-label="Room code ${code.split("").join(" ")}">${code.split("").map(ch => `<span>${ch}</span>`).join("")}</div>
-        <button class="btn" id="copyLink">Copy invite link</button>
-        <div class="plist-head">Divers <span>${view.players.length}/${MAX_PLAYERS}</span></div>
+        <button class="nbtn wide" id="copyLink">Copy invite link</button>
+        <div class="plisthead"><span>Divers</span><span>${view.players.length}/${MAX_PLAYERS}</span></div>
         <ul class="plist">${view.players.map(p => `
           <li><i class="pdot done" style="--c:${p.color}"></i><span class="pn">${esc(p.name)}</span>
             ${p.host ? `<span class="tag">Host</span>` : ""}${p.id === me ? `<span class="tag you">You</span>` : ""}</li>`).join("")}
         </ul>
+        <div class="rules">${view.count} prompts · ${view.secs}s each</div>
         ${isHost ? `
-          <div class="setting"><span>Prompts</span>
-            <div class="seg">${COUNTS.map(n => `<button data-n="${n}" class="${n === view.count ? "on" : ""}">${n}</button>`).join("")}</div>
-          </div>
-          <button class="btn primary big" id="start">Start dive</button>
+          <button class="pbtn big" id="start">▼ Start descent ▼</button>
           ${view.players.length < 2 ? `<div class="hint">Share the code so friends can join. You can also start on your own.</div>` : ""}`
-        : `<div class="hint wait-host">Waiting for the host to start · ${view.count} prompts</div>`}
-      </div>
-      <button class="btn ghost" id="leave">Leave room</button>`;
+        : `<div class="hint wait-host">Waiting for the host to start</div>`}
+        <button class="nbtn wide" id="leave">Leave room</button>
+      </div>`;
     $("#copyLink").addEventListener("click", () => copyInvite());
     $("#leave").addEventListener("click", () => { Sound.play("tap"); leave(); });
-    if (isHost) {
-      screen.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
-        Sound.play("tap");
-        H.count = +b.dataset.n;
-        hostSync();
-      }));
-      $("#start").addEventListener("click", () => { Sound.play("ping"); hostStart(); });
-    }
+    if (isHost) $("#start").addEventListener("click", () => { Sound.play("ping"); hostStart(); });
   }
 
   function copyInvite() {
@@ -430,30 +449,33 @@ const Room = (() => {
     ui = "waiting";
     clearTimers();
     curRound = null;
+    onQuit = leave;
     screen.className = "room";
     screen.innerHTML = `
-      ${header()}
-      <div class="card room-card">
-        <h2 class="r-title">You're in!</h2>
-        <p class="r-sub">A dive is already under way. You'll join at the next prompt.</p>
+      <div class="topbar"><span></span>${muteBtn()}</div>
+      <div class="panel room-panel">
+        <h2 class="rtitle">You're in</h2>
+        <p class="rsub">A dive is already under way in room ${code}. You'll join at the next prompt.</p>
         ${standingsHTML(view.players)}
-      </div>
-      <button class="btn ghost" id="leave">Leave room</button>`;
+        <button class="nbtn wide" id="leave">Leave room</button>
+      </div>`;
     $("#leave").addEventListener("click", () => leave());
   }
 
   function startPrompt(m) {
     ui = "prompt";
     roundI = m.i;
-    Gauge.setMax(m.total * 1000);
-    if (m.i === 0) Sound.play("ping");
+    onQuit = leave;
+    if (m.i === 0) { picks = []; Scene.set(0, true); Sound.play("ping"); }
     playRound({
-      pi: m.pi, secs: m.secs, header: header(),
-      label: `Prompt ${m.i + 1} of ${m.total}`,
-      onResolve: (hit, typed) => {
-        send({ t: "answer", i: m.i, typed: hit ? typed : "" });
-        const box = revealArea(hit);
-        box.innerHTML = `${badgeHTML(hit, typed, "No points for this one")}<div class="wait" id="waitMsg"></div>`;
+      pi: m.pi, secs: m.secs, hud: hud(m.i, m.total),
+      onResolve: (hit, typed, r, how) => {
+        send({ t: "answer", i: m.i, typed: hit ? typed : "", how });
+        const p = meP();
+        Scene.set(((p ? p.score : 0) + (hit ? TIERS[hit.tier].pts : 0)) * METRES_PER_PT);
+        $("#stage").innerHTML = resultHTML(hit, typed, how, r.bank);
+        paintIcons($("#stage"));
+        $("#bottom").innerHTML = `<div class="waitbar" id="waitMsg"></div>`;
         updateStatus();
       },
     });
@@ -461,47 +483,53 @@ const Room = (() => {
 
   function updateStatus() {
     if (!view) return;
-    const m = screen.querySelector(".hud .hud-m");
-    if (m) m.innerHTML = view.players.map(q => `<i class="pdot ${q.done ? "done" : ""}" style="--c:${q.color}" title="${esc(q.name)}"></i>`).join("");
+    const s = $("#pstrip");
+    if (s) s.innerHTML = dotsHTML();
     const w = $("#waitMsg");
     if (w) {
       const left = view.players.filter(q => !q.done && q.id !== me);
-      w.innerHTML = left.length ? `Waiting for ${left.map(q => `<b style="color:${q.color}">${esc(q.name)}</b>`).join(", ")}…` : "Everyone's in. Revealing…";
+      w.innerHTML = left.length ? `waiting for ${left.map(q => `<b style="color:${q.color}">${esc(q.name)}</b>`).join(", ")}…` : "everyone's in. revealing…";
     }
   }
 
   function renderReveal(m) {
     // The host closed the prompt (time's up everywhere): stop this browser's clock too.
     if (curRound && !curRound.over) { curRound.over = true; clearTimers(); Sound.play("timeout"); }
+    curRound = null;
     ui = "reveal";
     roundI = m.i;
-    const bank = bankFor(m.pi), isHost = role === "host";
+    onQuit = leave;
+    const isHost = role === "host";
     const mine = m.rows.find(r => r.id === me);
+    if (mine && picks.length === m.i) picks.push({ tier: mine.tier });
     const rows = m.rows.slice().sort((a, b) => (b.pts + b.bonus) - (a.pts + a.bonus));
+    const p = meP();
+    Scene.set((p ? p.score : 0) * METRES_PER_PT);
     screen.className = "play room-reveal";
     screen.innerHTML = `
-      ${header()}
-      <div class="card prompt-card revealed" style="--tier:${mine && mine.tier ? TIERS[mine.tier].color : "#8a96b5"}">
-        <div class="q-num">Prompt ${m.i + 1} of ${m.total}</div>
-        <h2 class="q">${esc(PROMPTS[m.pi][0])}</h2>
-        <ul class="answers">${rows.map(r => `
-          <li class="${r.id === me ? "me" : ""}">
-            <i class="pdot done" style="--c:${r.color}"></i>
-            <span class="an">${esc(r.name)}</span>
-            <span class="aa">${r.shown ? esc(r.shown) : `<i>${r.typed ? esc(r.typed) : "no answer"}</i>`}</span>
-            <span class="pills">
-              <span class="pill" style="--c:${r.tier ? TIERS[r.tier].color : "#59647f"}">${r.tier ? `${TIERS[r.tier].name} +${r.pts}` : "+0"}</span>
-              ${r.bonus ? `<span class="pill only" title="Nobody else in the room said this">Only you +${r.bonus}</span>` : ""}
-            </span>
-          </li>`).join("")}
-        </ul>
-        ${rarestHTML(bank, m.rows.filter(r => r.shown).map(r => r.shown))}
-        ${standingsHTML(view ? view.players : [])}
-        ${isHost ? `<button class="btn primary" id="next">${m.last ? "Final results" : "Next prompt"} <kbd>↵</kbd></button>`
-          : `<div class="hint wait-host">Waiting for the host…</div>`}
+      ${hud(m.i, m.total)}
+      <div class="stage" id="stage">
+        <div class="panel reveal">
+          <div class="pcat">${esc(categoryOf(m.pi))}</div>
+          <h2 class="ptext sm">${esc(PROMPTS[m.pi][0])}</h2>
+          <ul class="answers">${rows.map(r => `
+            <li class="${r.id === me ? "me" : ""}">
+              <i class="pdot done" style="--c:${r.color}"></i>
+              <span class="an">${esc(r.name)}</span>
+              <span class="aa">${r.shown ? esc(r.shown) : `<i>${r.how === "pass" ? "passed" : r.typed ? esc(r.typed) : "out of air"}</i>`}</span>
+              <span class="pills">
+                <span class="tagc" style="--c:${r.tier ? TIERS[r.tier].color : "#59647f"}">${r.tier ? `${TIERS[r.tier].name} +${r.pts}` : "+0"}</span>
+                ${r.bonus ? `<span class="tagc" style="--c:#ffd23f">only you +${r.bonus}</span>` : ""}
+              </span>
+            </li>`).join("")}
+          </ul>
+          <div class="rarest">one in a krillion: <b>${esc(bankFor(m.pi).entries.find(e => e.tier === "k").shown)}</b></div>
+          ${standingsHTML(view ? view.players : [])}
+        </div>
+      </div>
+      <div class="bottom" id="bottom">
+        ${isHost ? `<button class="pbtn next" id="next">${m.last ? "Final results" : "Next"} ▶</button>` : `<div class="waitbar wait-host">waiting for the host…</div>`}
       </div>`;
-    const p = meP();
-    Sea.set((p ? p.score : 0) * METRES_PER_PT);
     if (isHost) {
       const next = $("#next");
       next.focus({ preventScroll: true });
@@ -513,36 +541,38 @@ const Room = (() => {
     const list = players.slice().sort((a, b) => b.score - a.score);
     return `<ol class="standings">${list.map((p, n) => `
       <li class="${p.id === me ? "me" : ""}"><span class="rk">${n + 1}</span><i class="pdot done" style="--c:${p.color}"></i>
-        <span class="sn">${esc(p.name)}</span><span class="sd">${fmt(p.score * METRES_PER_PT)} m</span></li>`).join("")}</ol>`;
+        <span class="sn">${esc(p.name)}</span><span class="sd">${fmtM(p.score * METRES_PER_PT)}</span></li>`).join("")}</ol>`;
   }
 
   function renderEnd(m) {
     ui = "end";
     clearTimers();
     curRound = null;
+    onQuit = leave;
+    Scene.banners(false);
     const isHost = role === "host";
-    const medals = ["🥇", "🥈", "🥉"];
     const p = m.players.find(q => q.id === me);
     const myRank = m.players.indexOf(p);
-    Sea.set((p ? p.score : 0) * METRES_PER_PT);
+    Scene.set((p ? p.score : 0) * METRES_PER_PT);
     Sound.play("bubbles");
-    screen.className = "results room-end";
+    screen.className = "end";
     screen.innerHTML = `
-      <div class="card">
-        <div class="r-head">Room ${code} · ${m.total} prompts</div>
-        <div class="r-depth">${myRank === 0 && m.players.length > 1 ? "You win!" : `#${myRank + 1}`}</div>
-        <div class="r-zone">${p ? `${fmt(p.score * METRES_PER_PT)} m · ${zoneAt(p.score * METRES_PER_PT).name}` : ""}</div>
+      <div class="topbar"><span></span>${muteBtn()}</div>
+      <div class="panel endp">
+        <div class="elabel">Room ${code} · ${m.total} prompts</div>
+        <div class="edepth">${myRank === 0 && m.players.length > 1 ? "You win!" : `#${myRank + 1}`}</div>
+        <div class="ezone">${p ? `${fmtM(p.score * METRES_PER_PT)} · ${Scene.zone(p.score * METRES_PER_PT).name}` : ""}</div>
         <ol class="podium">${m.players.map((q, n) => `
           <li class="${q.id === me ? "me" : ""}">
-            <span class="medal">${medals[n] || n + 1}</span>
+            <span class="medal">${n + 1}</span>
             <i class="pdot done" style="--c:${q.color}"></i>
             <span class="pn">${esc(q.name)}</span>
-            <span class="pd">${fmt(q.score * METRES_PER_PT)} m<small>${fmt(q.score)} pts</small></span>
-            ${q.best ? `<span class="pb">Best: <b style="color:${TIERS[q.best.tier].color}">${esc(q.best.shown)}</b></span>` : ""}
+            <span class="pd">${fmtM(q.score * METRES_PER_PT)}<small>${fmt(q.score)} pts</small></span>
+            ${q.best ? `<span class="pb">best: <b style="color:${TIERS[q.best.tier].color}">${esc(q.best.shown)}</b></span>` : ""}
           </li>`).join("")}
         </ol>
-        ${isHost ? `<button class="btn primary" id="again">Play again</button>` : `<div class="hint wait-host">Waiting for the host to start another dive…</div>`}
-        <button class="btn ghost" id="leave">Leave room</button>
+        ${isHost ? `<button class="pbtn" id="again">Play again ▶</button>` : `<div class="hint wait-host">Waiting for the host to start another dive</div>`}
+        <button class="nbtn wide" id="leave">Leave room</button>
       </div>`;
     if (isHost) $("#again").addEventListener("click", () => { Sound.play("tap"); hostLobby(); });
     $("#leave").addEventListener("click", () => { Sound.play("tap"); leave(); });
@@ -550,7 +580,7 @@ const Room = (() => {
 
   // A shared invite link opens straight onto the join screen.
   const invited = cleanCode(urlParam("room"));
-  if (invited.length === 4) open(invited);
+  if (invited.length === 6) open(invited);
 
   return { open, leave, get active() { return !!role; } };
 })();
