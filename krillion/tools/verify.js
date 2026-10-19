@@ -24,7 +24,8 @@ for (const [pi, [q]] of PROMPTS.entries()) {
   // "io moon" next to "io", or "feta cheese" next to "feta", should be one answer.
   const SUFFIXES = ["moon", "dwarfplanet", "cheese", "bone", "bones", "nut", "nuts", "pasta", "fish", "vertebra", "noodle", "fruit", "hat", "cap", "bonnet", "lizard", "shark", "spider", "dog", "root", "gland", "glands", "stone", "steak", "cut", "lettuce", "squash", "mushroom", "bean", "beans", "pepper", "onion", "potato", "apple", "orange", "lemon", "berry", "tree", "frog", "turtle", "snake", "bird", "parrot", "owl", "eagle", "wombat", "possum", "kangaroo", "wallaby", "terrier", "hound", "spaniel", "retriever", "shepherd", "mastiff", "pointer", "setter", "sheepdog", "drum", "drums", "guitar", "horn", "flute", "pipe", "pipes", "harp", "organ", "piano", "saxophone", "karate", "kungfu", "jitsu", "wrestling", "boxing", "sword"];
   const NOT_DOUBLES = new Set(["grapefruit", "top hat", "bass drum", "eardrum", "chess boxing", "t-bone steak", "australian shepherd",
-    "butternut squash", "cashew apple", "top sirloin cap", "rump cap", "vanilla bean", "grape nut"]);
+    "butternut squash", "cashew apple", "top sirloin cap", "rump cap", "vanilla bean", "grape nut",
+    "catfish", "bullfrog", "eagle owl", "hawk eagle", "hawk owl"]);
   const keyOf = new Map(bank.entries.filter(e => !NOT_DOUBLES.has(e.shown)).map(e => [Match.key(e.shown), e]));
   const dupes = [];
   for (const [k, e] of keyOf) for (const sfx of SUFFIXES) {
