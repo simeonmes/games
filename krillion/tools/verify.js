@@ -6,7 +6,7 @@ const ctx = { console };
 vm.createContext(ctx);
 // The same files, in the same order, as index.html loads them.
 const promptFiles = fs.existsSync(path.join(dir, "prompts")) ? fs.readdirSync(path.join(dir, "prompts")).filter(f => f.endsWith(".js")).sort().map(f => "prompts/" + f) : [];
-const files = ["data.js", ...promptFiles, "bank-extra.js", "bank-wikidata.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
+const files = ["data.js", ...promptFiles, "bank-extra.js", "bank-clever.js", "bank-wikidata.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
 const html = fs.readFileSync(path.join(dir, "..", "index.html"), "utf8");
 for (const f of promptFiles) if (!html.includes(`js/${f}`)) { console.log(`✗ index.html doesn't load js/${f}`); process.exitCode = 1; }
 const src = files.map(f => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
@@ -52,6 +52,8 @@ const cases = [
   ["Name a US state", "Missisippi", "mississippi"], ["Name a dinosaur", "T-Rex", "t rex"],
   ["Name a cheese", "zzzzz", null], ["Name a word that rhymes with 'cat'", "dog", null],
   ["Name a vegetable", "tomatoes", "tomato"], ["Name a capital city", "Bogotá", "bogota"],
+  ["Name a famous painter", "Hitler", "adolf hitler"], ["Name a type of rock or mineral", "Dwayne Johnson", "dwayne johnson"],
+  ["Name a dinosaur", "hummingbird", "hummingbird"],
 ];
 for (const [q, typed, want] of cases) {
   const got = Match.find(bankOf(q), typed);

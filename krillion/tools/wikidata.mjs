@@ -108,7 +108,7 @@ function loadBank() {
   const ctx = {};
   vm.createContext(ctx);
   const prompts = fs.readdirSync(path.join(jsDir, "prompts")).filter(f => f.endsWith(".js")).sort().map(f => "prompts/" + f);
-  const files = ["data.js", ...prompts, "bank-extra.js", "match.js"].map(f => fs.readFileSync(path.join(jsDir, f), "utf8"));
+  const files = ["data.js", ...prompts, "bank-extra.js", "bank-clever.js", "match.js"].map(f => fs.readFileSync(path.join(jsDir, f), "utf8"));
   vm.runInContext(files.join("\n") + ";this.PROMPTS = PROMPTS; this.Match = Match; this.tiersFor = tiersFor;", ctx);
   return ctx;
 }
@@ -179,7 +179,7 @@ BANK_SOURCES.push(${JSON.stringify(body, null, 2)});
     const html = path.join(here, "..", "index.html");
     const page = fs.readFileSync(html, "utf8");
     if (!page.includes("bank-wikidata.js")) {
-      fs.writeFileSync(html, page.replace(/(<script src="js\/bank-extra\.js[^"]*"><\/script>)/, `$1\n<script src="js/bank-wikidata.js?v=${Date.now() % 100000}"></script>`));
+      fs.writeFileSync(html, page.replace(/(<script src="js\/bank-clever\.js[^"]*"><\/script>)/, `$1\n<script src="js/bank-wikidata.js?v=${Date.now() % 100000}"></script>`));
     }
   }
   console.log(report.filter(l => !l.startsWith("    ")).join("\n"));
