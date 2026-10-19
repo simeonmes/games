@@ -23,6 +23,8 @@ const Room = (() => {
   let ui = "";              // which room screen is showing
   let roundI = -1;          // index of the prompt on screen
   let picks = [];           // this player's results, for the progress squares
+  let playing = false;      // this player's own answer is still playing out on screen
+  let held = null;          // a reveal that arrived meanwhile, shown once it finishes
   let myName = "";
   let createOpts = { count: 7, secs: ROUND_SECS };
   try { myName = localStorage.getItem("krillion.name") || ""; } catch (e) {}
@@ -224,6 +226,7 @@ const Room = (() => {
     if (H) clearTimeout(H.timer);
     const p = peer;
     peer = null; role = null; hostConn = null; H = null; view = null; ui = ""; roundI = -1; picks = [];
+    playing = false; held = null;
     if (p && !p.destroyed) { leaving = true; try { p.destroy(); } catch (e) {} }
     if (urlParam("room")) history.replaceState(null, "", location.pathname + (urlParam("peer") ? `?peer=${encodeURIComponent(urlParam("peer"))}` : ""));
   }
@@ -467,14 +470,16 @@ const Room = (() => {
     roundI = m.i;
     onQuit = leave;
     if (m.i === 0) { picks = []; Scene.set(0, true); Sound.play("ping"); }
+    playing = false; held = null;
     playRound({
       pi: m.pi, secs: m.secs, hud: hud(m.i, m.total),
-      onResolve: (hit, typed, r, how) => {
+      onResolve: async (hit, typed, r, how) => {
         send({ t: "answer", i: m.i, typed: hit ? typed : "", how });
         const p = meP();
-        Scene.set(((p ? p.score : 0) + (hit ? TIERS[hit.tier].pts : 0)) * METRES_PER_PT);
-        $("#stage").innerHTML = resultHTML(hit, typed, how, r.bank);
-        paintIcons($("#stage"));
+        playing = true;
+        await revealSequence({ hit, typed, how, bank: r.bank, depth: ((p ? p.score : 0) + (hit ? TIERS[hit.tier].pts : 0)) * METRES_PER_PT });
+        playing = false;
+        if (held) { const h = held; held = null; renderReveal(h); return; }
         $("#bottom").innerHTML = `<div class="waitbar" id="waitMsg"></div>`;
         updateStatus();
       },
@@ -493,6 +498,8 @@ const Room = (() => {
   }
 
   function renderReveal(m) {
+    // Let this player's own answer finish sinking before showing everyone's.
+    if (playing) { held = m; return; }
     // The host closed the prompt (time's up everywhere): stop this browser's clock too.
     if (curRound && !curRound.over) { curRound.over = true; clearTimers(); Sound.play("timeout"); }
     curRound = null;

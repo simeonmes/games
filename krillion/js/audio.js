@@ -73,6 +73,27 @@ const Sound = (() => {
       }
       if (t === "c") tone(330, 0.3, "triangle", 0.15, 0.15, 660);
     },
+    // The answer locks in: a quick rising blip.
+    lock() {
+      tone(392, 0.09, "square", 0.08);
+      tone(784, 0.14, "square", 0.08, 0.07);
+    },
+    // A long falling whoosh while the diver sinks.
+    sink(secs) {
+      if (!ac) return;
+      const d = Math.max(0.6, secs), t0 = ac.currentTime;
+      const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = noiseBuf; src.loop = true;
+      f.type = "lowpass"; f.Q.value = 6;
+      f.frequency.setValueAtTime(1400, t0);
+      f.frequency.exponentialRampToValueAtTime(160, t0 + d);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.16, t0 + 0.15);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
+      src.connect(f).connect(g).connect(master);
+      src.start(t0); src.stop(t0 + d + 0.05);
+      for (let i = 0; i < 6; i++) tone(500 + Math.random() * 400, 0.07, "sine", 0.07, Math.random() * d * 0.8, 1100);
+    },
     timeout() {
       tone(440, 0.8, "sawtooth", 0.08, 0, 110);
       noise(0.6, 0.12, 400, 0.1);

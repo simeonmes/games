@@ -356,3 +356,30 @@ button, input { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* ---------- answer reveal: colour, sink, then the result ---------- */
+#tint {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at 50% 48%, color-mix(in srgb, var(--c) 55%, transparent) 0%, color-mix(in srgb, var(--c) 18%, transparent) 45%, transparent 75%);
+  transition: opacity 0.5s steps(5);
+}
+#tint.show { opacity: 1; animation: glowpulse 0.5s steps(3) infinite alternate; }
+#tint.strong { animation: glowpulse 0.18s steps(2) infinite alternate; }
+@keyframes glowpulse { from { opacity: 0.65; } to { opacity: 1; } }
+.pcard.lit {
+  border-color: var(--c);
+  box-shadow: 0 0 0 2px var(--c), 0 0 28px color-mix(in srgb, var(--c) 70%, transparent);
+  background: color-mix(in srgb, var(--c) 18%, rgba(10, 18, 38, 0.92));
+}
+.pcard.lit .pcat, .pcard.lit .phint { color: var(--c); }
+.pcard.away { animation: away 0.5s steps(6) forwards; }
+@keyframes away { to { transform: translateY(-40px); opacity: 0; } }
+.locked {
+  align-self: center; padding: 12px 26px; font-size: 28px; color: var(--c);
+  background: rgba(10, 18, 38, 0.92); border: 2px solid var(--c);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--c) 60%, transparent);
+  animation: lockin 0.35s steps(4);
+}
+@keyframes lockin { from { transform: scale(1.25); } }
+.result .tname { animation: pop 0.4s steps(5); }
+@keyframes pop { from { transform: scale(0.4); opacity: 0; } 70% { transform: scale(1.12); } }

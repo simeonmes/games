@@ -498,12 +498,14 @@ const Scene = (() => {
   requestAnimationFrame(frame);
 
   return {
-    // Moves the camera to depth m, sinking smoothly unless instant.
+    // Moves the camera to depth m, sinking smoothly unless instant. Returns how long the
+    // move takes in milliseconds.
     set(m, instant) {
-      if (instant) { cam = target = m; animDur = 0; return; }
-      if (m === target) return;
+      if (instant) { cam = target = m; animDur = 0; return 0; }
+      if (m === target) return animDur ? Math.max(0, animT0 + animDur - performance.now()) : 0;
       from = cam; target = m; animT0 = performance.now();
       animDur = Math.min(2600, 800 + Math.abs(m - cam) * 1.1);
+      return animDur;
     },
     get depth() { return target; },
     banners(on) {

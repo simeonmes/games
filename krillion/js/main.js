@@ -84,10 +84,16 @@ const totalPts = picks => picks.reduce((s, p) => s + (p.tier ? TIERS[p.tier].pts
 
 let game = null;     // the solo dive in progress
 let curRound = null; // the prompt on screen, solo or in a room
-let timerId = 0, countdownId = 0;
+let timerId = 0, countdownId = 0, beats = [];
 let onQuit = null;
 
-function clearTimers() { clearInterval(timerId); clearInterval(countdownId); timerId = countdownId = 0; }
+function clearTimers() {
+  clearInterval(timerId); clearInterval(countdownId); timerId = countdownId = 0;
+  beats.forEach(clearTimeout); beats = [];
+  untint();
+}
+// Waits ms; a clearTimers() in the meantime cancels whatever was waiting.
+const beat = ms => new Promise(res => beats.push(setTimeout(res, ms)));
 
 const ICON_SPEAKER = `<svg viewBox="0 0 16 16" class="spk"><path d="M2 6h3l4-3v10l-4-3H2z"/><path class="on" d="M11 5h1v1h1v4h-1v1h-1z"/><path class="off" d="M11 6h1v1h1V6h1v1h-1v1h1v1h-1V8h-1v1h-1V8h1V7h-1z"/></svg>`;
 const muteBtn = () => `<button class="ibtn mute ${Sound.muted ? "muted" : ""}" data-act="mute" aria-label="Sound">${ICON_SPEAKER}</button>`;
@@ -236,9 +242,43 @@ function endRound(hit, typed, how) {
   if (!r || r.over) return;
   r.over = true;
   clearTimers();
-  Sound.play(hit ? "tier" : "timeout", hit && hit.tier);
   if (hit && hit.tier === "k") { save.krillions++; persist(); }
   r.onResolve(hit, typed, r, how);
+}
+
+function tint(color, strong) {
+  const t = $("#tint");
+  t.style.setProperty("--c", color);
+  t.className = "show" + (strong ? " strong" : "");
+}
+function untint() { const t = $("#tint"); if (t) t.className = ""; }
+
+// Plays an answer out in three beats: the screen glows in the rarity's colour (without
+// naming it), the diver sinks to the new depth, then the result card says what it was.
+async function revealSequence({ hit, typed, how, bank, depth, extra }) {
+  const color = hit ? TIERS[hit.tier].color : "#8b96a8";
+  const card = screen.querySelector(".pcard");
+  card.style.setProperty("--c", color);
+  card.classList.add("lit");
+  $("#bottom").innerHTML = `<div class="locked" style="--c:${color}">${hit ? `“${esc(typed)}”` : how === "pass" ? "passed" : "time's up"}</div>`;
+  tint(color, hit && hit.tier === "k");
+  Sound.play(hit ? "lock" : "timeout");
+  await beat(hit ? 1000 : 700);
+
+  if (hit) {
+    card.classList.add("away");
+    const ms = Scene.set(depth);
+    Sound.play("sink", ms / 1000);
+    await beat(ms + 250);
+  } else {
+    Scene.set(depth);
+  }
+  untint();
+  const stage = $("#stage");
+  stage.innerHTML = resultHTML(hit, typed, how, bank, extra);
+  paintIcons(stage);
+  if (hit) Sound.play("tier", hit.tier);
+  await beat(450);
 }
 
 // The big result in the middle of the screen.
@@ -304,16 +344,14 @@ function showPrompt() {
   playRound({ pi: promptAt(game.idx), secs: ROUND_SECS, hud: soloHud(), onResolve: soloResolve });
 }
 
-function soloResolve(hit, typed, r, how) {
+async function soloResolve(hit, typed, r, how) {
   game.picks.push({ pi: r.pi, ans: hit ? hit.shown : null, typed, tier: hit ? hit.tier : null, how });
   if (game.mode === "daily") persist();
   if (how === "time" && game.mode === "endless") game.tanks--;
-  Scene.set(totalPts(game.picks) * METRES_PER_PT);
   const last = game.mode === "endless" ? game.tanks <= 0 : game.picks.length >= CLASSIC_COUNT;
   const flavor = how === "time" && game.mode === "endless" ? `Air tank lost. ${game.tanks} left.` : null;
+  await revealSequence({ hit, typed, how, bank: r.bank, depth: totalPts(game.picks) * METRES_PER_PT, extra: { flavor } });
   screen.querySelector(".hud").outerHTML = soloHud();
-  $("#stage").innerHTML = resultHTML(hit, typed, how, r.bank, { flavor });
-  paintIcons($("#stage"));
   $("#bottom").innerHTML = `<button class="pbtn next" id="next">${last ? "Surface" : "Next"} ▶</button>`;
   const next = $("#next");
   next.focus({ preventScroll: true });
