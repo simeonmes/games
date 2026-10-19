@@ -286,7 +286,7 @@ const PROMPTS = [
     r: "banh mi|muffuletta|gyro|shawarma|falafel|cubano|torta|katsu sando|tuna melt|lobster roll|beef on weck|chopped cheese|italian beef|hot brown|fluffernutter|caprese|cucumber sandwich|egg and cress|bacon butty|chip butty|pastrami on rye|elvis|smorrebrod|pambazo|arepa|bocadillo|toastie",
     d: "francesinha|chivito|zapiekanka|tramezzino|bauru|barros luco|chacarero|lampredotto|vada pav|kati roll|pljeskavica|mitraillette|jambon beurre|pan bagnat|primanti|mother in law|horseshoe|pimento cheese|loose meat|spiedie|garbage plate|half smoke|cemita|shooters sandwich|chip and dip|bierock|runza|sandwich loaf",
     k: "chow mein sandwich",
-    c: "earl of sandwich|ice cream sandwich|hot dog|taco|sandwich cookie|oreo|knuckle sandwich|open faced|club sandwich",
+    c: "earl of sandwich|ice cream sandwich|hot dog|taco|sandwich cookie|oreo|knuckle sandwich|open faced",
   }],
   ["Name a famous painter", {
     p: "picasso/pablo picasso|van gogh/vincent van gogh|da vinci/leonardo da vinci/leonardo|monet/claude monet|michelangelo",
