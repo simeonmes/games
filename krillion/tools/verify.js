@@ -27,7 +27,7 @@ for (const [pi, [q]] of PROMPTS.entries()) {
     "butternut squash", "cashew apple", "top sirloin cap", "rump cap", "vanilla bean", "grape nut",
     "catfish", "bullfrog", "eagle owl", "hawk eagle", "hawk owl",
     "ringtail possum", "wolf spider", "rat terrier", "ghost spider", "cecil turtle", "the apple tree", "jellyfish", "jowl", "big bird", "star fruit", "button mushroom",
-    "church organ", "keyboard piano", "thresher shark", "whale shark", "ratfish", "jelly beans", "cross cap"]);
+    "church organ", "keyboard piano", "thresher shark", "whale shark", "ratfish", "jelly beans", "cross cap", "baby shark", "crocodile bird"]);
   const keyOf = new Map(bank.entries.filter(e => !NOT_DOUBLES.has(e.shown)).map(e => [Match.key(e.shown), e]));
   const dupes = [];
   for (const [k, e] of keyOf) for (const sfx of SUFFIXES) {
