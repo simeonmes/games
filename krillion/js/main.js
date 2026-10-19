@@ -288,7 +288,6 @@ function resultHTML(hit, typed, how, bank, extra = {}) {
   const color = hit ? T.color : "#8b96a8";
   const lit = hit ? TIER_ORDER.indexOf(hit.tier) : -1;
   const pts = (hit ? T.pts : 0) + (extra.bonus || 0);
-  const rarest = bank.entries.find(e => e.tier === "k");
   return `<div class="result" style="--c:${color}">
     <canvas class="ticon" data-icon="${hit ? hit.tier : how === "pass" ? "pass" : "miss"}"></canvas>
     <div class="tname">${name}</div>
@@ -296,7 +295,6 @@ function resultHTML(hit, typed, how, bank, extra = {}) {
     ${hit ? `<div class="ans">“${esc(hit.shown)}”</div>` : ""}
     <div class="gain">${hit ? `<b>+${pts} pts</b> · sink ${fmt(pts * METRES_PER_PT)}m` : "+0 pts"}${extra.bonus ? ` <em>incl. +${extra.bonus} only you</em>` : ""}</div>
     <div class="flavor">${extra.flavor || FLAVOR[hit ? hit.tier : how]}</div>
-    ${hit && hit.tier === "k" ? "" : `<div class="rarest">one in a krillion: <b>${esc(rarest.shown)}</b></div>`}
   </div>`;
 }
 
@@ -315,8 +313,7 @@ function startSolo(mode) {
     if (game.idx >= CLASSIC_COUNT) return finish();
     if (game.idx === 0) save.dives++;
   } else {
-    let order = shuffled(PROMPTS.length, Math.random);
-    game = { mode, prompts: order, picks: [], idx: 0, tanks: TANKS };
+    game = { mode, prompts: drawPrompts(mode === "endless" ? 1 : CLASSIC_COUNT), picks: [], idx: 0, tanks: TANKS };
     save.dives++;
   }
   persist();
@@ -327,9 +324,36 @@ function startSolo(mode) {
 }
 
 function promptAt(i) {
-  const list = game.prompts;
-  while (i >= list.length) list.push(...shuffled(PROMPTS.length, Math.random).filter(x => x !== list[list.length - 1]));
-  return list[i];
+  while (i >= game.prompts.length) game.prompts.push(...drawPrompts(1));
+  return game.prompts[i];
+}
+
+// Classic, Endless and rooms deal prompts from a shuffled deck kept on this device, so every
+// prompt comes up once before any comes back. The deck holds prompt text rather than
+// positions, and prompts added in an update are shuffled into the deck still to come.
+function drawPrompts(n) {
+  const index = new Map(PROMPTS.map((p, i) => [p[0], i]));
+  let deck = (save.deck || []).filter(q => index.has(q));
+  const played = new Set((save.played || []).filter(q => index.has(q)));
+  const fresh = PROMPTS.map(p => p[0]).filter(q => !played.has(q) && !deck.includes(q));
+  for (const q of fresh) deck.splice(Math.floor(Math.random() * (deck.length + 1)), 0, q);
+  const out = [];
+  while (out.length < n) {
+    if (!deck.length) {
+      // A new pass: everything except what this draw already took.
+      played.clear();
+      const taken = new Set(out.map(i => PROMPTS[i][0]));
+      deck = shuffled(PROMPTS.length, Math.random).map(i => PROMPTS[i][0]).filter(q => !taken.has(q));
+      if (!deck.length) break;
+    }
+    const q = deck.shift();
+    played.add(q);
+    out.push(index.get(q));
+  }
+  save.deck = deck;
+  save.played = [...played];
+  persist();
+  return out;
 }
 
 function soloHud() {

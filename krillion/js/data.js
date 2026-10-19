@@ -575,3 +575,11 @@ function tiersFor(pi) {
   }
   return out;
 }
+
+// The files in js/prompts/ add more prompts: addPrompts([[text, category, tiers], ...]).
+function addPrompts(list) {
+  for (const [q, cat, tiers] of list) {
+    PROMPTS.push([q, tiers]);
+    CATEGORIES[q] = cat;
+  }
+}

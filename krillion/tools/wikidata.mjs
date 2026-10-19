@@ -107,7 +107,8 @@ function clean(s) {
 function loadBank() {
   const ctx = {};
   vm.createContext(ctx);
-  const files = ["data.js", "bank-extra.js", "match.js"].map(f => fs.readFileSync(path.join(jsDir, f), "utf8"));
+  const prompts = fs.readdirSync(path.join(jsDir, "prompts")).filter(f => f.endsWith(".js")).sort().map(f => "prompts/" + f);
+  const files = ["data.js", ...prompts, "bank-extra.js", "match.js"].map(f => fs.readFileSync(path.join(jsDir, f), "utf8"));
   vm.runInContext(files.join("\n") + ";this.PROMPTS = PROMPTS; this.Match = Match; this.tiersFor = tiersFor;", ctx);
   return ctx;
 }

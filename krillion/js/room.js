@@ -307,7 +307,7 @@ const Room = (() => {
   }
 
   function hostStart() {
-    H.prompts = shuffled(PROMPTS.length, Math.random).slice(0, H.count);
+    H.prompts = drawPrompts(H.count);
     H.players.forEach(p => { p.score = 0; p.picks = []; });
     H.i = -1;
     hostNext();
@@ -530,7 +530,6 @@ const Room = (() => {
               </span>
             </li>`).join("")}
           </ul>
-          <div class="rarest">one in a krillion: <b>${esc(bankFor(m.pi).entries.find(e => e.tier === "k").shown)}</b></div>
           ${standingsHTML(view ? view.players : [])}
         </div>
       </div>
