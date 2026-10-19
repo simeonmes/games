@@ -6,7 +6,7 @@ const ctx = { console };
 vm.createContext(ctx);
 // The same files, in the same order, as index.html loads them.
 const promptFiles = fs.existsSync(path.join(dir, "prompts")) ? fs.readdirSync(path.join(dir, "prompts")).filter(f => f.endsWith(".js")).sort().map(f => "prompts/" + f) : [];
-const files = ["data.js", ...promptFiles, "bank-extra.js", "bank-clever.js", "bank-wikidata.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
+const files = ["data.js", ...promptFiles, "bank-extra.js", "bank-clever.js", "bank-more.js", "bank-wikidata.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
 const html = fs.readFileSync(path.join(dir, "..", "index.html"), "utf8");
 for (const f of promptFiles) if (!html.includes(`js/${f}`)) { console.log(`✗ index.html doesn't load js/${f}`); process.exitCode = 1; }
 const src = files.map(f => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
@@ -23,7 +23,7 @@ for (const [pi, [q]] of PROMPTS.entries()) {
   if (bank.clashes.length) console.log(`  ${q}: in two tiers → ${bank.clashes.join(", ")}`);
   // "io moon" next to "io", or "feta cheese" next to "feta", should be one answer.
   const SUFFIXES = ["moon", "dwarfplanet", "cheese", "bone", "bones", "nut", "nuts", "pasta", "fish", "vertebra", "noodle", "fruit", "hat", "cap", "bonnet", "lizard", "shark", "spider", "dog", "root", "gland", "glands", "stone", "steak", "cut", "lettuce", "squash", "mushroom", "bean", "beans", "pepper", "onion", "potato", "apple", "orange", "lemon", "berry", "tree", "frog", "turtle", "snake", "bird", "parrot", "owl", "eagle", "wombat", "possum", "kangaroo", "wallaby", "terrier", "hound", "spaniel", "retriever", "shepherd", "mastiff", "pointer", "setter", "sheepdog", "drum", "drums", "guitar", "horn", "flute", "pipe", "pipes", "harp", "organ", "piano", "saxophone", "karate", "kungfu", "jitsu", "wrestling", "boxing", "sword"];
-  const NOT_DOUBLES = new Set(["grapefruit", "top hat", "bass drum", "eardrum", "chess boxing", "t-bone steak", "australian shepherd",
+  const NOT_DOUBLES = new Set(["pepperberry", "sun hat", "sea lettuce", "sea bean", "sea potato", "juniper berries", "grapefruit", "top hat", "bass drum", "eardrum", "chess boxing", "t-bone steak", "australian shepherd",
     "butternut squash", "cashew apple", "top sirloin cap", "rump cap", "vanilla bean", "grape nut",
     "catfish", "bullfrog", "eagle owl", "hawk eagle", "hawk owl",
     "ringtail possum", "wolf spider", "rat terrier", "ghost spider", "cecil turtle", "the apple tree", "jellyfish", "jowl", "big bird", "star fruit", "button mushroom",
