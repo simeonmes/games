@@ -4,21 +4,33 @@ const fs = require("fs"), path = require("path"), vm = require("vm");
 const dir = path.join(__dirname, "..", "js");
 const ctx = { console };
 vm.createContext(ctx);
-const src = ["data.js", "match.js"].map(f => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
-vm.runInContext(src + "\n;this.PROMPTS = PROMPTS; this.Match = Match;", ctx);
-const { PROMPTS, Match } = ctx;
+const files = ["data.js", "bank-extra.js", "bank-wikidata.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
+const src = files.map(f => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
+vm.runInContext(src + "\n;this.PROMPTS = PROMPTS; this.Match = Match; this.tiersFor = tiersFor;", ctx);
+const { PROMPTS, Match, tiersFor } = ctx;
 
 let bad = 0, total = 0;
-for (const [q, tiers] of PROMPTS) {
-  const bank = Match.build(tiers);
+const small = [];
+for (const [pi, [q]] of PROMPTS.entries()) {
+  const bank = Match.build(tiersFor(pi));
   total += bank.entries.length;
   const ks = bank.entries.filter(e => e.tier === "k");
   if (ks.length !== 1) { bad++; console.log(`✗ ${q}: ${ks.length} krillion answers`); }
   if (bank.clashes.length) console.log(`  ${q}: in two tiers → ${bank.clashes.join(", ")}`);
+  // "io moon" next to "io", or "feta cheese" next to "feta", should be one answer.
+  const SUFFIXES = ["moon", "dwarfplanet", "cheese", "bone", "bones", "nut", "nuts", "pasta", "fish", "vertebra", "noodle"];
+  const keyOf = new Map(bank.entries.map(e => [Match.key(e.shown), e]));
+  const dupes = [];
+  for (const [k, e] of keyOf) for (const sfx of SUFFIXES) {
+    if (k.length > sfx.length && k.endsWith(sfx) && keyOf.has(k.slice(0, -sfx.length))) dupes.push(e.shown);
+  }
+  if (dupes.length) { bad++; console.log(`✗ ${q}: doubled answers → ${dupes.join(", ")}`); }
+  if (bank.entries.length < 150) small.push(`${bank.entries.length} ${q}`);
 }
+console.log(`under 150 answers: ${small.length}`);
 console.log(`${PROMPTS.length} prompts, ${total} answers`);
 
-const bankOf = q => Match.build(PROMPTS.find(p => p[0] === q)[1]);
+const bankOf = q => Match.build(tiersFor(PROMPTS.findIndex(p => p[0] === q)));
 const cases = [
   ["Name a cheese", "Mozarella", "mozzarella"], ["Name a cheese", "the moon", "moon"],
   ["Name a fruit", "Peaches", "peach"], ["Name a fruit", "kiwis", "kiwi"],

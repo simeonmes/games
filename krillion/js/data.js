@@ -562,3 +562,16 @@ const CATEGORIES = {
   "Name a type of rock or mineral": "Earth", "Name an Olympic event": "Sport",
 };
 const categoryOf = pi => CATEGORIES[PROMPTS[pi][0]] || "Trivia";
+
+// The extra answer files (bank-extra.js, and bank-wikidata.js once it has been generated)
+// push { "prompt text": { tier: "answers" } } objects here; tiersFor() merges them in.
+const BANK_SOURCES = [];
+function tiersFor(pi) {
+  const [q, base] = PROMPTS[pi];
+  const out = {};
+  for (const t of TIER_ORDER) {
+    const parts = [base[t], ...BANK_SOURCES.map(src => src[q] && src[q][t])].filter(Boolean);
+    if (parts.length) out[t] = parts.join("|");
+  }
+  return out;
+}

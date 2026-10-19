@@ -40,27 +40,26 @@ const Match = (() => {
   }
 
   // Builds { entries: [{ shown, tier }], index: Map(key -> entry) } for one prompt.
-  // If an answer sits in two tiers, the more common tier wins.
+  // An entry that repeats a known spelling adds its other spellings to the answer already
+  // there, so the extra answer files can add misspellings; if the tiers differ, the more
+  // common tier wins and the clash is reported.
   function build(tiers) {
     const entries = [], index = new Map(), clashes = [];
     for (const t of TIER_ORDER) {
       if (!tiers[t]) continue;
       for (const raw of tiers[t].split("|")) {
         const spellings = raw.split("/").map(x => x.trim()).filter(Boolean);
+        const keys = spellings.map(key);
         if (!spellings.length) continue;
-        const entry = { shown: spellings[0], tier: t };
-        let added = false;
-        for (const sp of spellings) {
-          const k = key(sp);
-          if (!k) continue;
-          if (index.has(k)) {
-            if (index.get(k) !== entry) clashes.push(`${sp} (${index.get(k).tier} vs ${t})`);
-            continue;
-          }
-          index.set(k, entry);
-          added = true;
+        const known = keys.find(k => k && index.has(k));
+        let entry = known && index.get(known);
+        if (entry) {
+          if (entry.tier !== t) clashes.push(`${spellings[0]} (${entry.tier} vs ${t})`);
+        } else {
+          entry = { shown: spellings[0], tier: t };
+          entries.push(entry);
         }
-        if (added) entries.push(entry);
+        for (const k of keys) if (k && !index.has(k)) index.set(k, entry);
       }
     }
     return { entries, index, clashes };

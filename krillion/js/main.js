@@ -74,7 +74,7 @@ function dailyPrompts(day) {
 
 const banks = new Map();
 function bankFor(i) {
-  if (!banks.has(i)) banks.set(i, Match.build(PROMPTS[i][1]));
+  if (!banks.has(i)) banks.set(i, Match.build(tiersFor(i)));
   return banks.get(i);
 }
 
