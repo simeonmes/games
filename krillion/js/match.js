@@ -42,10 +42,11 @@ const Match = (() => {
   // Builds { entries: [{ shown, tier }], index: Map(key -> entry) } for one prompt.
   // An entry that repeats a known spelling adds its other spellings to the answer already
   // there, so the extra answer files can add misspellings; if the tiers differ, the more
-  // common tier wins and the clash is reported.
+  // common tier wins and the clash is reported. The one-in-a-krillion answer is chosen on
+  // purpose, so it is placed first and a copy of it in another tier can't take it over.
   function build(tiers) {
     const entries = [], index = new Map(), clashes = [];
-    for (const t of TIER_ORDER) {
+    for (const t of ["k", ...TIER_ORDER.filter(x => x !== "k")]) {
       if (!tiers[t]) continue;
       for (const raw of tiers[t].split("|")) {
         const spellings = raw.split("/").map(x => x.trim()).filter(Boolean);
