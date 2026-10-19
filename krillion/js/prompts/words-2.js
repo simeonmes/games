@@ -1,0 +1,53 @@
+"use strict";
+// More prompts: word play (2 of 2).
+
+addPrompts([
+  ["Name a word that starts with 'J'", "Words", {
+    p: "jump|juice|jelly|jam|joke|jacket|jar",
+    s: "job|join|jog|journey|joy|judge|jungle|junk|jeans|jet|jewel|jewelry|jigsaw|jingle|jolly|jog|jiggle|jaguar|jellyfish|jockey|juggle|juggler|jumbo|june|july|january|jupiter|jazz|jaw|jay|jeep|jerk|jest|jive|jot|joy|jug|juicy|junior|jury|just|justice|jail|janitor|javelin|jealous|jolt|joint|jeer",
+    r: "jabber|jackal|jackpot|jade|jagged|jalopy|jamboree|jangle|jargon|jasmine|jaundice|jaunt|jaunty|javelina|jawbreaker|jaywalk|jeopardy|jersey|jester|jettison|jetty|jewel box|jibe|jiffy|jigger|jilt|jinx|jitter|jitters|jittery|jobless|jocular|jocund|jodhpurs|jog|joggle|jonquil|jostle|joust|jovial|jowl|jubilant|jubilee|judicious|juggernaut|jugular|julienne|jumble|jumper|jumpsuit|juncture|juniper|junket|juxtapose|juxtaposition|jejune|jeremiad|jetsam|jingoism|jocose|journeyman|joyride|joystick|jubilation|judo|jujitsu|jukebox|jurisdiction|jurisprudence|jurist|juror|juvenile",
+    d: "jacamar|jacana|jacinth|jackanapes|jackdaw|jacquard|jactitation|jaculate|jaeger|jaggery|jalousie|janissary|japonica|jardiniere|jarl|jarrah|jasper|jaspé|jato|jeepers|jehu|jejunum|jellaba|jemmy|jennet|jeremiah|jeroboam|jerkin|jerrycan|jessamine|jesuit|jetty|jew's harp|jicama|jihad|jillaroo|jimjams|jimmies|jingoist|jinni|jinrikisha|jitney|jocko|joey|johnnycake|joinery|jongleur|jorum|josh|joss|jotun|jouissance|jowar|jubbah|judas|judder|juggins|jujube|julep|jumar|junco|junta|jupon|jurel|jussive|jute",
+    k: "jinrikisha",
+    c: "j|jay|jayy|the letter j|jjj|j crew|j lo|jay z",
+  }],
+  ["Name a word that means 'happy'", "Words", {
+    p: "glad|joyful|cheerful|excited|content",
+    s: "pleased|delighted|thrilled|jolly|merry|joyous|ecstatic|elated|overjoyed|upbeat|chipper|sunny|bubbly|giddy|gleeful|blissful|carefree|satisfied|grateful|thankful|optimistic|positive|lighthearted|good|great|fine|awesome|stoked|pumped|hyped|over the moon|on cloud nine|in high spirits|smiling|grinning|laughing",
+    r: "jubilant|euphoric|exuberant|exultant|rapturous|beaming|radiant|buoyant|perky|peppy|sprightly|chirpy|jovial|jocund|genial|convivial|mirthful|tickled pink|happy go lucky|walking on air|on top of the world|in seventh heaven|jumping for joy|happy as a clam|happy as a lark|chuffed|made up|well chuffed|stoked|amped|psyched|jazzed|chuffed to bits|contented|gratified|fulfilled|at peace|serene|tranquil|untroubled|cheery|gay|blithe|blithesome|felicitous|fortunate|lucky|blessed|enchanted|charmed|elevated",
+    d: "beatific|eudaemonic|eudaimonic|halcyon|sanguine|winsome|gladsome|joyance|frabjous|enraptured|transported|rhapsodic|starry eyed|sunshiny|mirthsome|gleesome|jocose|riant|risible|hilarious|exhilarated|rapt|ebullient|effervescent|vivacious|zestful|felicific|chuff|cock a hoop|cock-a-hoop|in fine fettle|full of beans|like a dog with two tails|like the cat that got the cream|grinning like a cheshire cat|happy camper|pig in mud|over the rainbow",
+    k: "frabjous",
+    c: "happy|happi|happie|dopey|grumpy|sleepy|doc|bashful|sneezy|happy meal|happy feet|happy gilmore",
+  }],
+  ["Name a word that means 'big'", "Words", {
+    p: "large|huge|giant|enormous|massive",
+    s: "gigantic|tall|vast|immense|colossal|mammoth|jumbo|great|grand|hefty|bulky|tremendous|monumental|substantial|sizable|wide|broad|mega|ginormous|humongous|whopping|king size|super size|oversized|extra large|xl",
+    r: "titanic|gargantuan|monstrous|elephantine|herculean|prodigious|towering|lofty|mountainous|stupendous|astronomical|cosmic|infinite|boundless|limitless|immeasurable|epic|almighty|considerable|generous|ample|abundant|voluminous|capacious|spacious|roomy|extensive|expansive|hulking|strapping|burly|beefy|stout|portly|husky|brawny|big boned|whacking|thumping|walloping|mondo|uber|monster|life size|full size|man size|family size|economy size|jumbo size|outsize|outsized|plus size",
+    d: "brobdingnagian|cyclopean|leviathan|behemothic|gigantean|titanesque|mastodonic|elephantesque|pythonic|planetary|galactic|stellar|tidal|oceanic|continental|immane|macroscopic|megascopic|vasty|bumper|whopper|thundering|swingeing|tidy|goodly|mahoosive|humungous|biggity|bigly|yuge|honking|honkin|ginormo|mungo",
+    k: "brobdingnagian",
+    c: "big|bigg|bigger|biggest|big mac|big ben|big bird|big foot/bigfoot|notorious big|mr big",
+  }],
+  ["Name a sound word (onomatopoeia)", "Words", {
+    p: "boom|bang|pop|buzz|splash|crash|meow|woof|moo|oink",
+    s: "bark|quack|hiss|roar|tweet|chirp|ding|dong|ring|beep|honk|vroom|zoom|whoosh|swoosh|splat|thud|thump|knock|tick tock|ticktock|click|clap|snap|crackle|sizzle|fizz|drip|drop|plop|squeak|creak|crunch|munch|slurp|burp|hiccup|achoo|cough|sniff|giggle|ha ha|boing|zap|pow|wham|bam|kaboom|kapow|whack|smack|bonk|clang|clink|clunk|jingle|ding dong|choo choo|cock a doodle doo|baa|neigh|ribbit|hoot|caw|cluck|gobble|purr|growl|howl|grr|zzz|snore|yawn|thwack|ahem",
+    r: "boing boing|bloop|blip|bleep|bling|bong|bop|brr|brrr|bzzt|chomp|chug|clatter|clank|clop|clip clop|cuckoo|dong|fwoosh|gargle|glug|gulp|gurgle|hum|honk honk|kerplunk|kerplop|kersplat|ker-ching|cha ching|kaching|knock knock|mmm|murmur|mumble|patter|pitter patter|ping|pitter|plink|plunk|pow pow|puff|rattle|rumble|rustle|screech|shush|shh|sigh|slosh|slam|smash|snip|snort|splosh|sputter|squawk|squelch|squish|swish|swoop|tap|thunk|thrum|tinkle|toot|twang|ugh|vroom vroom|wail|whirr|whir|whiz|whizz|whimper|whinny|whistle|whoop|woosh|yelp|yip|yap|zing|zip|zonk|grunt|groan|moan|sob|wah|waah|boo hoo|ow|ouch|oops|uh oh|yikes|eek|gasp",
+    d: "susurrus|susurration|tintinnabulation|plangent|borborygmus|crepitation|ululation|stridulation|kerfuffle|brouhaha|hubbub|cacophony|katzenjammer|bombilation|bombination|cachinnation|chirrup|chitter|churr|coo|croak|crepitate|fizzle|frou frou|guffaw|harrumph|hiccough|hurly burly|jabber|jangle|natter|oompah|ooh la la|pew pew|pfft|phut|plash|pshaw|quack quack|rat a tat|rat-a-tat|razzberry|raspberry|sough|swoosh swoosh|tantara|tantivy|tarantara|thwomp|thwop|tsk|tsk tsk|tut tut|twitter|ululate|whomp|whump|wolf whistle|yammer|yawp|barbaric yawp|zoom zoom",
+    k: "tintinnabulation",
+    c: "onomatopoeia|sound|noise|silence|music|the word sound|a word|my little brother",
+  }],
+  ["Name a girl's name", "Words", {
+    p: "emma|olivia|sophia/sofia|ava|mia|isabella|emily|sarah|jessica|ashley",
+    s: "amelia|charlotte|harper|evelyn|abigail|ella|elizabeth|madison|chloe|grace|lily|lucy|hannah|samantha|lauren|rachel|rebecca|natalie|anna|hailey|zoe|zoey|nora|stella|violet|aurora|hazel|scarlett|luna|layla|riley|camila|penelope|victoria|aria|ellie|maya|alice|ruby|ivy|willow|mila|eleanor|savannah|leah|addison|aubrey|brooklyn|paisley|claire|caroline|katherine/catherine|kate|mary|jennifer|linda|patricia|susan|karen|nancy|lisa|michelle|amanda|stephanie|nicole|megan|taylor|kayla|alexis|sydney|morgan|kylie|jasmine|destiny|brianna|alyssa|madeline|julia|sophie|ellie|isla|freya|poppy|daisy|rosie|molly|holly|amy|katie|jade",
+    r: "beatrice|clementine|josephine|margaret|matilda|eloise|genevieve|georgia|gemma|imogen|iris|juniper|lydia|magnolia|mabel|marigold|maeve|ophelia|phoebe|rosalind|sadie|seraphina|thea|vivian|wren|adelaide|annabelle|arabella|cecilia|cordelia|delilah|eliza|esme|evangeline|fiona|florence|harriet|ingrid|isadora|lavinia|leonora|lila|lorelei|lucia|lucinda|millie|nadia|natasha|octavia|olive|persephone|primrose|priscilla|rosemary|sabrina|tabitha|tatiana|theodora|valentina|veronica|winifred|xena|yasmin|zara|zelda|aaliyah|ayesha|fatima|aisha|priya|ananya|mei|yuki|sakura|hana|chloé|amelie|elodie|ines|lea|manon|camille|ingrid|astrid|freja|saga|siobhan|niamh|aoife|saoirse|sinead|eilidh|morag|bronwen|cerys|carys|rhiannon|seren",
+    d: "agatha|bertha|cornelia|dorothea|eugenia|euphemia|ermengarde|gertrude|griselda|gwendolyn|hepzibah|hortense|hyacinth|ida|imelda|jemima|keziah|leocadia|loveday|marjoribanks|mehitabel|millicent|minerva|myrtle|nerys|odette|ottoline|perpetua|petronella|philippa|prudence|rowena|temperance|ursula|verity|wilhelmina|zenobia|zinnia|bathsheba|araminta|clotilde|domitilla|ethelreda|fenella|gudrun|honoria|isolde|jocasta|leofrida|melisande|morwenna|nimue|oriana|parthenope|ragnhild|sieglinde|tamsin|una|vashti|xanthe|yolande|zuleika|aethelflaed|boudicca|cartimandua|eadgyth|godiva|hild|mildred|osyth|winifrede",
+    k: "marjoribanks",
+    c: "mom|grandma|alexa|siri|cortana|lady|girl|miss|ma'am|the queen|barbie|dora|elsa|bluey|my sister",
+  }],
+  ["Name a boy's name", "Words", {
+    p: "james|john|michael|david|william|liam|noah|oliver|jacob|daniel",
+    s: "ethan|mason|logan|lucas|benjamin|elijah|alexander|henry|jackson|sebastian|aiden|matthew|samuel|joseph|joshua|ryan|nathan|andrew|christopher|anthony|thomas|charles|robert|richard|mark|paul|peter|kevin|brian|jason|eric|adam|tyler|kyle|justin|brandon|dylan|jake|luke|owen|wyatt|gabriel|carter|jayden|isaac|caleb|hunter|connor|evan|austin|leo|max|jack|harry|george|alfie|charlie|freddie|archie|oscar|arthur|theo|finn|ezra|levi|asher|miles|hudson|grayson|lincoln|jaxon|kai|aaron|zachary|nicholas|christian|cameron|isaiah|julian|jonathan|steven|timothy|patrick|sean|kevin|chris|mike|matt|dave|steve|tom|bob|bill|joe|jim|tim|sam|ben|dan|nick",
+    r: "atticus|barnaby|benedict|caspian|cornelius|cyrus|dashiell|desmond|dorian|edmund|elias|ellis|emmett|ezekiel|felix|fitzgerald|gideon|hector|horatio|ignatius|ira|jasper|jude|lachlan|leopold|lorcan|lucian|magnus|malachi|maximilian|montgomery|nathaniel|ozzy|percival|phineas|quentin|rafferty|raphael|remy|rhys|rufus|silas|solomon|stellan|tobias|tristan|ulysses|valentine|wendell|wilbur|xavier|zachariah|zeke|ahmed|mohammed|omar|yusuf|ibrahim|hamza|arjun|rohan|aarav|vikram|raj|hiroshi|kenji|haruto|ren|wei|jun|chen|diego|mateo|santiago|alejandro|javier|joaquin|pierre|jean|louis|hugo|luc|giuseppe|marco|luca|giovanni|lars|sven|bjorn|erik|olaf|sean|liam|cian|oisin|fergus|angus|hamish|alasdair|rhodri|dafydd|gareth|emrys",
+    d: "aloysius|ambrose|archibald|augustus|bartholomew|basil|cuthbert|cyprian|ebenezer|eustace|ferdinand|fortescue|gervase|hilary|horace|hubert|humphrey|ichabod|jedediah|jeremiah|lancelot|lazarus|leopold|marmaduke|mortimer|nigel|obadiah|octavius|orville|oswald|peregrine|reginald|septimus|thaddeus|theophilus|tiberius|ulric|vernon|wilfred|wolfgang|zebedee|aethelred|aldous|alaric|barnabas|benedikt|crispin|drogo|eadric|egbert|ethelbert|godfrey|gawain|hereward|ivo|jocelyn|kenelm|leofric|osbert|percival|rollo|sigurd|thurstan|uther|waldo|wulfstan",
+    k: "marmaduke",
+    c: "dad|grandpa|bob the builder|boy|man|sir|mister|bro|dude|buddy|pal|my brother|steve (minecraft)|guy",
+  }],
+]);
