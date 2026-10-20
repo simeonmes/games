@@ -194,3 +194,31 @@ BANK_SOURCES.push({
     d: "grace dieu|henry grace a dieu|great harry|mary rose 1511|sovereign of the seas 1637|soleil royal|la couronne|wasa 1628|mars ship|svärdet|elefanten|tre kronor|batavia 1628|zeven provincien|de zeven provincien|amsterdam ship|stad amsterdam|prins willem|gotheborg|grand turk|hms surprise|hms sophie|hms hotspur|hms lydia|hms indefatigable|hms temeraire|the fighting temeraire|temeraire|hms bellerophon|billy ruffian|redoutable|santisima trinidad|bucentaure|l'orient|orient|hms vanguard 1787|hms agamemnon|hms captain|hms foudroyant|hms implacable|hms trincomalee|trincomalee|hms unicorn|hms warrior|warrior 1860|hms gannet|hms m33|hms caroline|hms alliance|hms ocelot|hms cavalier|hms plymouth|hms bronington|hms wellington|cutty sark 1869|glenlee|balclutha|star of india|elissa|falls of clyde|wavertree|peking|passat|pommern|moshulu|kruzenshtern|sedov|mircea|eagle|uscgc eagle|amerigo vespucci|juan sebastian de elcano|esmeralda|cuauhtemoc|libertad|gorch fock|christian radich|statsraad lehmkuhl|sorlandet|dar pomorza|dar mlodziezy|fryderyk chopin|nadezhda|pallada|mir|khersones|tenacious|lord nelson|stavros niarchos|prince william",
   },
 });
+
+BANK_SOURCES.push({
+  "Name a word that means 'big'": {
+    s: "sizeable",
+    r: "behemoth|titan|whale of a|commodious|thick|chunky|gross|appreciable|mighty|grandiose|magnificent|majestic|imposing|soaring|high|heavy|weighty|ponderous|cumbersome|unwieldy|biggie|king sized|xxl|larger than life|overgrown|swollen|bloated|inflated|bulging|fat|plump|rotund|giant sized",
+    d: "megalithic|megalith|macro|magnum|maxi|super|ultra|hyper|jumbo sized|walloper|thumper|stonking|humongo|bodacious|enormo|astronomic|incalculable|fathomless|unbounded|mickle|muckle|meikle|great big|big ol|biggish|largish|tallish|steep|significant|major|serious|heavy duty|industrial size|bulk|wholesale|tidy sum|hulky|lumbering|gigantesque|titanical",
+  },
+  "Name a word that means 'happy'": {
+    s: "bright",
+    r: "sparkling|glowing|sunny side up|peaceful|at ease|comfortable|jaunty|zippy|spirited|high spirited|in good spirits|good humoured|good humored|hopeful|rosy|festive|celebratory|triumphant|victorious|proud|smug|pleased as punch|happy as larry|like a kid in a candy store|floating|dizzy with joy|tickled|amused|entertained|captivated|delirious|dreamy|stoked out|buzzing|in raptures|in heaven",
+    d: "joysome|frolicsome|rollicking|waggish|larky|beatified|hedonic|arcadian|elysian|paradisiacal|empyrean|enravished|ravished|rejoicing|exulting|triumphing|crowing|chirrupy|beamish|chortling|chuckling|giggly|tickled to death|happy as a sandboy|happy as a pig in mud|bright eyed and bushy tailed|on a high|riding high|in clover|living the dream|living large|cheerio|hunky dory|fine and dandy|peachy|peachy keen|copacetic|groovy|jake|ducky|bully|ripping|topping|spiffing|tickety boo",
+  },
+  "Name a word that starts with 'Z'": {
+    s: "zing|zookeeper|zebra crossing|zip line|zero gravity",
+    r: "zoning|zoologist|zoom lens|zoot suit|zouk|zumba|zakuska|zorse|zonkey|zebrafish|zebroid|zoospore|zealotry|zingy|zippy|zingiber|zippered|zirconia|zodiacal|zonal|zonked|zoophobia|zoonosis|zoonotic|zwitterion|zebrawood|zabaione|za'atar|zaddik|zamindar|zarf|zax|zek|zeroth|zigzagging|zitherist|zoysia|zuppa|zucchetti",
+    d: "zabernism|zakouski|zambomba|zamia|zanella|zanja|zanze|zaptiah|zaratite|zareba|zariba|zeatin|zebrass|zedoary|zelator|zemstvo|zenaida|zendo|zenzizenzizenzic|zikkurat|zillah|zimocca|zinke|zinkenite|zingel|zippo|zircaloy|zoanthropy|zoilism|zoism|zombiism|zomotherapy|zonure|zoogeography|zoogloea|zoolite|zoomancy|zoonomy|zoopathology|zoopraxiscope|zoosemiotics|zootomy|zootrophic|zorino|zosteriform|zucchino|zufolo|zugunruhe|zumbooruk|zwischenzug|zygodactyl|zygophyte|zymology|zymotic",
+  },
+  "Name a word that starts with 'X'": {
+    s: "xerus",
+    r: "xylography|xylose|xenophobic|xenodochial|xeriscaping|xerophytic|xystarch|xenodiagnosis|x axis|x chromosome|xenon lamp|xmas tree|x wing|xiaolongbao|xoloitzcuintli|xolo|xocolatl",
+    d: "xanthate|xanthein|xanthene|xanthochroid|xanthochroism|xanthocyanopsia|xanthoderm|xanthomelanous|xanthophore|xanthopsia|xanthopterin|xanthorrhoea|xanthosis|xenarthral|xenelasia|xenobiotic|xenogenous|xenolalia|xenomenia|xenophily|xenoplastic|xenotropic|xeransis|xerantic|xerasia|xerophily|xerotes|xerotic|xiphopagus|xylanthrax|xylitone|xylocopa|xylogen|xylographer|xyloid|xylology|xylomancy|xylonite|xylophilous|xylorimba|xylotomous|xyrid|xystos",
+  },
+  "Name a word that rhymes with 'cat'": {
+    s: "blat|matte",
+    r: "bath mat|yoga mat|sun hat|cowboy hat|bobble hat|nougat|kumquat|lab rat|cricket bat|baseball bat|aerostat|pyrostat|apparat|marat|cool cat|hep cat|cheshire cat|go to bat|pitter pat|splat splat|rat tat tat",
+    d: "magnificat|loquat|salariat|lariat|automat|photomat|fiat|ghat|thereat|whereat|hereat|forthat|cryptocrat|gerontocrat|kleptocrat|theocrat|mobocrat|androcrat|gynocrat|pantisocrat|stratocrat|ochlocrat|physiocrat|monocrat|hierocrat|nomocrat|logocrat",
+  },
+});
