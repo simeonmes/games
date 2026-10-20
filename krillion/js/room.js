@@ -470,6 +470,7 @@ const Room = (() => {
     roundI = m.i;
     onQuit = leave;
     if (m.i === 0) { picks = []; Scene.set(0, true); Sound.play("ping"); }
+    markSeen([m.pi]);
     playing = false; held = null;
     playRound({
       pi: m.pi, secs: m.secs, hud: hud(m.i, m.total),

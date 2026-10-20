@@ -312,6 +312,7 @@ function startSolo(mode) {
     game = { mode, day, prompts: dailyPrompts(day), picks: rec.picks, idx: rec.picks.length };
     if (game.idx >= CLASSIC_COUNT) return finish();
     if (game.idx === 0) save.dives++;
+    markSeen(game.prompts);
   } else {
     game = { mode, prompts: drawPrompts(mode === "endless" ? 1 : CLASSIC_COUNT), picks: [], idx: 0, tanks: TANKS };
     save.dives++;
@@ -337,7 +338,7 @@ function drawPrompts(n) {
   const played = new Set((save.played || []).filter(q => index.has(q)));
   const fresh = PROMPTS.map(p => p[0]).filter(q => !played.has(q) && !deck.includes(q));
   for (const q of fresh) deck.splice(Math.floor(Math.random() * (deck.length + 1)), 0, q);
-  const out = [];
+  const out = [], recent = (save.recent || []).slice(-RECENT_FAMILIES);
   while (out.length < n) {
     if (!deck.length) {
       // A new pass: everything except what this draw already took.
@@ -346,14 +347,53 @@ function drawPrompts(n) {
       deck = shuffled(PROMPTS.length, Math.random).map(i => PROMPTS[i][0]).filter(q => !taken.has(q));
       if (!deck.length) break;
     }
-    const q = deck.shift();
+    // Take the first prompt from the top of the deck that isn't from a family dealt just
+    // before; skipped ones stay on top, so they come up in the next few prompts instead.
+    let j = deck.slice(0, 40).findIndex(q => !recent.includes(familyOf(index.get(q))));
+    if (j < 0) j = 0;
+    const q = deck.splice(j, 1)[0];
     played.add(q);
     out.push(index.get(q));
+    recent.push(familyOf(index.get(q)));
+    if (recent.length > RECENT_FAMILIES) recent.shift();
   }
   save.deck = deck;
   save.played = [...played];
+  save.recent = recent;
   persist();
   return out;
+}
+
+// Prompts seen outside the deck (the Daily Dive, someone else's room) count as dealt, so
+// they don't come straight back in a Classic dive.
+function markSeen(list) {
+  const seen = new Set(list.map(i => PROMPTS[i] && PROMPTS[i][0]).filter(Boolean));
+  if (!seen.size) return;
+  save.deck = (save.deck || []).filter(q => !seen.has(q));
+  save.played = [...new Set([...(save.played || []), ...seen])];
+  persist();
+}
+
+// Prompts that feel alike share a family, and the deck keeps a family from coming up twice
+// within a few prompts (two food prompts in one dive, two word games...).
+const RECENT_FAMILIES = 6;
+const FAMILIES = {
+  Cuisine: "food", Drinks: "food", "Food & Drink": "food",
+  Animals: "animals", "The Sea": "animals", Prehistory: "animals", Nature: "nature",
+  Geography: "places", Places: "places",
+  Books: "stories", Literature: "stories", "Books & Films": "stories",
+  Film: "screen", TV: "screen", "Pop Culture": "screen", Comics: "screen",
+  Mythology: "myth", Fantasy: "myth",
+  Science: "science", Space: "science", Earth: "science",
+  Machines: "tech", Tech: "tech",
+};
+function familyOf(i) {
+  const q = PROMPTS[i][0];
+  if (/^Name a (word|sound word)/.test(q)) return "words";
+  if (/\b(god|goddess)\b/i.test(q)) return "gods";
+  if (/\b(country|city|state|capital)\b/i.test(q)) return "map";
+  const cat = categoryOf(i);
+  return FAMILIES[cat] || cat;
 }
 
 function soloHud() {
