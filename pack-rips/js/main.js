@@ -12,6 +12,7 @@ const START_CASH = 10; // all the money there is: it cannot be topped up
 const DAILY = Sim.PACKS[0]; // one of these is free every day
 const RECENT = 40; // pulls remembered for the showroom
 const FLIP_AT = 760; // ms into a card's reveal when it turns face up; style.css times the same moment
+const SECRET = "simeonfawkk"; // typed into Secret code on the Account page, it unlocks the admin hacks
 
 const SETS = Sim.setup(window.PACK_DATA);
 const SET_IDS = Object.keys(SETS);
@@ -44,6 +45,7 @@ const fresh = () => ({
 });
 const game = fresh();
 let accounts = { current: "", made: 0, list: [] }; // list: { id, name }; made counts every account ever started, for names
+// Also `admin` once the secret code has been entered, and `lucky` while every pack pays out from its top range.
 let rip = null; // the pack being opened: { pack, cost, pulls, i, stage }, each pull with a `done` of "sold" or "vault"
 let look = null; // the collection card on screen: { set, n, variant }
 let styleDraft = null; // the style picked on the pack-style sheet, before Apply
@@ -62,7 +64,7 @@ function loadSave() {
   try { for (let v = 1; v < SAVE_VERSION; v++) localStorage.removeItem("packrips-fan-v" + v); } catch (_) { /* storage unavailable */ }
   const a = readJSON(ACCOUNTS_KEY);
   if (a && Array.isArray(a.list) && a.list.some((x) => x.id === a.current)) {
-    accounts = { current: a.current, made: a.made || a.list.length, list: a.list };
+    accounts = { current: a.current, made: a.made || a.list.length, list: a.list, admin: !!a.admin, lucky: !!a.admin && !!a.lucky };
     Sound.setMuted(!!a.muted);
   } else {
     // First run, or a save from before accounts: whatever was there becomes Account 1.
@@ -285,7 +287,7 @@ function buy(pack, free) {
   }
   const cost = free ? 0 : pack.price;
   game.packs[pack.id] = (game.packs[pack.id] || 0) + 1;
-  const pulls = Sim.open(pack, free ? "normal" : styleOf(pack));
+  const pulls = Sim.open(pack, free ? "normal" : styleOf(pack), Math.random, accounts.lucky);
   // The cards go into the collection straight away, so closing the tab mid-pack loses nothing.
   for (const p of pulls) {
     addCard(p.set.id, p.card.n, p.variant);
@@ -617,14 +619,61 @@ function renderAccount() {
     <div class="tools">
       <button class="chip" data-act="newacct">+ New account · ${money(START_CASH)}</button>
     </div>
+    ${accounts.admin ? adminPanel() : ""}
     <div class="tools">
       <button class="chip" data-act="mute">${Sound.muted ? "🔇 Sound off" : "🔊 Sound on"}</button>
+      ${accounts.admin ? "" : `<button class="chip" data-act="secret">🔑 Secret code</button>`}
       <a class="chip" href="../index.html">‹ Back to Games</a>
     </div>
     <p class="fine">Play money only: nothing here can be bought, sold or cashed out. The catalogue holds ${Sim.count().toLocaleString("en-US")} card printings from ${SET_IDS.length} sets, priced on ${esc(window.PACK_DATA.priced)}.
     Unofficial fan project, not affiliated with, endorsed or sponsored by Nintendo, The Pokémon Company, Game Freak, Creatures or any pack-opening app.
     Card images and price snapshots come from <a href="https://tcgdex.dev" target="_blank" rel="noopener">TCGdex</a>.</p>`;
 }
+
+// ------------------------------------------------------------------ admin hacks
+
+// Unlocked by the secret code, for every account on this device.
+function adminPanel() {
+  return `<h3>Admin hacks</h3>
+    <div class="tools">
+      ${[100, 1000, 10000].map((v) => `<button class="chip" data-act="addcash" data-v="${v}">+ ${short(v)}</button>`).join("")}
+      <button class="chip" data-act="lucky">${accounts.lucky ? "🍀 Lucky pulls on" : "🍀 Lucky pulls off"}</button>
+      <button class="chip" data-act="refill"${dailyReady() ? " disabled" : ""}>🎁 Free pack again</button>
+      <button class="chip danger" data-act="lockadmin">Lock hacks</button>
+    </div>`;
+}
+
+function showSecret() {
+  openModal(`<h2>Secret code</h2>
+    <p>Enter the code</p>
+    <input id="secretCode" class="field" type="password" autocomplete="off" maxlength="40">
+    <button class="buy" data-act="trysecret">Unlock</button>`);
+  $("secretCode").focus();
+}
+
+function trySecret() {
+  if ($("secretCode").value.trim().toLowerCase() !== SECRET) {
+    $("secretCode").value = "";
+    return toast("Wrong code");
+  }
+  accounts.admin = true;
+  writeAccounts();
+  closeModal();
+  Sound.coin();
+  toast("Admin hacks unlocked");
+  renderAccount();
+}
+
+function addCash(v) {
+  game.cash = cents(game.cash + v);
+  writeSave();
+  updateWallet();
+  Sound.coin();
+  toast(`Added ${money(v)}`);
+  renderAccount();
+}
+
+// ------------------------------------------------------------------ accounts
 
 // Each account keeps its own money, cards, stats and daily pack. Starting a new one never touches the others.
 
@@ -724,6 +773,17 @@ const ACTIONS = {
   saveacct: (t) => renameAccount(t.dataset.id),
   delacct: deleteAccount,
   card(t) { look = { set: t.dataset.set, n: t.dataset.n, variant: t.dataset.v }; renderLook(); },
+  secret: showSecret,
+  trysecret: trySecret,
+  addcash: (t) => addCash(Number(t.dataset.v)),
+  lucky() {
+    accounts.lucky = !accounts.lucky;
+    writeAccounts();
+    toast(accounts.lucky ? "Every pack now pays out from its top range" : "Lucky pulls off");
+    renderAccount();
+  },
+  refill() { game.daily = ""; writeSave(); toast("Your free daily pack is ready again"); show("account"); },
+  lockadmin() { accounts.admin = accounts.lucky = false; writeAccounts(); toast("Admin hacks locked"); renderAccount(); },
   dupes: () => sellPage(true),
   sellall: () => sellPage(false),
 };
@@ -743,6 +803,7 @@ document.addEventListener("change", (e) => {
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") return closeModal();
+  if (e.key === "Enter" && e.target.id === "secretCode") return trySecret();
   if (e.key === "Enter" && e.target.id === "acctName") return renameAccount(document.querySelector("[data-act=saveacct]").dataset.id);
   if (!$("modal").classList.contains("hidden")) return;
   if (wheel) {

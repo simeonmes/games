@@ -123,9 +123,10 @@ const Sim = (() => {
   }
 
   // The cards of one pack: the pull, and sometimes a bonus card after it.
-  function open(pack, style, rng = Math.random) {
+  // `top` skips the roll and always pays out from the top range.
+  function open(pack, style, rng = Math.random, top = false) {
     const { rows } = table(pack, style);
-    let roll = rng(), row = rows[rows.length - 1];
+    let roll = top ? 1 : rng(), row = rows[rows.length - 1];
     for (const r of rows) {
       if (roll < r.chance) { row = r; break; }
       roll -= r.chance;
