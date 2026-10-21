@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#070a16">
+<meta name="robots" content="noindex">
+<title>Site Views</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+<style>
+  :root {
+    --bg: #070a16;
+    --panel: #111830;
+    --line: rgba(140, 170, 255, 0.16);
+    --text: #eef2ff;
+    --muted: #8391b5;
+    --accent: #ffc53d;
+    --live: #3ddc84;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 50% -10%, #1b2a5c 0%, var(--bg) 60%) fixed, var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  }
+  .wrap { width: min(860px, 100%); margin: 0 auto; padding: 32px 16px; }
+  a { color: var(--muted); }
+  h1 { margin: 12px 0 24px; font-size: 32px; font-weight: 900; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .tile .label { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+  .tile .num { font-size: 40px; font-weight: 900; font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .tile .sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .tile.live .num { color: var(--live); }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--live); margin-right: 6px; animation: pulse 1.6s infinite; }
+  @keyframes pulse { 50% { opacity: 0.3; } }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  th, td { padding: 10px 14px; text-align: right; font-variant-numeric: tabular-nums; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  tr:last-child td { border-bottom: 0; }
+  td.on { color: var(--live); font-weight: 700; }
+  .status { color: var(--muted); font-size: 14px; margin-top: 16px; }
+  .status.err { color: #ff7a7a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="../">← Game Library</a>
+  <h1>Views</h1>
+
+  <div class="tiles">
+    <div class="tile live"><div class="label"><span class="dot"></span>On now</div><div class="num" id="live">–</div><div class="sub">open in a browser</div></div>
+    <div class="tile"><div class="label">Today</div><div class="num" id="today-views">–</div><div class="sub" id="today-sub">&nbsp;</div></div>
+    <div class="tile"><div class="label">All time</div><div class="num" id="all-views">–</div><div class="sub" id="all-sub">&nbsp;</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Page</th><th>On now</th><th>Today</th><th>All time</th></tr></thead>
+    <tbody id="pages"></tbody>
+  </table>
+
+  <div class="status" id="status">Loading…</div>
+</div>
+
+<script>
+  // Same address as in ../site.js.
+  var SERVER = 'games-live.YOUR-SUBDOMAIN.workers.dev';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = function (n) { return (n || 0).toLocaleString(); };
+
+  function pageName(path) {
+    var name = path.replace(/^\/games\/?/, '').replace(/\/$/, '');
+    return name ? name.replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); }) : 'Hub';
+  }
+
+  function render(s) {
+    $('live').textContent = fmt(s.live.total);
+    $('today-views').textContent = fmt(s.today.views);
+    $('today-sub').textContent = fmt(s.today.visitors) + ' visitor' + (s.today.visitors === 1 ? '' : 's');
+    $('all-views').textContent = fmt(s.allTime.views);
+    $('all-sub').textContent = fmt(s.allTime.visitors) + ' visitors' + (s.allTime.since ? ' since ' + s.allTime.since : '');
+
+    var paths = Object.keys(s.allTime.pages);
+    Object.keys(s.live.pages).forEach(function (p) { if (paths.indexOf(p) === -1) paths.push(p); });
+    paths.sort(function (a, b) { return (s.live.pages[b] || 0) - (s.live.pages[a] || 0) || (s.allTime.pages[b] || 0) - (s.allTime.pages[a] || 0); });
+
+    var body = $('pages');
+    body.textContent = '';
+    paths.forEach(function (p) {
+      var tr = document.createElement('tr');
+      [pageName(p), fmt(s.live.pages[p]), fmt(s.today.pages[p]), fmt(s.allTime.pages[p])].forEach(function (text, i) {
+        var td = document.createElement('td');
+        td.textContent = text;
+        if (i === 1 && s.live.pages[p]) td.className = 'on';
+        tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+  }
+
+  function load() {
+    fetch('https://' + SERVER + '/summary', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (s) {
+        render(s);
+        $('status').className = 'status';
+        $('status').textContent = 'Updated ' + new Date().toLocaleTimeString() + ' · refreshes every 5 seconds · days are UTC';
+      })
+      .catch(function (e) {
+        $('status').className = 'status err';
+        $('status').textContent = "Couldn't reach the counter (" + e.message + '). Retrying…';
+      });
+  }
+
+  load();
+  setInterval(function () { if (document.visibilityState === 'visible') load(); }, 5000);
+</script>
+</body>
+</html>
