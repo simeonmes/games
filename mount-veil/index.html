@@ -178,5 +178,10 @@
 <script src="js/render.js?v=10"></script>
 <script src="js/story.js?v=10"></script>
 <script src="js/main.js?v=10"></script>
+<script>
+  // GoatCounter: count by page path, ignoring ?v= cache-busters and index.html.
+  window.goatcounter = { path: function () { return location.pathname.replace(/index\.html$/, ''); } };
+</script>
+<script data-goatcounter="https://simeonmes.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
