@@ -1,0 +1,5307 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ9143.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%2012)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:47:07.333Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q59"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PHP"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "166"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "PHP Hypertext Preprocessor|PHP programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "C"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "165"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "C programming language|C language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q28865"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Python"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "164"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Python (computer language)|Python (computing)|Python (lang)|Python (language)|Python (Programming Language)|Python (programming)|Python (scripting language)|Python (software)|Python computer language|Python language|Python programming language|Python Programming Language|Python.org"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2005"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "JavaScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "163"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q251"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Java"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "java programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2407"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "C++"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "149"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q46441"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cascading Style Sheets"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "135"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2370"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "C#"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "115"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "c#|Microsoft Java"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q47607"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SQL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "111"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sql|Structural Query Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q42478"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Perl"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "105"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pearl|perl|Perl/CGI|Practical Extraction and Reporting Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2115"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "XML"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "101"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "eXtensible Markup Language|Extensible Markup Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q161053"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ruby"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "101"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "rb|Ruby language|Ruby programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q81571"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pascal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "100"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pascal programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q42979"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "95"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BASIC programming language|Beginners’ All-purpose Symbolic Instruction Code|Symbolic Instruction Code"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207316"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lua"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "95"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lua language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2378"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Classic Visual Basic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "92"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "VB|Visual Basic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q83303"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fortran"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q165436"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "assembly language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "86"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "assembly|asm|assembler language|assembly code"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131140"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "COBOL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Common Business-Oriented Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q132874"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lisp"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ISO/IEC 13816|JIS X 3012|Lisp (programming language)|List Processor|LISt Processor"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q169478"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MATLAB"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Matlab|Matrix Laboratory"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q154755"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ada"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ada programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q206904"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "R"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "GNU R|GNU S|R language|R programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34010"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Haskell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "hs|Haskell programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37227"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Go"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Go programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q163468"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Prolog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "68"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Programming in Logic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q575650"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rust"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rust language|Rust programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q275131"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scratch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "scratch.mit.edu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3816639"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kotlin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188436"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ALGOL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ALGO rithmic L anguage"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17118377"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Swift"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Apple Swift|Swift (Apple programming language)|Swift language|Swift programming language|Swift.org|Swiftlang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q50077"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visual Basic .NET"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Visual Basic|VB.NET|Visual Basic .NET"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q234657"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ActionScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "AS|AS3|ActionScript|actionscript"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5301"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "TeX"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "TEX"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q223679"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "GNU Octave"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "OCTAVE"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213970"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AWK"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q235086"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Smalltalk"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q244627"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brainfuck"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BF|b****fuck|Brainf***|BrainF***|brainf**k|Brainf*ck|brainfsck|branflakes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188531"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Objective-C"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Objective-C programming language|Obj-C programming language|Objc|Objective C programming language|Objective-C (programming language)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q460584"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scala"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Scala programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q344266"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Active Server Pages"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ASP|ASP.Net|Classic ASP"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q201436"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Logo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q296187"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "APL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "A Programming Language|A programming language|APL (language)|APL language|APL programming language|APL programming language family|APL\\360|Array Processing Language|X3J10"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q319268"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "D"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "D language|D programming language|Dlang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5288"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tcl"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "TCL|Tool Command Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q81294"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mathematica"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "mma|Wolfram Mathematica"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q978185"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "TypeScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "TS|.ts"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q32110"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "XSLT"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Extensible Stylesheet Language Transformations|XSL Transformations"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13743"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visual Basic Script"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "VBS|Microsoft Visual Basic Scripting Edition|VBScript|VBScript Programming"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q840410"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PowerShell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q334879"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Erlang"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "erlang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q212587"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "OCaml"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q275472"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Forth"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "FORTH"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q667566"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visual Basic for Applications"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "VBA"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q51798"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Clojure"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q406009"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dart"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ECMA-408|Google Dart"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q54871"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SPARQL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Simple Protocol RDF Query Language|SPARQL Protocol and RDF Query Language|SPARQL Query Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q305876"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sed"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q504453"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Apache Groovy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q797302"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "B"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "B (programming language)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2613697"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Julia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Julia programming language|JuliaLang|The Julia Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q380523"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ABAP"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ABAP/4|Advanced Business Application Programming|Allgemeiner Berichts Aufbereitungs Prozessor|Allgemeiner Berichts Aufbereitungs Prozessor (ABAP)|Allgemeiner Berichts-Aufbereitungs-Prozessor"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q212569"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Simula"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q223433"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PL/I"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q648124"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gambas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q849146"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Common Lisp"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q648619"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "F#"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "F♯|F Sharp|FSharp"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q139380"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maple"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16340"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "XPath"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "XML Path Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q473201"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Turbo Pascal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q810009"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BCPL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Basic Combined Programming Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41574"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PL/SQL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "PL SQL|PL-SQL|Procedural Language/Structured Query Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q828742"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scilab"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1057802"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ABC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ABC programming language|JSON"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q300867"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "make"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q381247"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "QBasic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q633894"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Object Pascal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1053535"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Processing"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "p5|Proce55ing"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q685820"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "REXX"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Restructured Extended Executor"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q725401"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "VisiCalc"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q850661"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "XQuery"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q860654"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ML"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q385970"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Apache Ant"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ant"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20155677"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "WebAssembly"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "WASM|wasm|Wasm|WebASM"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q784845"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AutoIt"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5362035"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Elixir"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6470767"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "assembler"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "assembly program"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q375913"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "WebGL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Web Graphics Library"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q195929"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "FreeBASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "fbc"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q129137"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AppleScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q844595"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bourne shell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sh|/bin/sh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q681360"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "OpenCL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Open Computing Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q51885456"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zig"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Zig language|Zig programming language|Ziglang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q263544"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Common Intermediate Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CIL|MSIL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q726218"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "XML User Interface Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ZOOL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q753868"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visual FoxPro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Microsoft Visual FoxPro"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q553514"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "JScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q606550"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Simulink"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q620464"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "G-code"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q777358"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Modula-2"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1138939"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vala"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q784816"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AutoHotkey"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "AHK|Auto Hot Key|Auto Hotkey"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q258778"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Extensible Application Markup Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "XAML"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q597330"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Standard ML"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SML"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1572865"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sass"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ".sass|syntactically awesome style sheets"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34280"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Plankalkül"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q892948"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Boo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q81348"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "C--"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "C minus minus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q840543"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RPG"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IBM RPG|Report Program Generator"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1165219"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "extended Backus–Naur form"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "EBNF"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q286196"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Altair BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1054365"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "INTERCAL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1106819"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "CoffeeScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1133580"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mathcad"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1064516"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "C shell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "csh|Csh|csh.1|csh(1)|tcsh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1160312"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "J#"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Visual J#"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q517956"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Malbolge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1411875"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ladder logic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15971618"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hack"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q836102"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SCUMM"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Script Creation Utility for Maniac Mansion"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q277710"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "A+"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "A (programming language)|A plus programming language|A+ (programming language)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q297868"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "x86 assembly language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "AT&T syntax|16-bit x86 assembly programming|32-bit x86 assembly programming|64-bit x86 assembly programming|Intel assembly|Intel assembly syntax|Intel syntax|X86 asm|X86 assembly|X86 Assembly|X86 Assembly Language|X86 assembly programming in long mode|X86 assembly programming in protected mode|X86 assembly programming in real mode|X86-assembly|X86-assembly language in longmode|X86-assembly language in protected mode|X86-assembly language in realmode"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q300897"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bc"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Basic Calculator|UNIX bc"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1571077"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Netwide Assembler"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "NASM"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q378222"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Whitespace"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q513238"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "LOLCODE"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q522041"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SNOBOL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q762464"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Squeak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q834358"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Clipper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1323362"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oberon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1056057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "QuickBASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Microsoft BASIC Professional Development System|Microsoft QuickBASIC|QB"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1072180"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Synchronized Multimedia Integration Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SMIL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204222"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "KornShell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ast-ksh|ksh|ksh93"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q775159"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "CLU"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CLU (programming language)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16863097"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Svelte"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SVELTE|sveltejs"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1196014"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ren'Py"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "rpy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1411245"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Transact-SQL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "T-SQL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q285886"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Haxe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1268744"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dylan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q779819"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "OpenGL Shading Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "GLSL|GLslang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q975594"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cython"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cython"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1929075"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pawn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ".pwn as another C++"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2166735"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ALGOL 68"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ALGOrithmic Language 1968"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q767018"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Microsoft Small Basic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Small Basic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1209759"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ALGOL 60"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "ALGOrithmic Language 1960"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1254148"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Racket"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "DrRacket|DrScheme|PLT Scheme"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1359171"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "REBOL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "rebol|Relative Expression-Based Object Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1505372"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Job Control Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "JCL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q780803"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Miranda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q814269"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Befunge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q838062"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "occam"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1204300"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stata"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q973097"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visual J++"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Microsoft Visual J++"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2347334"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "CPL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cambridge Programming Language|Combined Programming Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20080327"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nim"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nimrod|Nim programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q113157814"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Carbon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carbon language|Carbon programming language|Carbon-Lang|Carbonlang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1208217"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oz (programming language)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q845753"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Printer Command Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1156474"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Icon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24909565"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Solidity"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q787631"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Business Process Execution Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BPEL|BPEL4WS|WS-BPEL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q93482"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ceylon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Eclipse Ceylon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1002996"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Snap!"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BYOB|Construye tus propios bloques"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2052676"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Raku"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Perl 6|Perl6"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1334586"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Emacs Lisp"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ".el|Elisp"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1411939"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Server Side Includes"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SSI|Server-parsed HTML|SHTML"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q544927"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Limbo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q604792"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Singularity"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q735604"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AspectJ"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q782397"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AutoLISP"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q848460"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Portlet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1265836"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MetaPost"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1807379"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Game Maker Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5366250"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Elm"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q143419"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blitz BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Monkey|Blitz2D|BlitzBasic|BlitzMax|BlitzPlus|Blitz Basic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15241057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wolfram Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ".m|.nb|.wl|Mathematica language|Wolfram|Mathematica"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5583799"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Google Apps Script"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "GAS"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1194352"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Turbo C++"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Borland Turbo C++|tcc"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q672307"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "NetLogo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1201810"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Microsoft BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1283865"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "S"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2299598"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SuperCollider"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2428476"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Modula"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4037189"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Delphi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q961543"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "QML"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Qt Meta-object Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q292068"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "m4"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "UNIX m4"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q295232"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "AMOS"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "AMOS BASIC|AMOS BASIC programming language|AMOS Pro|AMOS Professional|Easy AMOS"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1118153"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Caml"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Categorical Abstract Machine Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q206040"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mercury"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mercury programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q165372"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "CLIPS"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "C Language Integrated Production System"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1756018"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Microsoft Macro Assembler"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "MASM"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1779923"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paradox"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Borland Paradox|Corel Paradox|Corel Paradox 8|Paradox 8|Paradox Database 8"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2160963"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PL/M"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "PL/M-86"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q383994"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "J"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "J Language|J Programming Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q559519"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "High Level Shader Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "High-level shading language|HLSL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1547448"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "TECO"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tape Editor and COrrector|Text Editor and COrrector"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q385325"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Modelica"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q756175"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Io"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1864529"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Self"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q947171"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "root"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BLUE"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q830842"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BETA"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "chhattisgarhi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1022268"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "C++/CLI"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "C plus plus/CLI|C++/Common Language Infrastructure"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1131652"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rocq prover"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Coq"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1141484"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "WEB"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Web"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6509476"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lean"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lean prover"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q21921428"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Crystal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Crystal Lang|Crystal Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1374139"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Euphoria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Robert Craig"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1486208"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "GNU Guile"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "GEL|Guile|GNU Extension Language|GNU Ubiquitous Intelligent Language for Extensions"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q259347"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Csound"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q539268"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Inform"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1277803"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "JOVIAL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1886145"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1024657"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cg"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "C for Graphics"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1665857"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Interactive Data Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IDL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1882071"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MUMPS"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "M|Massachusetts General Hospital Utility Multi-Programming System|Multi-User Multi-Programming System"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q278791"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "DarkBASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q377986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Clean"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1572341"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pike"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2118858"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PureBasic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1146247"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "CICS"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Customer Information Control System"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204693"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Karel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Karel the Robot"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1648571"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PowerBASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Turob Basic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1707206"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Max (programming language)"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Max/MSP"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1928222"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Modula-3"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Modula3"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2671999"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "DRAKON"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Drakon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18202981"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blockly"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Google Blockly"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q45322975"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Q#"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Q Sharp"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q118152673"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mojo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mojo Lang|Mojo language|Mojo programming language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1306585"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Turbo Basic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "PowerBASIC"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1422842"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hewlett-Packard Graphics Language"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "HP-GL|HP-GL/2|HPGL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q176984"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "UCSD Pascal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213259"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "OpenOffice Basic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q600450"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "KTurtle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1144631"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Curl"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1172264"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Datalog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1391724"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Factor"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1882973"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maclisp"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2368856"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Curry"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2507721"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "FoxPro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1140574"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shakespeare"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SPL|Shakespeare Programming Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q581256"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "CLISP"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "GNU clisp|GNU CLISP"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2630324"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "High Level Assembly"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "HLA|High Level Assembler"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18215985"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ScratchJr"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Scratch Junior"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1389173"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "FLOW-MATIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "B-0|Business Language version 0"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q588806"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Integer BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1023991"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "COMAL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1049708"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "A#"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2074777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sinclair BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2877155"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BLISS"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2164484"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "yawl"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "YAWL|Yet Another Workflow Language"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q621556"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Applesoft BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "badgear NT POINT BREAK"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q677161"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "GAP"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Groups, Algorithms and Programming"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2575010"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SQL*Plus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SQLPlus, SQL Plus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1191442"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "UnrealScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "UScript"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q337272"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Commodore BASIC"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CBM-BASIC|PET Basic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q608565"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cobra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q779317"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Asymptote"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20479"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Agda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1335195"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HQ9+"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1387402"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SystemVerilog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1456066"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stackless Python"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2044345"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "PL/pgSQL"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2298909"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Unobtrusive JavaScript"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2463067"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "QB64"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15408477"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Idris"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

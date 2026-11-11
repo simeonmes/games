@@ -1,0 +1,767 @@
+{
+  "Name a cheese": {
+    "r": "mozzarella di bufala campana|pecorino siciliano|caciocavallo podolico|mont d'or|bleu de bonneval|tomme de savoie|saint-félicien|saint-marcellin"
+  },
+  "Name a fruit": {
+    "r": "red banana|blue java banana|finger lime|desert lime|illawarra plum|davidson's plum|keitt mango|alphonso mango|ataulfo mango|sugar apple"
+  },
+  "Name a dog breed": {
+    "r": "continental bulldog|old german herding dog|bohemian shepherd|croatian sheepdog|romanian raven shepherd|chongqing dog|kunming wolfdog|shiloh shepherd"
+  },
+  "Name a country in Africa": {
+    "r": "ivory coast/republic of cote d'ivoire|tanzania/united republic of tanzania|egypt/arab republic of egypt|south africa/republic of south africa|gambia/republic of the gambia|congo/congo brazzaville|democratic republic of the congo/congo kinshasa|cape verde/republic of cabo verde"
+  },
+  "Name a musical instrument": {
+    "r": "pocket trumpet|bass melodica|contrabass balalaika|octave mandolin|electric kalimba|tenor recorder|alto trombone|subcontrabass flute"
+  },
+  "Name a planet, moon or dwarf planet": {
+    "r": "weywot|dysnomia|hi'iaka|namaka|vanth|actaea|albiorix|bebhionn|bergelmir|aegaeon|anthe"
+  },
+  "Name a bird": {
+    "r": "violet-backed starling|superb fairywren|splendid fairywren|southern ground hornbill|northern ground hornbill|victoria crowned pigeon|vulturine guineafowl|azure-winged magpie"
+  },
+  "Name a pasta shape": {
+    "r": "mafaldine|sagne torte|pici|pizzoccheri|bigoli|lorighittas|su filindeu|calamarata|sacchettoni|caccavelle"
+  },
+  "Name a chemical element": {
+    "r": "aluminium/aluminum metal|sulfur/sulphur element|caesium/cesium element|tungsten/wolfram element|iron/ferrum|copper/cuprum|silver/argentum|gold/aurum|lead/plumbum|tin/stannum"
+  },
+  "Name a dinosaur": {
+    "r": "jakapil|meraxes|maip|siats|siamraptor|ichthyovenator|vayuraptor|thanatotheristes|vectiraptor|ceratosuchops"
+  },
+  "Name a vegetable": {
+    "r": "celtuce|chayote shoots|sweet potato leaves|cassava leaves|pumpkin leaves|pea tendrils|garlic scapes|malabar spinach|water mimosa|winged bean"
+  },
+  "Name a sport": {
+    "r": "pickleball doubles|padel tennis|beach handball|snow volleyball|underwater rugby|underwater hockey|cycle polo|bikejoring|aquathlon|aquabike"
+  },
+  "Name a color": {
+    "r": "international klein blue|payne's grey|caput mortuum|rose madder|perylene green|davy's grey|buff titanium|potter's pink|indanthrone blue|permanent alizarin crimson"
+  },
+  "Name a US state": {
+    "r": "virginia/commonwealth of virginia|pennsylvania/commonwealth of pennsylvania|massachusetts/commonwealth of massachusetts|kentucky/commonwealth of kentucky|rhode island/state of rhode island|new york/new york state|washington/washington state|hawaii/state of hawaii"
+  },
+  "Name a capital city": {
+    "r": "nusantara|palikir|ngerulmud|funafuti|south tarawa|yaren|lobamba|mbabane|sri jayawardenepura kotte|porto-novo"
+  },
+  "Name a Greek god or goddess": {
+    "r": "aglaia|euphrosyne|thalia|peitho|bia|kratos|zelus|ananke|hemera|aether"
+  },
+  "Name a flower": {
+    "r": "chocolate cosmos|black bat flower|jade vine|parrot flower|blue puya|monkey orchid|flying duck orchid|white egret orchid|parrot's beak|crown imperial"
+  },
+  "Name a tree": {
+    "r": "wollemia|chilean wine palm|jelly palm|doum palm|dragon blood tree|rainbow eucalyptus|snow gum|ghost gum|cork oak|holm oak"
+  },
+  "Name an ocean creature": {
+    "r": "venus flower basket|sea pen|sea pansy|venus girdle|sea gooseberry|barreleye|pelican eel|pelagic stingray|blanket octopus|footballfish"
+  },
+  "Name a fish you can eat": {
+    "r": "black pomfret|silver pomfret|golden pomfret|kawakawa|longtail tuna|southern bluefin tuna|yellowtail amberjack|greater amberjack|blackspot seabream|john dory"
+  },
+  "Name a board game": {
+    "r": "forest shuffle|harmonies|faraway|sea salt and paper|the white castle|heat pedal to the metal|darwin's journey|earthborne rangers|ark nova|dune imperium"
+  },
+  "Name a spice or herb": {
+    "r": "grains of selim|uziza|uda|prekese|timur pepper|sansho pepper|makrut lime leaf|dried fenugreek leaf|kasuri methi|jimbu"
+  },
+  "Name a gemstone": {
+    "r": "jeremejevite|grandidierite|musgravite|taaffeite|poudretteite|serendibite|benitoite|clinohumite|kornerupine|sinhalite"
+  },
+  "Name a mammal": {
+    "r": "lowland anoa|mountain anoa|saola|hirola|pygmy hippopotamus|giant otter shrew|golden-rumped elephant shrew|binturong|zebra duiker|banded linsang"
+  },
+  "Name an insect": {
+    "r": "orchid mantis|devil's flower mantis|spiny flower mantis|violin mantis|malaysian leaf insect|giant weta|tree lobster|raspy cricket|mole cricket|owlfly"
+  },
+  "Name a car brand": {
+    "r": "ineos automotive|hongqi|voyah|avatr|aion|leapmotor|zeekr|xiaomi auto|jetour|foton"
+  },
+  "Name a dessert": {
+    "r": "kunefe|knafeh nabulsieh|basbousa|revani|namoura|maamoul|güllaç|tavuk gogsu|kazandibi|lokma"
+  },
+  "Name a breakfast food": {
+    "r": "ful medames|masoub|arepa de huevo|changua|calentado|pandesal and coffee|kaya toast set|khao tom|mohinga|halwa puri"
+  },
+  "Name a Shakespeare play": {
+    "r": "hamlet/the tragedy of hamlet|othello/the tragedy of othello|king lear/the tragedy of king lear|macbeth/the tragedy of macbeth|romeo and juliet/the tragedy of romeo and juliet|coriolanus/the tragedy of coriolanus|julius caesar/the tragedy of julius caesar|a midsummer night's dream/midsummer nights dream"
+  },
+  "Name a bone in the human body": {
+    "r": "greater wing of sphenoid|lesser wing of sphenoid|petrous temporal bone|vomer bone|inferior nasal concha|middle nasal concha|superior nasal concha|first metatarsal|fifth metatarsal|proximal phalanx"
+  },
+  "Name something in a kitchen": {
+    "r": "sous vide circulator|vacuum sealer|chamber vacuum sealer|dough whisk|bench scraper|jar lifter|fermentation crock|lame|proofing basket|silicone baking mat"
+  },
+  "Name a programming language": {
+    "r": "gleam|roc|v|odin|jai|hare|hylo|mojo|carbon|nelua"
+  },
+  "Name a superhero": {
+    "r": "squirrel girl|moonstone|white fox|sword master|aero|wave|crescent|snowguard|starling"
+  },
+  "Name a type of sandwich": {
+    "r": "chacarero|chivito|barros luco|barros jarpa|sanguchon|pan con chicharron|pan con bistec|sánguche de milanesa|torta de tamal|torta ahogada"
+  },
+  "Name a famous painter": {
+    "r": "hilma af klint|afewerk tekle|amalie rothschild|lois mailou jones|alma thomas|faith ringgold|lynette yiadom-boakye|njideka akunyili crosby|amoako boafo|pacita abad"
+  },
+  "Name a musical genre": {
+    "r": "deconstructed club|hardwave|witch house|drift phonk|brazilian phonk|ambient jungle|liquid drum and bass|future garage|uk funky|gqom"
+  },
+  "Name a mythical creature": {
+    "r": "dobhar-chu|each-uisge|nuckelavee|cù-sìth|cat-sìth|glaistig|baobhan sith|bean nighe|ceffyl dwr|afanc"
+  },
+  "Name a type of hat": {
+    "r": "dinghy hat|pork pie trilby|balibuntal|buntal hat|salakot|buri hat|kufi cap|kippah srugah|tubeteika|ushanka hat"
+  },
+  "Name a type of weather": {
+    "r": "thundersleet|thundersnow|freezing drizzle|diamond dust|ice crystal precipitation|snow rollers|snowburst|virga|pyrocumulonimbus|dry microburst"
+  },
+  "Name something you'd find at the beach": {
+    "r": "beach wheelchair|tide chart|sand anchor|sand-free mat|shell identification guide|reef-safe sunscreen|beach cabana|wetsuit booties|seaweed fly|shorebird footprints"
+  },
+  "Name a Harry Potter character": {
+    "r": "astoria greengrass|daphne greengrass|fleamont potter|euphemia potter|marius black|cassiopeia black|charis crouch|pollux black|alphard black|lucretia prewett"
+  },
+  "Name a Pokémon": {
+    "r": "sprigatito|floragato|meowscarada|fuecoco|crocalor|skeledirge|quaxly|quaxwell|quaquaval|tinkaton|clodsire|gholdengo|ogerpon|terapagos|pecharunt"
+  },
+  "Name a word that rhymes with 'cat'": {
+    "r": "brat|sprat|splat|slat|gnat|format|combat|diplomat|acrobat|thermostat|habitat|bureaucrat|aerostat|barostat|chemostat|matte|superbrat|zakat"
+  },
+  "Name a word that starts with 'Z'": {
+    "r": "zymurgy|zwitterion|zeugma|zabaglione|zazen|zocalo|zebu|zorbing|zarf|zoster|zincography|zoetrope"
+  },
+  "Name a cut of beef": {
+    "r": "bavette d'aloyau|bavette de flanchet|paleron|macreuse|araignée|merlan|poire|onglet|hampe|culotte"
+  },
+  "Name a famous scientist": {
+    "r": "tu youyou|katalin kariko|drew weissman|svante paabo|jennifer doudna|emmanuelle charpentier|donna strickland|andrea ghez|anne l'huillier|ferenc krausz"
+  },
+  "Name an animal that lives in Australia": {
+    "r": "numbat|woylie|bettong|kowari|mulgara|sandhill dunnart|crest-tailed mulgara|red-tailed phascogale|mala"
+  },
+  "Name a candy": {
+    "r": "puchao|hi-chew|kopiko|white rabbit creamy candy|botan rice candy|milkita|alpenliebe|pulse candy|fox's glacier mints|werther's original"
+  },
+  "Name a NATO phonetic alphabet word": {
+    "r": "alfa/nato alfa|bravo/nato bravo|charlie/nato charlie|delta/nato delta|echo/nato echo|foxtrot/nato foxtrot|golf/nato golf|hotel/nato hotel|india/nato india|juliett/nato juliett|kilo/nato kilo|lima/nato lima|mike/nato mike|november/nato november|oscar/nato oscar|papa/nato papa|quebec/nato quebec|romeo/nato romeo|sierra/nato sierra|tango/nato tango|uniform/nato uniform|victor/nato victor|whiskey/nato whiskey|x-ray/nato x ray|yankee/nato yankee|zulu/nato zulu"
+  },
+  "Name a Disney animated movie": {
+    "r": "strange world|wish|raya and the last dragon|encanto|moana|big hero 6|zootopia|the black cauldron|fun and fancy free|melody time"
+  },
+  "Name a type of nut": {
+    "r": "baru nut|mongongo nut|chufa nut|tiger nut|bambara groundnut|african walnut|okari nut|breadnut|maya nut|canarium nut"
+  },
+  "Name a unit of measurement": {
+    "r": "quettametre|ronnametre|quectometre|rontometre|quettagram|ronnagram|quectogram|rontogram|attosecond|zeptosecond|planck time"
+  },
+  "Name a cocktail": {
+    "r": "paper plane|naked and famous|division bell|trinidad sour|benton's old fashioned|saturn|jungle bird|bitter mai tai|oaxaca old fashioned|penicillin cocktail"
+  },
+  "Name a fabric": {
+    "r": "cupro|lyocell|modal|lenzing ecovero|ramie|abaca|pina cloth|sabutan|barkcloth|banana silk"
+  },
+  "Name a famous river": {
+    "r": "salween|chindwin|irrawaddy|tonle sap river|fly river|sepik|mamberamo|ruki|kasai"
+  },
+  "Name a martial art": {
+    "r": "bokator|kun khmer|pradal serey|lethwei|thaing|bando|banshay|naban|vovinam|qwan ki do"
+  },
+  "Name a famous composer": {
+    "r": "julius eastman|julia perry|florence price|william grant still|george walker|margaret bonds|coleridge-taylor perkinson|doreen carwithen|ruth gipps|elena kats-chernin"
+  },
+  "Name a soup": {
+    "r": "avgolemono|magiritsa|trahana soup|yukgaejang|seolleongtang|gamjatang|haejangguk|miyeok guk|doenjang guk|sundubu jjigae"
+  },
+  "Name a famous mountain": {
+    "r": "gyachung kang|ngadi chuli|himalchuli|nuptse|pumori|changtse|rakaposhi|ultar sar|distaghil sar|saser kangri"
+  },
+  "Name a card game": {
+    "r": "sea salt and paper|scout|sea change|for sale|the crew mission deep sea|cat in the box|trio|cabanga|faraway|luz"
+  },
+  "Name an organ in the human body": {
+    "r": "carotid sinus|ampulla of vater|ileocecal valve|ileal peyer's patches|sublingual gland|submandibular gland|lacrimal gland|meibomian gland|vestibular gland"
+  },
+  "Name a type of bread": {
+    "r": "pan de cristal|mollete de antequera|telera|pambazo bread|pandesal|pan de agua|pao de agua|broa de milho|bolo do caco|bolo levedo"
+  },
+  "Name a famous ship": {
+    "r": "rv flip|rv atlantis|rv knorr|rv thomas g thompson|rv revelle|rv polarstern|rv meteor|rv sarmiento de gamboa|rv investigator|rv tangaroa"
+  },
+  "Name a type of rock or mineral": {
+    "r": "vivianite|erythrite|annabergite|cavansite|pentagonite|thomsonite|mesolite|scolecite|okenite|pectolite"
+  },
+  "Name an Olympic event": {
+    "r": "mixed team skeet|mixed team air rifle|mixed team air pistol|kayak cross|bmx freestyle park|speed climbing|boulder and lead|mixed triathlon relay|mixed medley relay|women's rugby sevens"
+  },
+  "Name a pizza topping": {
+    "r": "nduja|guanciale|soppressata|mortadella|burrata|stracciatella cheese|friarielli|roasted kabocha|pickled jalapenos|hot honey"
+  },
+  "Name an ice cream flavor": {
+    "r": "hokey pokey|goody goody gum drops|tiger tail|blue moon|superman ice cream|black sesame|roasted soybean|kinako|sweet corn|brown bread ice cream"
+  },
+  "Name a type of cookie": {
+    "r": "baci di dama|brutti ma buoni|canestrelli|ricciarelli|cavallucci|ossi di morto|lingue di gatto|biscotti di prato|bussolai|zaeti"
+  },
+  "Name a soda or soft drink": {
+    "r": "guarana antarctica|guarana jesus|inca kola|ironbeer|materva|jupina|tu kola|ting|bigga|tropical fantasy"
+  },
+  "Name a fast food chain": {
+    "r": "jollibee|mang inasal|chowking|greenwich pizza|goldilocks|red ribbon|bonchon|bb.q chicken|pelicana|nene chicken"
+  },
+  "Name a sauce or condiment": {
+    "r": "zhug|shatta|amba|toum|muhammara|skhug|zhoug|sahawiq|bisbas|awaze"
+  },
+  "Name a type of tea": {
+    "r": "dan cong|ya shi xiang|mi lan xiang|jin jun mei|dian hong|keemun hao ya|tai ping hou kui|liu an gua pian|meng ding huang ya|huo shan huang ya"
+  },
+  "Name a coffee drink": {
+    "r": "einspanner|mazagran|cafe touba|cafe bombon|barraquito|carajillo|caffe shakerato|marocchino|bicerin|cafe miel|kopi gu you|kopi tarik|kopi cham|kopi tubruk|cafe com cheirinho|cafezinho|freddo latte|cafe cremoso"
+  },
+  "Name a type of cake": {
+    "r": "medovik|napoleon cake|bird's milk cake|ptichye moloko|kyiv cake|prague cake|dobos torte|esterhazy torte|rigo jancsi|somloi galuska"
+  },
+  "Name a type of pie": {
+    "r": "homity pie|butter pie|woolton pie|fidget pie|stargazy pie|bedfordshire clanger|saskatoon berry pie|flapper pie|bannoffee pie|raisin sour cream pie"
+  },
+  "Name a type of mushroom": {
+    "r": "almond mushroom|nameko|pioppino|shimeji|maitake|cauliflower fungus|black trumpet|beefsteak fungus|hedgehog mushroom|saffron milk cap"
+  },
+  "Name a type of dumpling": {
+    "r": "khinkali|kinkali|khushuur|buuz|bansh|momo|tingmo|jhol momo|yomari|chuchvara"
+  },
+  "Name a reptile": {
+    "r": "cuban rock iguana|rhinoceros iguana|jamaican iguana|fiji banded iguana|fiji crested iguana|grand cayman blue iguana|utila spiny-tailed iguana|chinese crocodile lizard|earless monitor|lanthanotus"
+  },
+  "Name a type of snake": {
+    "r": "barbados threadsnake|brahminy blindsnake|texas blind snake|arabian sand boa|rough-scaled sand boa|rosy boa|calabar burrowing python|sunbeam snake|dragon snake|tentacled snake"
+  },
+  "Name a type of shark": {
+    "r": "viper dogfish|pocket shark|kitefin shark|angular roughshark|prickly shark|broadnose sevengill shark|sharpnose sevengill shark|frilled shark|pyjama shark|puffadder shyshark"
+  },
+  "Name a whale or dolphin": {
+    "r": "rice's whale|omura's whale|sato's beaked whale|ramari's beaked whale|perrin's beaked whale|deraniyagala's beaked whale|gervais' beaked whale|true's beaked whale|spade-toothed whale|longman's beaked whale"
+  },
+  "Name a monkey or ape": {
+    "r": "sanje mangabey|kipunji|lesula|dryas monkey|roloway monkey|diana monkey|hamlyn's monkey|sclater's guenon|preuss's monkey|sun-tailed monkey"
+  },
+  "Name a cat breed": {
+    "r": "aphrodite giant|aphrodite cat|aegean cat|brazilian shorthair|cyprus cat|german rex|ural rex|tennessee rex|tasman manx|sokoke"
+  },
+  "Name a horse breed": {
+    "r": "abyssinian horse|abyssinian/ethiopian horse|balikun|heihe|hequ|guizhou horse|tibetan pony|zanskari|spiti horse|bhutia horse"
+  },
+  "Name a farm animal": {
+    "r": "malabari goat|jamunapari goat|barbari goat|black bengal goat|osmanabadi goat|sirohi goat|beetal goat|kiko goat|myotonic goat|valais blackneck goat"
+  },
+  "Name a bird of prey": {
+    "r": "madagascar serpent eagle|congo serpent eagle|crested serpent eagle|short-toed snake eagle|brown snake eagle|black-chested snake eagle|beaudouin's snake eagle|western banded snake eagle|southern banded snake eagle|mountain serpent eagle"
+  },
+  "Name a butterfly or moth": {
+    "r": "madagascan sunset moth|african moon moth|spanish moon moth|chinese moon moth|comet moth|malaysian moon moth|atlas moth|hercules moth|white witch moth|black witch moth"
+  },
+  "Name a type of spider": {
+    "r": "darwin's bark spider|peacock parachute spider|goliath pinkfoot tarantula|brazilian whiteknee tarantula|mexican redrump tarantula|trinidad chevron tarantula|venezuelan suntiger tarantula|socotra island blue baboon|greenbottle blue tarantula|cobalt blue tarantula"
+  },
+  "Name a frog or toad": {
+    "r": "boulenger's tree frog|lemur leaf frog|fringed leaf frog|splendid leaf frog|splendid poison frog|golden mantella|harlequin mantella|green mantella|cowboy frog|burrowing frog"
+  },
+  "Name a rodent": {
+    "r": "ethiopian wolf rat|african giant pouched rat|northern grasshopper mouse|southern grasshopper mouse|texas kangaroo rat|fresno kangaroo rat|banner-tailed kangaroo rat|ord's kangaroo rat|merriam's kangaroo rat|gulf coast kangaroo rat"
+  },
+  "Name a nocturnal animal": {
+    "r": "rufous bettong|tasmanian bettong|brush-tailed bettong|burrowing bettong|long-nosed potoroo|long-footed potoroo|broad-faced potoroo|gilbert's potoroo|northern bettong|musky rat-kangaroo"
+  },
+  "Name an extinct animal": {
+    "r": "steppe mammoth|southern mammoth|columbian mammoth|pygmy mammoth|straight-tusked elephant|sicilian dwarf elephant|cyprus dwarf elephant|cyprus dwarf hippopotamus|maltese hippopotamus|balearic cave goat"
+  },
+  "Name a pet": {
+    "r": "pictus catfish|glass catfish|bumblebee catfish|upside-down catfish|banjo catfish|whiptail catfish|twig catfish|bristlenose pleco|clown pleco|zebra pleco"
+  },
+  "Name an endangered animal": {
+    "r": "vaquita|yangtze finless porpoise|atlantic humpback dolphin|maui dolphin|hector's dolphin|african wild ass|grevy's zebra|mountain zebra|persian onager|somali wild ass"
+  },
+  "Name a deer or antelope": {
+    "r": "peters's duiker|abbott's duiker|jentink's duiker|ogilby's duiker|aders' duiker|weyns's duiker|zebra duiker|yellow-backed duiker|black-fronted duiker|white-bellied duiker|bohor reedbuck|mountain reedbuck|southern reedbuck|nile lechwe|kafue lechwe|black lechwe|red lechwe|coke's hartebeest"
+  },
+  "Name an aquarium fish": {
+    "r": "celestial pearl danio|emerald dwarf rasbora|chili rasbora|exclamation point rasbora|phoenix rasbora|strawberry rasbora|kubotai rasbora|sundadanio|blue axelrodi rasbora|green neon tetra"
+  },
+  "Name a type of beetle": {
+    "r": "rainbow stag beetle|golden stag beetle|giraffe stag beetle|sawtooth stag beetle|giant stag beetle|elephant stag beetle|cottonwood stag beetle|golden tortoise beetle|argus tortoise beetle|clavate tortoise beetle"
+  },
+  "Name a baby animal name": {
+    "r": "baby platypus/puggle platypus|baby porcupine/porcupette|baby cockroach/nymph cockroach|baby oyster/spat oyster|baby jellyfish/ephyra jellyfish|baby lamprey/ammocoete|baby eel/elver eel|baby louse/nit louse"
+  },
+  "Name a rainforest animal": {
+    "r": "silky anteater|northern tamandua|southern tamandua|giant armadillo|naked-tailed armadillo|brazilian three-banded armadillo|pink-throated brilliant|violet sabrewing|rufous-tailed jacamar|great potoo"
+  },
+  "Name an animal in Africa": {
+    "r": "bat-eared fox|cape fox|blanford's fox|rueppell's fox|fennec fox|pale fox|side-striped jackal|african golden wolf|ethiopian wolf|cape grysbok"
+  },
+  "Name a word for a group of animals": {
+    "r": "a tower of giraffes|a journey of giraffes|a business of ferrets|a prickle of porcupines|a raft of otters|a romp of otters|a dazzle of zebras|a kaleidoscope of butterflies|a murmuration of starlings|a parliament of owls|herd/herd of cattle|flock/flock of sheep|pack/pack of wolves|school/school of fish|swarm/swarm of bees|colony/colony of ants|pride/pride of lions|pod/pod of dolphins"
+  },
+  "Name a country in Europe": {
+    "r": "czechia/czech republic|netherlands/kingdom of the netherlands|slovakia/slovak republic|moldova/republic of moldova|ireland/republic of ireland|germany/federal republic of germany|bosnia and herzegovina/bosnia herzegovina|north macedonia/republic of north macedonia"
+  },
+  "Name a country in Asia": {
+    "r": "laos/lao people's democratic republic|brunei/brunei darussalam|syria/syrian arab republic|iran/islamic republic of iran|china/people's republic of china|india/republic of india|nepal/federal democratic republic of nepal|timor leste/democratic republic of timor leste"
+  },
+  "Name a country in South America": {
+    "r": "bolivia/plurinational state of bolivia|venezuela/bolivarian republic of venezuela|brazil/federative republic of brazil|guyana/cooperative republic of guyana|argentina/argentine republic|chile/republic of chile|peru/republic of peru|colombia/republic of colombia|ecuador/republic of ecuador|paraguay/republic of paraguay|uruguay/oriental republic of uruguay|suriname/republic of suriname"
+  },
+  "Name an island": {
+    "r": "socotra|aldabra|europa island|juan de nova|bassas da india|tromelin|amsterdam island|saint paul island|bouvet island|gough island"
+  },
+  "Name a city in the USA": {
+    "r": "dubuque|decorah|mason city|ottumwa|muscatine|keokuk|fort dodge|storm lake|fairfield iowa|webster city"
+  },
+  "Name a city in Europe": {
+    "r": "ptuj|celje|kranj|velenje|koper|piran|novo mesto|murska sobota|slovenj gradec|nova gorica"
+  },
+  "Name a city in Asia": {
+    "r": "chiayi|hsinchu|keelung|miaoli|changhua|nantou|douliu|pingtung|taitung|hualien"
+  },
+  "Name a desert": {
+    "r": "badain jaran desert|tengger desert|ulan buh desert|hobq desert|kubuqi desert|kumtag desert|gurbantunggut desert|dzoosotoyn elisen|sandy desert of maowusu|mu us desert"
+  },
+  "Name a lake": {
+    "r": "lake tengiz|lake zaysan|lake markakol|lake alakol|lake sasykkol|lake son-kul|lake chatyr-kul|lake sary-chelek|lake karakul|lake kolsay"
+  },
+  "Name a volcano": {
+    "r": "fagradalsfjall|litli-hrutur|sundhnukur|keilir|brennisteinsfjoll|torfajokull|prestahnukur|kverkfjoll|hverfjall|fremrinamar"
+  },
+  "Name a famous landmark": {
+    "r": "rani ki vav|adalaj stepwell|chand baori|agra fort|buland darwaza|gol gumbaz|bibi ka maqbara|sanchi stupa|hawa mahal|jantar mantar"
+  },
+  "Name a famous bridge": {
+    "r": "chenab rail bridge|pamban bridge|bogibeel bridge|dhola sadiya bridge|bandra worli sea link|atal setu|vidyasagar setu|new yamuna bridge|vembanad rail bridge|digha sonpur bridge"
+  },
+  "Name a city in the UK": {
+    "r": "wells somerset|ripon north yorkshire|ely cambridgeshire|st davids pembrokeshire|st asaph denbighshire|lisburn northern ireland|newry northern ireland|bangor northern ireland|armagh northern ireland|dunfermline fife"
+  },
+  "Name a city in Canada": {
+    "r": "dawson creek|fort st john|williams lake|quesnel|terrace|kitimat|prince rupert|port alberni|campbell river|powell river"
+  },
+  "Name a city in Australia": {
+    "r": "port pirie|port augusta|whyalla|port lincoln|mount gambier|murray bridge|victor harbor|port broughton|port wakefield|port germein"
+  },
+  "Name a language": {
+    "r": "votic|ingrian|veps|livonian|kven|meankieli|skolt sami|inari sami|kildin sami"
+  },
+  "Name a currency": {
+    "r": "uzbekistani som|kyrgyzstani som|tajikistani somoni|turkmenistani manat|azerbaijani manat|georgian lari|armenian dram|moldovan leu|north macedonian denar|bosnia and herzegovina convertible mark"
+  },
+  "Name a theme park": {
+    "r": "futuroscope|puy du fou|nigloland|walibi rhone-alpes|walibi holland|toverland|slagharen|duinrell|bobbejaanland|bellewaerde"
+  },
+  "Name a video game": {
+    "r": "1000xresist|lorelei and the laser eyes|balatro|ufo 50|arctic eggs|crow country|felvidek|cryptmaster|indika|minishoot' adventures"
+  },
+  "Name a video game console": {
+    "r": "casio pv-1000|casio loopy|bandai playdia|bandai rx-78|fm towns marty|funtech super a'can|vtech creativision|vtech socrates|epoch super cassette vision|gakken compact vision"
+  },
+  "Name a Nintendo character": {
+    "r": "nabbit|prince florian|talking flower|captain olimar|alph pikmin|brittany pikmin|charlie pikmin|moss pikmin|oatchi|collin pikmin"
+  },
+  "Name a Marvel character": {
+    "r": "jeff the land shark|luna snow|galacta|lin lie|fei long|lei ling|pearl pangan|ami han|dan bi|taegukgi"
+  },
+  "Name a Star Wars character": {
+    "r": "bix caleen|luthen rael|kleya marki|dedra meero|syril karn|maarva andor|karis nemik|kino loy|vel sartha|cinta kaz"
+  },
+  "Name a Pixar movie": {
+    "r": "elio|inside out 2|turning red|luca|soul|onward|elemental|lightyear|bao|burrow|self|lamp life|the legend of mor'du|party central|boundin'/boundin pixar|red's dream/reds dream short"
+  },
+  "Name a cartoon character": {
+    "r": "fionna campbell|cake the cat|simon petrikov|betty grof|marshall lee|gary prince|prismo|scarab adventure time|shermy|beth adventure time"
+  },
+  "Name an animated TV show": {
+    "r": "scavengers reign|common side effects|invincible fight girl|iyanu|curses!|wondla|fright krewe|super giant robot brothers|my adventures with superman|unicorn warriors eternal"
+  },
+  "Name a sitcom": {
+    "r": "detroiters|corporate|great news|trial and error|american auto|grand crew|this fool|primo|sprung|killing it"
+  },
+  "Name a horror movie": {
+    "r": "oddity|caveat|stopmotion|the coffee table|mad god|possessor|infinity pool|birth/rebirth|watcher|resurrection"
+  },
+  "Name a Christmas movie": {
+    "r": "the holdovers|feast of the seven fishes|christmas evil|dead end|a christmas tale|rare exports|anna and the apocalypse|better watch out|the lodge|the advent calendar"
+  },
+  "Name a DC character": {
+    "r": "dreamer|nia nal|crush|djinn|roundhouse|flatline|red canary|city boy|sideways|silencer"
+  },
+  "Name a famous author": {
+    "r": "nawal el saadawi|bessie head|buchi emecheta|ama ata aidoo|tsitsi dangarembga|noViolet bulawayo|jennifer nansubuga makumbi|namwali serpell|maaza mengiste|yiyun li"
+  },
+  "Name a children's book": {
+    "r": "julian is a mermaid|eyes that kiss in the corners|the proudest blue|last stop on market street|the day you begin|we are water protectors|the undefeated|crown an ode to the fresh cut|saturday|the word collector"
+  },
+  "Name a novel": {
+    "r": "the seven moons of maali almeida|tomb of sand|kairos|time shelter|the books of jacob|the vegetarian|the door|drive your plow over the bones of the dead|the memory police|the employees"
+  },
+  "Name a famous poet": {
+    "r": "joy harjo|ada limon|tracy k smith|natasha trethewey|terrance hayes|ross gay|ocean vuong|natalie diaz|danez smith|safiya sinclair"
+  },
+  "Name a rapper": {
+    "r": "little simz|sampa the great|sa-roc|rapsody|noname|tierra whack|leikeli47|chika|enny|greentea peng"
+  },
+  "Name a pop singer": {
+    "r": "griff|maisie peters|holly humberstone|gracie abrams|renee rapp|chappell roan|laufey|lola young|rachel chinouriri|pinkpantheress|olivia dean|celeste epiphany waite|charlotte cardin|remi wolf|victoria monet|jorja smith|enya/eithne ni bhraonain|alessia cara/alessia caracciolo"
+  },
+  "Name a toy": {
+    "r": "nanoblock|plus-plus|laQ|clixo|connetix|cobi|magformers|tegu|moluk bilibo"
+  },
+  "Name a fairy tale": {
+    "r": "the juniper tree|the girl without hands|the twelve huntsmen|the nixie of the mill-pond|the iron stove|the glass coffin|the three army surgeons|the water of life|the singing bone|the raven"
+  },
+  "Name a fictional place": {
+    "r": "beszel|ul qoma|night vale|scarfolk|bas-lag|new crobuzon|ankh-morpork|lancre|genua"
+  },
+  "Name a famous dog": {
+    "r": "cosmo the space dog|pizza dog|lucky the pizza dog|rags the war dog|sergeant stubby|sallie ann jarrett|judy the pointer|gander the newfoundland|bobbie the wonder dog|owney"
+  },
+  "Name a famous cat": {
+    "r": "jorts|jean the cat|maxwell the cat|longcat|maru|hana the cat|hosico|princess monster truck"
+  },
+  "Name a famous robot": {
+    "r": "roz|baymax|b.e.n.|baymax/baymax robot|wall-e|eve|m-o|auto|burn-e"
+  },
+  "Name a famous painting": {
+    "r": "the two fridas|henry ford hospital|the broken column|the wounded deer|my grandparents my parents and i|self-portrait with cropped hair|moses|what the water gave me|the bus|frieda and diego rivera"
+  },
+  "Name an art movement or style": {
+    "r": "gutai|mono-ha|dansaekhwa|mingei|shin-hanga|sosaku-hanga|nihonga|yoga painting|neo-concrete movement|tropicalia"
+  },
+  "Name a famous sculpture or statue": {
+    "r": "the motherland calls|the motherland monument|african renaissance monument|birth of the new world|christ of the abyss|the kneeling woman|the unknown bureaucrat|ali and nino|the hands of harmony|the magician of riga"
+  },
+  "Name a musical term": {
+    "r": "hemiola|sesquialtera|talea|color talea|isorhythm|hocket|klangfarbenmelodie|stretto|perdendosi|morendo"
+  },
+  "Name a type of knot": {
+    "r": "zeppelin bend|ashley bend|hunter's bend|alpine butterfly bend|reever knot|figure nine loop|double dragon loop|bowline on a bight|portuguese bowline|water bowline"
+  },
+  "Name a medieval weapon": {
+    "r": "goedendag|godendag|ahlspiess|fauchard|guisarme|glaive-guisarme|bardiche|bec de corbin|lucerne hammer|military fork"
+  },
+  "Name a muscle": {
+    "r": "levator scapulae|serratus posterior superior|serratus posterior inferior|splenius capitis|splenius cervicis|semispinalis capitis|longissimus thoracis|iliocostalis lumborum|multifidus|rotatores"
+  },
+  "Name an illness or disease": {
+    "r": "maple syrup urine disease|alkaptonuria|homocystinuria|galactosemia|tyrosinemia|phenylketonuria|mucopolysaccharidosis|glycogen storage disease|pompe disease|fabry disease"
+  },
+  "Name a phobia": {
+    "r": "nomophobia|trypophobia|submechanophobia|thalassophobia|megalophobia|chronophobia|ergophobia|emetophobia|somniphobia|phonophobia"
+  },
+  "Name a constellation": {
+    "r": "chamaeleon|circinus|fornax|horologium|hydrus|mensa|microscopium|norma|octans|reticulum|andromeda/chained maiden|aquila/the eagle|auriga/the charioteer|bootes/the herdsman|caelum/the chisel|cetus/the sea monster|columba/the dove|corvus/the crow|crater/the cup|delphinus/the dolphin"
+  },
+  "Name a type of cloud": {
+    "r": "cumulus humilis|cumulus mediocris|cumulus congestus|altocumulus castellanus|altocumulus floccus|cirrus uncinus|cirrus fibratus|cirrostratus nebulosus|stratocumulus lenticularis|stratus fractus"
+  },
+  "Name a field of science or -ology": {
+    "r": "exoplanetology|astroseismology|paleogenomics|paleoproteomics|glycomics|metabolomics|lipidomics|tribology|rheology|ichnology"
+  },
+  "Name a houseplant": {
+    "r": "rhaphidophora tetrasperma|rhaphidophora decursiva|epipremnum pinnatum|epipremnum amplissimum|scindapsus pictus|scindapsus treubii|philodendron gloriosum|philodendron verrucosum|anthurium crystallinum|anthurium clarinervium"
+  },
+  "Name a gas": {
+    "r": "sulfur hexafluoride|nitrogen trifluoride|carbonyl sulfide|carbon suboxide|silane|disilane|germane|stibine|phosphine|arsine"
+  },
+  "Name a metal": {
+    "r": "ferrovanadium|ferromolybdenum|ferrotungsten|ferrochrome|ferromanganese|ferrosilicon|nickel silver|aluminium bronze|silicon bronze|phosphor bronze"
+  },
+  "Name a shape": {
+    "r": "deltoid|reuleaux triangle|reuleaux polygon|vesica piscis|lune|salinon|arbelos|squircle|superellipse|astroid"
+  },
+  "Name a star": {
+    "r": "alhena|tejat|propus|wasat|mebsuta|mekbuda|alzirr|castor|pollux|gomeisa"
+  },
+  "Name an ocean or sea": {
+    "r": "lincoln sea|wandell sea|kong oscar fjord|victoria sea|gustav adolf sea|prince gustaf adolf sea|pechora sea|indiga bay|shantar sea|samar sea"
+  },
+  "Name a job": {
+    "r": "accessibility consultant|audio describer|captioner|court interpreter|localization engineer|intimacy coordinator|sustainability analyst|bioinformatician|genetic counselor|clinical perfusionist"
+  },
+  "Name a piece of furniture": {
+    "r": "tambour cabinet|barrister bookcase|library ladder|campaign chest|blanket chest|gentleman's chest|bachelor's chest|highboy|lowboy|tallboy"
+  },
+  "Name a room in a house": {
+    "r": "mudroom|boot room|scullery|butler's pantry|walk-in pantry|potting room|storm cellar|root cellar|wine cellar|linen room"
+  },
+  "Name a tool": {
+    "r": "oscillating multi-tool|track saw|plunge router|trim router|domino joiner|biscuit joiner|dowel jig|pocket-hole jig|contour gauge|angle finder"
+  },
+  "Name a type of shoe": {
+    "r": "jika tabi|waraji|zori|geta|okobo|paduka|kolhapuri chappal|mojari|jutti|peshawari chappal|fisherman sandals|recovery sandals|ghillie pumps|split sole ballet shoes|soft pointe shoes|cycling overshoes|approach shoes|cricket shoes"
+  },
+  "Name an item of clothing": {
+    "r": "baro't saya|barong tagalog|terno|malong|patadyong|sampot|sinh|chut thai|ao ba ba|ao tu than"
+  },
+  "Name a vehicle": {
+    "r": "tuk-tuk|songthaew|jeepney|dolmus|matatu|minibus taxi|boda boda|okada|keke napep|habal-habal"
+  },
+  "Name a type of boat": {
+    "r": "narrowboat|widebeam boat|dutch barge|tjalk|skutsje|aak|botter|schokker|lemsteraak|grundel"
+  },
+  "Name a holiday": {
+    "r": "nyepi|galungan|kuningan|thaipusam|vesak|loy krathong|yi peng|songkran|tazaungdaing|thadingyut"
+  },
+  "Name a Halloween costume": {
+    "r": "plague doctor|biblically accurate angel|mothman|fresno nightcrawler|flatwoods monster|hopkinsville goblin|rougarou|loveland frog|goatman|nightcrawler"
+  },
+  "Name a gym exercise": {
+    "r": "copenhagen plank|pallof press|jefferson curl|sissy squat|cossack squat|z press|bradford press|landmine press|seal row|meadows row|kneeling cable crunch|bent-arm pullover|cable pull-through|reverse sled drag|suitcase deadlift|zercher carry|front rack carry|waiter's carry"
+  },
+  "Name a dance": {
+    "r": "azonto|shaku shaku|shoki|gwara gwara|vosho|amapiano dance|pantsula|ndombolo|soukous dance|sabar"
+  },
+  "Name a hobby": {
+    "r": "visible mending|sashiko|boro stitching|temari|kumihimo|bunraku puppetry|linocut printmaking|cyanotype printing|eco printing|botanical printing"
+  },
+  "Name something you'd take camping": {
+    "r": "guyline tensioner|groundsheet|tent footprint|repair tape|seam sealer|water filter straw|bear canister|odor-proof bag|fire bellows|camping trowel"
+  },
+  "Name a store or shop chain": {
+    "r": "muji|loft japan|hands japan|don quijote|daiso|seria|cando|watts japan|miniso|mumuso"
+  },
+  "Name a clothing brand": {
+    "r": "story mfg|bode|kapital|visvim|needles|engineered garments|south2 west8|and wander|nanamica|goldwin"
+  },
+  "Name a tech company": {
+    "r": "graphcore|cerebras|groq|tenstorrent|sambanova|lightmatter|lightelligence|hume ai|runway ai|elevenlabs"
+  },
+  "Name an airline": {
+    "r": "air inuit|air creebec|calm air|canadian north|perimeter aviation|pascan aviation|rise air|air tindi|north-wright airways|central mountain air"
+  },
+  "Name a US president": {
+    "r": "john quincy adams/j q adams|john adams/j adams|william henry harrison/w h harrison|benjamin harrison/b harrison|franklin d roosevelt/franklin delano roosevelt|theodore roosevelt/theodore r roosevelt|james knox polk/james k polk|warren harding/warren gamaliel harding"
+  },
+  "Name a Roman emperor": {
+    "r": "silbannacus|sponsian|regalianus|ingenuus|marius emperor|laelianus|victorinus|tetricus i|tetricus ii|domitianus ii"
+  },
+  "Name a famous explorer": {
+    "r": "jeanne baret|nellie bly|ann bancroft|liv arnesen|felicity aston|rosie stancer|belinda kirk|levison wood|ed stafford|dwayne fields"
+  },
+  "Name a philosopher": {
+    "r": "sophie oluwole|kwasi wiredu|kwame gyekye|henry odera oruka|paulin hountondji|souleymane bachir diagne|achille mbembe|mogobe ramose|lewis gordon"
+  },
+  "Name a famous queen": {
+    "r": "ranavalona i|ranavalona ii|ranavalona iii|rasoherina|makeda|queen amina|queen njinga|yennenga|queen pokou"
+  },
+  "Name a famous pirate": {
+    "r": "laurens de graaf|michiel andrieszoon|roche braziliano|jacques tavernier|alexandre exquemelin|william dampier|raveneau de lussan|jean-baptiste du casse|christopher myngs|charles vane"
+  },
+  "Name a Norse god": {
+    "r": "hlin|sjofn|lofn|var|vor|syn|snotra|gna|fulla|odin/odinn|thor/thorr|heimdall/heimdallr|njord/njordr|sif/siv|hodr/hodur|hoenir/haenir|ullr/ull|gefjon/gefjun|idun/ithunn"
+  },
+  "Name an Egyptian god": {
+    "r": "hesat|mehet-weret|weret-hekau|shezmu|shai|renenutet|meretseger|menhit|anuket|satet"
+  },
+  "Name a Roman god": {
+    "r": "fons|portunus|pales|consus|ops|pomona|vertumnus|robigus|robigo|cardea"
+  },
+  "Name a famous chef": {
+    "r": "kwame onwuachi|mashama bailey|nina compton|gregory gourdet|tiffany derry|erick williams|j j johnson|nyesha arrington|adrienne cheatham|dawn burrell"
+  },
+  "Name an astronaut": {
+    "r": "katherine bennell-pegg|rosemary coogan|sophie adenot|pablo alvarez fernandez|marcus wandt|alper gezeravci|tuva cihangir atasever|sultan al neyadi|hazza al mansoori|rayyanah barnawi"
+  },
+  "Name a famous inventor": {
+    "r": "mary beatrice davidson kenner|marian croak|patricia bath|shirley ann jackson|valerie thomas|gladys west|radia perlman|annie easley|lyda newman|sarah boone"
+  },
+  "Name an NBA team": {
+    "r": "portland trail blazers/portland trailblazers|philadelphia 76ers/philadelphia seventy sixers|oklahoma city thunder/okc thunder|los angeles clippers/la clippers|los angeles lakers/la lakers|new orleans pelicans/nola pelicans|golden state warriors/gs warriors|san antonio spurs/sa spurs"
+  },
+  "Name an NFL team": {
+    "r": "new york giants/ny football giants|los angeles rams/la rams|los angeles chargers/la chargers|san francisco 49ers/san francisco forty niners|tampa bay buccaneers/tampa bay bucs|jacksonville jaguars/jacksonville jags|new england patriots/new england pats|philadelphia eagles/philly eagles"
+  },
+  "Name a soccer club": {
+    "r": "fc suðuroy|b36 torshavn|hb torshavn|ki klaksvik|vikingur gota|nsí runavík|eb streymur|07 vestur|ab argir|tb tvøroyri"
+  },
+  "Name a famous athlete": {
+    "r": "faith kipyegon|beatrice chebet|sifan hassan|gudaf tsegay|letsile tebogo|kristjan ceh|mykolas alekna|ryan crouser|mondo duplantis|jakob ingebrigtsen"
+  },
+  "Name a winter sport": {
+    "r": "ski mountaineering|ski orienteering|snowshoe running|winter triathlon|ice stock sport|broomball|ice cross downhill|snowkiting|snow kayaking|yukigassen"
+  },
+  "Name a water sport": {
+    "r": "prone paddleboarding|standup paddleboard racing|foil surfing|wingfoiling|efoiling|hydrospeed|riverboarding|coasteering|canyoning|aquathlon"
+  },
+  "Name a cricket team": {
+    "r": "lahore qalandars|multan sultans|peshawar zalmi|karachi kings|islamabad united|quetta gladiators|sylhet strikers|fortune barishal|rangpur riders|khulna tigers|andhra cricket team|hyderabad cricket team|jammu and kashmir cricket team|pondicherry cricket team|uttarakhand cricket team|arunachal pradesh cricket team|meghalaya cricket team|mizoram cricket team"
+  },
+  "Name a rugby club": {
+    "r": "moana pasifika|fijian drua|old glory dc|seattle seawolves|san diego legion|utah warriors|houston sabercats|new england free jacks|nola gold|anthem rugby carolina"
+  },
+  "Name a baseball team": {
+    "r": "olmecas de tabasco|piratas de campeche|tigres de quintana roo|leones de yucatan|guerreros de oaxaca|pericos de puebla|el aguila de veracruz|conspiradores de queretaro|charros de jalisco|dorados de chihuahua"
+  },
+  "Name an ice hockey team": {
+    "r": "hc davos|sc bern|ev zug|hc lugano|hc ambri-piotta|hc fribourg-gotteron|sc rapperswil-jona lakers|lausanne hc|ehc biel-bienne|hc ajoie"
+  },
+  "Name a word that rhymes with 'light'": {
+    "r": "forthright|outright|uptight|airtight|watertight|gaslight|limelight|moonlight|starlight|candlelight|torchlight|headlight|apatite|azurite|dolomite|andradite|chromite|barite|celestite|muscovite|rhodochrosite|magnetite"
+  },
+  "Name a word that rhymes with 'day'": {
+    "r": "causeway|raceway|speedway|driveway|alleyway|walkway|doorway|stairway|archway|gangway|skyway|airway"
+  },
+  "Name a word that rhymes with 'bee'": {
+    "r": "addressee|absentee|appointee|attendee|conferee|consignee|deportee|detainee|evacuee|internee|licensee|mortgagee"
+  },
+  "Name a word that rhymes with 'ring'": {
+    "r": "downswing|upswing|backswing|outswing|inswing|unstring|hamstring|bowstring|shoestring|guitar string"
+  },
+  "Name a word that starts with 'Q'": {
+    "r": "quiddity|quiescence|quaternary|quaternion|quincunx|quinquennial|quorate|quagmire|quatrefoil|quixotism"
+  },
+  "Name a word that starts with 'X'": {
+    "r": "xenogamy|xenolith|xenobiotic|xenoglossy|xerothermic|xerophytic|xylograph|xylography|xylotomy|xanthophyll"
+  },
+  "Name a word that starts with 'J'": {
+    "r": "jocose|jocund|jejune|jettison|jingoism|juxtapose|jurisprudence|juggernaut|jambalaya|japonica"
+  },
+  "Name a word that means 'happy'": {
+    "r": "jubilant|jocund|jocose|blithesome|blithe|gladsome|enraptured|euphoric|felicitous|joyous|blissful/blissed out|joyful/joy-filled|gleeful/glee-filled|happy as a sandboy|happy as larry|merry-hearted|glad-hearted|chuffed to little mint balls"
+  },
+  "Name a word that means 'big'": {
+    "r": "gargantuan|elephantine|brobdingnagian|cyclopean|herculean|titanic|prodigious|monumental|outsize|oversized|supercolossal|ultralarge|extra-extra-large|xxl|double extra large|bumper-sized|elephant-sized|large-scale"
+  },
+  "Name a sound word (onomatopoeia)": {
+    "r": "kerplunk|kerthunk|ka-ching|ba-dum-tss|rat-a-tat|pitter-patter|tick-tock|clip-clop|chugga-chugga|choo-choo"
+  },
+  "Name a girl's name": {
+    "r": "amaris|amaya|anouk|anais|aurelia|aviva|aaliyah|althea|azalea|aoife"
+  },
+  "Name a boy's name": {
+    "r": "alaric|ambrose|ansel|arvid|aurelius|azriel|benicio|bodhi|cassian|cillian"
+  },
+  "Name something yellow": {
+    "r": "yellow ochre paint|yellow highlighter ink|saffron rice|golden kiwifruit|yellow cherry tomato|yellow dragonfruit|yellow pattypan squash|yellow zucchini|yellow bell pepper|yellow passionfruit"
+  },
+  "Name something round": {
+    "r": "lens cap|camera lens|round pizza stone|circular saw blade|rotary cutter blade|vinyl label|bicycle chainring|watch bezel|embroidery hoop|tambourine frame"
+  },
+  "Name something with wheels": {
+    "r": "mobile scaffold|rolling tool chest|wheelie bin|hospital crash cart|flight case|road case|camera dolly|floor scrubber|street sweeper|airport baggage tractor"
+  },
+  "Name something that flies": {
+    "r": "frigatebird|tropicbird|swiftlet|nightjar|nighthawk|flying fox|flying squirrel|colugo|draco lizard|flying snake"
+  },
+  "Name something cold": {
+    "r": "cryogenic freezer|liquid helium|liquid hydrogen|liquid argon|frozen peas|frozen blueberries|ice block|ice bath|gel ice pack|cooling blanket"
+  },
+  "Name something you find in space": {
+    "r": "rogue planet|free-floating planet|protoplanetary disk|accretion disk|herbig-haro object|bok globule|stellar nursery|planetary nebula|molecular cloud|kuiper belt object"
+  },
+  "Name something with buttons": {
+    "r": "midi controller|drum machine|sampler|stream deck|flight simulator yoke|arcade fight stick|camera battery grip|wireless doorbell|hearing aid|pager"
+  },
+  "Name something with keys": {
+    "r": "typewriter keyboard|concert grand piano|player piano|thumb piano|keyed flute|bass clarinet|soprano saxophone|baritone saxophone|contrabassoon|keyed bugle"
+  },
+  "Name something you plug in": {
+    "r": "soldering station|hot glue gun|heat gun|embossing heat tool|rotary tool|airbrush compressor|ultrasonic cleaner|resin curing station|filament dryer|3d printing pen"
+  },
+  "Name an animal with a tail": {
+    "r": "red river hog|babirusa|warthog|giant forest hog|visayan warty pig|javan warty pig|sulawesi warty pig|pygmy hog|bearded pig|bushpig"
+  },
+  "Name something sticky": {
+    "r": "pine resin|spruce resin|gum arabic|gum tragacanth|pectin gel|marshmallow fluff|date syrup|rice malt syrup|liquid glucose|invert sugar syrup"
+  },
+  "Name something you keep in your pocket": {
+    "r": "guitar pick|sim ejector tool|hearing aid batteries|lens cloth|microfiber cloth|sd card|micro sd card|usb security key|folding comb|coin purse"
+  },
+  "Name a pastry": {
+    "r": "kouign-amann|kouignette|kougelhopf|gibassier|sacristain|palmier|jesuite|puits d'amour|conversation tart|polonaise pastry"
+  },
+  "Name a type of noodle": {
+    "r": "biangbiang noodles|belt noodles|youpo noodles|che mian|latiaozi|laghman|lagman|sujeibi|kalguksu|gamja ongsimi"
+  },
+  "Name a type of salad": {
+    "r": "salata baladi|fattoush|salatet malfouf|salatet jarjeer|shirazi salad|shopska salad|sopska salad|snezhanka salad|ovcharska salad|ruska salata"
+  },
+  "Name a snack food": {
+    "r": "murukku|chakli|thattai|seedai|kodubale|chegodilu|karasev|ompodi|banana chips|jackfruit chips"
+  },
+  "Name a Mexican dish": {
+    "r": "papadzules|panuchos|salbutes|relleno negro|relleno blanco|cochinita pibil|mucbilpollo|poc chuc|tikin xic|sopa de lima"
+  },
+  "Name an Italian dish": {
+    "r": "frico|cjarsons|blecs|jota|brovada|musetto|gubana|strucchi|pinza triestina|putizza"
+  },
+  "Name a Japanese food": {
+    "r": "hitsumabushi|hoba miso|keichan|gohei mochi|tebasaki|doteni|miso nikomi udon|kishimen|ogura toast|ankake spaghetti"
+  },
+  "Name a Chinese dish": {
+    "r": "luosifen|guilin rice noodles|laoyou rice noodles|yousuobing|shaobing|jianbing guozi|roujiamo|liangpi|biangbiang mian|hulatang"
+  },
+  "Name an Indian dish": {
+    "r": "dalma|santula|pakhala bhata|chhena poda|chhena gaja|chakuli pitha|manda pitha|enduri pitha|kakara pitha|bara ghuguni"
+  },
+  "Name a French dish": {
+    "r": "aligot|truffade|pounti|tripoux|farinade|bourriol|pachade|pompe aux pommes|fouace|flaune"
+  },
+  "Name a type of seafood": {
+    "r": "goose barnacle|percebes|razor clam|surf clam|blood cockle|ark clam|geoduck|pen shell|whelk|slipper limpet"
+  },
+  "Name a breakfast cereal": {
+    "r": "kellogg's just right|kellogg's sultana bran|kellogg's crunchy nut|kellogg's krave|jordans country crisp|dorset cereals muesli|weetabix minis|weetos|ready brek|shreddies"
+  },
+  "Name a zodiac sign": {
+    "r": "aries/aries the ram|taurus/taurus the bull|gemini/gemini the twins|cancer/cancer the crab|leo/leo the lion|virgo/virgo the maiden|libra/libra the scales|scorpio/scorpio the scorpion|sagittarius/sagittarius the archer|capricorn/capricorn the sea goat|aquarius/aquarius the water bearer|pisces/pisces the fish"
+  },
+  "Name an animal from the Chinese zodiac": {
+    "r": "rat/year of the rat|ox/year of the ox|tiger/year of the tiger|rabbit/year of the rabbit|dragon/year of the dragon|snake/year of the snake|horse/year of the horse|goat/year of the goat|monkey/year of the monkey|rooster/year of the rooster|dog/year of the dog|pig/year of the pig"
+  },
+  "Name a letter of the Greek alphabet": {
+    "r": "alpha/greek alpha|beta/greek beta|gamma/greek gamma|delta/greek delta|epsilon/greek epsilon|zeta/greek zeta|eta/greek eta|theta/greek thetata/greek iota|kappa/greek kappa|lambda/greek lambda|mu/greek mu|nu/greek nu|xi/greek xi|omicron/greek omicron|pi/greek pi|rho/greek rho|sigma/greek sigma|tau/greek tau|upsilon/greek upsilon|phi/greek phi|chi/greek chi|psi/greek psi|omega/greek omega"
+  },
+  "Name a legendary or lost place": {
+    "r": "aethiopia|hyperborea|thule|ultima thule|lyonesse|cantre'r gwaelod|ker-is|kitezh|shambhala|beyul"
+  },
+  "Name a superpower": {
+    "r": "chronokinesis|biokinesis|hemokinesis|osteokinesis|aerokinesis|geokinesis|electrokinesis|cryokinesis|photokinesis|umbrakinesis"
+  },
+  "Name an emotion or feeling": {
+    "r": "compersion|mudita|schadenfreude|firgun|saudade|hiraeth|sehnsucht|mono no aware|toska|fiero"
+  },
+  "Name a famous detective": {
+    "r": "renee ballard|harry bosch|kurt wallander|sarah lund|saga noren|martin rohde|harry hole|carol jordan"
+  },
+  "Name a famous wizard or witch": {
+    "r": "sophie hatter|howl jenkins pendragon|yubaba|zeniba|eda clawthorne|lilith clawthorne|raine whispers|belos"
+  },
+  "Name a famous duo or pair": {
+    "r": "dipper and mabel|stan and ford|finn and jake|fionna and cake|bee and puppycat|marceline and bubblegum|luz and amity|anne and sprig|molly and scratch|hailey and scott"
+  },
+  "Name a word that rhymes with 'go'": {
+    "r": "forego|undergo|outgrow|overgrow|overthrow|overflow|afterglow|undertow|escrow|bestow|plateau|tableau"
+  },
+  "Name something you'd find in a hospital": {
+    "r": "bladder scanner|syringe pump|infusion pump|pulse oximeter|capnograph|laryngoscope|video laryngoscope|intubation trolley|crash cart|defibrillator pads"
+  },
+  "Name something you'd find at an airport": {
+    "r": "jet bridge|airside bus|ground power unit|pushback tug|deicing truck|baggage belt loader|container loader|airport follow-me car|aircraft chocks|grounding cable"
+  },
+  "Name something on a playground": {
+    "r": "spring rider|inclusive roundabout|wheelchair swing|sensory play panel|musical play panel|talk tube|balance trail|stepping logs|sand digger|water play table"
+  },
+  "Name something at a birthday party": {
+    "r": "number balloons|balloon arch|balloon garland|confetti cannon|cake fountain|sparkler candle|party favor bag|photo booth backdrop|birthday sash|birthday crown"
+  },
+  "Name something you'd find in a classroom": {
+    "r": "document camera|interactive whiteboard|visual timetable|word wall|phonics chart|hundred square|number line|fraction tiles|base ten blocks|cuisenaire rods"
+  },
+  "Name a school subject": {
+    "r": "citizenship|personal social health education|religious education|design and technology|food technology|textiles|media studies|film studies|business studies|classical civilization"
+  },
+  "Name a famous musical": {
+    "r": "operation mincemeat|standing at the sky's edge|the little big things|two strangers carry a cake across new york|the curious case of benjamin button|a strange loop|shucked|kimberly akimbo|here lies love|days of wine and roses"
+  },
+  "Name a famous bear": {
+    "r": "paddington/paddington brown|winnie the pooh/pooh bear|baloo/baloo bear|fozzie/fozzie bear|ted/ted the bear|rupert/rupert the bear|corduroy/corduroy bear|br'er bear|banjo bear|tutter"
+  }
+}

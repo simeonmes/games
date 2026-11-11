@@ -1,0 +1,1787 @@
+[
+  {
+    "prompt": "Name a cheese",
+    "before": 183,
+    "after": 653,
+    "addedAnswers": 470,
+    "addedSpellings": 610
+  },
+  {
+    "prompt": "Name a fruit",
+    "before": 201,
+    "after": 209,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a dog breed",
+    "before": 289,
+    "after": 698,
+    "addedAnswers": 409,
+    "addedSpellings": 701
+  },
+  {
+    "prompt": "Name a country in Africa",
+    "before": 81,
+    "after": 81,
+    "addedAnswers": 0,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a musical instrument",
+    "before": 219,
+    "after": 227,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a planet, moon or dwarf planet",
+    "before": 145,
+    "after": 150,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a bird",
+    "before": 298,
+    "after": 306,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a pasta shape",
+    "before": 116,
+    "after": 119,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a chemical element",
+    "before": 136,
+    "after": 136,
+    "addedAnswers": 0,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a dinosaur",
+    "before": 191,
+    "after": 200,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a vegetable",
+    "before": 195,
+    "after": 202,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a sport",
+    "before": 228,
+    "after": 236,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a color",
+    "before": 247,
+    "after": 255,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a US state",
+    "before": 71,
+    "after": 71,
+    "addedAnswers": 0,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a capital city",
+    "before": 193,
+    "after": 217,
+    "addedAnswers": 24,
+    "addedSpellings": 59
+  },
+  {
+    "prompt": "Name a Greek god or goddess",
+    "before": 106,
+    "after": 448,
+    "addedAnswers": 342,
+    "addedSpellings": 507
+  },
+  {
+    "prompt": "Name a flower",
+    "before": 128,
+    "after": 137,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a tree",
+    "before": 346,
+    "after": 350,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name an ocean creature",
+    "before": 122,
+    "after": 131,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a fish you can eat",
+    "before": 190,
+    "after": 199,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a board game",
+    "before": 104,
+    "after": 302,
+    "addedAnswers": 198,
+    "addedSpellings": 269
+  },
+  {
+    "prompt": "Name a spice or herb",
+    "before": 162,
+    "after": 170,
+    "addedAnswers": 8,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a gemstone",
+    "before": 148,
+    "after": 192,
+    "addedAnswers": 44,
+    "addedSpellings": 83
+  },
+  {
+    "prompt": "Name a mammal",
+    "before": 148,
+    "after": 156,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name an insect",
+    "before": 205,
+    "after": 211,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a car brand",
+    "before": 129,
+    "after": 138,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a dessert",
+    "before": 196,
+    "after": 307,
+    "addedAnswers": 111,
+    "addedSpellings": 157
+  },
+  {
+    "prompt": "Name a breakfast food",
+    "before": 263,
+    "after": 269,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a Shakespeare play",
+    "before": 47,
+    "after": 47,
+    "addedAnswers": 0,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a bone in the human body",
+    "before": 111,
+    "after": 119,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name something in a kitchen",
+    "before": 123,
+    "after": 131,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a programming language",
+    "before": 117,
+    "after": 294,
+    "addedAnswers": 177,
+    "addedSpellings": 298
+  },
+  {
+    "prompt": "Name a superhero",
+    "before": 257,
+    "after": 267,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a type of sandwich",
+    "before": 214,
+    "after": 377,
+    "addedAnswers": 163,
+    "addedSpellings": 256
+  },
+  {
+    "prompt": "Name a famous painter",
+    "before": 134,
+    "after": 329,
+    "addedAnswers": 195,
+    "addedSpellings": 809
+  },
+  {
+    "prompt": "Name a musical genre",
+    "before": 213,
+    "after": 1022,
+    "addedAnswers": 809,
+    "addedSpellings": 1961
+  },
+  {
+    "prompt": "Name a mythical creature",
+    "before": 128,
+    "after": 136,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a type of hat",
+    "before": 166,
+    "after": 232,
+    "addedAnswers": 66,
+    "addedSpellings": 113
+  },
+  {
+    "prompt": "Name a type of weather",
+    "before": 181,
+    "after": 186,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name something you'd find at the beach",
+    "before": 214,
+    "after": 224,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a Harry Potter character",
+    "before": 150,
+    "after": 160,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a Pokémon",
+    "before": 193,
+    "after": 208,
+    "addedAnswers": 15,
+    "addedSpellings": 15
+  },
+  {
+    "prompt": "Name a word that rhymes with 'cat'",
+    "before": 109,
+    "after": 115,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a word that starts with 'Z'",
+    "before": 104,
+    "after": 110,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a cut of beef",
+    "before": 150,
+    "after": 158,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a famous scientist",
+    "before": 130,
+    "after": 459,
+    "addedAnswers": 329,
+    "addedSpellings": 1119
+  },
+  {
+    "prompt": "Name an animal that lives in Australia",
+    "before": 198,
+    "after": 202,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a candy",
+    "before": 145,
+    "after": 152,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a NATO phonetic alphabet word",
+    "before": 49,
+    "after": 50,
+    "addedAnswers": 1,
+    "addedSpellings": 27
+  },
+  {
+    "prompt": "Name a Disney animated movie",
+    "before": 119,
+    "after": 165,
+    "addedAnswers": 46,
+    "addedSpellings": 50
+  },
+  {
+    "prompt": "Name a type of nut",
+    "before": 105,
+    "after": 109,
+    "addedAnswers": 4,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a unit of measurement",
+    "before": 143,
+    "after": 154,
+    "addedAnswers": 11,
+    "addedSpellings": 11
+  },
+  {
+    "prompt": "Name a cocktail",
+    "before": 115,
+    "after": 181,
+    "addedAnswers": 66,
+    "addedSpellings": 83
+  },
+  {
+    "prompt": "Name a fabric",
+    "before": 117,
+    "after": 123,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a famous river",
+    "before": 123,
+    "after": 401,
+    "addedAnswers": 278,
+    "addedSpellings": 661
+  },
+  {
+    "prompt": "Name a martial art",
+    "before": 162,
+    "after": 169,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a famous composer",
+    "before": 143,
+    "after": 609,
+    "addedAnswers": 466,
+    "addedSpellings": 1661
+  },
+  {
+    "prompt": "Name a soup",
+    "before": 122,
+    "after": 168,
+    "addedAnswers": 46,
+    "addedSpellings": 71
+  },
+  {
+    "prompt": "Name a famous mountain",
+    "before": 122,
+    "after": 258,
+    "addedAnswers": 136,
+    "addedSpellings": 277
+  },
+  {
+    "prompt": "Name a card game",
+    "before": 128,
+    "after": 308,
+    "addedAnswers": 180,
+    "addedSpellings": 235
+  },
+  {
+    "prompt": "Name an organ in the human body",
+    "before": 130,
+    "after": 137,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of bread",
+    "before": 124,
+    "after": 178,
+    "addedAnswers": 54,
+    "addedSpellings": 86
+  },
+  {
+    "prompt": "Name a famous ship",
+    "before": 116,
+    "after": 242,
+    "addedAnswers": 126,
+    "addedSpellings": 198
+  },
+  {
+    "prompt": "Name a type of rock or mineral",
+    "before": 152,
+    "after": 444,
+    "addedAnswers": 292,
+    "addedSpellings": 459
+  },
+  {
+    "prompt": "Name an Olympic event",
+    "before": 117,
+    "after": 127,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a pizza topping",
+    "before": 157,
+    "after": 160,
+    "addedAnswers": 3,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name an ice cream flavor",
+    "before": 174,
+    "after": 181,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of cookie",
+    "before": 155,
+    "after": 162,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a soda or soft drink",
+    "before": 176,
+    "after": 183,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a fast food chain",
+    "before": 202,
+    "after": 208,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a sauce or condiment",
+    "before": 217,
+    "after": 224,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of tea",
+    "before": 202,
+    "after": 210,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a coffee drink",
+    "before": 219,
+    "after": 227,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a type of cake",
+    "before": 192,
+    "after": 196,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a type of pie",
+    "before": 172,
+    "after": 177,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a type of mushroom",
+    "before": 160,
+    "after": 162,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a type of dumpling",
+    "before": 161,
+    "after": 166,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a reptile",
+    "before": 211,
+    "after": 218,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of snake",
+    "before": 202,
+    "after": 209,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of shark",
+    "before": 169,
+    "after": 171,
+    "addedAnswers": 2,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a whale or dolphin",
+    "before": 142,
+    "after": 143,
+    "addedAnswers": 1,
+    "addedSpellings": 1
+  },
+  {
+    "prompt": "Name a monkey or ape",
+    "before": 188,
+    "after": 190,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a cat breed",
+    "before": 157,
+    "after": 160,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a horse breed",
+    "before": 194,
+    "after": 202,
+    "addedAnswers": 8,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a farm animal",
+    "before": 201,
+    "after": 211,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a bird of prey",
+    "before": 196,
+    "after": 200,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a butterfly or moth",
+    "before": 240,
+    "after": 242,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a type of spider",
+    "before": 198,
+    "after": 204,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a frog or toad",
+    "before": 199,
+    "after": 208,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a rodent",
+    "before": 198,
+    "after": 208,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a nocturnal animal",
+    "before": 194,
+    "after": 204,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an extinct animal",
+    "before": 195,
+    "after": 205,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a pet",
+    "before": 197,
+    "after": 207,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an endangered animal",
+    "before": 198,
+    "after": 204,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a deer or antelope",
+    "before": 225,
+    "after": 233,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name an aquarium fish",
+    "before": 268,
+    "after": 276,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a type of beetle",
+    "before": 196,
+    "after": 203,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a baby animal name",
+    "before": 118,
+    "after": 125,
+    "addedAnswers": 7,
+    "addedSpellings": 15
+  },
+  {
+    "prompt": "Name a rainforest animal",
+    "before": 258,
+    "after": 267,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name an animal in Africa",
+    "before": 262,
+    "after": 268,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a word for a group of animals",
+    "before": 192,
+    "after": 192,
+    "addedAnswers": 0,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a country in Europe",
+    "before": 106,
+    "after": 106,
+    "addedAnswers": 0,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a country in Asia",
+    "before": 92,
+    "after": 92,
+    "addedAnswers": 0,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a country in South America",
+    "before": 42,
+    "after": 42,
+    "addedAnswers": 0,
+    "addedSpellings": 12
+  },
+  {
+    "prompt": "Name an island",
+    "before": 294,
+    "after": 302,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a city in the USA",
+    "before": 275,
+    "after": 284,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a city in Europe",
+    "before": 279,
+    "after": 288,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a city in Asia",
+    "before": 247,
+    "after": 257,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a desert",
+    "before": 154,
+    "after": 164,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a lake",
+    "before": 206,
+    "after": 216,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a volcano",
+    "before": 206,
+    "after": 215,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a famous landmark",
+    "before": 209,
+    "after": 219,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a famous bridge",
+    "before": 191,
+    "after": 199,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a city in the UK",
+    "before": 250,
+    "after": 260,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a city in Canada",
+    "before": 216,
+    "after": 225,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a city in Australia",
+    "before": 221,
+    "after": 225,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a language",
+    "before": 278,
+    "after": 287,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a currency",
+    "before": 231,
+    "after": 241,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a theme park",
+    "before": 209,
+    "after": 216,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a video game",
+    "before": 558,
+    "after": 567,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a video game console",
+    "before": 171,
+    "after": 177,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a Nintendo character",
+    "before": 264,
+    "after": 273,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a Marvel character",
+    "before": 292,
+    "after": 301,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a Star Wars character",
+    "before": 289,
+    "after": 292,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a Pixar movie",
+    "before": 119,
+    "after": 123,
+    "addedAnswers": 4,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a cartoon character",
+    "before": 476,
+    "after": 486,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an animated TV show",
+    "before": 382,
+    "after": 391,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a sitcom",
+    "before": 312,
+    "after": 321,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a horror movie",
+    "before": 333,
+    "after": 342,
+    "addedAnswers": 9,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a Christmas movie",
+    "before": 221,
+    "after": 225,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a DC character",
+    "before": 298,
+    "after": 308,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a famous author",
+    "before": 314,
+    "after": 321,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a children's book",
+    "before": 246,
+    "after": 256,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a novel",
+    "before": 313,
+    "after": 323,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a famous poet",
+    "before": 215,
+    "after": 218,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a rapper",
+    "before": 390,
+    "after": 397,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a pop singer",
+    "before": 362,
+    "after": 367,
+    "addedAnswers": 5,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a toy",
+    "before": 360,
+    "after": 369,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a fairy tale",
+    "before": 202,
+    "after": 207,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a fictional place",
+    "before": 346,
+    "after": 352,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a famous dog",
+    "before": 296,
+    "after": 301,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a famous cat",
+    "before": 259,
+    "after": 262,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a famous robot",
+    "before": 238,
+    "after": 241,
+    "addedAnswers": 3,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a famous painting",
+    "before": 200,
+    "after": 209,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name an art movement or style",
+    "before": 228,
+    "after": 235,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a famous sculpture or statue",
+    "before": 189,
+    "after": 198,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a musical term",
+    "before": 295,
+    "after": 300,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a type of knot",
+    "before": 206,
+    "after": 211,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a medieval weapon",
+    "before": 244,
+    "after": 247,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a muscle",
+    "before": 167,
+    "after": 174,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name an illness or disease",
+    "before": 241,
+    "after": 250,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a phobia",
+    "before": 152,
+    "after": 156,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a constellation",
+    "before": 145,
+    "after": 145,
+    "addedAnswers": 0,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a type of cloud",
+    "before": 140,
+    "after": 142,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a field of science or -ology",
+    "before": 212,
+    "after": 219,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a houseplant",
+    "before": 240,
+    "after": 250,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a gas",
+    "before": 176,
+    "after": 178,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a metal",
+    "before": 194,
+    "after": 202,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a shape",
+    "before": 198,
+    "after": 202,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a star",
+    "before": 200,
+    "after": 204,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name an ocean or sea",
+    "before": 167,
+    "after": 175,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a job",
+    "before": 410,
+    "after": 420,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a piece of furniture",
+    "before": 209,
+    "after": 216,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a room in a house",
+    "before": 189,
+    "after": 193,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a tool",
+    "before": 266,
+    "after": 273,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of shoe",
+    "before": 186,
+    "after": 194,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name an item of clothing",
+    "before": 264,
+    "after": 271,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a vehicle",
+    "before": 275,
+    "after": 280,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a type of boat",
+    "before": 225,
+    "after": 234,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a holiday",
+    "before": 213,
+    "after": 219,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a Halloween costume",
+    "before": 369,
+    "after": 379,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a gym exercise",
+    "before": 246,
+    "after": 254,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a dance",
+    "before": 255,
+    "after": 261,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a hobby",
+    "before": 401,
+    "after": 410,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name something you'd take camping",
+    "before": 258,
+    "after": 265,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a store or shop chain",
+    "before": 269,
+    "after": 276,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a clothing brand",
+    "before": 349,
+    "after": 352,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a tech company",
+    "before": 416,
+    "after": 426,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an airline",
+    "before": 251,
+    "after": 261,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a US president",
+    "before": 68,
+    "after": 69,
+    "addedAnswers": 1,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a Roman emperor",
+    "before": 132,
+    "after": 142,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a famous explorer",
+    "before": 186,
+    "after": 195,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a philosopher",
+    "before": 222,
+    "after": 231,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a famous queen",
+    "before": 200,
+    "after": 207,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a famous pirate",
+    "before": 158,
+    "after": 163,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a Norse god",
+    "before": 127,
+    "after": 127,
+    "addedAnswers": 0,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an Egyptian god",
+    "before": 137,
+    "after": 140,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a Roman god",
+    "before": 128,
+    "after": 130,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a famous chef",
+    "before": 176,
+    "after": 184,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name an astronaut",
+    "before": 191,
+    "after": 197,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a famous inventor",
+    "before": 215,
+    "after": 225,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an NBA team",
+    "before": 101,
+    "after": 101,
+    "addedAnswers": 0,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name an NFL team",
+    "before": 99,
+    "after": 99,
+    "addedAnswers": 0,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a soccer club",
+    "before": 1633,
+    "after": 1643,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a famous athlete",
+    "before": 273,
+    "after": 282,
+    "addedAnswers": 9,
+    "addedSpellings": 9
+  },
+  {
+    "prompt": "Name a winter sport",
+    "before": 128,
+    "after": 130,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a water sport",
+    "before": 131,
+    "after": 134,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a cricket team",
+    "before": 180,
+    "after": 188,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a rugby club",
+    "before": 384,
+    "after": 385,
+    "addedAnswers": 1,
+    "addedSpellings": 1
+  },
+  {
+    "prompt": "Name a baseball team",
+    "before": 302,
+    "after": 305,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name an ice hockey team",
+    "before": 458,
+    "after": 459,
+    "addedAnswers": 1,
+    "addedSpellings": 1
+  },
+  {
+    "prompt": "Name a word that rhymes with 'light'",
+    "before": 166,
+    "after": 176,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a word that rhymes with 'day'",
+    "before": 186,
+    "after": 189,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a word that rhymes with 'bee'",
+    "before": 202,
+    "after": 204,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a word that rhymes with 'ring'",
+    "before": 152,
+    "after": 162,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a word that starts with 'Q'",
+    "before": 169,
+    "after": 174,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a word that starts with 'X'",
+    "before": 104,
+    "after": 109,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a word that starts with 'J'",
+    "before": 196,
+    "after": 197,
+    "addedAnswers": 1,
+    "addedSpellings": 1
+  },
+  {
+    "prompt": "Name a word that means 'happy'",
+    "before": 140,
+    "after": 145,
+    "addedAnswers": 5,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a word that means 'big'",
+    "before": 127,
+    "after": 135,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a sound word (onomatopoeia)",
+    "before": 252,
+    "after": 255,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a girl's name",
+    "before": 281,
+    "after": 289,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a boy's name",
+    "before": 287,
+    "after": 295,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name something yellow",
+    "before": 208,
+    "after": 217,
+    "addedAnswers": 9,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name something round",
+    "before": 244,
+    "after": 254,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name something with wheels",
+    "before": 200,
+    "after": 207,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name something that flies",
+    "before": 228,
+    "after": 232,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name something cold",
+    "before": 201,
+    "after": 206,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name something you find in space",
+    "before": 238,
+    "after": 242,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name something with buttons",
+    "before": 185,
+    "after": 191,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name something with keys",
+    "before": 186,
+    "after": 194,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name something you plug in",
+    "before": 264,
+    "after": 274,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name an animal with a tail",
+    "before": 235,
+    "after": 245,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name something sticky",
+    "before": 213,
+    "after": 221,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name something you keep in your pocket",
+    "before": 234,
+    "after": 242,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a pastry",
+    "before": 226,
+    "after": 232,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a type of noodle",
+    "before": 222,
+    "after": 228,
+    "addedAnswers": 6,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a type of salad",
+    "before": 198,
+    "after": 204,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a snack food",
+    "before": 351,
+    "after": 359,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a Mexican dish",
+    "before": 226,
+    "after": 228,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name an Italian dish",
+    "before": 221,
+    "after": 231,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a Japanese food",
+    "before": 238,
+    "after": 245,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a Chinese dish",
+    "before": 203,
+    "after": 210,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name an Indian dish",
+    "before": 260,
+    "after": 267,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a French dish",
+    "before": 220,
+    "after": 226,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a type of seafood",
+    "before": 228,
+    "after": 233,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a breakfast cereal",
+    "before": 165,
+    "after": 173,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name a zodiac sign",
+    "before": 73,
+    "after": 73,
+    "addedAnswers": 0,
+    "addedSpellings": 12
+  },
+  {
+    "prompt": "Name an animal from the Chinese zodiac",
+    "before": 70,
+    "after": 70,
+    "addedAnswers": 0,
+    "addedSpellings": 12
+  },
+  {
+    "prompt": "Name a letter of the Greek alphabet",
+    "before": 46,
+    "after": 46,
+    "addedAnswers": 0,
+    "addedSpellings": 24
+  },
+  {
+    "prompt": "Name a legendary or lost place",
+    "before": 115,
+    "after": 119,
+    "addedAnswers": 4,
+    "addedSpellings": 4
+  },
+  {
+    "prompt": "Name a superpower",
+    "before": 134,
+    "after": 136,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name an emotion or feeling",
+    "before": 159,
+    "after": 162,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a famous detective",
+    "before": 146,
+    "after": 151,
+    "addedAnswers": 5,
+    "addedSpellings": 5
+  },
+  {
+    "prompt": "Name a famous wizard or witch",
+    "before": 154,
+    "after": 160,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name a famous duo or pair",
+    "before": 161,
+    "after": 171,
+    "addedAnswers": 10,
+    "addedSpellings": 10
+  },
+  {
+    "prompt": "Name a word that rhymes with 'go'",
+    "before": 213,
+    "after": 219,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name something you'd find in a hospital",
+    "before": 204,
+    "after": 212,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name something you'd find at an airport",
+    "before": 201,
+    "after": 207,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name something on a playground",
+    "before": 183,
+    "after": 189,
+    "addedAnswers": 6,
+    "addedSpellings": 6
+  },
+  {
+    "prompt": "Name something at a birthday party",
+    "before": 172,
+    "after": 180,
+    "addedAnswers": 8,
+    "addedSpellings": 8
+  },
+  {
+    "prompt": "Name something you'd find in a classroom",
+    "before": 208,
+    "after": 210,
+    "addedAnswers": 2,
+    "addedSpellings": 2
+  },
+  {
+    "prompt": "Name a school subject",
+    "before": 188,
+    "after": 191,
+    "addedAnswers": 3,
+    "addedSpellings": 3
+  },
+  {
+    "prompt": "Name a famous musical",
+    "before": 184,
+    "after": 191,
+    "addedAnswers": 7,
+    "addedSpellings": 7
+  },
+  {
+    "prompt": "Name a famous bear",
+    "before": 137,
+    "after": 140,
+    "addedAnswers": 3,
+    "addedSpellings": 8
+  }
+]

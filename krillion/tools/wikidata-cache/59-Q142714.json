@@ -1,0 +1,5347 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ142714.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%204)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:46:57.288Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188966"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "contract bridge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bridge|bridge game|game of bridge"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q228044"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "blackjack"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "64"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "twenty-one|Card Games/Blackjack"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207302"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Magic: The Gathering"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Magic|MTG|M:TG|Magic The Gathering|Magic:The Gathering|Magic TCG|MagicTCG|MagicTheGathering"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17267"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Uno"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "UNO|UNO!|UNO!™|UNO™"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q739895"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "baccarat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "baccara"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q756011"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rummy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q697641"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "hanafuda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "hwatu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q278854"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Canasta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q767979"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "whist"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1056309"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pokémon Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pokemon TCG|Pokémon TCG|Pokemon Trading Card Game"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q649282"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Omaha hold 'em"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1004599"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Professional eater"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cheat|bullshit|banana split|I Doubt It|Verish' Ne Verish'"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q546064"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yu-Gi-Oh! Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yu Gi Oh card game|Yu Gi Oh trading card game"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1050614"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "FreeCell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4921133"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Black Lady"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Black Widow|Black Maria|Black Lady Hearts|American Hearts|Rickety Kate|Slippery Anne"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q855814"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Briscola"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1955846"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scopa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17276"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "7 Wonders"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Seven Wonders"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1238110"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dominion"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1616724"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "karuta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1703727"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tarot of Marseilles"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2121032"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spades"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q729935"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Munchkin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6433358"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "belote"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1139885"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cribbage"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "crib"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q640673"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "War"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q76888168"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Black Peter"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q867799"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hearts"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Calamity Jane|Slippery Bitch"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5038791"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cards Against Humanity"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CAH"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q655453"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piquet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20037103"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Splendor"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q194468"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "French tarot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "tarot|jeu de tarot"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1779423"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "twenty-one"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "21|blackjack"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1089982"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mau-Mau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Macau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1019517"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bezique"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11082926"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gin rummy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gin"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q897287"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "World of Warcraft Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "WoW TCG"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q973596"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "oh, hell"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "wist|ah hell|contract whist|oh hell"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q258972"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Take 5"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "6 nimmt!|6 takes|Take 6|Take 6!"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1856781"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tressette"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2739146"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Crazy Eights"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13738509"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hanabi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1658898"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Illuminati"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Illuminati"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q630389"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sixty-six"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Paderbörnern"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1076377"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Preferans"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Russian Preference|Russian Préférence"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q726633"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visconti-Sforza tarot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q890839"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bohnanza"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1035867"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sette e Mezzo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Seven and a Half"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1073718"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chinese poker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chinese_poker"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q648228"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spider"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Roosevelt's Favorite|Roosevelt's Favourite"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1328529"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sevens"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Parliament"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q145350"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Go-Stop"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q476996"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Old maid"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q928584"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Go Fish"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q957572"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Truco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1898942"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pinochle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5662149"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ombre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1797040"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "three-card monte"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "monte|find the lady|three card monte|three-card trick"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q713675"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Koi-Koi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Koikoi|Koi Koi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q273305"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "écarté"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q786768"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jass"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1138931"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Harry Potter Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1589554"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Caribbean stud poker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1639186"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "faro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3059474"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Euchre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19963564"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "As-Nas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17263"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mille Bornes"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q146952"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Russian bank"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Touch|Crapette|Tunj"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2890963"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shithead"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Karma|Danish|Shed|Palace|Shithead (card game)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q382713"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lansquenet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1188003"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cardfight!! Vanguard"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7439472"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scum"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kings|Landlord|President|Scumbag|Janitor|Rich Man Poor Man|Arsehole|Kings and Assholes|Warlords and Scumbags"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1047595"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cassino"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Casino"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1107013"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kemps"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Canes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1207918"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Trente et Quarante"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rouge-et-Noir"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q574653"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Schafkopf"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q851937"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tichu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q976100"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "mus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1251329"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dou Di Zhu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1283931"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Manille"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1639025"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kabufuda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2493002"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vampire: The Eternal Struggle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q56290125"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "KeyForge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Key Forge"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1049371"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sanguosha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Legends of the Three Kingdoms|Three Kingdoms Kill"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q920413"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Conquian"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Coon Can"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4631842"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "24 game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "24"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1194027"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "The Great Dalmuti"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1243075"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Doppelkopf"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1473805"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Phase 10"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1936271"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "minchiate"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2354707"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gnav"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3322754"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tute"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3460677"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Saboteur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5252573"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "happy families"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16675811"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Schnapsen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16206135"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Quartets"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Quartett"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q704271"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Daifugō"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tycoon|President|Capitalist|Daihinmin"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q613148"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Call of Cthulhu: The Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Call of Cthulhu Collectible Card Game"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1107109"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Weiß Schwarz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "AT-X Card Game|Weiss Schwarz"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5156357"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "competitive karuta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "kyogi karuta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q458258"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Karnöffel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q750790"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Top Trumps"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q905339"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Eleusis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1010167"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Buraco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1396749"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SKIP-BO"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1506969"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lost Cities"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2520041"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "duplicate bridge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15502589"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Future Card Buddyfight"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q33120381"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sedma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q21517265"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Luck & Logic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hina Logic~from Luck & Logic~|Luck and Logic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24906057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sicilian tarot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tarocco Siciliano"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q749904"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spoons"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pig|Donkey|1-2-3 Pass"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q952040"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Battle Spirits Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Battle Spirits TCG"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q389410"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yablon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Red dog poker"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q464484"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Halli Galli"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tutti Frutti"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1430569"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "uta-garuta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "hyakunin isshu karuta|karuta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4868366"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bastra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pastra"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q220469"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Race for the Galaxy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q390273"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "burro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q471375"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "rubber bridge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q648768"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Barbu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q894555"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Boston"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q896745"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Watten"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1418082"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ligretto"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1759218"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spellfire"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1812303"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mao"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1882513"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Macao"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3100473"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oicho-Kabu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3211249"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Madiao"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3411255"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pyramid"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3564758"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mariáš"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q53726996"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "The Mind"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q63973259"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Just One"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q38371"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aluette"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7538723"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "slapjack"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "slap jack"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1771350"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yaniv"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dhumbal|Jhyap"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2177181"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Russian Schnapsen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thousand Schnapsen"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17107473"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piedmontese tarot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tarocco Piemontese|Tarot of Piedmont"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24906060"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bolognese tarot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tarocco Bolognese"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q839962"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Catan Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Settlers of Catan (card game)|The Settlers of Catan: The Card Game"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2816947"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aces Up"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Firing Squad"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2887791"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Egyptian Ratscrew"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Card Games/Egyptian Ratscrew"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3036919"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Doom Trooper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Doomtrooper"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1077653"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Napoleon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nap"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4357295"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chinchón"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chinchon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4639730"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "500"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Five Hundred"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q583751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Court piece"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1425194"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Thirty-one"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1553222"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lorum"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2247343"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spit"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2583634"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oblique Strategies"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2587022"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wizard"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2929227"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Four Color Cards"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3409456"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tablanet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5165316"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Continental Rummy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5561316"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pasur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17343013"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cucumber"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q30898809"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "7 Wonders Duel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16960591"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Open-face Chinese poker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "OFCP"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17116050"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Golf"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dutch|Cambio|Turtle|Pablo|Hara Kiri|Crazy Nines|Polish Poker|Polish Polka"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20825991"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "coinche"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "belote coinchée"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q77852578"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "The Crew: The Quest for Planet Nine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Crew"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q109657155"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Flesh & Blood"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "FAB|FaB"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q120664402"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Disney Lorcana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lorcana"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3456553"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "all fours"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "seven up"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3998934"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Triomphe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Triomphe/trionfa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4639742"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "500 rum"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Michigan rummy|Persian rummy|pinochle rummy|rummy 500|500 rummy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5134805"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Clock patience"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Clock solitaire"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q244559"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zwicken"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q895025"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bouillotte"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1129250"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "A Game of Thrones"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1219713"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Forbidden Island"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1244604"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ulti"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1397361"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Trappola"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1678774"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jaipur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1974649"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Polignac"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2361258"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stýrivolt"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2394481"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Swiss 1JJ Tarot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2553742"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shards of Alara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2749295"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "zole"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3148739"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Illuminati: New World Order"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3338539"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Netrunner"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3921804"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Primero"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3974592"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Beggar-My-Neighbour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4253095"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Poker Squares"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4868070"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Basset"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5095464"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chicago"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5370841"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "auction bridge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7092519"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "One Card"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7290095"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rams"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7452452"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sequence"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7634354"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sueca"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11802526"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17128296"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "WIXOSS"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q21190054"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sushi Go!"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q45728492"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blüchern"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q64889336"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nain Jaune"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q126101407"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Forest Shuffle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q225119"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "52 pickup"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "52-card pickup"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7071879"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "O'NO 99"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Double Play"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q12327833"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mauscheln"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maus|Vierblatt"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15464334"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "straight"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Run"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19931434"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Force of Will Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Force of Will|FoW|FoW TCG"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104862696"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Uno Flip!"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Uno Flip"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1052690"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cego"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ceco"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q781433"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Urza's Saga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Urza Saga"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q642005"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Macau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Macao|Macau (card game)|Macaua|Makaó|Makaua"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3026052"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Diamant"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Incan Gold"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3040096"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "The Lord of the Rings Trading Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "LOTR TCG"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3417440"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bura (card game)"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thirty-One"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3517863"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Knightmare Chess"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nightmare Chess|Tempête sur l'échiquier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1415140"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "7th Edition"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Seventh Edition"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3655000"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sousem"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "soko|Canadian stud|Scandinavian stud|sökö"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3656785"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "3-5-8"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sergeant major"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3887159"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "8th Edition"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Eighth Edition"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3976379"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "stuss"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Jewish Faro"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4891210"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "guiñote"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bresca real"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4994675"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Unlimited Edition"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Unlimited"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5039652"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "carioca"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carioca"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5581712"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gong Zhu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gongzhu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6487558"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lanterloo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Loo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q957769"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mariage"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1345875"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Quadrille"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1495439"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kuhn poker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1525257"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stress"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1573275"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Königrufen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1615366"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Weatherlight"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1617036"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Visions"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1642463"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blind Hookey"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1905430"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Poch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1945301"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monster Collection"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2239201"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Silesian Lottery"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2883158"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "The X-Files Collectible Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3148583"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Once Upon a Time"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3417868"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "King"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3618789"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Antiquities"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3650022"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Calabresella"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3829836"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Legends"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3842083"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Machiavelli"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4006223"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Up Front"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4578462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Skitgubbe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4883368"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bella Sara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4992231"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sim City: The Card Game"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5059963"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "escoba"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5314932"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dune CCG"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6499537"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aquarian Age"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7038565"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ninety-nine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7142196"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paskahousu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7229179"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pope Joan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7295370"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rat-a-Tat Cat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7539882"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sleeping Queens"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7575448"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Speed"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7602411"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Starship Catan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7680490"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tam cúc"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10934965"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monopoly Deal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11280760"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Panguingue"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11892723"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scarto"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q12700235"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ceki"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14635216"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Colour whist"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q22815121"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lorwyn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25385754"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bohemian Schneider"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q55233716"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "The Binding of Isaac: Four Souls"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q57652319"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chlust"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q65196365"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Köpknack"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q101149514"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Coucou"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q111181282"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Unmatched"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q137299250"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Russia without Putin?"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

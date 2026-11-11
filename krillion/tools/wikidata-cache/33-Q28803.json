@@ -1,0 +1,4947 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP279%2B%20wd%3AQ28803.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%203)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:47:12.520Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6663"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "hamburger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "118"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "burger|beef hamburger|hamburger sandwich|Hamburgh ſauſage"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q181055"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "hotdog|frankfurter|wiener|coney|glizzy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3412448"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "shawarma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "80"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "shawerma|shawurma"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191655"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "taco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "73"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tacos|chicken tacos|fish tacos|ground beef tacos|shrimp tacos|tacos al pastor|tacos carne asada|tacos de chorizo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q390823"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "burrito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20734"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "doner kebab"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "kebab|döner kebab|döner kebab sandwich|döner kebap|döner sandwich|donner"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q667478"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cheeseburger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q506796"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Big Mac"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q681596"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "gyros"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "gyro"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q615392"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bánh mì"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "banh mi|bánh mì kẹp|bánh mỳ|bánh mỳ kẹp"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1366456"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "panini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "grilled sandwich|Italian sandwich|panini sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q738"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "croque-monsieur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "croque monsieur"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q58263"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "eggs Benedict"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "eggs Benny"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6559431"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "open sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "tartine|bread baser|open face sandwich|open faced sandwich|Smörgås"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q147372"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "zapiekanka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1133127"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "corn dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "corndog"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1135327"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Whopper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1032806"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "canapé"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "canape|open sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q275621"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "smørrebrød"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "smorrebrod|smoerrebroed"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1093380"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "club sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "clubhouse sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1599125"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "wrap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "roll|tunnbrödsrulle"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2985347"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vada pav"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bombay Burger|Pao Vada|Pao Wada|Pav Vada|Pav Wada|Vada pao|Wada pao|Wada pav|vadapav|batata vada pav|batata wada pav|wadapav"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1202255"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Loco moco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q796270"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BLT"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "B.L.T.|bacon, lettuce, and tomato|bacon, lettuce, and tomato sandwich|BLT sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2705946"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Filet-O-Fish"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Crispy Fish Fillet Sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1884503"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "veggie burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1573107"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Quarter Pounder"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "QPC|Quarter Pounder with cheese"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1018075"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Butterbrot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q732"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Francesinha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q344066"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "İskender kebap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bursa kebab|Bursa kebap|Iskender kebap|Uludağ kebap"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2666603"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chimichanga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bufriedo|chivichanga|deep-fried burrito"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1068892"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cheesesteak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cheese steak|cheesesteak sandwich|Philadelphia cheesesteak|Philly cheesesteak|steak and cheese"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2485491"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "mitraillette"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Américain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1959504"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chivito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2095632"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sloppy joe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2743612"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Big N' Tasty"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7811415"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "toast sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2725639"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McChicken"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4992018"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "po' boy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "po boy|po-boy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5690018"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "roujiamo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "meat jiamo|pork jiamo|Rou Jia Mo|Rougamo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1075514"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McMuffin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3180957"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Reuben sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q776904"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "submarine sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "hero|wedge|grinder|sub|filled roll|hero sandwich|hoagie|po’boy|poorboy|spukie|sub sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5192125"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cuban sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cuban mix|Cuban pressed sandwich|mixto"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q978397"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tuna fish sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "tuna sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q683080"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fischbrötchen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3816761"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Krabby Patty"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q633615"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "calamari sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fried squid sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1421521"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fluffernutter"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "liberty sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q655228"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Toast Hawaii"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5369868"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "rice burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "riceburger"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2892071"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bauru"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bauru (sandwich)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2919135"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pan-bagnat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "pan bagnat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10899266"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "gua-bao"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bao|bao bun|kong bak pau|pork belly bun|Taiwanese hamburger|cuápao|koah-pau|kuah-pau|kuwapaw"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18785184"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Carrozza"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carrozza sandwich|mozzarella in carrozza"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1340323"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Barros Luco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2386967"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Taco al pastor"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Taco al pastor|Tacos al pastor|Taco de trompo|Tacos de trompo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q200527"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Salisbury steak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q358507"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bosna"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2713498"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "choripán"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3058650"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McRib"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17355815"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "balık ekmek"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2917139"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "peanut butter, banana and bacon sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Elvis sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1408045"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gatsby"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2734068"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cheese sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3122402"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "lobster roll"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4304396"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "egg sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4839953"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bacon sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6904753"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monte Cristo sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5208692"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dagwood sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dagwood"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3092677"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "popiah"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "baobing|lumpia|runbing"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8247846"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Big King"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Double Supreme|King Supreme"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q463872"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ketwurst"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q596409"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bøfsandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2220900"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ham sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3160836"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "jambon-beurre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4959490"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "breakfast sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5207457"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dabeli"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kutchi dabeli|Kutchi double rotii"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5296220"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "donkey burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "donkey sandwich|lurou huoshao|lǘròu huǒshāo|lvrou huoshao|lyurou huoshao"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q559528"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bacon, egg and cheese sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BEC|BE&C"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1094305"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Luther Burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "donut burger|Luther Burgers"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5909823"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hot Brown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hot Brown Sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7691137"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tea sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "finger sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2662315"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "meatball sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "meatball sub"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1137701"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "taco rice"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2884589"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bocadillo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4939975"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bologna sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5465590"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fool's Gold Loaf"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6801475"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McGriddles"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q123090891"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chicken sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q30593259"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "avocado toast"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "smashed avo on toast"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4959488"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "breakfast roll"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "full Irish breakfast roll"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4381357"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jucy Lucy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Juicy Lucy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2706698"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chip butty"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3357568"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "slider"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3472079"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Italian beef"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4985915"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "buffalo burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9657134"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bifana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24943843"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Afghani burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4997397"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bun kebab"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "anda shami"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q607754"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chicken burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "hot chicken|chicken on a bun|chickwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4247887"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "katsu sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "katsu-sando|katsusando"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q516212"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Strammer Max"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5066056"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chacarero"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5089399"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cheese dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5171116"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "corned beef sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5390330"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tongue toast"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5503603"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fried-brain sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5906095"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "horseshoe sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6071916"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pepito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24285554"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "roast beef sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25004455"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sonoran hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25220557"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tomato sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q55719554"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McSpicy Chicken Filet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "McSpicy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5098941"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chili dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Texas hot dog"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3472077"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Denver sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Western sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3002792"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "crisp sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "chip sandwich|chipwich|piece and crisps"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3141050"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chicago-style hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Red Hot|Chicago Dog|Chicago hot dog"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q972267"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Porilainen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2904916"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bagel toast"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3425445"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sol over Gudhjem"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3782694"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ham and cheese sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4849055"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "baked bean sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5300145"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "doubles"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5454627"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fish finger sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6192002"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "jibarito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7148741"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "patty melt"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7827283"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Torta Ahogada"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25006844"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "spaghetti sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "spaghetti jaffle"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25221268"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chlebíček"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "obložený chlebíček"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104844158"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sushi burrito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sushirrito"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5159611"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Coney Island hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Coney|Coney dog"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4879758"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "beef on weck"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "beef on weck sandwich|beef on wick|beef on wick sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2785975"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "dagobert"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "club|smos|smoske"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13568060"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "roti"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "wrap roti"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q838462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pork chop bun"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3141053"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Michigan hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3425450"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dyrlægens natmad"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4833482"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "kumru"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5089402"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cheese dream"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5613356"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Guajolota"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5644416"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "hamdog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5673771"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pambazo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6418914"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kiwiburger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6813732"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "melt sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7427595"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sausage sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25004446"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "breakfast burrito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q29467976"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shooter's sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q85428376"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ayvalık tostu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ayvalık toast"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q746"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "croque-madame"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "croque madame"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5099374"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chimichurri burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "chimi|chimi burger|chimichurris|Dominican burger"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q895678"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kottenbutter"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kottenbotter"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7193919"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Thanksgiving sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Puritan|Pilgrim|Gobbler"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7918342"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "vegetable sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "veggie sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8245687"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Beirut sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Beirute"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2904894"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "miga sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "chambuchito|rafaelito|rafaelitos|sandwiches de miga"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3360555"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sandwich loaf"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4839954"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Baconator"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5089395"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cheese and pickle sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5096278"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chicken Tatsuta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5097475"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chiko Roll"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6432035"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Korean taco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7405551"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "salmon burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10699143"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "toast skagen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15785303"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bake and Shark"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17103609"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "medianoche"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20981977"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spatlo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q47464157"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "barbecue sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q108672552"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "butter burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q130198919"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "smash burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q139960699"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Uitsmijter"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5476380"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sándwich de milanesa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sandwich de milanesa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5736147"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "butifarra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "jamón del país sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7442044"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Seattle-style hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hadley's Bagel Dogs|Seattle Dog"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3359766"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Croissan'Wich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Croissan Wich|Croissanwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8249032"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bocadillo de tortilla"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bocadillo con tortilla|bocadillo de tortilla de patatas|bocadillo de tortilla de patatas Española|bocadillo de tortilla Española|bocata de tortilla"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16726108"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pastrami on rye"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "pastrami sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q629936"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Barros Jarpa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1546782"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "grilletta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2270680"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McKroket"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2595324"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wurstbrot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2909230"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bokit"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4097120"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "brtuch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5098938"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chili burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5105519"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chow mein sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6914349"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "mortadella sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7206451"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pocket sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9077681"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sincronizada"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q12366986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "kiluvõileib"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16961496"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maxwell Street Polish"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24439117"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BK Stacker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q28134524"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Trancapecho"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q54423330"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fish sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "fish burger"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q64989889"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "coconut burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "coco burger|niyog burger|sapal burger|sapal ng niyog burger"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q121832765"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Num pang"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "nom pang|nombang|nompang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5644337"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hamburger Helper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chicken Helper|Tuna Helper"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q564506"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "shrimp sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "prawn sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5730960"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bocadillo de chorizo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bocata de chorizo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6664328"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "teriyaki burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "samurai burger"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7414148"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "San Francisco burrito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mission burrito|Mission-style burrito"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9034677"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "montadito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "montado|montaditos"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4785296"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Arch Deluxe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5192531"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cudighi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5287909"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dodger Dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6906362"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Montreal hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7158585"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pebete"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7238914"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "prawn roll"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7605242"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "steak sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13444363"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "McAfrika"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q22115527"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sailor sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25004038"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Italian sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25045172"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "kimchi burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34421086"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bagel and cream cheese"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q85757492"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "doughnut sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q85802587"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "spicy chicken sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q97016668"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "lettuce sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104634768"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "patso"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q116376913"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wet hamburger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q122423459"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Costco hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q30687433"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "steamed cheeseburger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "steamer|cheeseburg"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q51882025"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "x caboquinho"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "x-caboquinho"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q124313304"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "boerewors roll"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "boerie roll"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131683895"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "jaffle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "toastie"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5216031"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "danger dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bacon-wrapped hot dog"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5550390"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gerber sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Famous Gerber sandwich"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10353556"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "prego"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Prego|prego no pão|prego no prato"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11337766"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "toasted sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "toastie"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13231338"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Czech-style hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "párek v rohlíku|sausage in roll"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16823983"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "50/50 burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "50/50 Burger patty"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17175691"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "casse-croûte"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "snack|casse-croute"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19950730"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "torta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lonche"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3361960"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Panchuker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4839932"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bacon Deluxe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5480841"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Morcipan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6093303"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Italian hot dog"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6127120"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "jam sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7542234"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "slugburger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17119279"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spaghetti taco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17225949"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sasebo burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19716076"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pan con chicharrón"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24439118"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kuro Burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q53844640"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Broodje gezond"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q61579505"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chola sandwich"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q111915626"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Impossible Whopper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q124637801"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "eggs Florentine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q124655829"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fried onion burger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q138816614"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Big Arch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

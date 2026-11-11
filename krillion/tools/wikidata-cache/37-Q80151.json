@@ -1,0 +1,2147 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP279%2B%20wd%3AQ80151.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%203)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:47:24.936Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q193888"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "mitre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "miter"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q110304"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "top hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "stovepipe|topper|🎩|chimney pot hat|high hat|silk hat|stovepipe hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q326735"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sombrero"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sombrero de charro"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q488509"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ushanka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1063103"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "papal tiara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "triple crown|triple tiara|triregnum"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q741814"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "panama hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "jipijapa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q650570"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bowler hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "derby|bowler|billycock"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q638335"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fedora"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204390"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "straw hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q526863"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "conical Asian hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Asian conical hat|bamboo hat|douli"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q910792"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "petasos"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "petasus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15488250"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pith helmet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "topee|pith hat|safari helmet|salacot|sola hat|sola topee|sola topi|solar hat|sun helmet|topi|wolseley helmet"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1138175"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cowboy hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cowboy hats"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q808889"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "barretina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q694050"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tyrolean hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Alpine hat|Bavarian hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q763457"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tricorne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cocked hat|three-cornered hat|tricorn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q511007"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "shtreimel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1149531"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bonnet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q286533"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tin foil hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "tinfoil hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q233104"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bicorne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cocked hat|bicorn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3634589"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dhaka topi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nepali topi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q920507"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "academic cap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "mortarboard|trencher|catercap|caterhat|corner-cap|corner-hat|graduate cap|graduate hat|graduation cap|graduation hat|mortar board|mortarboard-topped hat|square academic hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2286991"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "boater"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "skimmer|somer|katie|basher|Boater Hat|cady|can-can hat|sennit hat|straw boater"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1472366"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "karakul"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "qaraqul|Uzbek hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q741511"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cloche"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cloche hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q697666"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "homburg"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1019110"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bearskin cap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3362997"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "trilby"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q709376"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "gat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1813626"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cappello romano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q650132"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sailor cap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "white hat|sailor hat|seaman's cap"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1062672"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "opera hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "chapeau claque|collapsible hat|gibus|opera-hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3624223"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pillbox hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Montenegrin cap"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q127502"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sou'wester"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "rain hat|southwester|rainhat|sow wester"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1432287"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jewish hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "judenhut"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q842998"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bucket hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q507408"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "kasa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3353782"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "doctoral hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15835476"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "mokorotlo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q647960"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "boonie hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "booney hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3425564"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pork pie hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "porkpie hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q612738"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "dunce cap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "donkey hat|dunce hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q77910039"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "nón lá"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "conical hat|Vietnamese hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3042878"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "montera"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "matador hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q430321"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "spodik"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q913023"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "poke bonnet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q573063"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "campaign hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "campaign cover|Mountie hat|park ranger hat|ranger hat|scouting hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18395215"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "witch hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "witch’s hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3699219"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Water polo cap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Water Polo Caps"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3750832"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "slouch hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "smasher|Kossuth|Akubra|Hungarian hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q638199"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "beaver hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "castor|beaverkins|beavot"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6109756"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "jaapi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "japi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1572532"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "salakot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "salacot"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1028747"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "modius"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7559336"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cordovan hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sombrero cordobes|sombrero cordobés"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16841905"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wushamao"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "futou|Ming official headwear|putou|Phốc Đầu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3993544"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chef's hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "chef cap|chef hat|chef toque|chef's cap|chef's toque|toque blanche"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4412451"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "eboshi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Eboshi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6059276"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "picture hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "pamela|Gainsborough hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6180318"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chengziguan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fangshanjin"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q282542"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Four Winds hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1089648"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "chupalla"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17113275"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Umbrella Hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7638701"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sun hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "field hat|floppy hat|harvest hat|sun-hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60740409"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pussyhat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "pussy hat|pink hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5036100"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "capotain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "capatain|copotain|sugar-loaf|sugarloaf hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7208355"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pointed hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "conical hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1277871"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ngob"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thai farmer's hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5195213"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "montera picona"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q21993827"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "jingasa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q124301926"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sharbūsh"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7698013"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "tembel hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "kova tembel"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4891752"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bergère hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bergere|bergère|bergere hat|shepherdess hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5003978"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bycocket"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "bycoket|feluca"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4144411"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "boyar hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5139703"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cocktail hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7982025"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Welsh hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q28933606"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fulani hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q63546462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "šaamšiǩ"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Saamsik"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1410380"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sombrero pintao"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "sombrero pintado"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1417251"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pilgrim's hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cockel hat|traveller's hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2982357"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "colback"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5054789"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cavalier hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5329912"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Easter bonnet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8048568"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "yanggwan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q115381583"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wales bucket hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q140174191"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ecclesiastical doctoral birettas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q29709"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "leghorn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q86753590"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "buntal hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "balibuntal hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18378905"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Breton"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bretonne"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20829672"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Eugénie hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Empress Eugenie hat|empress hat|eugenie hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25313052"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pamela hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "pamela|Chapeau à la Paméla|Chapeau Paméla|pamela bonnet|Pamela bonnet|pamela hat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q63556207"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "pooʹvdneǩ"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "poʹvdneǩ"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4804050"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ascot cap"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cuffley cap|Lippincott cap"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5377039"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Energy dome"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Energy Dome"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7267790"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Qing official headwear"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "guanmao|kuan-mao"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4090802"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "bolivar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5506399"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "fruit hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7559334"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sombrero calañés"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18204691"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Đinh Tự"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18451451"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "cartwheel hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24867786"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "watabōshi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25352456"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Borsalino"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q28456539"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "shovel hat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q29569945"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Madhalla"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q63431620"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "peeʹrvesǩ"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q110407527"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sidara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "3"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

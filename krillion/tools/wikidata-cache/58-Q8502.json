@@ -1,0 +1,3767 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP31%20wd%3AQ8502.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%2040)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:49:25.937Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q513"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Everest"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "238"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chomolangma|Himalaya Peak XV|Mount Chomolubutangma|Mount Qomolangma|Mount Sagarmatha|Mt Everest|Peak XV|Qomolangma Feng|World highest peak"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q39231"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Fuji"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "146"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt Fuji|Fujisan|Mt. Fuji|Fujiyama|Fuji-san|🗻|Fuji Mountain|Fuji-yama"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q524"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Vesuvius"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "136"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vesuvius"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q583"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mont Blanc"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "127"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Il Bianco|La Dame blanche|Mt Blanc|Mt. Blanc"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q43105"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Elbrus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "113"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Elbrus|Elbruz|Mingi Tau|Mount Elbruz"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q72303"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Ararat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "112"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ararat|Agri Dagi|Greater Ararat|Mount Aghri|Mount Agri"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q43512"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "K2"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "112"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount K2|Chhogori|Mount Godwin-Austen|Mt. Qogir"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q80344"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Olympus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "110"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oros Olympos|Olympus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q725591"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Bazardüzü"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "107"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bazardüzü|Bazardyuzyu|Mount Bazardyuzyu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82019"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kanchenjunga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "102"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kanchinjinga|Kangchenjunga|Kañcanjaṅghā|Kangchendzonga"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q83497"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Rushmore"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "96"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt. Rushmore"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1374"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Matterhorn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "92"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mont Cervin"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q229107"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Kailash"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kailash|Kailas"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q130736"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nanga Parbat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Diamer|Diamir"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q165440"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dhaulagiri"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dhaulagiri I|Dhwalagiri"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q172070"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Kenya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "89"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Kenia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q169986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Makalu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "89"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q377485"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Sinai"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Horeb|Jebel Musa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q130321"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Athos"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "87"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Athos|Holy Mountain|Agion Oros|Athos Mountain|Haghion Oros"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131230"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mauna Kea"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "87"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Mauna Kea"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q168702"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lhotse"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "86"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lho Tse"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q178167"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Kosciuszko"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "86"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kunama Namadgi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14081"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chimborazo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "84"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Chimborazo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q170089"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cho Oyu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "84"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q170070"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Manaslu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "82"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q40758"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Damavand"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Demavend|Mount Damavand|Mount Damāvand|Mount Demavend"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104674"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ben Nevis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Beinn Nibheis"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q105124"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shishapangma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gosainthān"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q107635"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Baekdu Mountain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Baekdu|Baekdu Mountains|Changbai Mountain|Mount Paektu|Paektu|Paektu Mountain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q180996"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Broad Peak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Broad Peak, Gilgit-Baltistan, Pakistan|Broad Peak, Xinjiang, China|Falchan Kangri"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1045888"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Puncak Jaya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carstensz Pyramid|Mount Carstensz"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q120306"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Logan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3375"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zugspitze"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q168714"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tambora"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "73"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Tambora|Tamboro"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q233836"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ojos del Salado"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nevados Ojos del Salado"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213360"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Table Mountain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60967"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Kinabalu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt. Kinabalu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216059"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Tai"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Taishan|Tai Shan|Tai Mountain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q187138"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gasherbrum"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gasherbrum I"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1451"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pinatubo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Pinatubo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1484"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mayon Volcano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mayon|mount Mayon|Mt. Mayon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q186853"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gasherbrum II"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5059"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aoraki / Mount Cook"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Cook|Aoraki|Aoraki/Mount Cook"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q194057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Rainier"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tacoma|Tahoma|Rainier|Mt Rainier|Mt. Rainier|Mt. Regnier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q203568"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Aragats"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Aragats"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188982"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Erebus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q205976"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount of Olives"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Olivet|Mount Olivet"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q105261"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Parnassus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Parnassos|Parnasos|Parnass|Parnassus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215471"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Hermon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1024"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Triglav"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Triglav|Tricorno|Terglau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q238147"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Citlaltepetl"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Citlaltépetl"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q181476"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cotopaxi volcano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cotopaxi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q219986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gangkhar Puensum"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "64"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "gangs dkar spun gsum|Kanggar Bünsum|冈嘎本孙"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q211529"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Khan Tengri"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "64"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Khan Tenghri|Khan Tengri Mountain|Khan Tengri Mt.|Khan Tengri Mtn.|Mount Khan Tengri|Mt. Khan Tengri"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3388"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Grossglockner"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Glockner"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207680"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Kazbek"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kazbegi|Kazbek"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q76309"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Pelée"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Pelee"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q210252"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Klyuchevskaya Sopka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Klyuchevskoi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216894"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Arafat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "61"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount of Ilal|Mount of Mercy|Mount of Tawba"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q235539"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Whitney"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "61"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt. Whitney"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207917"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Nemrut"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "61"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nemrud Dagh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q190562"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Cameroon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cameroon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213262"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nanda Devi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Roraima"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cerro Roraima|Monte Roraima|Mount Rorima|Mt. Roraima|Pico do Roraima|Roraima mountain|Roraima Tepui|Roraima-tepui"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207323"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vulcano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hiera|Isola di Vulcano|Therasía|Thérmessa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207132"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Terich Mir"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q627508"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hoverla"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q193785"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Tabor"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tabor|Mount of Transfiguration|Tur|Tavor|Jabal at Tur|Itabyrion|Itabyrium|Jabal at-Tur|Jebel el-Tor|Jebel el-Tôr|Mount Itabyrion|Mount Itabyrium|Mount of the Transfiguration|Mount Tabur|Mount Tavor|Mount Tur|Tabur"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q617511"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sněžka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Śnieżka"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q158470"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Agung"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gunung Agung|Mt. Agung"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4425"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Eiger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q231620"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Parícutin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Paricutin|Volcán de Parícutin"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q210722"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sugarloaf Mountain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pão de Açúcar"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q271700"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Noshaq"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q672936"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rysy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214916"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Llullaillaco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Llullaillaco Volcano|Mount Llullaillaco|Volcan Llullaillaco|Volcán Llullaillaco"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q455963"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Apo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt. Apo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q81213"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gerlachovský štít"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214011"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kebnekaise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15312"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jungfrau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41413"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ismoil Somoni Peak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Communism Peak"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q134927"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Emei"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Emeishan|Mount Omei"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q332762"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jengish Chokusu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dzjengisj Tjokusu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q209341"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Musala"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60789"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Adam's Peak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sri Pada"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q695221"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aburaj"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Abu|also known as an oasis in the desert."
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217457"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shkhara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q503433"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jbel Toubkal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mont Toubkal Terk|Toubkal|Tubkal"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q158526"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monte Titano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208081"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aneto"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Maladetta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q724367"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Belukha Mountain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bieluka|Muztau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q209528"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mulhacén"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mulhacen"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q500275"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yushan Main Peak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kanasi|Jade Mountain|Mount Morrison|Mt. Morrison|Gyokuzan|Jade Mtn.|Mount Jade|Mount Yu|Mt. Jade|Patungkuonʉ|Saviah|Savih|Tanungu'incu|Tongku Saveq|Usaviah"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q203942"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Galdhøpiggen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3403"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dufourspitze"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Monte Rosa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q306201"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Devils Tower"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Devil's Tower|Bear Lodge"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217142"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Snowdon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wyddfa|Mount Snowdon|The Wyddfa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q209064"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mont Ventoux"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Ventoux|the Beast of Provence|the Giant of Provence|the Bald Mountain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q182913"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Grímsvötn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q272593"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nevado Sajama"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q120314"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Wutai"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wu-tai-shan|Wutai Mountain|Wutai Shan|Wutaishan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q126804"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Erciyes"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Erciyes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q200935"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Huascarán"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Huascaran"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q859376"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Volcán de Fuego"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Volcan de Fuego"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q476313"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dykh-Tau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dykhtau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q206161"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Herzl"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q312818"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Scopus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4168"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Loreley"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lorelei|Lurlei"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16525"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mönch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Monch"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q622616"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Lu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lushan|Kuanglu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q503368"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Carrauntoohil"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carrantoohil|Carrantuohil|Carrantuohill|Carrauntouhil|Gheraun-Tuel"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q746524"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moldoveanu Peak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q912579"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Korab"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q506938"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Corcovado"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Corcovado (Rio de Janeiro)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213704"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pico Bolívar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pico Bolivar"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1514176"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Yamantau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gora Yamantau|Mount Yamantaw"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q275435"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ras Dashen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ras Dejen|ራስ ዳሸን"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207421"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tungurahua volcano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tungurahua"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q746787"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ol Doinyo Lengai"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oldoinyo Lengai"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q499019"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jebel Barkal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q873358"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Sanqing"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1315012"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Snæfellsjökull"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16648"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monte San Giorgio"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q123782"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fansipan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fan Si Pan|Mount Fansipan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q791652"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Avachinsky"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Avacha volcano|Avachinskaya Sopka|Vulkan Avachinskaya Sopka"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q838587"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lenin Peak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ibn Sina Peak|Jel-Aidar|Mount Kaufmann|Achyk-Tash|Avicenna Peak"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q235062"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Galeras"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Galeras Volcano|Volcan Galeras"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q679590"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Bromo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gunung Bromo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q732115"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Montserrat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Muntanya de Montserrat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q750190"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sulaiman-Too"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sulamain-Too|Sulayman Mountain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q847323"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rinjani"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q825347"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Colima"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Volcan de Fuego|colima volcano"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1010335"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Burkhan Khaldun"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "God Mountain|Khentii Khan (The King of the Khentii Mountain range)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q309098"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Meru"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Meru West"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15265"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Pilatus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15117"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dom"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Festihorn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q770496"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Saint Elias"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount St. Elias|Boundary Peak 186|Mont Saint Elie|Mt. Saint Elias|Mt. St. Elias|Waa'eit'ashaa|Waas'eita Shaa|Was'eitushaa|Yaas'eita Shaa|Yahtse-tah-shah"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q378943"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vitosha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vitosha Mountain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q732838"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Elgon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt. Elgon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215138"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Fitz Roy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q686841"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hoher Dachstein"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1372"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gran Paradiso"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Grand-Paradis"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q154372"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monte Cassino"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Montecassino"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q819979"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Olympus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Troodos|Olympus|Chionístra|Όλυμπος|Χιονίστρα"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215662"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monte Perdido"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Punta de Treserols"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1288751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Gerizim"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gerizzim|Jabal at Tur"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q275662"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Hood"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wy'east"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q748355"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Shasta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mount Jackson|Mount Simpson|Shasta Butte|Bo-lem-poi'-yok|Bo-Lem-Poi'-Yok|Chasta Butte|I-eka|Mont Saste|Mont Saste'|Mount Chasta|Mount Chasty|Mount Sastine|Mount Sastise|Mount Sasty|Mount Shaste|Mount Tsashti|Mount Tsashtl|Pit Mountain|Sasty Peak|Shaste Peak|Shatasia|Snowy Butte|Wi'ke|Wy-e-kah|Wy-E-Kah"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1137644"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pumori"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pumo Ri"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q239485"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Phou Bia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q680161"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Nebo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q739484"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pico da Neblina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1142817"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Narodnaya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15132"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piz Bernina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bernina"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q540520"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Meron"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Har Meron|Mount Meron"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215516"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Helicon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Helicon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q155721"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brocken"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Brocken Mountain"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q255010"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Parinacota"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nevado Parinacota"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q928681"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Pico"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Montanha do Pico"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q737859"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Karisimbi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mont Karisimbi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1032440"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jezercë"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maja e Jezercës"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q404728"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aiguille du Midi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q582128"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gyachung Kang"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q630579"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Muztagh Ata"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q641588"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Arenal Volcano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q870063"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hkakabo Razi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15127"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Finsteraarhorn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q48877"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shiveluch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q62467"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Coma Pedrosa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14052"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sangay volcano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sangay"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q83659"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Ida"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ida|Psiloritis"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q578862"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pico Cristóbal Colón"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pico Cristobal Colon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q822326"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Tahat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "3003"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q646398"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kongur Tagh"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kongkoerh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q277441"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Wilhelm"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "pueyosa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q495501"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Kumgang"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Diamond Mountain|Kumgang Mountains|Mount Geungang|Mount Kŭmgang|Mt. Geumgang|Mt. Kŭmgang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q148521"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Illimani"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q322824"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Signal de Botrange"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q451697"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ama Dablam"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15122"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Weisshorn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Weisshorn VS"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q594387"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Baker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mt. Baker|Koma Kulshan|Kulshan|Kw’eq Smaenit|Kwelshán|Qwú’mə Kwəlshéːn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q825709"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gunnbjørn Fjeld"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gunnbjorn Fjeld"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1018862"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bárðarbunga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bardarbunga"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1140980"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mount Song"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Songshan|Song Shan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q586212"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monte Pissis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q648551"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nevado del Huila"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q692922"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Novarupta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q933778"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rakaposhi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

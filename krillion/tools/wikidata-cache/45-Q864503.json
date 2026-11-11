@@ -1,0 +1,997 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP106%20wd%3AQ864503.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%2070)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20wdt%3AP734%20%3Ffam.%20%3Ffam%20rdfs%3Alabel%20%3Fsurname.%20FILTER(LANG(%3Fsurname)%20%3D%20%22en%22)%20%7D%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:51:25.960Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1035"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Charles Darwin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "279"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Darwin"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q529"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Louis Pasteur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "213"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pasteur"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q44461"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Richard Dawkins"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "136"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "R. Dawkins|CR Dawkins|Clinton Richard Dawkins|Clinton Dawkins|C. Richard Dawkins|C. Dawkins"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dawkins"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37970"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gregor Mendel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "134"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mendel"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mendel"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q46795"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wangari Muta Maathai"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "130"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "WangariMaathai|Wangari Maathaï|Maathai|Wangari Maathai"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maathai"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q39607"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Antoine Lavoisier"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "129"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Antoine-Laurent de Lavoisier|Antoine Laurent Lavoisier|Antoine Laurent de Lavoisier|Lavoisier"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "de Lavoisier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37193"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Robert Koch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "125"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "R. Koch|R Koch|Koch R.|Koch R|Heinrich Hermann Robert Koch|Koch"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Koch"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q100948"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rachel Carson"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "115"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rachel Louise Carson|Rachel L. Carson"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Carson"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q40852"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Edward Jenner"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "114"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Jenner"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jenner"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q83333"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "James Watson"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "110"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "James Dewey Watson|James D. Watson"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Watson"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q184366"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Thomas Henry Huxley"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "110"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "T. H. Huxley|Prof. Huxley|Huxley"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Huxley"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82122"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jean-Baptiste de Lamarck"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "110"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lam.|Jean-Baptiste Pierre Antoine de Monet, Chevalier de Lamarck|Jean-Baptiste Lamarck|Jean Baptiste Pierre Antoine de Monet de Lamarck|Lamarck"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "de Monet de Lamarck"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131117"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maria Montessori"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "109"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maria Tecla Artemisia Montessori"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Montessori"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q43522"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Antonie van Leeuwenhoek"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "109"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Antonie Van Leeuwenhoek|Antonie Philips van Leeuwenhoek|Anton van Leeuwenhoek"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Leeuwenhoek"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q123190"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jean Piaget"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "106"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piaget"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q48246"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ernst Haeckel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "106"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Haeckel"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q46830"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Robert Hooke"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "103"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hooke"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hooke"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q123280"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Francis Crick"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "97"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Francis Harry Compton Crick|Francis H.C. Crick"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Crick"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q183337"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "David Attenborough"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "94"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sir David Frederick Attenborough|Sir David Attenborough"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Attenborough"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q229264"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Georges-Louis Leclerc, Comte de Buffon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Buffon|Georges-Louis Leclerc de Buffon|Louis Leclerc|Georges-Louis-Leclerc de Buffon (comte)|Georges-Louis-Leclerc de Buffon|Georges-Louis Buffon|Georges Louis Leclerc Comte de Buffon|George Louis Leclerc, Comte de Buffon|George Louis le Clerc de Buffon|Comte de Buffon"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Leclerc"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q172254"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Élie Metchnikoff"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mechnikov|Ilya Metschnikoff|Ilya Mecnikov|Elias Metschnikoff"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mechnikov"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7426"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ada Yonath"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yonath"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q103844"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Françoise Barré-Sinoussi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "85"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Barré"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q318750"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stephen Hillenburg"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "85"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Steve Hillenburg|Steve Hilleburg|Stephen McDannell Hillenburg|Stephen M. Hillenburg|Stephen Hillenberg"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hillenburg"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q185777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Alexis Carrel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "85"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Carrel"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26321"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Elizabeth Blackburn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "E.H. Blackburn|E. H. Blackburn|E H Blackburn|E Blackburn|Blackburn EH|Blackburn E. H.|Blackburn E.|Blackburn E|E. Blackburn|Blackburn"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blackburn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26322"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Carol Greider"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CW Greider|Carolyn Widney Greider|Carolyn Widney \"Carol\" Greider|Carol W. Greider"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Greider"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q177681"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Thomas Hunt Morgan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thomas H. Morgan|T. H. Morgan|Thomas Morgan|T. Kh. Morgan"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Morgan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14279"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Giovanni Domenico Cassini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gian Domenico Cassini"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cassini"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q76432"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rudolf Virchow"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Teoría Celular|Rudolph Virchow|Rudolf Ludwig Karl Virchow|Rudolf Ludwig Carl Virchow"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Virchow"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q107462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Har Gobind Khorana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Har G. Khorana"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Khorana"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q103598"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Luc Montagnier"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Luc Antoine Montagnier"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Montagnier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16196017"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tedros Adhanom Ghebreyesus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tewodros Adhanom G/yesus|Tewodros adhanom g/yesus|Tedros Adhanom G/Eyesus|Tedros Adhanom|Tedros A. Ghebreyesus|TA Ghebreyesus|T.A. Ghebreyesus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60061"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Venkatraman Ramakrishnan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Venki Ramakrishnan|Venkatraman \"Venki\" Ramakrishnan|V. Ramakrishnan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8056214"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yoshinori Ohsumi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yoshinuri Ohsumi|Y. Ohsumi|Y Ohsumi|Ohsumi Yoshinori"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ōsumi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104913"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Robert Edwards"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "74"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sir Robert Geoffrey Edwards|Robert Geoffrey Edwards|Robert G. Edwards|Bob Edwards"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Edwards"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q234463"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sydney Brenner"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brenner"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q77174"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Christiane Nüsslein-Volhard"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nüsslein-Volhard C.|Nüsslein-Volhard C|Nuesslein-Volhard C|Nuesslein-Volhard|Christiane Nusslein-Volhard|Christiane Nüsslein Volhard|Christiane Nusslein Volhard|Christiane Nüesslein-Volhard|Christiane Nuesslein-Volhard|Christiane Nüesslein Volhard|Christiane Nuesslein Volhard|C. Nüesslein-Volhard|C. Nuesslein-Volhard|C. Nüesslein Volhard|C. Nuesslein Volhard|C Nuesslein-Volhard|C Nuesslein Volhard|Nüsslein-Volhard|CNV"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Volhard"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q211029"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Edward O. Wilson"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wilson EO|EO Wilson|Edward Wilson, Junior|Edward Osborne Wilson|E.O. Wilson|E. O. Wilson|E O Wilson|Edward Osborne|Wilson"
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wilson"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q170342"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Svante Pääbo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      },
+      "sur": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pääbo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2427 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ134768.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%204)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:47:30.738Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q487338"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mojito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q273296"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "sangria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207711"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bloody Mary"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q273027"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Martini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q745886"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piña Colada"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q471753"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cuba libre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rum and Coke"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q622954"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Irish coffee"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q657621"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "margarita"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q625152"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "caipirinha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q704357"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "gin and tonic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "G and T|gin tonic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q917361"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Daiquiri"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q268057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cosmopolitan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "cosmo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q673012"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pisco Sour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q668635"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "spritz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Spritz Veneziano"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q877615"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sex on the Beach"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1052769"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Long Island iced tea"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Long Island Ice Tea"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1401202"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Negroni"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q283543"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "White Russian"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1163791"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tequila Sunrise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1414032"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Manhattan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Manhattan cocktail"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q815994"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bellini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q280531"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mai Tai"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "maitai"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q497448"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Old Fashioned"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Old fashioned cocktail|Old-fashioned cocktail"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q667951"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Screwdriver"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Screwdriver cocktail"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q467441"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Americano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q179660"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kalimotxo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q703910"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Singapore Sling"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "gin sling"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1071506"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Black Russian"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1507096"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moscow mule"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1524947"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kir"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q594392"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "B-52"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "24"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "B52|Bifi|Bifty"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19904106"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Espresso martini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vodka espresso"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2279429"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Whiskey Sour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2530766"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mimosa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "23"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1134797"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sidecar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "22"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q921623"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sazerac"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "21"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "drinks|drinl"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q655244"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "spritzer"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fröccs"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q616477"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mint Julep"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "20"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q590793"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vesper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vesper Martini"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3753012"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "French 75"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "jeuxde"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1816386"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Alexander"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "19"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Princess Mary"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q219141"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zombie"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "18"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1203995"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "grasshopper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1723060"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kamikaze"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1754978"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rusty Nail"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3567795"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "White Lady"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "17"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q29288"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Caesar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Red Eye|Bloody Caesar"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q22084462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lemon Drop"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lemon Drop Martini"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2331700"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Godfather"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "16"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Godfather|God Father"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q790813"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aviation"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3616732"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Angel Face"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "15"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9196877"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Crusta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Brandy Crusta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1420455"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tinto de verano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1587980"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Harvey Wallbanger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1757933"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Orgasm"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3681226"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Clover Club Cocktail"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13516767"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Boulevardier"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "14"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5223103"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dark 'N' Stormy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dark 'n' stormy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q745306"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monkey Gland"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1786412"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Krambambuli"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2098356"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Planter's Punch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2737608"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gin Fizz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2915742"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sea Breeze"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3786818"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Horse's Neck"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19571112"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bramble"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19757757"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Between the Sheets"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "13"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18718981"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Casino"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Casino cocktail"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26879521"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hemingway Special"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hemingway daiquiri|papa doble"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1150849"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bacardi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3895013"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paradise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3909303"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Porto flip"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7128571"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paloma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "12"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q85793998"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Porn star martini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maverick Martini|P*Star|Passion star martini|Pornstar (cocktail)|Pornstar martini"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3499520"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stinger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3753021"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "French Connection"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23666867"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "John Collins"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "11"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7716256"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bee's Knees"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bees Knees"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2896851"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Golden Dream"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5069899"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Champagne Cocktail"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "10"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q63400068"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Martinez"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Martinez cocktail"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2018329"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Old Cuban"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3705803"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Derby"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5648570"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hanky-Panky cocktail"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5747049"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Canchanchara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6543221"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yellow Bird"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15195772"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mary Pickford"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q20686986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "French Martini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q33076576"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vieux Carré"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60963623"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Queen Mary"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "9"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26879201"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ramos Gin Fizz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ramos fizz|New Orleans fizz"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3442353"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rose"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4000969"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tuxedo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26883085"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Russian Spring Punch"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q96143038"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "New York Sour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q96398368"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paper Plane"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "8"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26836228"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gin Basil Smash"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gin Pesto"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3822405"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piscola"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26879669"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Barracuda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q96398751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Penicillin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "7"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4008467"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vampiro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q17512299"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brooklyn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q96410843"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Trinidad Sour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "6"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q96185152"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jello shot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gelatin shot|Jell-O shot|Jelly shot"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11956910"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Adios Motherfucker"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "AMF"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3617281"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Angelo azzurro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7826750"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "torpedo juice"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26879765"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dirty Martini"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q65120364"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Suffering Bastard"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q96413607"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "VE.N.TO"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q133539742"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Remember the Maine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q135412008"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chartreuse swizzle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q140637934"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rabo de Galo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "5"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10872613"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fernet and Coke"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fernando|Fernandito|Fernet con coca"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q16489781"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Borgoña (drink)"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Borgoña"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26879480"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Godmother"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "God Mother"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5772525"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Clericot"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23832696"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Poktanju"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26883095"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tommy's Margarita"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q48976673"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "BuzzBallz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q56297809"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bamboo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104853812"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sherry cobbler"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "4"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

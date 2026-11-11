@@ -1,0 +1,1020 @@
+Name a cheese (Q10943): 627 from Wikidata, 468 new
+    s 32 kurt
+    s 32 processed cheese
+    s 30 kashkaval
+    s 28 maasdam cheese
+    s 24 bleu de gex
+    s 23 the laughing cow
+    s 23 khoa
+    s 23 brocciu
+    s 22 laguiole cheese
+    s 22 obatzda
+    s 22 olomouc curd cheese
+    s 22 coulommiers cheese
+    r 21 bleu des causses
+    r 21 fourme de montbrison
+    r 21 telemea
+    r 20 mozzarella di bufala campana
+    r 20 smažený sýr
+    r 20 akkawi
+    r 20 salers
+    r 20 philadelphia cream cheese
+    r 20 são jorge cheese
+    r 19 bleu du vercors-sassenage
+    r 19 sheep milk cheese
+    r 19 urdă
+    r 19 pouligny-saint-pierre
+    r 19 cancoillotte
+    r 19 cheese curds
+    r 18 fresh cheese
+    r 18 bleu de bresse
+    r 18 picodon
+    r 18 leyden cheese
+    r 17 schabziger
+    r 17 livno cheese
+    r 17 smoked cheese
+    r 17 harzer
+    r 17 herve cheese
+    r 17 parenica
+    r 17 gaperon
+    r 17 västerbottenost cheese
+    r 17 pizza cheese
+    …and 428 more
+Name a dog breed (Q39367): 665 from Wikidata, 407 new
+    s 88 dingo
+    s 44 landseer
+    s 40 czechoslovakian wolfdog
+    r 36 canaan dog
+    r 35 american bulldog
+    r 35 bearded collie
+    r 34 greenland dog
+    r 33 abruzzo-maremma sheepdog
+    r 32 fila brasileiro
+    r 32 aidi
+    r 32 yugoslavian shepherd dog
+    r 31 jagdterrier
+    r 30 australian silky terrier
+    r 30 karelian bear dog
+    r 30 german pinscher
+    r 30 shikoku ken
+    r 30 american water spaniel
+    r 30 saarloos wolfdog
+    r 30 german spitz
+    r 29 hokkaido inu
+    r 29 galgo español
+    r 29 spanish mastiff
+    r 29 black russian terrier
+    r 29 american hairless terrier
+    r 28 canadian eskimo dog
+    r 28 finnish lapphund
+    r 28 austrian pinscher
+    r 28 brazilian terrier
+    r 28 pyrenean mastiff
+    r 27 eurasier
+    r 27 groenendael
+    r 27 broholmer
+    r 27 yakutian laika
+    r 26 alano español
+    r 26 volpino italiano
+    r 26 ukrainian vivcharka
+    r 25 king charles spaniel
+    r 25 alpine dachsbracke
+    r 25 tatra shepherd dog
+    r 25 croatian sheepdog
+    …and 367 more
+Name a board game (Q131436): 253 from Wikidata, 188 new
+    s 54 chaturanga
+    s 40 correspondence chess
+    s 30 rummikub
+    s 26 peg solitaire
+    s 25 game of the goose
+    s 22 oware
+    s 22 tafl games
+    s 22 alquerque
+    r 21 twister
+    r 19 quoridor
+    r 18 hexagonal chess
+    r 18 renju
+    r 17 three-dimensional chess
+    r 17 tantrix
+    r 17 fanorona
+    r 16 ludus latrunculorum
+    r 16 bagh-chal
+    r 16 blood bowl
+    r 16 a game of thrones
+    r 15 hounds and jackals
+    r 15 pentago
+    r 15 kalah
+    r 14 bao
+    r 14 parchís
+    r 14 illuminati
+    r 14 scotland yard
+    r 14 mehen
+    r 14 tabula
+    r 13 liar's dice
+    r 13 sevens
+    r 13 jungle
+    r 13 ludus duodecim scriptorum
+    r 13 thurn and taxis
+    r 13 congkak
+    r 13 lasca
+    r 13 stone age
+    r 13 subbuteo
+    r 13 alhambra
+    r 13 fox games
+    r 12 heroquest
+    …and 148 more
+Name a card game (Q142714): 267 from Wikidata, 170 new
+    s 25 omaha hold 'em
+    s 24 yu-gi-oh! trading card game
+    s 21 black lady
+    s 20 dominion
+    s 20 karuta
+    s 20 tarot of marseilles
+    s 19 munchkin
+    s 18 black peter
+    s 17 splendor
+    r 15 hanabi
+    r 14 illuminati
+    r 14 preferans
+    r 14 visconti-sforza tarot
+    r 14 bohnanza
+    r 13 sette e mezzo
+    r 13 chinese poker
+    r 13 spider
+    r 13 go-stop
+    r 12 three-card monte
+    r 12 caribbean stud poker
+    r 12 faro
+    r 12 as-nas
+    r 12 mille bornes
+    r 11 russian bank
+    r 11 lansquenet
+    r 11 cardfight!! vanguard
+    r 10 kemps
+    r 10 trente et quarante
+    r 10 tichu
+    r 10 dou di zhu
+    r 10 manille
+    r 9 keyforge
+    r 9 sanguosha
+    r 9 conquian
+    r 9 the great dalmuti
+    r 9 gnav
+    r 9 saboteur
+    r 9 happy families
+    r 9 schnapsen
+    r 8 quartets
+    …and 130 more
+Name a gemstone (Q83437): 64 from Wikidata, 43 new
+    r 40 brilliant
+    r 38 blood diamond
+    r 37 synthetic diamond
+    r 29 cintāmaṇi
+    r 24 afghanite
+    r 22 engraved gem
+    r 21 carbonado
+    r 20 cabochon
+    r 19 yttrium aluminium garnet
+    r 18 aggregated diamond nanorod
+    r 18 bi
+    r 15 bort
+    d 11 cultured pearl
+    d 10 chinese jade
+    d 9 tahitian pearl
+    d 9 pig dragon
+    d 8 semiprecious stone
+    d 7 cymophane
+    d 7 opalite
+    d 7 ballas
+    d 7 memorial diamond
+    d 7 eilat stone
+    d 7 carbuncle
+    d 7 golconda diamonds
+    d 6 detonation nanodiamond
+    d 6 diamond simulant
+    d 6 maw sit sit
+    d 6 minoan sealstone
+    d 6 rough diamond
+    d 5 brown diamond
+    d 5 nanodiamonds
+    d 5 pink diamond
+    d 5 trapiche emerald
+    d 5 blue diamond
+    d 5 freshwater pearl
+    d 4 cat's eye quartz
+    d 4 trapiche crystal
+    d 4 lyngurium
+    d 4 blue lace agate
+    d 4 cardinal gem
+    …and 3 more
+Name a dessert (Q182940): 111 from Wikidata, 102 new
+    s 30 fried ice cream
+    s 28 kadayif
+    s 27 christmas cake
+    s 25 mango sticky rice
+    s 23 kogel mogel
+    s 21 cranachan
+    s 20 zuccotto
+    s 19 wafer cookie
+    s 18 cuajada
+    s 18 struffoli
+    r 16 thirteen desserts
+    r 16 pistachio ice cream
+    r 15 batik cake
+    r 14 café liégeois
+    r 14 bombe glacée
+    r 14 faworki
+    r 14 castagnaccio
+    r 14 kolak
+    r 14 bubur cha cha
+    r 13 mazamorra
+    r 13 snow skin mooncake
+    r 13 frutti di martorana
+    r 13 basundi
+    r 13 quindim
+    r 13 pastafrola
+    r 12 kūčiukai
+    r 12 cold sweet soup
+    r 12 pfeffernusse
+    r 12 apfelküchle
+    r 12 zalabiyeh
+    r 11 dame blanche
+    r 11 şambali
+    r 11 xuixo
+    r 11 cassatella di sant'agata
+    r 11 zelten
+    r 10 dulce de batata
+    r 10 shemai
+    r 9 mango float
+    r 9 mantecadas de astorga
+    r 9 quesada pasiega
+    …and 62 more
+Name a programming language (Q9143): 265 from Wikidata, 169 new
+    s 135 cascading style sheets
+    s 101 xml
+    r 55 actionscript
+    r 54 tex
+    r 53 gnu octave
+    r 51 active server pages
+    r 46 mathematica
+    r 46 xslt
+    r 43 visual basic script
+    r 41 visual basic for applications
+    r 39 sparql
+    r 39 apache groovy
+    r 38 b
+    r 38 abap
+    r 38 pl i
+    r 38 gambas
+    r 37 common lisp
+    r 37 maple
+    r 36 xpath
+    r 36 turbo pascal
+    r 35 bcpl
+    r 35 pl sql
+    r 35 scilab
+    r 34 make
+    r 34 qbasic
+    r 34 object pascal
+    r 33 processing
+    r 33 visicalc
+    r 33 xquery
+    r 33 ml
+    r 32 apache ant
+    r 32 webassembly
+    r 32 autoit
+    r 31 assembler
+    r 31 webgl
+    r 30 freebasic
+    r 30 applescript
+    r 29 bourne shell
+    r 29 opencl
+    r 28 common intermediate language
+    …and 129 more
+Name a superhero (Q188784): 11 from Wikidata, 2 new
+    d 12 kilowog
+    d 10 abin sur
+Name a type of sandwich (Q28803): 247 from Wikidata, 159 new
+    s 48 big mac
+    s 34 eggs benedict
+    s 34 open sandwich
+    s 33 corn dog
+    s 33 whopper
+    s 28 loco moco
+    s 27 filet-o-fish
+    s 27 veggie burger
+    s 25 quarter pounder
+    s 25 butterbrot
+    s 24 i̇skender kebap
+    s 24 chimichanga
+    r 22 big n' tasty
+    r 22 toast sandwich
+    r 21 mcchicken
+    r 20 roujiamo
+    r 19 mcmuffin
+    r 17 krabby patty
+    r 16 calamari sandwich
+    r 16 toast hawaii
+    r 15 rice burger
+    r 15 gua-bao
+    r 15 carrozza
+    r 14 taco al pastor
+    r 14 salisbury steak
+    r 14 bosna
+    r 14 mcrib
+    r 14 balık ekmek
+    r 13 cheese sandwich
+    r 12 popiah
+    r 12 big king
+    r 12 ketwurst
+    r 12 bøfsandwich
+    r 12 breakfast sandwich
+    r 11 donkey burger
+    r 11 luther burger
+    r 11 tea sandwich
+    r 11 taco rice
+    r 11 fool's gold loaf
+    r 11 mcgriddles
+    …and 119 more
+Name a musical genre (Q188451): 973 from Wikidata, 807 new
+    s 146 classical music
+    s 115 symphony
+    s 110 electronic music
+    s 106 rock and roll
+    s 104 hymn
+    s 96 adhan
+    s 95 mantra
+    s 90 musical play
+    s 81 traditional folk music
+    s 78 hard rock
+    s 71 thrash metal
+    s 71 alternative rock
+    s 71 black metal
+    s 71 chamber music
+    s 70 sonata
+    s 69 baroque music
+    s 68 noh
+    s 68 nu metal
+    s 67 cantata
+    s 65 hardcore punk
+    s 65 death metal
+    s 64 oratorio
+    s 62 pop rock
+    s 62 fugue
+    s 61 indie rock
+    s 61 gregorian chant
+    s 60 ragtime
+    s 59 polyphony
+    s 58 psychedelic rock
+    s 58 folk rock
+    s 57 madrigal
+    s 57 overture
+    s 56 progressive metal
+    s 56 blues rock
+    s 55 film score
+    s 55 gothic metal
+    s 55 mazurka
+    s 55 renaissance music
+    s 55 alternative metal
+    s 55 doom metal
+    …and 767 more
+Name a type of hat (Q80151): 107 from Wikidata, 62 new
+    s 43 papal tiara
+    s 30 conical asian hat
+    s 28 petasos
+    s 28 barretina
+    r 27 tyrolean hat
+    r 27 shtreimel
+    r 25 tin foil hat
+    r 21 dhaka topi
+    r 17 cappello romano
+    r 16 sou'wester
+    r 16 jewish hat
+    r 13 doctoral hat
+    r 13 mokorotlo
+    r 10 spodik
+    r 10 poke bonnet
+    r 9 water polo cap
+    d 8 beaver hat
+    d 8 jaapi
+    d 8 modius
+    d 7 cordovan hat
+    d 7 wushamao
+    d 7 eboshi
+    d 7 chengziguan
+    d 7 four winds hat
+    d 7 chupalla
+    d 7 umbrella hat
+    d 6 pussyhat
+    d 6 ngob
+    d 6 montera picona
+    d 6 sharbūsh
+    d 5 tembel hat
+    d 5 bergère hat
+    d 5 bycocket
+    d 5 boyar hat
+    d 5 welsh hat
+    d 5 fulani hat
+    d 4 šaamšiǩ
+    d 4 sombrero pintao
+    d 4 pilgrim's hat
+    d 4 colback
+    …and 22 more
+Name a cocktail (Q134768): 121 from Wikidata, 60 new
+    s 35 spritz
+    r 28 americano
+    r 27 kalimotxo
+    r 26 kir
+    r 20 spritzer
+    r 19 alexander
+    r 17 kamikaze
+    r 16 caesar
+    r 15 angel face
+    r 14 crusta
+    r 14 tinto de verano
+    r 14 harvey wallbanger
+    r 14 orgasm
+    r 14 clover club cocktail
+    d 13 dark 'n' stormy
+    d 13 krambambuli
+    d 13 planter's punch
+    d 13 gin fizz
+    d 13 horse's neck
+    d 13 between the sheets
+    d 12 casino
+    d 12 bacardi
+    d 12 paradise
+    d 12 porto flip
+    d 11 porn star martini
+    d 11 french connection
+    d 11 john collins
+    d 10 golden dream
+    d 10 champagne cocktail
+    d 9 old cuban
+    d 9 derby
+    d 9 hanky-panky cocktail
+    d 9 canchanchara
+    d 9 yellow bird
+    d 9 french martini
+    d 9 queen mary
+    d 8 rose
+    d 8 tuxedo
+    d 8 russian spring punch
+    d 8 new york sour
+    …and 20 more
+Name a martial art (Q11417): 5 from Wikidata, 2 new
+    d 11 yagyū shinkage-ryū
+    d 11 silat melayu
+Name a soup (Q41415): 48 from Wikidata, 41 new
+    s 42 tomato soup
+    s 24 zupa ogórkowa
+    s 20 magiritsa
+    s 20 potato soup
+    r 15 garlic soup
+    r 11 paya
+    r 11 ogbono soup
+    r 11 buttermilk koldskål
+    r 10 kuru fasulye
+    r 10 tom yum kung
+    r 10 achu soup
+    r 9 summer soup
+    r 9 vorí vorí de pollo
+    r 9 pancotto
+    r 8 abunuabunu
+    r 8 iekei ramen
+    r 8 manchow soup
+    r 8 abula
+    d 7 piracaldo
+    d 7 watercress soup
+    d 7 ofe achara
+    d 6 eka soup
+    d 6 köttsoppa
+    d 6 alu tama
+    d 6 pawpaw soup
+    d 5 owo soup
+    d 5 kak'ik
+    d 5 ming'oko
+    d 5 atama soup
+    d 5 újházi
+    d 5 empanada
+    d 5 borscht with uszka
+    d 5 ciorbă de burtă
+    d 5 ofe ujuju
+    d 4 margi special
+    d 4 chicken stock powder
+    d 4 ila alasepo
+    d 4 ohaw
+    d 4 eshkeneh
+    d 4 hakata ramen
+    …and 1 more
+Name a type of bread (Q7802): 51 from Wikidata, 46 new
+    s 51 papad
+    s 50 cinnamon roll
+    s 37 berliner
+    s 30 qatayef
+    s 25 xiaolongbao
+    s 21 taboon bread
+    r 20 shoti
+    r 18 jengyal bread
+    r 18 knish
+    r 13 marraqueta
+    r 12 kesra
+    r 11 taguella
+    r 11 bolo do caco
+    r 10 baba
+    r 9 tebirkes
+    r 9 akki rotti
+    r 9 ham and egg bun
+    r 9 thepla
+    r 9 mosbolletjies
+    r 8 cuñapé
+    r 8 bolo de arroz
+    d 7 mahjouba
+    d 7 festival
+    d 7 cemita
+    d 7 olive bread
+    d 7 tabouna bread
+    d 7 hallulla
+    d 7 spandauer
+    d 7 koe'sister
+    d 7 åland pancake
+    d 6 galician bread
+    d 6 kelane
+    d 6 hornazo
+    d 6 guagua de pan
+    d 6 ping on bun
+    d 5 chhilka roti
+    d 5 dalpuri
+    d 5 galette-saucisse
+    d 4 bollo sevillano
+    d 4 piggy bun
+    …and 6 more
+Name a type of rock or mineral (Q7946): 0 from Wikidata, 0 new
+Name a type of rock or mineral (Q8063): 346 from Wikidata, 282 new
+    s 124 concrete
+    s 101 meteorite
+    s 99 igneous rock
+    s 90 sedimentary rock
+    s 84 ore
+    s 83 metamorphic rock
+    s 80 lapis lazuli
+    s 74 jade
+    s 72 anthracite
+    s 70 lignite
+    s 59 volcanic ash
+    s 57 oil shale
+    s 57 laterite
+    s 51 stromatolite
+    s 51 bituminous coal
+    r 50 regolith
+    r 49 bentonite
+    r 49 granodiorite
+    r 47 porphyry
+    r 47 trachyte
+    r 46 syenite
+    r 46 jet
+    r 45 dacite
+    r 45 tektite
+    r 44 volcanic bomb
+    r 43 chondrite
+    r 43 coltan
+    r 43 siltstone
+    r 42 diabase
+    r 41 volcanic rock
+    r 41 kaolin
+    r 41 nephrite
+    r 40 fulgurite
+    r 40 ophiolite
+    r 39 achondrite
+    r 39 serpentinite
+    r 38 anorthosite
+    r 37 roman concrete
+    r 36 carbonatite
+    r 36 pillow lava
+    …and 242 more
+Name a Pokémon (Q3966183): 0 from Wikidata, 0 new
+Name a Greek god or goddess (Q22989102): 451 from Wikidata, 342 new
+    s 87 perseus
+    s 70 circe
+    s 69 adonis
+    s 69 orion
+    s 67 charon
+    s 65 amphitrite
+    s 62 typhon
+    r 61 echidna
+    r 61 epimetheus
+    r 59 io
+    r 58 scylla
+    r 57 calypso
+    r 56 charybdis
+    r 56 cybele
+    r 54 daphne
+    r 51 hygieia
+    r 51 hermaphroditus
+    r 51 serapis
+    r 50 astarte
+    r 50 maia
+    r 50 psyche
+    r 48 eileithyia
+    r 48 callisto
+    r 47 echo
+    r 46 lethe
+    r 46 amalthea
+    r 44 pallas
+    r 43 dike
+    r 43 aegina
+    r 42 achelous
+    r 42 arethusa
+    r 42 doris
+    r 41 eurydice
+    r 41 hymen
+    r 40 eirene
+    r 40 pleione
+    r 39 aglaea
+    r 39 bia
+    r 39 thaumas
+    r 38 asopus
+    …and 302 more
+Name a famous river (Q4022): 358 from Wikidata, 274 new
+    s 168 congo river
+    s 119 mekong river
+    s 100 yamuna
+    s 100 colorado river
+    r 95 blue nile
+    r 94 yukon river
+    r 91 columbia river
+    r 89 white nile
+    r 89 ohio river
+    r 88 río de la plata
+    r 88 murray river
+    r 87 vltava
+    r 87 godavari river
+    r 86 uruguay river
+    r 86 irrawaddy river
+    r 86 moskva river
+    r 84 angara
+    r 83 gambia river
+    r 82 rio negro
+    r 82 oka
+    r 82 paraguay river
+    r 82 krishna river
+    r 81 mackenzie river
+    r 81 kura river
+    r 81 madeira river
+    r 81 aras river
+    r 79 okavango river
+    r 79 magdalena river
+    r 78 adige
+    r 78 shatt al-arab
+    r 77 northern dvina
+    r 77 ubangi river
+    r 76 chao phraya river
+    r 76 chenab river
+    r 76 potomac river
+    r 76 spree
+    r 75 pearl river
+    r 74 terek
+    r 74 bío bío river
+    r 74 darling river
+    …and 234 more
+Name a famous mountain (Q8502): 188 from Wikidata, 129 new
+    s 107 mount bazardüzü
+    s 88 mount sinai
+    s 87 mount athos
+    s 86 mount kosciuszko
+    r 77 baekdu mountain
+    r 75 mount logan
+    r 71 mount kinabalu
+    r 71 mount tai
+    r 70 mayon volcano
+    r 70 gasherbrum ii
+    r 69 mount aragats
+    r 67 mount of olives
+    r 66 mount parnassus
+    r 66 mount hermon
+    r 65 citlaltepetl
+    r 64 gangkhar puensum
+    r 64 khan tengri
+    r 63 mount kazbek
+    r 62 mount pelée
+    r 62 klyuchevskaya sopka
+    r 61 mount arafat
+    r 61 mount nemrut
+    r 60 nanda devi
+    r 59 mount roraima
+    r 59 vulcano
+    r 59 terich mir
+    r 59 hoverla
+    r 58 mount tabor
+    r 58 sněžka
+    r 58 mount agung
+    r 57 parícutin
+    r 57 sugarloaf mountain
+    r 57 noshaq
+    r 57 rysy
+    r 56 llullaillaco
+    r 56 mount apo
+    r 56 gerlachovský štít
+    r 55 ismoil somoni peak
+    r 55 mount emei
+    r 55 jengish chokusu
+    …and 89 more
+Name a famous ship (Q11446): 167 from Wikidata, 116 new
+    s 52 moskva
+    s 50 japanese battleship yamato
+    s 48 oasis of the seas
+    s 47 admiral kuznetsov
+    s 46 charles de gaulle
+    s 45 hms hood
+    s 45 kursk
+    s 44 hmhs britannic
+    s 44 admiral graf spee
+    r 40 seawise giant
+    r 40 uss abraham lincoln
+    r 39 uss harry s. truman
+    r 39 uss gerald r. ford
+    r 39 uss nimitz
+    r 39 hms dreadnought
+    r 39 uss hornet
+    r 38 allure of the seas
+    r 38 uss nautilus
+    r 38 uss george h.w. bush
+    r 38 granma
+    r 37 rms mauretania
+    r 37 uss carl vinson
+    r 37 ms estonia
+    r 37 uss theodore roosevelt
+    r 37 ever given
+    r 37 uss yorktown
+    r 37 uss dwight d. eisenhower
+    r 36 uss lexington
+    r 36 liaoning
+    r 36 white ship
+    r 35 uss john c. stennis
+    r 35 freedom of the seas
+    r 35 ss great eastern
+    r 35 german battleship gneisenau
+    r 35 normandie
+    r 35 akagi
+    r 34 admiral hipper
+    r 34 uss george washington
+    r 34 uss iowa
+    r 34 príncipe de asturias
+    …and 76 more
+Name a capital city (Q3624078): 207 from Wikidata, 23 new
+    s 298 jerusalem
+    s 273 saint petersburg
+    r 218 cape town
+    r 208 kinshasa
+    r 192 podgorica
+    d 185 kraków
+    d 172 brazzaville
+    d 158 pristina
+    d 156 guatemala city
+    d 156 yamoussoukro
+    d 153 colombo
+    d 152 sucre
+    d 144 bloemfontein
+    d 130 ramallah
+    d 114 yaren district
+    d 110 aden
+    d 108 iași
+    d 99 south tarawa
+    d 98 lobamba
+    d 97 gitega
+    d 82 east jerusalem
+    d 66 ciudad de la paz
+    d 39 otrar
+Name a Disney animated movie (Q1047410): 82 from Wikidata, 46 new
+    r 55 ralph breaks the internet
+    r 50 enchanted
+    r 30 milo murphy's law
+    r 30 olaf's frozen adventure
+    r 25 tarzan & jane
+    r 25 once upon a studio
+    r 22 hexed
+    r 17 the haunted house
+    d 15 the barn dance
+    d 15 runaway brain
+    d 15 clock cleaners
+    d 15 once upon a snowman
+    d 14 mickey mouse mixed-up adventures
+    d 14 don donald
+    d 11 education for death
+    d 11 modern inventions
+    d 11 tea for two hundred
+    d 11 donald and pluto
+    d 10 the little matchgirl
+    d 10 the cookie carnival
+    d 10 inner workings
+    d 10 mickey's delayed date
+    d 10 truant officer donald
+    d 9 trick or treat
+    d 8 rugged bear
+    d 8 prep & landing
+    d 8 donald's dilemma
+    d 8 contrary condor
+    d 8 mickey's nightmare
+    d 7 the ballad of nessie
+    d 7 the brave engineer
+    d 7 oh teacher
+    d 7 bearly asleep
+    d 7 two weeks vacation
+    d 7 us again
+    d 6 the flying squirrel
+    d 6 beezy bear
+    d 6 hockey homicide
+    d 6 hold that pose
+    d 6 let's stick together
+    …and 6 more
+!! Name a Harry Potter character: Q8337 is "", expected "Harry Potter". Skipped.
+Name a famous painter (Q1028181): 271 from Wikidata, 186 new
+    s 280 johann wolfgang von goethe
+    s 248 rabindranath tagore
+    s 218 walt disney
+    s 214 nicolaus copernicus
+    s 203 matsuo bashō
+    s 200 le corbusier
+    s 195 sarah bernhardt
+    s 177 akira kurosawa
+    s 177 katsushika hokusai
+    s 176 freddie mercury
+    s 167 diego velázquez
+    s 164 hermann hesse
+    s 162 william blake
+    s 158 kahlil gibran
+    s 153 carl jung
+    s 144 satyajit ray
+    s 143 bhumibol adulyadej
+    r 138 taras shevchenko
+    r 137 günter grass
+    r 131 auguste rodin
+    r 130 wilhelm ii
+    r 128 mikhail lermontov
+    r 124 vladimir mayakovsky
+    r 124 felix mendelssohn
+    r 122 jean cocteau
+    r 117 john ruskin
+    r 111 margrethe ii of denmark
+    r 110 karel čapek
+    r 110 mikhail lomonosov
+    r 109 dario fo
+    r 108 d. h. lawrence
+    r 108 donatello
+    r 106 david lynch
+    r 105 gao xingjian
+    r 101 empress dowager cixi
+    r 99 josé martí
+    r 98 samuel finley breese morse
+    r 98 yoko ono
+    r 97 zaha hadid
+    r 97 prosper mérimée
+    …and 146 more
+Name a famous composer (Q36834): 586 from Wikidata, 456 new
+    s 324 michael jackson
+    s 307 leonardo da vinci
+    s 280 johann wolfgang von goethe
+    s 274 ludwig van beethoven
+    s 264 charlie chaplin
+    s 260 martin luther
+    s 256 friedrich nietzsche
+    s 248 rabindranath tagore
+    s 236 jean-jacques rousseau
+    s 221 basshunter
+    s 186 john lennon
+    s 185 bob dylan
+    s 185 pelé
+    s 180 taylor swift
+    s 176 freddie mercury
+    s 168 heinrich heine
+    s 165 bob marley
+    s 162 céline dion
+    s 158 woody allen
+    s 158 joseph haydn
+    s 150 jim morrison
+    s 150 sappho
+    s 149 paul mccartney
+    s 147 britney spears
+    s 144 satyajit ray
+    s 143 bhumibol adulyadej
+    s 143 miley cyrus
+    s 143 federico garcía lorca
+    s 142 boris pasternak
+    s 138 katy perry
+    s 138 avril lavigne
+    s 137 george sand
+    s 137 will smith
+    s 137 tom hanks
+    s 137 adele
+    s 136 david bowie
+    s 136 jimi hendrix
+    s 136 tupac shakur
+    s 136 clint eastwood
+    s 134 paulo coelho
+    …and 416 more
+Name a famous scientist (Q169470): 316 from Wikidata, 255 new
+    s 307 leonardo da vinci
+    s 280 johann wolfgang von goethe
+    s 271 galileo galilei
+    s 256 rené descartes
+    s 255 immanuel kant
+    s 221 angela merkel
+    s 214 nicolaus copernicus
+    s 207 gottfried wilhelm leibniz
+    s 200 carl friedrich gauss
+    s 196 blaise pascal
+    s 168 omar khayyám
+    s 165 david hilbert
+    s 164 tim berners-lee
+    s 161 alexander graham bell
+    s 160 james watt
+    s 158 wilhelm röntgen
+    s 147 heraclitus
+    s 131 henri poincaré
+    s 130 guglielmo marconi
+    r 128 arthur c. clarke
+    r 127 pierre-simon laplace
+    r 125 paul dirac
+    r 122 john von neumann
+    r 121 christiaan huygens
+    r 120 max born
+    r 120 joseph john thomson
+    r 117 hendrik lorentz
+    r 117 chandrasekhara venkata raman
+    r 115 jean le rond d'alembert
+    r 114 andrei sakharov
+    r 114 kurt gödel
+    r 114 anaxagoras
+    r 113 john dalton
+    r 113 irène joliot-curie
+    r 112 heinrich hertz
+    r 112 linus pauling
+    r 112 anaximander
+    r 111 antoine henri becquerel
+    r 110 mikhail lomonosov
+    r 108 wernher von braun
+    …and 215 more
+Name a famous scientist (Q593644): 119 from Wikidata, 48 new
+    s 209 margaret thatcher
+    s 193 alfred nobel
+    s 125 ivan pavlov
+    r 112 elias canetti
+    r 98 jabir ibn hayyan
+    r 98 abu bakr al-razi
+    r 95 tu youyou
+    r 94 albertus magnus
+    r 93 william ramsay
+    r 92 alexander borodin
+    r 92 primo levi
+    r 90 emil fischer
+    r 90 élie metchnikoff
+    r 90 jöns jacob berzelius
+    r 90 ada yonath
+    d 89 gerty cori
+    d 87 frederick sanger
+    d 86 paul ehrlich
+    d 86 jennifer doudna
+    d 86 justus von liebig
+    d 86 karl landsteiner
+    d 83 louis daguerre
+    d 83 albert szent-györgyi
+    d 82 baron d'holbach
+    d 81 eduard buchner
+    d 79 claude bernard
+    d 79 adolf von baeyer
+    d 79 carl wilhelm scheele
+    d 79 victor grignard
+    d 79 henri moissan
+    d 78 glenn theodore seaborg
+    d 78 albert hofmann
+    d 77 har gobind khorana
+    d 76 venkatraman ramakrishnan
+    d 74 kurt alder
+    d 74 alfred werner
+    d 73 otto wallach
+    d 72 willard libby
+    d 72 adolf butenandt
+    d 71 mario molina
+    …and 8 more
+Name a famous scientist (Q864503): 40 from Wikidata, 20 new
+    s 136 richard dawkins
+    s 130 wangari muta maathai
+    r 110 thomas henry huxley
+    r 109 maria montessori
+    r 106 jean piaget
+    d 94 david attenborough
+    d 85 françoise barré-sinoussi
+    d 85 stephen hillenburg
+    d 85 alexis carrel
+    d 81 elizabeth blackburn
+    d 81 carol greider
+    d 79 thomas hunt morgan
+    d 78 giovanni domenico cassini
+    d 78 rudolf virchow
+    d 76 luc montagnier
+    d 76 tedros adhanom ghebreyesus
+    d 75 yoshinori ohsumi
+    d 74 robert edwards
+    d 71 sydney brenner
+    d 70 svante pääbo

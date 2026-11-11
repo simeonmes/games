@@ -1,0 +1,3347 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ11446.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%2025)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:49:44.228Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25173"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Titanic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "160"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Titanic|RMS Titanic|Royal Mail Steamship Titanic|SS Titanic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q187093"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mayflower"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Mayflower"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q150857"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bismarck"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "German battleship Bismarck"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q168713"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aurora"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q39252"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Flying Dutchman"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q187425"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Lusitania"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lusitania"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2992278"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moskva"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Slava|Soviet cruiser Slava|Russian cruiser Moskva|Russian cruiser Slava"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q190542"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Costa Concordia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "MS Costa Concordia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215010"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese battleship Yamato"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IJN Yamato"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q219821"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vasa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wasa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q272560"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Missouri"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Missouri|Mighty Mo|BB-63|Big Mo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191888"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Queen Mary 2"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 9241061|QM2|RMS Queen Mary 2"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q192381"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oasis of the Seas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 9383936|MS Oasis of the Seas"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q274924"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Admiral Kuznetsov"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Riga|Tbilisi|Leonid Brezhnev|Admiral Flota Sovetskovo Soyuza Kuznetsov|aircraft carrier Admiral Kuznetsov"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q153370"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tirpitz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "German battleship Tirpitz"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q461375"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Charles de Gaulle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CDG|R91|Aircraft carrier Charles de Gaulle|Porte-avions Charles de Gaulle, R 91"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q220239"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Hood"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Mighty Hood"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204342"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Enterprise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Big E|CV-65|CVAN-65|CVN-65"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217463"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kursk"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "K-141"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q321007"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Olympic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Olympic|\"Oly\"|\"The Old Reliable\"|\"The Ship Magnificent\""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215692"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMHS Britannic"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "RMS Britannic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q154115"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Admiral Graf Spee"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "44"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213958"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Victory"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Victory"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q171255"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cutty Sark"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ferreira|Maria di Amparo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q504096"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Carpathia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "43"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carpathia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q107900"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Santa Maria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Santa María|Sta. Maria|caravel Santa Maria|La Gallega|Marigalante|nao Santa Maria|Santa Maria (carrack)|Santa Maria (Columbus)|Santa Maria (nao)|Santa Maria (ship)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q155014"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MV Wilhelm Gustloff"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "42"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wilhelm Gustloff"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q33209"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mary Celeste"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Amazon|Marie Celeste|Marie Céleste"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q110283"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fram"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "41"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2554"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Seawise Giant"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Porthos|Mont|Oppama|1016|Happy Giant|IMO 7381154|Jahre Viking"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q587557"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Abraham Lincoln"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "40"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Abraham Lincoln|CVN-72|USS Abraham Lincoln CVN-72"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q748913"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Harry S. Truman"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-75"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1351895"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Gerald R. Ford"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "USS Gerald R. Ford, CVN-78"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q369987"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Enterprise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Big E"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q463161"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Nimitz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "USS Nimitz (CVN-68)|USS Nimitz CVN-68|USS Nimitz, CVN-68"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q308909"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Dreadnought"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q838125"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Hornet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q83257"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Allure of the Seas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 9383948|MS Allure of the Seas"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q827360"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Nautilus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "USS Nautilus SSN-571"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1127368"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese battleship Musashi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Musashi|IJN Musashi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217132"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS George H.W. Bush"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-77"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q372672"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Granma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "38"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q741803"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Mauretania"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mauretania|HMS Tuberose"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q748902"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Carl Vinson"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-70"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q828458"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MS Estonia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Estonia|M/S Estonia|MV Estonia|Silja Star|Viking Sally|Wasa King"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q753852"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Theodore Roosevelt"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Big Stick|CVN-71"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q155222"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scharnhorst"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "German battleship Scharnhorst"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104378621"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ever Given"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 9811000"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q311245"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Yorktown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-5"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q506022"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Arizona (BB-39)"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BB-39"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q653860"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Dwight D. Eisenhower"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "37"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-69"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q838148"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Lexington"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-2"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q129200"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Liaoning"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chinese aircraft carrier Liaoning|PLANS Liaoning|Type 001 aircraft carrier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q944436"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Constitution"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Constitution|Old Ironsides"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q756846"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "White Ship"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "36"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q752939"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Queen Mary"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Queen Mary|IMO 5287938|IMO 5528793"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q239309"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS John C. Stennis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-74"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q194109"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Freedom of the Seas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 9304033"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q733293"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SS Great Eastern"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Great Eastern"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q671602"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Maine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Maine|ACR 1|ACR-1"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q156903"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "German battleship Gneisenau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q304703"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Normandie"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q320967"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Akagi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q501355"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pinta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1123441"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Potemkin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "35"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q27454"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Admiral Hipper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "German cruiser Admiral Hipper"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217139"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS George Washington"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-73"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q562161"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Iowa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BB-61"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q156962"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "German aircraft carrier Graf Zeppelin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q303755"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Príncipe de Asturias"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q544894"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mary Rose"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q757178"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Belfast"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q832395"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oseberg ship"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "34"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q600180"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Indianapolis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Indianapolis|Indy|CA-35"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q570007"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hiryū"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hiryu|Hiryuu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3284481"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "INS Vikramaditya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "R33"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7357599"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "KRI Nanggala"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "KRI Nanggala 402"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q155430"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "German cruiser Prinz Eugen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q329540"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SMS Emden"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q620472"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Royal Oak"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "33"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q852981"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Saratoga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-3"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1208722"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Diamond Princess"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 9228198|M/S Diamond Princess"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q158427"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "German cruiser Deutschland"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q160712"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Admiral Scheer"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q911858"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Endurance"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1333909"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Ark Royal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "32"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q749453"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese aircraft carrier Sōryū"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sōryū|Soryu|Souryuu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1244204"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Queen Elizabeth 2"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "QE2|IMO 6725418|RMS Queen Elizabeth 2"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1253637"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MV Doña Paz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 5415822"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q899710"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Victoria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vittoria|Nao Victoria"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q240666"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "John F. Kennedy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CVN-79|PCU John F. Kennedy|USS John F. Kennedy"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q241858"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese aircraft carrier Shinano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shinano"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q312224"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Endeavour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "HM Bark Endeavour|Lord Sandwich|Earl of Pembroke"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q477173"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Emma Mærsk"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Emma Maersk|IMO 9321483"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q638673"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "U-47"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "German submarine U-47"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q507603"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS New Jersey"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BB-62"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q170363"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SMS Schleswig-Holstein"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q212975"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Deepwater Horizon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q335541"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Exxon Valdez"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q501652"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Niña"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q724919"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Prince of Wales"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "31"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q842494"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cavour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Italian aircraft carrier Cavour"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q849588"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese aircraft carrier Shōkaku"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shōkaku|Shokaku|Shoukaku"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q850157"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bathyscaphe Trieste"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Trieste"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q857891"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Monitor"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Monitor ironclad"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q546198"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Golden Hind"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pelican"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q161346"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blücher"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q682421"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Emden"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q726146"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kaga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1444474"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Queen Elizabeth"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "30"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q900379"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Bounty"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bethia|HMAV Bounty|HM Armed Vessel Bounty"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q228691"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese aircraft carrier Zuikaku"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Zuikaku"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q24174815"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chinese aircraft carrier Shandong"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "PLANS Shandong|Type 002 aircraft carrier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q29654179"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chinese aircraft carrier Fujian"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "PLANS Fujian|Type 003 aircraft carrier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1131630"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Repulse"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "29"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q35462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Aquitania"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Aquitania|The \"Beautiful Ship\""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q742121"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Giuseppe Garibaldi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "C 551"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1141355"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Hornet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-12|Hornet VIII|USS Kearsarge"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q860057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Langley"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Langley|Jupiter|USS Jupiter|AC-3 Jupiter|AV-3 Langley|Collier #3|CV-1 Langley"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1265287"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Wisconsin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BB-64"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1328905"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Nevada"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BB-36"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q255306"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese battleship Kongō"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kongo|Kongō|Kongou"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q562674"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Essex"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Essex|CV-9 Essex|CVA-9 Essex|CVS-9 Essex|Essex aircraft carrier|USS Essex (CV-9)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q493798"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SS Andrea Doria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q648655"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lenin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "28"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q754490"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amistad"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "La Amistad"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1351288"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Intrepid"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Intrepid|CV-11"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1361626"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Bunker Hill"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-17"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q247567"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Queen Anne's Revenge"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "La Concorde de Nantes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q475704"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Birkenhead"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "HMS Vulcan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q533218"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "RMS Queen Elizabeth"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Elizabeth|Queen Elizabeth|IMO 5287902|Seawise University"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q540580"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "ARA General Belgrano"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "General Belgrano|Diecisiete de Octubre|ARA Diecisiete de Octubre"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14565078"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "INS Vikrant"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vikrant"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q677346"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Wasp"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-7"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q165142"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SS Cap Arcona"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q533999"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SMS Scharnhorst"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q673826"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Akademik Lomonosov"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q694461"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SMS Goeben"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q946641"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SS Great Western"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1139653"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS King George V"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "27"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q907779"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Midway"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-41"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1044197"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Ranger"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-4"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1066681"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese battleship Haruna"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Haruna"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q860823"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hōshō"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hosho|Houshou|Japanese aircraft carrier Hōshō"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q285801"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Enterprise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "USS Enterprise|CVN-80|PCU Enterprise"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q507410"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS John F. Kennedy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-67"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q580124"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "K-19"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hiroshima|KS-19|Iroshima"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q597796"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japanese battleship Hiei"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hiei"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1545509"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SS United States"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "IMO 5373476"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q682495"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "MS St. Louis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "SS St. Louis"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q164102"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vittorio Veneto"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q576450"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Juan Carlos I"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q744086"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "SS Great Britain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q774057"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HTMS Chakri Naruebet"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q810735"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Batavia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q855635"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Rodney"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q22936284"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "TCG Anadolu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "26"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q499298"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "K-278 Komsomolets"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Plavnik|Komsomolets|685 Plavnik|Project 685 Plavnik|Soviet submarine K-278 Komsomolets"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q562230"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Yorktown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "USS Bon Homme Richard|Bon Homme Richard aircraft carrier|CV-10 Yorktown|CVA-10 Yorktown|CVS-10 Yorktown|Yorktown aircraft carrier"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q627265"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rainbow Warrior I"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rainbow Warrior|IMO 5329786"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1369039"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Constellation"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "CV-64"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1423093"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "USS Lexington"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Blue Ghost|USS Lexington Museum on the Bay"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q663558"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "German cruiser Karlsruhe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Karlsruhe"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q678514"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "German cruiser Lützow"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tallinn|Dnepr|Petropavlovsk"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q473794"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amoco Cadiz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q696891"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mikasa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1318636"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "HMS Warspite"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "25"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

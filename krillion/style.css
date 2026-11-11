@@ -140,7 +140,8 @@ button, input { font: inherit; color: inherit; }
 .mode-desc { margin: 4px auto 0; max-width: 420px; font-size: 21px; line-height: 1.2; color: var(--ink); }
 .home .spacer { flex: 1; min-height: 120px; }
 .actions { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
-.actions .seg2 button { flex: 0 1 190px; }
+.actions .seg2 { flex-wrap: wrap; }
+.actions .seg2 button { flex: 1 1 140px; min-width: 0; padding-inline: 12px; }
 .foot { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--px); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
 
 /* ---------- play ---------- */

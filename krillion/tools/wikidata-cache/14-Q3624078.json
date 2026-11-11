@@ -1,0 +1,4147 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP31%20wd%3AQ3624078%3B%20wdt%3AP36%20%3Fitem.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%201)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:49:49.669Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q90"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paris"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "367"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lutetia|City of Light|City of Love"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q84"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "London"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "357"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Augusta|Lunden|LDN|Londinium|Trinovantum|Big Smoke|London, England|Lond.|Londinio|London, United Kingdom|Kaerlud|Karelundein|Llan Dian|Llyn Dain|Loñ|Lon.|Loñ.|Londini|Londiniensium|Londinion|London U.K.|London UK|London, UK|Loniniensi|Lundenburgh|Lundenburh|Lundenwic|the Big Smoke"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q220"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rome"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "344"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Eternal City|The Eternal City|Rome, Italy|City of Seven Hills|Capital of the World|The Capital of the World|The City of Marble|City of Marble"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q237"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vatican City"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "343"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vatican|The Vatican|Holy See|Papal State|Città del Vaticano|State of Vatican City|Stato della Città del Vaticano|Status Civitatis Vaticanae|Vatican City State"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q649"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moscow"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "338"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Moscow, Russia|Москва|City of Moscow|Moscow, Russian Federation|Moscow, Russian SFSR|Moscow, Soviet Union|Moscow, USSR|Moskovĭ|Moskva Federal City, Russia|Moskva, Rossiya|Moskva, Russia|Moskve|Moskvë|Moskvi|Mosky"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q64"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Berlin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "335"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Berlin, Germany|DE-BE"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q334"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Singapore"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "333"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Garden City|sg|Lion City|Singapore City|Republic of Singapore|S'pore"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q235"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monaco"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "321"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "mc|Fort-Hercule|Mùnegu|Principality and Diocese of Monaco|Principality of Monaco|Principato di Monaco|Principatu de Mu̍negu|Prinçipatu de Mùnegu|Principauté de Monaco"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q956"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Beijing"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "306"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pei-ching|Pei-ping|Poh-cin|Shun-tien|Shuntianfu|Yan-ching|Yanking|Chi-ch'eng|Chi-ch’êng|Chi-cheng|Bei Jing Shi|Peking Shi|BJ|Chi|Khanbalik|Khanbaliq|Ji|Pekin|Shun-t'ien|Zhongdu|Beiping|Yanjing|Jicheng|Shuntian|Beijing Shi|Pei-p'ing|Peip'ing|Peiping|Chungtu|Shuntian Fu|Bākgīng|Beeijing|Chung-tu|Pak-kiann|Pe-king"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2807"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Madrid"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "306"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1490"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tokyo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "303"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tokio|Edo|Tokei|Tokyo, Japan|Tokyo Prefecture|Jedo|Tôkyô|Tokyo (Japan)|Tokyo Metropolis|Tokyo Metropolitan prefecture|Tokyo-to|Tôkyô-to|Tōkyō-to|Yedo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q61"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Washington, D.C."
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "299"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "D.C. Washington|Washington, District of Columbia|The District|D.C.|District of Columbia|City of Washington, D.C.|Washington City, D.C.|Nation's Capital (D.C.)|Federal City (D.C.)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1218"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jerusalem"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "298"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Aelia Capitolina|J'lem|Mint of Aelia Capitolina"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1741"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vienna"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "294"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vienna, Austria"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1757"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Helsinki"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "293"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hesa|Helsingia|Helsingin kaupunki|Stadi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1524"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Athens"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "289"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Athenae|Athens city"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q270"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Warsaw"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "288"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q727"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amsterdam"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "285"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Amsterdam, NL|Amsterdam, North Holland|Mokum|Amsterdam, Netherlands|A'dam"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2841"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bogotá"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "284"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bogota, Colombia|Bogotá, D.C.|Santafé de Bogotá"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19689"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tirana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "280"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1754"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Stockholm"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "279"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sthlm|STHLM"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1899"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kyiv"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "277"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kiou|Kief|Kiew|Kieff|Kiof|Kioff|Kiovia|Kiow|Kiowia|Kiyev|Kyïv|Kyiw|Kyjiw|Kyїv"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1486"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Buenos Aires"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "276"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ciudad Autonoma de Buenos Aires|Ciudad de Buenos Aires"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2887"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Santiago"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "276"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Greater Santiago|Santiago, Chile"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q656"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Saint Petersburg"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "273"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Petersburg|St Petersburg|Sankt-Peterburg|St.Petersburg"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1085"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Prague"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "270"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Prague|Hlavní město Praha"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q597"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lisbon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "267"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1861"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bangkok"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "263"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bangkok, Thailand|Krung Thep|Krungthepmahanakhon Amonrattanakosin Mahintharayutthaya Mahadilokphop Noppharatratchathaniburirom Udomratchaniwetmahasathan Amonphimanawatansathit Sakkathattiyawitsanukamprasit|Sia-Yut'hia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q85"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cairo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "262"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cairo, Egypt|ghahere|Qahira"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1489"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mexico City"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "260"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mexico|City of Mexico|Mexico City, Mexico|Mexico D.F."
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8684"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Seoul"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "260"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hanyang|Gyeongseong|Keijō|Wiryeseong|Hanseong|Keijou|Namgyeong|Seoul Special City|Sŏul T'ŭkpyŏlsi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1781"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Budapest"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "260"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Budín|Pest|Budapest, Hungary|Buda|Budim|Ofen|Alt-Ofen|Buda Pest|Buda-Pest|Buda-Pesth|Budapešť|Budapesta|Budapeszt|Budon|Pešť|Pešta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3630"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jakarta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "252"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Jakarta Specific Region|Djakarta|Jakarta, Indonesia|DKI Jakarta|Jakarta Province|Specific Region of Jakarta|Specific Capital Region of Jakarta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1530"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Baghdad"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "251"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Baghdād|Bagdat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9248"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Baku"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "249"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Baki|Baky|City of Winds"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1748"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Copenhagen"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "245"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kopenhagen|CPH|KBH|Copenhagen, Denmark|Hafn|Kobenhavn|Köbenhavn|Kbh."
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q585"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oslo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "245"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oslo, Norway|NOOSL"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3766"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Damascus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "243"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mint of Damascus|Jasmine city|Sham city"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3616"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tehran"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "242"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ṭihrán"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3640"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ankara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "242"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q239"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brussels"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "240"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Brussels|Brussels (municipality)|Brussels City"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3870"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nairobi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "239"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kenya capital|Kenya capital city|Kenya's capital|Kenyan capital|Nairobi, Kenya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1761"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dublin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "238"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Dublin|Dublin city|Dublin, Ireland"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19660"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bucharest"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "238"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bucharest, Romania|București|Little Paris|Bucuresti|Bucureşti|Paris of the East"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1930"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ottawa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "233"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Ottawa|Ottawa, ON|Ottawa, Ontario"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2280"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Minsk"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "232"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mińsk|Mensk|Miensk|Minskas|Менск|Минск|Мінск"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vilnius"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "230"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vilnyus|Vilnia|Viļņa|Vilnė|Viĺnia|Vilno"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1770"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tallinn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "230"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Revel|Kolywan|Lindanäs|Lyndanisse|Reuel|Rewel|Tallinn, Estonia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3711"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Belgrade"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "230"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Belgrade, Serbia|City of Belgrade"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q994"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tbilisi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "228"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tiflis|Tbilisi, Georgia|Tbilissi|Tpilisi|Tpilissi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q472"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sofia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "228"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sofija|Serdica|Sredets|Sredez"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5838"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kabul"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "226"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kabol|Cabul|Cabool|Caubul|Kaboul"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1780"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bratislava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "226"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2844"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brasília"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "226"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1773"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Riga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "225"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rige|Rija|Riia|Rīgõ"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1354"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dhaka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "223"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dacca|Dhaka City"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q987"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "New Delhi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "222"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nai Dilli|Nayi Dilli|NDMC area|New Delhi Municipal Council Area"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2868"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lima"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "220"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of the Kings"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5465"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cape Town"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "218"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cape|Kaap|Cape Town, South Africa|iKapa|Mother City|Tavern of the Seas|West side"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1764"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Reykjavík"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "218"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Reykjavik|Reykjavikurborg|Reykjavíkurborg"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q11194"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sarajevo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "218"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bosna-Serai|City of Sarajevo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1435"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zagreb"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "218"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1520"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Astana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "217"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nur-Sultan|Akmolinsk|Aqmola|Akmola|Tselinograd"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1533"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Caracas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "216"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Carracas|CCS|Santiago de León de Caracas"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3561"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Algiers"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "216"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1865"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kuala Lumpur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "214"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "KL|Federal Territory of Kuala Lumpur|K.L."
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3820"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Beirut"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "213"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Beyrout"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3114"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Canberra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "213"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Canberra, Australia|Canberra, Australian Capital Territory"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1953"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yerevan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "213"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Pink City|Revan|Iravan|Ravan|Erivan|Irevan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3838"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kinshasa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "208"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Leopoldstad"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1461"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Manila"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "207"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Manila|Pearl of the Orient|Queen City of the Pacific and others"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q70"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bern"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "207"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Berne|Berna|city of Bern"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1335"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Montevideo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "206"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Montevideo, Uruguay"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q437"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ljubljana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "206"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ljubljana, Slovenia|Labacum|Lublana"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3856"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nicosia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "204"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Leucopolis|Leucotheon|Leukoi Theoi|Leuteon|Nicosie|Lefkosia|Leucosia|Ledra|Ledrae|Ledroi|Ledron|Lefkosa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1858"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hanoi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "203"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tonkin|Thang Long|Dong Do|Đại La|Ha Noi|Hà Nội"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3761"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Accra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "202"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Akra"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18808"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pyongyang"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "202"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ryugyong|Capital of Revolution|P’yŏng-yang|Pyeongyang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3787"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Abuja"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "201"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1867"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Taipei"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "200"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Taihoku|City of Taipei|Tai Pei|Taibei|Taipei City|Tanshoui|The City of Azaleas|Taipak|Tâi-pak|Thòi-pet|Thoipet"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3624"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Addis Ababa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "200"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Addis Abäba|Finfinne"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3037"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kathmandu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "199"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kathmandu Valley|Yen|Katmandu|Yambu|Kantipur|Cadmendu|Catmandir|Catmeduour|City of Temples|Kadmendu|Kasthamandap|Káthmándú|Kathmandu Metropolitan City|Katmandir|Katmandou|Khatmandu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1563"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Havana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "199"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Habana|Havana, Cuba|La Habana"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q384"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Skopje"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "197"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shkup|Shkupi|Skoplje|Üsküb|Escópia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1362"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Islamabad"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "196"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q269"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tashkent"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "195"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chach|Shosh|Binkath|Choch|Shash|Tashkand|Toshkent"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q21197"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chișinău"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "195"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chişinău|Kischinew|Kishinev|Chisinau|Chisnau|Keshenev|Keshinov|Khisinau|Kischiniov|Kiscinev|Kishinef|Kishinëv|Kişinev|Kišinìv|Kiszyniów|Kyshyniv"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3692"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Riyadh"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "195"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Al Riyadh|Al-Riyadh|AlRiyadh|Reyadh|Ar-Riyadh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3805"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amman"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "194"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Philadelphia|Ammon|Aman|Amman, Jordan|Mint of Philadelphia|ʿAmmān"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3926"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pretoria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "194"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pretoria, Gauteng|Pretoria, Gauteng, South Africa|Pretoria, S Africa|Pretoria, S. Africa|Pretoria, South Africa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1863"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Andorra la Vella"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "193"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23564"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Podgorica"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "192"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Burguriçe|Capital of Montenegro"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23430"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ulaanbaatar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "191"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kulun|East Hüree|Hüree|Ih Huree|Ikh Khüree|Khan of Urga|Khüree|Niislel Hüree|Örgöö|Wulan Batuo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3551"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rabat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "191"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rabbat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3579"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tripoli"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "189"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tarabulus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1844"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vaduz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "188"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vaduz, Liechtenstein"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3861"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Doha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "188"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3897"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Luanda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "187"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Loanda|Loanda, Angola|Luanda, Angola|Saint Paul of Loanda|Saint Paul of Luanda|São Paulo da Assunção de Loanda|Sao Paulo de Loanda|São Paulo de Loanda|Sao Paulo, Angola|São Paulo, Angola|St Paul of Loanda|St Paul of Luanda|St. Paul of Loanda|St. Paul of Luanda"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1519"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Abu Dhabi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "187"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Abū Dhabi|Abudhabi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23438"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ashgabat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "187"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "'Ishqabad|`Ishqabad|`Ishqábád|Ak-Gaudan|Aschchabad|Ashabad|Ashkabad|Ashkabat|Ashqabad|Askabad|Askhabad|Ishqabad|Ishqabat|Konjikala"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23661"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Wellington"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "187"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wellington, New Zealand|Pōneke|Port Nicholson|Te Whanga-nui-a-Tara|Te Whanganui-a-Tara|Wellington metropolitan area|Wellington, NZ|Port Nick"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9361"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bishkek"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "186"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pishpek"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q31487"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kraków"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "185"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Krako|Krakov|Kroke|Krakkó|Cracovie|Krakiv|Krakova|Krakoy|Krakuv|Royal Capital City of Kraków|Royal City of Kraków"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1963"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Khartoum"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "185"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Khartum"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3894"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kampala"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "184"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "uganda's Capital city"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3572"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tunis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "184"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q23800"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Valletta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "181"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Capital of Malta|Citta Umilissima|Città Umilissima|Il-Belt Valletta|La Valleta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2900"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Quito"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "181"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Quito, Ecuador|Kitu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1850"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Phnom Penh"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "181"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9365"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dushanbe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "179"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Stalinabad|Dyushambe"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2933"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Asunción"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "177"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Assumption|Asu|Asuncion"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3703"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bamako"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "177"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3718"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dakar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "177"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1842"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Luxembourg"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "176"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Luxemburg|City of Luxembourg|Luxembourg City"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3921"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Harare"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "175"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fort Salisbury|Salisbury, Rhodesia|Salisbury, Zimbabwe"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9326"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vientiane"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "175"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Viangchan|Bientani|Nakhon Viangchan|urban Vientiane|Viang chan|Vieṅ Čan|Vien Chang|Vienchan|Vieng-Cæn|Vieṅg-Čăn|Viengchan|Vientane|Vyentyan|Wei-t'ien|Wiangcan|Wīangčhan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3935"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Windhoek"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "174"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Windhuk|Otjomuise|Windhök|ǀAi-ǁGams"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2471"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sanaa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "173"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sana|Ṣanʿāʾ|Sana'a|San'a'|Ṣanʻāʼ"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3844"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brazzaville"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "172"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2449"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mogadishu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "171"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maqadīshū|Mogadishu, Somalia|The Seat of the Shah|Hamar|Xamar"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ouagadougou"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "170"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ouaga|Kumbee-Tenga|Wagadugu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9270"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Thimphu"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "170"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thimpu|ཐིམ་ཕུ་"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3882"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Manama"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "169"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "al-Manāmah"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q35178"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kuwait City"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "169"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kuwait|Al Kuwait|al-Kuwait"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3739"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bissau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "169"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3808"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yaoundé"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "166"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yaounde|Ongola|Yaounde, Cameroon|Yaoundé, Cameroon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3889"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maputo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "166"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lourenço Marques|Cam Phumo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3642"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Asmara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "166"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Asmera"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3659"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "N'Djamena"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "166"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "N'Djaména|NDjamena"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3881"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lusaka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "166"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3792"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lomé"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "165"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lome|Lome, Togo|Lomé, Togo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3726"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Banjul"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "164"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bathurst|City of Banjul"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3859"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kigali"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "164"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kigali City|City of Kigali"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3915"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Antananarivo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "164"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Analamanga|Iarivo|Tananarive"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3919"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gaborone"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "164"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gabs|Gaberones|Motse-Mshate"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3748"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Monrovia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "164"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9279"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bandar Seri Begawan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "163"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "BSB|Bandar|Seri Begawan|Bandar Brunei|Brunei Town"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3674"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Niamey"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "163"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Niamey Urban Community"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3733"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Conakry"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "163"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3825"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Libreville"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "162"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Libreville, Gabon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3001"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paramaribo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "161"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Parbo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3799"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Porto-Novo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "160"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ajashe|Hogbonu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34692"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kingston"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "160"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kingston, Jamaica|Kingston, Surrey"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3306"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Panama City"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "160"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Panama|Panamá|Ciudad de Panama|Ciudad de Panamá"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3866"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dodoma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dodoma City"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3826"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Muscat"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Muskat|Maskat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9310"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dili"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Dili"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3238"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tegucigalpa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3832"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bangui"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1491"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "La Paz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "158"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chuqi Yapu|Chuqiyapu|Nuestra Señora de La Paz"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q25270"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pristina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "158"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Prishtina|Priština|Prishtinë|Priştina"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Praia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "158"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34261"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Port-au-Prince"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "158"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37400"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Naypyidaw"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "157"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nay Pyi Taw|Naypyitaw"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3688"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nouakchott"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "156"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Capital of Mauritania|Nawakshut|Nawākshūṭ|Nouakchot|Nouakchott, Mauritania|Noukchott|Nuwākshūṭ"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1555"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Guatemala City"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "156"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Guatemala|City of Guatemala|Guate|Guatemala (Guatemala)|New Guatemala of Assumption|Nueva Guatemala de la Asunción"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3768"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yamoussoukro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "156"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3780"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Freetown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "156"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3929"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Port Louis"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "155"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Port-Louis|Polwi|Porlwi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q9347"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Malé"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "155"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Malé City"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3876"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lilongwe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "155"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q36526"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Port Moresby"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "154"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34820"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Santo Domingo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "153"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "San Domingo|Santo Domingo de Guzman|Santo Domingo, Dominican Republic"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3909"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maseru"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "153"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q35381"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Colombo"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "153"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2907"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sucre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "152"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "La Plata|Chuquisaca|Charcas|The Illustrious and Heroic Sucre"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1947"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Juba"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "151"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3070"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "San José"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "151"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3110"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "San Salvador"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "150"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3604"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Djibouti"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "149"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Djibouti City|Djibouti (city)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3940"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Victoria"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "147"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Port Victoria|Victoria, Seychelles"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3043"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Belmopan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "147"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Garden City|City of Promise|The Planned City"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10717"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Georgetown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "146"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Garden City of the Caribbean|Georgetown, British Guiana"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q36168"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bridgetown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "146"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3901"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moroni"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "145"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Moroni, Comoros"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3904"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mbabane"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "144"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mbabané"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37701"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bloemfontein"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "144"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1848"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "San Marino"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "143"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of San Marino"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2467"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nassau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "143"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Nassau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q36260"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Apia"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "142"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3932"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "São Tomé"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "141"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q38807"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Suva"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "141"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q39178"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Port of Spain"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "140"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cumucurapo|Port-of-Spain|Puerto España"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37806"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Port Vila"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "137"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41699"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Castries"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "133"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41547"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "St. George's"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "130"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Saint George's|Saint Georges|Saint George's, Grenada|Saint Georges, Granada|St Georges, Granada|St. George's, Grenada"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q158119"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ramallah"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "130"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q40921"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Honiara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "128"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q38834"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nukuʻalofa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "126"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nuku'alofa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q36281"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Roseau"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "126"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41963"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sri Jayawardenepura Kotte"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "125"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q12919"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Majuro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "124"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mājro|Majuro, Marshall Islands"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34126"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Funafuti"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "124"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Funafuti Island"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41295"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Basseterre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "124"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q42751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Palikir"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "120"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41474"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kingstown"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "119"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q31026"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yaren District"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "114"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yaren|Makwa|Moqua"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131694"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aden"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "110"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q46852"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Iași"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "108"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131233"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "South Tarawa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "99"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q101418"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lobamba"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "98"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q167551"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gitega"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "97"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kitega"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q515229"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ngerulmud"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q212938"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "East Jerusalem"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "82"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Arab Jerusalem|Eastern Jerusalem"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1140136"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ciudad de la Paz"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oyala"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q956911"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Otrar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "39"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Farab|Otrartobe"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131546626"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Managua"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "1"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "City of Managua (City)|City of Managua|Managua City|Santiago de Managua|Managua (City)|Managua"
+      }
+    }
+  ]
+}

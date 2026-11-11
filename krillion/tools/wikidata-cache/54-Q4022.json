@@ -1,0 +1,7167 @@
+{
+  "source": "Wikidata (CC0)",
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3Flabel%20%3Flinks%20(GROUP_CONCAT(DISTINCT%20%3Falt%3B%20separator%3D%22%7C%22)%20AS%20%3Falts)%20(SAMPLE(%3Fsurname)%20AS%20%3Fsur)%20WHERE%20%7B%0A%20%20%20%20%3Fitem%20wdt%3AP31%20wd%3AQ4022.%0A%20%20%20%20%3Fitem%20wikibase%3Asitelinks%20%3Flinks.%20FILTER(%3Flinks%20%3E%3D%2045)%0A%20%20%20%20%3Fitem%20rdfs%3Alabel%20%3Flabel.%20FILTER(LANG(%3Flabel)%20%3D%20%22en%22)%0A%20%20%20%20OPTIONAL%20%7B%20%3Fitem%20skos%3AaltLabel%20%3Falt.%20FILTER(LANG(%3Falt)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%0A%20%20%7D%20GROUP%20BY%20%3Fitem%20%3Flabel%20%3Flinks%20ORDER%20BY%20DESC(%3Flinks)%20LIMIT%201200",
+  "retrieved": "2026-11-11T15:48:36.432Z",
+  "rows": [
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3392"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nile"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "248"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "River Nile|The Nile|Nile River|Nahr an Nīl|Bahr en Nīl|Nahr an Nil|Nīl River|Nilus River|Shihor"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3783"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amazon River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "218"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Amazon|Amazonian River|River Amazon|The Amazon River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1653"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Danube"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "200"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Danube River|River Danube|Donau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q584"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rhine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "190"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rhine River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q626"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Volga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "189"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wolga|Volga River|R. Volga|R. Wolga|River Volga|River Wolga|Volga R.|Wolga R.|Wolga River|Rā (in Scythian)|Rha river (in Scythian)|Oares (in Greek)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5089"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ganges"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "181"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ganga|Ganges River|River Ganges|Ganga Nadi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1497"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mississippi River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "181"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "The Mississippi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3503"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Congo River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "168"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Zaire|Congo River|River Congo|Zaire River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5413"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yangtze River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "168"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yangtze|Jiang|Kian|Changjiang|Jiang River|Chang Jiang|Yangzi|Blue River|Kiang River|Kiang|Kyang|Ch'ang Chiang|Chang Jiang River|Changjiang River|Kyang River|Yan-tse|Yan-tse-kian|Yang-tse|Yang-tse River|Yang-tsze|Yang-tsze-kiang|Yang-tze|Yang-tze River|Yangtse River|Yangtse-chiang|Yangtsze River|Yangtzekiang|Yangzi River|Yantse Kiang|Yang-tse-kiang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7348"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Indus River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "159"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Indus|Sindh River|Mehran River|Indus R.|R. Indus|River Indus|Sindhu River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3542"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Niger River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "156"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Niger|fleuve Niger|Quorra|River Niger"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q7355"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yellow River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "155"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Huang He|Huanghe|Hoang-ho|Hoan-ho|Hoan-ho R.|Hoan-ho River|Hoang ho|Hoang-ho R.|Hoang-ho River|Hoangho|Huang He R.|Huang He River|Huang-ho|Huang-ho R.|Huang-ho River|Huanghe R.|Huanghe River|Whang-ho River|Yellow R."
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q34589"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Euphrates"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "142"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19686"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Thames"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "131"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thames|Tamesis|the River Thames|the Thames"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1471"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Seine"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "131"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "river Seine|Seine River|the Seine"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q35591"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tigris"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "130"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tigris River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q40855"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dnieper"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "126"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dnepr|Dnipro|Dnieper River|Dnipro River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q40059"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jordan River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "124"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Jordan|River Jordan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1644"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Elbe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "122"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Labe|Elba|Łaba|Łobjo|Elbe River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q548"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vistula"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "119"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Weichsel|Wisła|Wisla|Visla"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41179"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mekong River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "119"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lancang River|Lancang Jiang|Lancang R.|Lantzan Kiang|Lantzan R.|Lantzan River|Lantzan-kiang|Mekhong|Mekhong R.|Mékong|Mekong R."
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6862"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amur River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "114"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Amur|Heilong Jiang|Black River|Heilong River|Saghalien Oula|Saghalien-Oula|Black Dragon River|Heilongjiang River|Saghalien River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q45403"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brahmaputra River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "113"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Brahmaputra|Dihong|Brahmapoutra|Brahmapoutra R.|Brahmapoutra River|Brahmaputra R.|Tsangpo-Brahmaputra|Sky river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q80240"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ural"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "112"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ural|Yaik|Jaik|Ural River|Zhayyq"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q973"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ob"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "112"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Obi|Ob River|Ob R.|Obi R.|Obi River|R. Ob|R. Obi|River Ob|River Obi"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q46841"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lena River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "112"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lena"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5419"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Missouri River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "109"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Missouri|The Missouri"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1229"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Don"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "109"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tanais|Don River|River Don|Tanaïs"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q643"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Po"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "108"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Po River|River Po"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1469"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Loire"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "108"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Loire River|River Loire"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q552"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oder"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "107"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Odra|Oder River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q602"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rhône"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "107"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rhone|Rhone River|Rhône River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131210"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dniester"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "105"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dnister River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q78707"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yenisei"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "104"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yenisei River|Enisey|Yenisey|Jenisej|River Yenisei|Enisei|Enisei River|Enisey River|Jenisej River|River Enisei|River Enisey|River Jenisej|River Yenisey|Yenisey River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13712"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tiber"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "104"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tevere|Rumon|Tiberis"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q134750"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "St. Lawrence River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "104"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "St. Lawrence|Fleuve Saint-Laurent|Saint Lawrence River|St Lawrence River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8493"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amu Darya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "103"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Amu|Oxus|Hamu|Amudarya|Amu River|Amudaryo|Amou daria|Amu Daria|Amu-daria|Amu-Daria|Amu-Darya|Amudaria|Hamu River|Amu Dar'ya river|River Amu Dar'ya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14294"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tagus"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "102"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tagus|Tejo River|Tejo|Tajo|Tagus River|Tajo River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131792"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Orinoco River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "101"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Orinoco"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q132726"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yamuna"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "100"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Jumna|Jamna|Jumna river|Yamuna River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1265"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Colorado River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "100"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Green River|North Fork|Big River|Grand River|Blue River|Rio de los Martires|Rio Colorado|Ahan Yava Kothickwa|Ancon de San Andres|Bunkara River|Buqui Acqumuri|Canon of the Colorado River|El Rio de Buena Guia|Gritetho|Hah Weal Asientic|Hahweel|Javill|Mar Bermejo|Nah Oon Kara|North Fork Colorado River|North Fork of Grand River|Pa-na-weap|Packet-to|Pagah|Pocket-to|Red River of California|Red River of the West|Rio Buena Guia|Rio Colorado del Norte|Rio Colorado Del Norte|Rio Cosnina|Rio de Buena Guia|Rio del Norta|Rio del Norte|Rio Del Norte|Rio del Tizon|Rio Del Tizon|Rio Grande de Buena Esperanza|Rio Grande De Buena Esperanza|Rio Grande de los Cosninas|Rio Grande de los Martyres|Seedekeeden|Seeds Keedee|Seeds Keeden|Seeds Keeder|Seeds-ke-Agie|Seedskeedee Agie|Seedskeeden|Seetes-Ker-Der"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q645"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Neva"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "96"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Neva River|River Neva"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q128102"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Irtysh"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "96"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Irtish|Ertix R.|Ertix River|Irtish R.|Irtish River|Irtysh R.|Irtysh River|R. Ertix|R. Irtish|R. Irtysh|River Ertix|River Irtish|River Irtysh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q882739"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Blue Nile"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "95"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Abai (river)|Abai river|Abai River|Abay (river)|Abay River|Abbai River|Abbay River|Al-bahr al-Azraq|Al-Bahr al-azraq|Blue Nile River|El Bahr el Azraq|El Bahr el Azraq River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8197"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Daugava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "94"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Düna|Western Dvina|Dzvina|Daugava River|Dźvina"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q104437"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yukon River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "94"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yukon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Meuse"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "94"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maas|Meuse River|Maos|Mosa|Mouze|Moûze"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q483159"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Syr Darya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "94"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sir|Sirr|Jaxartes|Syrdarya|Syr|Iaxartes|Iaxartes River|Jaxartes River|River Iaxartes|River Jaxartes|River Sir|River Sirr|River Syr|River Yaxartes|Sir Daria|Sir Darya|Sir River|Sir-Daria|Sîr-daria|Sirr Darya|Sirr River|Syr River|Syr-darya|Yaxartes|Yaxartes River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3140"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hudson River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hudson"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q160636"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rio Grande"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rio Bravo|Río Grande|Río Bravo|Rio Bravo del Norte|Río Bravo del Norte|Rio Grande River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2251"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Columbia River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q10965"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ebro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "91"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q173017"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Limpopo River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Limpopo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1670"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Main"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "90"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q127892"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paraná River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "89"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Parana|Parana River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14299"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Douro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "89"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Douro River|Duero|Duero River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4814791"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "White Nile"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "89"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Albert Nile|An Nīl al Abyaḑ|El Bahr el Abyad River|Mountain Nile|White Nile River|بحر العرب في السودان"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4915"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ohio River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "89"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1667"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moselle"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mosel|Mosel River|Mosella River|Moselle River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q134350"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tisza"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tisa|Theiss"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q35827"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Río de la Plata"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "River Plate|Plata River|La Plata River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q181475"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Orange River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gariep|Senqu River|Groote River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q183078"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Murray River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "88"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "River Murray|Indi Miky|the Murray River|the River Murray"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q131574"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vltava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "87"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Veltava"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191314"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Godavari River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "87"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Godavari"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18278"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Uruguay River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "86"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Uruguay"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26076"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Irrawaddy River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "86"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Irawadi|Ayeyarwadi River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q175117"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moskva River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "86"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Moskva"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3569"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Senegal River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "85"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Senegal"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q162737"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Angara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "84"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Angara River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q79082"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kama"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "83"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kama River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5077"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Garonne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "83"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Garonne river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14383"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "83"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Save"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q160819"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gambia River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "83"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "River Gambia|River Gambra"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q118771"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rio Negro"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "82"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Negro River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q172089"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "82"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oka River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q179396"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Paraguay River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "82"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q193499"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Krishna River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "82"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3411"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mackenzie River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dehcho|Deh Cho|Fleuve Mackenzie|Kuukpak|Mackenzie (Severozápadní teritoria : řeka)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8168"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pechora"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pechöra|Petchora"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q156557"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kura River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kür çayı|Kür|Kura Nehri|Mtkvari"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q118251"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Madeira River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q179751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aras River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "81"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14369"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Inn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "80"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Inn river|Inn River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5622"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Neman"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "80"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Memel|Niemen|Nyoman|Nemunas|Nioman|Neman River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14309"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Guadalquivir"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "80"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Baetis river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q78879"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kolyma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kolyma River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q37620"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Scheldt"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Le Sceau"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188773"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Okavango River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cubango|Kavango"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191829"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Magdalena River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "79"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1673"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Neckar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "NSU-Fiat"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q13696"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Adige"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Adige River|Etsch|Atesis"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q166966"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shatt al-Arab"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Arvand|Arvand Rud"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q192415"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Volta River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "78"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Volta|River Volta"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8187"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Northern Dvina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dwina|Severnaya Dvina"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q171649"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ubangi River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "77"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Oubangui"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q118850"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chao Phraya River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mae Nam Chao Phraya|Maenam Chao Praya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q171009"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Drava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Drave"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216875"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chenab River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Acesines|Asikni|Chandrabhaga|Ashkini|Chanab|Chanha|Chenab|Chunab|Iskmati"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q179444"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Potomac River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Co-hon-go-roo-ta River|Patawmeck River|Patawomeck River|Potowmac River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1684"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Spree"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "76"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q201463"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pearl River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chu Chiang|Great River|Canton River|Ta River|Zhu River|Chu River|Chu Kiang|Chu-kiang River|Da River|River Canton|River Chu|River Ta|River Yue|River Zhu|Yue River|Zhu Jiang|Zhujiang River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1675"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aare"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Aar"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q142148"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "São Francisco River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "São Francisco|Rio São Francisco|Rio São Francisco do Norte"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26422"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Salween River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "75"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Thanlwin|Salween|Nu River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82776"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Terek"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "74"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Terek River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q93360"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bío Bío River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "74"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bio Bio River|Biobio River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q181482"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Darling River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "74"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8319"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Arkansas River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "74"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q106588"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Isar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "73"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Iser"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1650"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Weser"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "73"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Werser"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q182445"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Prut"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "73"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pruth"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q186541"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kasai River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "73"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kasaï|Cassai"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82207"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Indigirka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Protoka Srednyaya|Indigirka River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19682"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Severn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Severn|Afon Hafren"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q156054"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tocantins River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tocantins|Rio Tocantins"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204806"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Benue River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Benue|Benuë|Chadda River|Tchadda River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q171675"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sutlej"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Satadree|Satluj River|Sutlej River|Satadru"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q201823"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Warta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "72"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82308"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kuban"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hypanis|Kuban River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191238"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Donets"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "71"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Donetz|Donets River|Severskiy Donets|Seversky Donets|Siverskiy Donets|Siversky Donets|Siverskyi Donets|Siverskyy Donets"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q257785"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kızılırmak River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Alis|Kizil|Halys|Kizilirmak|Kızılırmak|Halys River|Marrassantiya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q172572"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rubicon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rubicon River|River Rubicon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q55498"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yalu River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "70"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Amrok|Apnok Kang|Yalu Chiang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q103148"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lahn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Lahn (Rhine tributary)"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q156237"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Western Bug"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bug River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q143762"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Delaware River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "69"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14305"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Guadiana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "68"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Guadiana River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q187834"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Saône"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "68"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Saone"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q193737"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tennessee River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "68"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q157042"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pripyat River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pripiat River|Prypiać|Prypiać River|Prypiat River|Prypyat River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214874"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jhelum River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hydaspes|Bihat|Jehlam River|Jehlum River|Jhelam River|Vehat|Vitastā|Vyeth"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191524"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ishim"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yessil"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q179251"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Morava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Marus|Morava river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q182343"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Niagara River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Niagara"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q192567"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ili River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yili River|Yili|Ili|I-li|I-li River|Ili R.|R. Ili|River Ili"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q192820"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Shannon"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shannon|R. Shannon|Shannon R.|Shannon River|An tSionainn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188940"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Southern Bug"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Boh River|Buh Pivdennyi|Hipanis|Pivdennyi Buh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q203409"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rioni"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1664"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ruhr"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1682"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Havel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "67"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q75745"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Selenga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Selenge|Selenga River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8510"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Helmand River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Helmund|Helmend|Hirmand|Helmud river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26439"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Argun River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Argun|Ergun|Argoun|Argoun R.|Argun R.|Ergun R.|Ergun River|R. Argoun|R. Argun|R. Ergun|River Argoun|River Argun|River Ergun"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q234004"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Narmada"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Narbada|Nerbudda"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q55500"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Han River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Han Gang|Han Jiang|Hangang|Han-gang|Hanjiang|Han Gang River|Han R.|Han River (Korea)|Han-kang|Han-kang River|Han'gang|Hang R.|Hang River|Hang-kiang|Hangang River|R. Han|R. Hang|R. Seoul|R. Seul|River Han|River Hang|River Seoul|River Seul|Seoul R.|Seoul River|Seul R.|Seul River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q186901"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Drina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "66"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q202796"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Desna"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Desna River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2750140"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kagera River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Akagera River|Alexandra Nile"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q189596"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vardar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "65"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Axios"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q135477"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chari River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "64"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shari River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q317899"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ravi River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "64"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hyarotis|Airavati|Hydraotis|Iravati|Rāvi River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41983"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Marne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "64"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1678"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Saale"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Saxon Saale|Thuringian Saale"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8515"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kabul River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Cophes|Cophen River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14366"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ticino"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ticino river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204347"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Maritsa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Evros"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q209031"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Narva"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Narva River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q209891"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sura"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sura River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q210326"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Songhua River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sungari|Sunghwari"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q192157"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Belaya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Agidel|Belaya River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q559661"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Liao River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "63"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q206850"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Red River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Song Cai|Yuan River|Sông Cái|Hong River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19721"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Clyde"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Clyde|Clyde River|The Clyde|The River Clyde|Abhainn Chluaidh|Cluaidh|Uisge Chluaidh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208174"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dordogne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Duranius"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q192495"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vyatka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vyatka River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q200174"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Marañón River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Marañon|Río Marañón"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q190777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Neretva"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "62"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q273456"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Omo River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "61"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Umaa River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q200952"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ucayali River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "61"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ucayali"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q63109"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Adda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "61"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q124653"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tobol"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tobol River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q188871"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Orontes River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Orontes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q272074"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Snake River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sahaptin|Mad River|Lewis River|Louis River|Great Snake River|Kimeonim|Kimooenim|Kooskooskee River|Lewis and Clark's River|Lewis Fork|Saptin River|Shawpatin|Sho-sho-nepah|Shoshone River|South Fork of Snake River|South Fork of the Snake River|South Fork Snake River|Yam-pah-pa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q185405"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Amstel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1648"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ems"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "60"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q206694"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Onon River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Onon"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8505"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hari River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Arius|Tarius|Arios|Tedzhen|Tejen|Areios|Gerirud|Tedzhen river|Tejen river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19714"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Trent"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Trent"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q320649"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cunene River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kunene River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q209530"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vaal River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vaal"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q461557"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Karun River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "59"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Karun|Karoon|Karoon River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5602"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lusatian Nysa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nisa|Neisse|Neisse River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26390"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Anadyr"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Anadyr'"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26428"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Nizhnyaya Tunguska"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Nizhnyaya Tunguska River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26433"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vilyuy"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vilui River|Vilyuy River|Wilui River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191832"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aldan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "58"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Aldan River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8542"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Panj River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ochus|Panja|Panja River|Panj|Ochus River|Pandja|Pandja River|River Ochus|River Pandja|River Panj|River Panja"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204040"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mura"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207777"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ussuri"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ussuri River|Wusuli River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207903"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Neris"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vilija|Viliya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q782845"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Awash River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Awaash"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q841359"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kapuas River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Great Kapoeas River|Great Kapuas|Kapuas Besar"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q319590"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Beas River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Beās River|Vipasha"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q849494"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gandaki River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Narayani River|Thak Khola|Gandak River|Kali Gandaki River|Kaligandaki River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q200231"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Oise"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "57"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rivière Oise"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14554"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Minho River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rio Minho|Minho|Río Miño"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q210870"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ufa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ufa River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26271"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Purus River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Purus|Rio Purus|River Purus"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q934455"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ebola River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ebola|Legbala"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q212795"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Alazani"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Alazonios|Alazonius"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q126822"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Olt River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208367"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Bosna"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "56"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q202598"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Váh"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Vág|Waag|Vah"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q115456"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shilka"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shilka River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207366"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Adour"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "the Adour"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208009"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Liffey"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Liffey River|Liffey R.|Liffy R.|Liffy River|R. Liffey|R. Liffy|River Liffey|River Liffy|the River Liffey"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208302"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Siret River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Siret"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q171840"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Japurá River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yapura|Japura River|Rio Caqueta|Rio Japurá"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q318435"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Detroit River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Riviere Detroit|Rivière Détroit"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q237901"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tarim River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "River Oikhardes|River T'a-li-mu|River Ta-li-mu|River Talimu|River Tarim|T'a-li-mu|T'a-li-mu Ho|T'a-li-mu River|Ta-li-mu|Ta-li-mu Ho|Ta-li-mu River|Talimu|Talimu He|Talimu River|Tarim He|Tarim Ho|Tarim|Echardes|Echardes River|Oechardes|Oechardes River|Oikhardes|Oikhardes River|River Echardes|River Oechardes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60974"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ottawa River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kichi-Sìbì|Kitchissippi|Riviere des Outaouais|Rivière des Outaouais"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q503262"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Tweed"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tweed|Tweed Water|Tuaidh|Uisge Thuaidh"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191087"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Acheron"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216171"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Waal"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1125242"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Meghna River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4534"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Andalien River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "55"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q78861"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yana"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yana River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q159467"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Iller"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Iller River|River Iller"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217466"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sakarya River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sangarius"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q27538"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Susquehanna River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Susquehanna|Sasquehannagh|Susquehannah River|Susquehana River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q335575"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sacramento River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sacramento (river)|Sacramento river|Sacramento River (United States)|Sacramento River, California"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q271044"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mahanadi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mahánadé|Mahanadi River|Mahānadī River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q201341"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Isère"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Isere"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q269710"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fraser River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q41962"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aisne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q60055"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Narew"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "54"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q15243"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Volkhov"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Volkhov River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q750021"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ogooué River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ogooue River|Ogowe|Ogowe River|Nazareth River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q211089"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Great Menderes River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Meander|Maeander|Büyük Menderes River|Mæander"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q655754"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Platte River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Platte"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q153972"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Saar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Sarre"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214535"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Glomma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Glommen|Glåma|Stor-Elv"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q30548"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hrazdan River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Zangi River|Zangichay|Zangychay"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q191635"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Iguazu River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Recorrido"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q49544"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Xingu River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Xingu|Rio Xingu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q55499"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tumen River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tumen Ula"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q65383"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vychegda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Ezhva"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q390232"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ghaghara River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Karnali River|Ghagra River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q486636"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Draa River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "53"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Dara|Lixus|Dra|Draa|Darha|Dara River|Dar'a|Darʿa|Asif en Dra|Dar'a River|Darha River|Darʿa River|Dra River|Lixos|Wad Dara|Wad Dra|Wadi Dar'a|Wadi Dara|Wadi Darʿa|Wadi Dra|Wadi Draa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214811"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Argeș River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Argeș|Argyas|Argisch|Râul Argeș"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207493"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mureș River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Maros River|Mureş River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q138491"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jubba River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Juba|Webi Jubba"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q171847"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Araguaia River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Araguay|Rio Araguaia"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213576"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Huai River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hwai River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q270569"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pilcomayo River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Río Pilcomayo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q152661"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Salzach"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213975"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Drin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216488"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "San"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217524"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Enns"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "52"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q14372"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Doubs"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Doubs river|Doubs River|Le Doubs"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8526"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vakhsh River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kyzyl-Suu|Kizil Su River|Kizil-su|Kizil-su River|Vakhsh|Kyzylsu|Kizyl-Su|Surkhab|Kizil-sou|Kizîl-sou|Kizil-sou River|Kizîl-sou River|Kysyl Su|Kysyl Su River|Karatigin|Karatigin River|Kizyl Su|Kizyl Su River|Kizyl-Su River|Kyzyl-suu|Kyzyl-suu River|Kyzyl-Suu River|River of Karatigin|River Vakhsh|River Vaksh|Surjob|Surjob River|Surkab River|Surkh-ab|Surkh-ăb|Surkh-ab River|Surkh-ăb River|Surkhob|Surkhob River|Vaksh|Waksh|Waksh River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q204127"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Struma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Strymon|Strymonas"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q649527"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Samara"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Samara River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q117526"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Juruá River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Rio Jurua|Rio Juruá|Río Yuruá"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207928"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Gauja"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Koiva River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216373"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Tyne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tyne|Tinea"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208493"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lys"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Golden River|Leie|Goudne Riviere"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q374772"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yellowstone River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yellowstone|Aahkawirahkata|E-chee-dick-karsh-ah-shay|Encheda-cahchi-ichi|Mi tse a-da-zi|Mi-tsi-a-da-zi|Moehe'yoe|Pierre Jaune|River a la Biche|River aux Roches Jaunes|River Rockybone|River Yellow Rock|Roche Jaune|the Yellowstone|Waahukaahaanu"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q456415"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Litani River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Leontes"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q210220"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zeya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214894"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Timiș River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q237099"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Orkhon River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q685344"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Khabur River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "51"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6434"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fulda"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Fulda of the Weser|Fulda River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q695610"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kosi River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Koshi River|Saptakoshi River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q117615"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mamoré River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Mamore River|Rio Mamoré"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26799"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Olenyok"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Olenëk|Olenyok River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207927"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Berezina"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Beresina|Biarezina"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q707056"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tapti River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tapti|Tapi river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q211328"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Great Morava"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Morava"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213782"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Putumayo River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Içá River|Rio Içá|Río Putumayo"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213230"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hron"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215378"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Emajõgi"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217805"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Iskar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q930773"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Padma River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3314"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Eider"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26361"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Podkamennaya Tunguska"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "50"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2216"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Athabasca River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Athabasca"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q738986"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Seym"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Seym River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q739687"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hooghly River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Hooghly|Hûgli|the Hooghly River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q752674"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tapajós River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tapajos"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19695"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Wye"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Wye"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214779"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kemijoki"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kemi|Kemi älv|Kemi river"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2279579"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shire River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shiré"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216941"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Xi River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "West River|Xi Jiang"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217818"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "IJssel"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Gelderse IJssel"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q208267"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Sambre"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214646"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Dâmbovița River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q270627"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Colorado River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q659817"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Leitha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "49"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q3047"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Saskatchewan River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Saskatchewan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q641020"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kherlen River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kern|Kerülen|Kerulen River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q651195"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Naryn River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Narin|Naryn|Narin R.|Narin River|Naryn R.|R. Narin|R. Naryn|River Narin|River Naryn"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q815462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pärnu River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Parnu River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216188"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tom"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tom River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q501253"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Hai River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pei-ho"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q504388"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Enguri"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Egri|Inguri|Engur|Ingirtskari|Ingirtsqari"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q524206"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chu River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Shu|Chuy|Chu|Shū|River Chu|Chu R.|R. Chu|R. Shu|R. Shū|River Shu|River Shū|Shu R.|Shū R.|Shu River|Shū River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q126712"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vrbas"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q133476"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kamchatka River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213462"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Piave"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q467419"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vetluga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q589911"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Essequibo River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q736668"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shkumbin"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q2220"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Peace River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q26068"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vitim"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "48"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q4015"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Reuss"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Reuss (river)|Reuss River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q753897"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Atbarah River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Atbara|Atbara river|Black Nile|Red Nile"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q8553"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Marghab River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Murghab|Murgab|Murgap|Morghab|Murghab River|Marghab|Moorghabee|Moorghabee River|Morghab River|Murgab River|Murgap River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q141915"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Shebelle River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Webi Shabeelle"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q849470"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yarmuk"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Yarmouk River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q331162"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tana River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tana|Sagana River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213067"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Svir"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Svir'"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q182942"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Cuando River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Chobe River|Kwando|Linyanti River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q501027"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Zeravshan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Zeravshan River|the Zeravshan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q732790"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kwango River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q846063"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kafue River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1060631"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chambal River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1971511"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Damodar River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q6424"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Werra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "47"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82187"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Anabar"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Anabar River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q18612"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Segura"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Río Segura"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q81503"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Vjosa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Aoos"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q754718"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Durance"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Durença|Durènço"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q211046"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Kupa"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Kolpa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214748"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Göta älv"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Göta Älv|Göta River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q645191"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Logone River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Logon River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215397"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Venta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Windau|Vanta|Venta River|Windawa"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1146608"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moulouya River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Moulaya|Moulouya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q216950"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Abakan"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Bolshoy Abakan"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q330618"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Taedong River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Taedong-gang|the Taedong River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q182138"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rába"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Raba"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q142604"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Beni River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q213967"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yonne"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q214551"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Brenta"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q476317"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tugela River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q530479"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Mara River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "46"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q82175"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Khatanga"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Khatanga River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q5611"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Pregolya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Pregel|Pregel River|Pregolya River|River Pregel|River Pregolya"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q19719"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "River Tay"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Tay"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q595213"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Moksha"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Moksha River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q12556970"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Klyazma"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Klyazma River"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q152331"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Rur"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Roer"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q155045"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Ohře"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Agara"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q723864"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Katun"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Katun'"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q1048219"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Waikato River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Waikato"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q530577"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Jiu River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": "Schil|Rabon|Schiel|Zsil"
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q207136"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Þjórsá"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q212927"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Una"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215395"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Lielupe"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q215653"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Tarn"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217061"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yser"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q217126"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Yantra"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q548466"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Aube"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q739751"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Fly River"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q756091"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Chusovaya"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    },
+    {
+      "item": {
+        "type": "uri",
+        "value": "http://www.wikidata.org/entity/Q828869"
+      },
+      "label": {
+        "xml:lang": "en",
+        "type": "literal",
+        "value": "Noteć"
+      },
+      "links": {
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "type": "literal",
+        "value": "45"
+      },
+      "alts": {
+        "type": "literal",
+        "value": ""
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 // Krillion: name something that fits the prompt. The rarer the answer, the more points, and
 // every point sinks you ten metres deeper. Classic is seven random prompts, the Daily Dive is
 // the same seven for everyone each day, and Endless keeps going until three prompts run out
-// of air. A guess that isn't in the bank costs three seconds; PASS skips a prompt.
+// of air. Noillirk flips the goal: common answers score highest. A guess that isn't in the bank costs three seconds; PASS skips a prompt.
 
 const ROUND_SECS = 25;
 const WRONG_COST = 3;
@@ -23,6 +23,20 @@ const FLAVOR = {
   pass: "You let this one drift by.",
 };
 
+// Noillirk rewards the bank's common answers. Too Clever stays a low-scoring detour.
+const NOILLIRK_POINTS = { p: 100, c: 15, s: 85, r: 60, d: 30, k: 10 };
+const NOILLIRK_ORDER = ["k", "c", "d", "r", "s", "p"];
+const NOILLIRK_FLAVOR = {
+  p: "Half the reef said that too. Perfect!",
+  c: "Clever, but the crowd went for something simpler.",
+  s: "A popular pick. You're swimming with the school.",
+  r: "A little too unusual for this crowd.",
+  d: "Too deep! Think of the obvious answer next time.",
+  k: "One in a Krillion. In Noillirk, think like everyone else!",
+};
+const pointsFor = (tier, mode = "classic") => tier ? (mode === "noillirk" ? NOILLIRK_POINTS[tier] : TIERS[tier].pts) : 0;
+const tierOrderFor = mode => mode === "noillirk" ? NOILLIRK_ORDER : TIER_ORDER;
+
 const $ = sel => document.querySelector(sel);
 const screen = $("#screen");
 const fmt = n => n.toLocaleString("en-US");
@@ -33,12 +47,12 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;"
 
 const SAVE_KEY = "krillion.v1";
 let save = {
-  days: {}, streak: 0, maxStreak: 0, lastDone: null, bestDaily: 0, bestInfinite: 0, bestClassic: 0,
+  days: {}, streak: 0, maxStreak: 0, lastDone: null, bestDaily: 0, bestInfinite: 0, bestClassic: 0, bestNoillirk: 0,
   dives: 0, krillions: 0, mode: "classic",
 };
 try { Object.assign(save, JSON.parse(localStorage.getItem(SAVE_KEY)) || {}); } catch (e) {}
 function persist() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); } catch (e) {} }
-const bestDepth = () => Math.max(save.bestDaily, save.bestClassic, save.bestInfinite) * METRES_PER_PT;
+const bestDepth = (mode = "classic") => (mode === "noillirk" ? save.bestNoillirk : Math.max(save.bestDaily, save.bestClassic, save.bestInfinite)) * METRES_PER_PT;
 
 // ---------- prompt order ----------
 
@@ -78,7 +92,7 @@ function bankFor(i) {
   return banks.get(i);
 }
 
-const totalPts = picks => picks.reduce((s, p) => s + (p.tier ? TIERS[p.tier].pts : 0) + (p.bonus || 0), 0);
+const totalPts = picks => picks.reduce((s, p) => s + (p.pts ?? pointsFor(p.tier)) + (p.bonus || 0), 0);
 
 // ---------- shared bits ----------
 
@@ -140,10 +154,11 @@ function hudHTML(mid, label) {
 // Puts a prompt on screen, counts down, then runs the clock. When an answer is accepted,
 // PASS is pressed or time runs out, calls onResolve(hit, typed, round, how), where hit is
 // null unless an answer was accepted and how is "hit", "pass" or "time".
-function playRound({ pi, secs, hud, onResolve }) {
+function playRound({ pi, prompt, secs, hud, onResolve, mode = "classic" }) {
   clearTimers();
-  const bank = bankFor(pi);
-  const round = { pi, bank, secs, tried: new Set(), over: false, endsAt: 0, onResolve, live: false };
+  // Online rounds carry the host's exact text and bank; local prompt indices can differ.
+  const bank = prompt ? Match.build(prompt.tiers) : bankFor(pi);
+  const round = { pi, bank, secs, mode, tried: new Set(), over: false, endsAt: 0, onResolve, live: false };
   curRound = round;
   Scene.banners(true);
   screen.className = "play";
@@ -151,9 +166,9 @@ function playRound({ pi, secs, hud, onResolve }) {
     ${hud}
     <div class="stage" id="stage">
       <div class="pcard">
-        <div class="pcat">${esc(categoryOf(pi))}</div>
-        <h2 class="ptext">${esc(PROMPTS[pi][0])}</h2>
-        <div class="phint">▼ rarer answers sink deeper ▼</div>
+        <div class="pcat">${esc(prompt ? prompt.category : categoryOf(pi))}</div>
+        <h2 class="ptext">${esc(prompt ? prompt.text : PROMPTS[pi][0])}</h2>
+        <div class="phint">${mode === "noillirk" ? "▼ common answers sink deeper · Noillirk ▼" : "▼ rarer answers sink deeper ▼"}</div>
       </div>
     </div>
     <div class="bottom" id="bottom">
@@ -242,7 +257,7 @@ function endRound(hit, typed, how) {
   if (!r || r.over) return;
   r.over = true;
   clearTimers();
-  if (hit && hit.tier === "k") { save.krillions++; persist(); }
+  if (hit && hit.tier === "k" && r.mode !== "noillirk") { save.krillions++; persist(); }
   r.onResolve(hit, typed, r, how);
 }
 
@@ -255,13 +270,13 @@ function untint() { const t = $("#tint"); if (t) t.className = ""; }
 
 // Plays an answer out in three beats: the screen glows in the rarity's colour (without
 // naming it), the diver sinks to the new depth, then the result card says what it was.
-async function revealSequence({ hit, typed, how, bank, depth, extra }) {
+async function revealSequence({ hit, typed, how, bank, depth, extra, mode = "classic" }) {
   const color = hit ? TIERS[hit.tier].color : "#8b96a8";
   const card = screen.querySelector(".pcard");
   card.style.setProperty("--c", color);
   card.classList.add("lit");
   $("#bottom").innerHTML = `<div class="locked" style="--c:${color}">${hit ? `“${esc(typed)}”` : how === "pass" ? "passed" : "time's up"}</div>`;
-  tint(color, hit && hit.tier === "k");
+  tint(color, hit && pointsFor(hit.tier, mode) === 100);
   Sound.play(hit ? "lock" : "timeout");
   await beat(hit ? 1000 : 700);
 
@@ -275,9 +290,9 @@ async function revealSequence({ hit, typed, how, bank, depth, extra }) {
   }
   untint();
   const stage = $("#stage");
-  stage.innerHTML = resultHTML(hit, typed, how, bank, extra);
+  stage.innerHTML = resultHTML(hit, typed, how, bank, { ...extra, mode });
   paintIcons(stage);
-  if (hit) Sound.play("tier", hit.tier);
+  if (hit) Sound.play("tier", mode === "noillirk" ? ({ p: "k", s: "d", r: "r", d: "s", c: "c", k: "p" })[hit.tier] : hit.tier);
   await beat(450);
 }
 
@@ -286,15 +301,16 @@ function resultHTML(hit, typed, how, bank, extra = {}) {
   const T = hit && TIERS[hit.tier];
   const name = hit ? T.name : how === "pass" ? "Passed" : "Out of air";
   const color = hit ? T.color : "#8b96a8";
-  const lit = hit ? TIER_ORDER.indexOf(hit.tier) : -1;
-  const pts = (hit ? T.pts : 0) + (extra.bonus || 0);
+  const order = tierOrderFor(extra.mode);
+  const lit = hit ? order.indexOf(hit.tier) : -1;
+  const pts = pointsFor(hit && hit.tier, extra.mode) + (extra.bonus || 0);
   return `<div class="result" style="--c:${color}">
     <canvas class="ticon" data-icon="${hit ? hit.tier : how === "pass" ? "pass" : "miss"}"></canvas>
     <div class="tname">${name}</div>
-    <div class="meter"><span>Common</span><div class="segs">${TIER_ORDER.map((t, i) => `<i style="${i <= lit ? `--s:${TIERS[t].color}` : ""}" class="${i <= lit ? "on" : ""}"></i>`).join("")}</div><span>Rare</span></div>
+    <div class="meter"><span>${extra.mode === "noillirk" ? "Rare" : "Common"}</span><div class="segs">${order.map((t, i) => `<i style="${i <= lit ? `--s:${TIERS[t].color}` : ""}" class="${i <= lit ? "on" : ""}"></i>`).join("")}</div><span>${extra.mode === "noillirk" ? "Common" : "Rare"}</span></div>
     ${hit ? `<div class="ans">“${esc(hit.shown)}”</div>` : ""}
     <div class="gain">${hit ? `<b>+${pts} pts</b> · sink ${fmt(pts * METRES_PER_PT)}m` : "+0 pts"}${extra.bonus ? ` <em>incl. +${extra.bonus} only you</em>` : ""}</div>
-    <div class="flavor">${extra.flavor || FLAVOR[hit ? hit.tier : how]}</div>
+    <div class="flavor">${extra.flavor || (extra.mode === "noillirk" && hit ? NOILLIRK_FLAVOR[hit.tier] : FLAVOR[hit ? hit.tier : how])}</div>
   </div>`;
 }
 
@@ -361,20 +377,20 @@ function soloHud() {
     const tanks = Array.from({ length: TANKS }, (_, i) => `<i class="tank ${i < game.tanks ? "" : "gone"}"></i>`).join("");
     return hudHTML(tanks, `Prompt ${game.idx + 1}`);
   }
-  return hudHTML(squaresHTML(CLASSIC_COUNT, game.picks, game.idx), `Prompt ${Math.min(game.idx + 1, CLASSIC_COUNT)} of ${CLASSIC_COUNT}`);
+  return hudHTML(squaresHTML(CLASSIC_COUNT, game.picks, game.idx), `${game.mode === "noillirk" ? "Noillirk · " : ""}Prompt ${Math.min(game.idx + 1, CLASSIC_COUNT)} of ${CLASSIC_COUNT}`);
 }
 
 function showPrompt() {
-  playRound({ pi: promptAt(game.idx), secs: ROUND_SECS, hud: soloHud(), onResolve: soloResolve });
+  playRound({ pi: promptAt(game.idx), secs: ROUND_SECS, hud: soloHud(), mode: game.mode, onResolve: soloResolve });
 }
 
 async function soloResolve(hit, typed, r, how) {
-  game.picks.push({ pi: r.pi, ans: hit ? hit.shown : null, typed, tier: hit ? hit.tier : null, how });
+  game.picks.push({ pi: r.pi, ans: hit ? hit.shown : null, typed, tier: hit ? hit.tier : null, pts: pointsFor(hit && hit.tier, game.mode), how });
   if (game.mode === "daily") persist();
   if (how === "time" && game.mode === "endless") game.tanks--;
   const last = game.mode === "endless" ? game.tanks <= 0 : game.picks.length >= CLASSIC_COUNT;
   const flavor = how === "time" && game.mode === "endless" ? `Air tank lost. ${game.tanks} left.` : null;
-  await revealSequence({ hit, typed, how, bank: r.bank, depth: totalPts(game.picks) * METRES_PER_PT, extra: { flavor } });
+  await revealSequence({ hit, typed, how, bank: r.bank, depth: totalPts(game.picks) * METRES_PER_PT, extra: { flavor }, mode: game.mode });
   screen.querySelector(".hud").outerHTML = soloHud();
   $("#bottom").innerHTML = `<button class="pbtn next" id="next">${last ? "Surface" : "Next"} ▶</button>`;
   const next = $("#next");
@@ -387,10 +403,10 @@ async function soloResolve(hit, typed, r, how) {
   });
 }
 
-function shareText(picks, head) {
+function shareText(picks, head, mode = "classic") {
   const pts = totalPts(picks), m = pts * METRES_PER_PT;
   const tiles = picks.map(p => p.tier ? TIERS[p.tier].emoji : "⬛").join("");
-  return `KRILLION · ${head}\n🌊 ${fmtM(m)} · ${Scene.zone(m).name}\n${tiles}`;
+  return `${mode === "noillirk" ? "NOILLIRK" : "KRILLION"} · ${head}\n🌊 ${fmtM(m)} · ${Scene.zone(m).name}\n${tiles}`;
 }
 
 function finish() {
@@ -409,6 +425,9 @@ function finish() {
       if (pts > save.bestDaily) { save.bestDaily = pts; isBest = true; }
     }
     head = `Daily Dive #${diveNo(game.day)}`;
+  } else if (game.mode === "noillirk") {
+    if (pts > save.bestNoillirk) { save.bestNoillirk = pts; isBest = true; }
+    head = "Noillirk Dive";
   } else if (game.mode === "classic") {
     if (pts > save.bestClassic) { save.bestClassic = pts; isBest = true; }
     head = "Classic Dive";
@@ -419,7 +438,7 @@ function finish() {
   persist();
   Scene.set(depth);
   Sound.play("bubbles");
-  const text = shareText(picks, head);
+  const text = shareText(picks, head, game.mode);
   const mode = game.mode;
   onQuit = null;
 
@@ -436,7 +455,7 @@ function finish() {
           <span class="ecat">${esc(categoryOf(p.pi))}</span>
           <span class="eq">${esc(PROMPTS[p.pi][0])}</span>
           <span class="ea">${p.ans ? esc(p.ans) : `<i>${p.how === "pass" ? "passed" : "out of air"}</i>`}</span>
-          <span class="etag" style="--c:${p.tier ? TIERS[p.tier].color : "#59647f"}">${p.tier ? `${TIERS[p.tier].name} +${TIERS[p.tier].pts}` : "+0"}</span>
+          <span class="etag" style="--c:${p.tier ? TIERS[p.tier].color : "#59647f"}">${p.tier ? `${TIERS[p.tier].name} +${p.pts ?? pointsFor(p.tier)}` : "+0"}</span>
         </li>`).join("")}
       </ol>
       <div class="row">
@@ -499,6 +518,7 @@ function runCountdown(el) {
 
 const MODES = {
   classic: { title: "The Classic Dive", desc: `${CLASSIC_COUNT} prompts, ${ROUND_SECS} seconds each. The rarer your answer, the deeper you sink.` },
+  noillirk: { title: "The Noillirk Dive", desc: `${CLASSIC_COUNT} prompts, ${ROUND_SECS} seconds each. Think like everyone else: the most common answers score highest.` },
   endless: { title: "The Endless Dive", desc: `Prompts never stop coming. Run out of air ${TANKS} times and you surface.` },
 };
 
@@ -508,14 +528,14 @@ function home() {
   Scene.banners(false);
   Scene.set(0, true);
   const day = dayNow(), rec = save.days[day];
-  const best = bestDepth();
   const mode = MODES[save.mode] ? save.mode : "classic";
+  const best = bestDepth(mode);
 
   screen.className = "home";
   screen.innerHTML = `
     <div class="topbar">
       <div class="left"><a class="back" href="../index.html" aria-label="Back to the game library">‹</a>
-        <div class="chip"><canvas data-icon="krill"></canvas><span>Best</span><b>${fmtM(best)}</b></div></div>
+        <div class="chip"><canvas data-icon="krill"></canvas><span>Best</span><b id="bestValue">${fmtM(best)}</b></div></div>
       ${muteBtn()}
     </div>
     <div class="title">
@@ -527,7 +547,7 @@ function home() {
     <div class="spacer"></div>
     <div class="actions">
       <div class="seg2" role="tablist">
-        ${Object.keys(MODES).map(m => `<button data-mode="${m}" class="${m === mode ? "on" : ""}" role="tab">${m}</button>`).join("")}
+        ${Object.keys(MODES).map(m => `<button data-mode="${m}" class="${m === mode ? "on" : ""}" aria-selected="${m === mode}" role="tab">${m}</button>`).join("")}
       </div>
       <button class="pbtn big" id="begin">▼ Begin descent ▼</button>
       <button class="nbtn wide" id="multi">Play multiplayer</button>
@@ -545,11 +565,12 @@ function home() {
   screen.querySelectorAll(".seg2 button").forEach(b => b.addEventListener("click", () => {
     save.mode = b.dataset.mode; persist();
     Sound.play("tap");
-    screen.querySelectorAll(".seg2 button").forEach(x => x.classList.toggle("on", x === b));
+    screen.querySelectorAll(".seg2 button").forEach(x => { x.classList.toggle("on", x === b); x.setAttribute("aria-selected", String(x === b)); });
+    $("#bestValue").textContent = fmtM(bestDepth(save.mode));
     $("#modeTitle").textContent = MODES[save.mode].title;
     $("#modeDesc").textContent = MODES[save.mode].desc;
   }));
-  $("#begin").addEventListener("click", () => startSolo(save.mode === "endless" ? "endless" : "classic"));
+  $("#begin").addEventListener("click", () => startSolo(MODES[save.mode] ? save.mode : "classic"));
   $("#multi").addEventListener("click", () => { Sound.play("tap"); Room.open(); });
   $("#daily").addEventListener("click", () => {
     if (rec && rec.done) { game = { mode: "daily", day, prompts: dailyPrompts(day), picks: rec.picks, idx: CLASSIC_COUNT }; finish(); }
@@ -562,16 +583,17 @@ function home() {
 
 function howTo() {
   const m = $("#modal");
+  const mode = save.mode === "noillirk" ? "noillirk" : "classic";
   m.innerHTML = `<div class="panel sheet" role="document">
-    <h2>How to dive</h2>
+    <h2>${mode === "noillirk" ? "How to play Noillirk" : "How to dive"}</h2>
     <ol>
       <li>Each prompt asks you to name something, like <i>"Name a cheese."</i></li>
       <li>You get <b>${ROUND_SECS} seconds</b> and one answer that counts. An answer that isn't in the bank costs <b>${WRONG_COST}s</b>; try again.</li>
-      <li><b>Rarer answers score more</b>, and every point sinks you <b>${METRES_PER_PT}m</b> deeper.</li>
+      <li><b>${mode === "noillirk" ? "Common answers score more" : "Rarer answers score more"}</b>, and every point sinks you <b>${METRES_PER_PT}m</b> deeper.</li>
       <li>Stuck? <b>Pass</b> skips the prompt for 0 points.</li>
     </ol>
-    <div class="tier-table">${TIER_ORDER.map(t => `<div style="--c:${TIERS[t].color}"><canvas data-icon="${t}"></canvas><span>${TIERS[t].name}</span><b>${TIERS[t].pts}</b></div>`).join("")}</div>
-    <p class="small">"Too Clever" is for answers that are technically right but dodge the question, like <i>tomato</i> for a fruit. With friends, an answer nobody else gave earns <b>+15</b>.</p>
+    <div class="tier-table">${tierOrderFor(mode).map(t => `<div style="--c:${TIERS[t].color}"><canvas data-icon="${t}"></canvas><span>${TIERS[t].name}</span><b>${pointsFor(t, mode)}</b></div>`).join("")}</div>
+    <p class="small">${mode === "noillirk" ? "Aim for the obvious! Commonness comes from the answer bank’s tiers, not live player votes. " : ""}"Too Clever" is for answers that are technically right but dodge the question, like <i>tomato</i> for a fruit. With friends, an answer nobody else gave earns <b>+15</b>.</p>
     <button class="pbtn" id="closeHow">Let's dive</button>
   </div>`;
   paintIcons(m);

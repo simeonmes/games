@@ -6,7 +6,7 @@
 // room gave earns a bonus.
 
 const Room = (() => {
-  const PROTO = 2;
+  const PROTO = 3;
   const ID_PREFIX = "krillion-room-";
   const COLORS = ["#ff4f86", "#7fe3f5", "#ffd23f", "#63b7ff", "#c79bff", "#ff8a3d", "#45e0a0", "#ff9e9e"];
   const MAX_PLAYERS = COLORS.length;
@@ -21,6 +21,8 @@ const Room = (() => {
   let H = null;             // host only: the room's real state
   let view = null;          // everyone: the latest room snapshot from the host
   let ui = "";              // which room screen is showing
+  let roundToken = 0;      // invalidates asynchronous work from an older prompt or room
+  let roundDive = -1;
   let roundI = -1;          // index of the prompt on screen
   let picks = [];           // this player's results, for the progress squares
   let playing = false;      // this player's own answer is still playing out on screen
@@ -168,7 +170,7 @@ const Room = (() => {
       peer = p; role = "host"; me = id; leaving = false;
       H = {
         players: [{ id, name: myName, color: COLORS[0], score: 0, picks: [], conn: null }],
-        count: createOpts.count, secs: createOpts.secs, phase: "lobby", prompts: [], i: -1, answers: {}, timer: 0, lastReveal: null,
+        count: createOpts.count, secs: createOpts.secs, phase: "lobby", prompts: [], i: -1, dive: 0, answers: {}, timer: 0, currentPrompt: null, lastReveal: null,
       };
       p.on("connection", hostOnConn);
       history.replaceState(null, "", inviteLink());
@@ -226,6 +228,7 @@ const Room = (() => {
     if (H) clearTimeout(H.timer);
     const p = peer;
     peer = null; role = null; hostConn = null; H = null; view = null; ui = ""; roundI = -1; picks = [];
+    roundToken++; roundDive = -1;
     playing = false; held = null;
     if (p && !p.destroyed) { leaving = true; try { p.destroy(); } catch (e) {} }
     if (urlParam("room")) history.replaceState(null, "", location.pathname + (urlParam("peer") ? `?peer=${encodeURIComponent(urlParam("peer"))}` : ""));
@@ -253,7 +256,7 @@ const Room = (() => {
 
   function snapshot() {
     return {
-      t: "room", code, phase: H.phase, i: H.i, total: H.prompts.length || H.count, count: H.count, secs: H.secs,
+      t: "room", code, dive: H.dive, phase: H.phase, i: H.i, total: H.prompts.length || H.count, count: H.count, secs: H.secs,
       players: H.players.map(p => ({ id: p.id, name: p.name, color: p.color, score: p.score, host: p.id === me, done: H.phase !== "prompt" || p.waiting || !!H.answers[p.id] })),
     };
   }
@@ -287,12 +290,12 @@ const Room = (() => {
       hostSync();
       if (H.phase === "reveal" && H.lastReveal) conn.send(H.lastReveal);
     } else if (m.t === "answer") {
-      if (H.phase !== "prompt" || m.i !== H.i || H.answers[id] || !H.players.some(p => p.id === id)) return;
+      if (H.phase !== "prompt" || m.dive !== H.dive || m.i !== H.i || H.answers[id] || !H.players.some(p => p.id === id && !p.waiting)) return;
       H.answers[id] = { typed: String(m.typed || "").slice(0, 60), how: m.how === "pass" ? "pass" : m.typed ? "hit" : "time" };
       hostSync();
       if (allIn()) {
-        const i = H.i;
-        setTimeout(() => hostClose(i), 900);
+        const i = H.i, dive = H.dive;
+        setTimeout(() => hostClose(i, dive), 900);
       }
     }
   }
@@ -303,33 +306,41 @@ const Room = (() => {
     H.players = H.players.filter(p => p.id !== id);
     if (H.players.length === before) return;
     hostSync();
-    if (H.phase === "prompt" && allIn()) hostClose(H.i);
+    if (H.phase === "prompt" && allIn()) hostClose(H.i, H.dive);
   }
 
   function hostStart() {
+    if (!H || H.phase !== "lobby") return;
+    clearTimeout(H.timer);
+    H.dive++;
     H.prompts = drawPrompts(H.count);
     H.players.forEach(p => { p.score = 0; p.picks = []; });
     H.i = -1;
     hostNext();
   }
 
-  function hostNext() {
+  function hostNext(expectedI = H && H.i, expectedDive = H && H.dive) {
+    if (!H || H.i !== expectedI || H.dive !== expectedDive || !["lobby", "reveal"].includes(H.phase)) return;
     if (H.i + 1 >= H.prompts.length) return hostEnd();
     H.i++;
     H.phase = "prompt";
     H.answers = {};
     H.lastReveal = null;
     H.players.forEach(p => { p.waiting = false; });
-    const i = H.i;
-    broadcast({ t: "prompt", i, pi: H.prompts[i], secs: H.secs, total: H.prompts.length });
+    const i = H.i, dive = H.dive, pi = H.prompts[i];
+    H.currentPrompt = {
+      t: "prompt", dive, i, secs: H.secs, total: H.prompts.length,
+      question: { text: PROMPTS[pi][0], category: categoryOf(pi), tiers: tiersFor(pi) },
+    };
+    broadcast(H.currentPrompt);
     hostSync();
     clearTimeout(H.timer);
-    H.timer = setTimeout(() => hostClose(i), (COUNTDOWN + H.secs + GRACE) * 1000);
+    H.timer = setTimeout(() => hostClose(i, dive), (COUNTDOWN + H.secs + GRACE) * 1000);
   }
 
   // Scores the prompt. The host checks every typed answer against the bank itself.
-  function hostClose(i) {
-    if (!H || H.phase !== "prompt" || H.i !== i) return;
+  function hostClose(i, dive) {
+    if (!H || H.phase !== "prompt" || H.i !== i || H.dive !== dive) return;
     clearTimeout(H.timer);
     const pi = H.prompts[i], bank = bankFor(pi);
     const divers = H.players.filter(p => !p.waiting);
@@ -350,7 +361,7 @@ const Room = (() => {
       };
     });
     H.phase = "reveal";
-    H.lastReveal = { t: "reveal", i, pi, total: H.prompts.length, rows, last: i + 1 >= H.prompts.length };
+    H.lastReveal = { t: "reveal", dive, i, question: H.currentPrompt.question, total: H.prompts.length, rows, last: i + 1 >= H.prompts.length };
     hostSync();                 // scores reach everyone before the reveal that shows them
     broadcast(H.lastReveal);
   }
@@ -362,10 +373,13 @@ const Room = (() => {
       return { id: p.id, name: p.name, color: p.color, score: p.score, best };
     });
     hostSync();
-    broadcast({ t: "end", players, total: H.prompts.length });
+    broadcast({ t: "end", dive: H.dive, players, total: H.prompts.length });
   }
 
   function hostLobby() {
+    if (!H || H.phase !== "end") return;
+    clearTimeout(H.timer);
+    H.answers = {}; H.currentPrompt = null; H.lastReveal = null;
     H.phase = "lobby";
     H.i = -1;
     H.prompts = [];
@@ -377,6 +391,10 @@ const Room = (() => {
 
   function onMsg(m) {
     if (!m || typeof m !== "object") return;
+    if (["room", "prompt", "reveal", "end"].includes(m.t)) {
+      if (!Number.isSafeInteger(m.dive) || m.dive < roundDive) return;
+      if (["prompt", "reveal"].includes(m.t) && m.dive === roundDive && m.i < roundI) return;
+    }
     switch (m.t) {
       case "welcome": me = m.you; break;
       case "room":
@@ -405,6 +423,8 @@ const Room = (() => {
   }
 
   function renderLobby() {
+    roundToken++; roundDive = view.dive; roundI = -1;
+    playing = false; held = null;
     ui = "lobby";
     clearTimers();
     curRound = null;
@@ -466,18 +486,24 @@ const Room = (() => {
   }
 
   function startPrompt(m) {
+    if (!m.question || typeof m.question.text !== "string" || !m.question.tiers) return;
+    if (m.dive === roundDive && m.i === roundI && ui === "prompt") return;
+    const token = ++roundToken;
+    roundDive = m.dive;
     ui = "prompt";
     roundI = m.i;
     onQuit = leave;
     if (m.i === 0) { picks = []; Scene.set(0, true); Sound.play("ping"); }
     playing = false; held = null;
     playRound({
-      pi: m.pi, secs: m.secs, hud: hud(m.i, m.total),
+      prompt: m.question, secs: m.secs, hud: hud(m.i, m.total),
       onResolve: async (hit, typed, r, how) => {
-        send({ t: "answer", i: m.i, typed: hit ? typed : "", how });
+        if (token !== roundToken || r !== curRound) return;
+        send({ t: "answer", dive: m.dive, i: m.i, typed: hit ? typed : "", how });
         const p = meP();
         playing = true;
         await revealSequence({ hit, typed, how, bank: r.bank, depth: ((p ? p.score : 0) + (hit ? TIERS[hit.tier].pts : 0)) * METRES_PER_PT });
+        if (token !== roundToken) return;
         playing = false;
         if (held) { const h = held; held = null; renderReveal(h); return; }
         $("#bottom").innerHTML = `<div class="waitbar" id="waitMsg"></div>`;
@@ -507,6 +533,7 @@ const Room = (() => {
     roundI = m.i;
     onQuit = leave;
     const isHost = role === "host";
+    roundDive = m.dive;
     const mine = m.rows.find(r => r.id === me);
     if (mine && picks.length === m.i) picks.push({ tier: mine.tier });
     const rows = m.rows.slice().sort((a, b) => (b.pts + b.bonus) - (a.pts + a.bonus));
@@ -517,8 +544,8 @@ const Room = (() => {
       ${hud(m.i, m.total)}
       <div class="stage" id="stage">
         <div class="panel reveal">
-          <div class="pcat">${esc(categoryOf(m.pi))}</div>
-          <h2 class="ptext sm">${esc(PROMPTS[m.pi][0])}</h2>
+          <div class="pcat">${esc(m.question.category)}</div>
+          <h2 class="ptext sm">${esc(m.question.text)}</h2>
           <ul class="answers">${rows.map(r => `
             <li class="${r.id === me ? "me" : ""}">
               <i class="pdot done" style="--c:${r.color}"></i>
@@ -539,7 +566,7 @@ const Room = (() => {
     if (isHost) {
       const next = $("#next");
       next.focus({ preventScroll: true });
-      next.addEventListener("click", () => { Sound.play("tap"); hostNext(); });
+      next.addEventListener("click", () => { Sound.play("tap"); hostNext(m.i, m.dive); });
     }
   }
 
@@ -551,6 +578,8 @@ const Room = (() => {
   }
 
   function renderEnd(m) {
+    roundToken++; roundDive = m.dive;
+    playing = false; held = null;
     ui = "end";
     clearTimers();
     curRound = null;

@@ -6,7 +6,7 @@ const ctx = { console };
 vm.createContext(ctx);
 // The same files, in the same order, as index.html loads them.
 const promptFiles = fs.existsSync(path.join(dir, "prompts")) ? fs.readdirSync(path.join(dir, "prompts")).filter(f => f.endsWith(".js")).sort().map(f => "prompts/" + f) : [];
-const files = ["data.js", ...promptFiles, "bank-extra.js", "bank-clever.js", "bank-more.js", "bank-wikidata.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
+const files = ["data.js", ...promptFiles, "bank-extra.js", "bank-clever.js", "bank-more.js", "bank-wikidata.js", "bank-expanded.js", "match.js"].filter(f => fs.existsSync(path.join(dir, f)));
 const html = fs.readFileSync(path.join(dir, "..", "index.html"), "utf8");
 for (const f of promptFiles) if (!html.includes(`js/${f}`)) { console.log(`✗ index.html doesn't load js/${f}`); process.exitCode = 1; }
 const src = files.map(f => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
@@ -44,6 +44,26 @@ if (twice.length) { bad++; console.log(`✗ prompts listed twice: ${twice.join("
 
 const bankOf = q => Match.build(tiersFor(PROMPTS.findIndex(p => p[0] === q)));
 const cases = [
+  ["Name a soccer club", "Sporting CP", "sporting lisbon"],
+  ["Name a soccer club", "Crvena Zvezda", "red star belgrade"],
+  ["Name a soccer club", "Brighton and Hove Albion", "brighton"],
+  ["Name a soccer club", "Persib Bandung", "persib bandung"],
+  ["Name a soccer club", "Chicago Stars FC", "chicago red stars"],
+  ["Name a cricket team", "RCB", "royal challengers bengaluru"],
+  ["Name a cricket team", "Kings XI Punjab", "punjab kings"],
+  ["Name a rugby club", "Hull KR", "hull kingston rovers"],
+  ["Name a baseball team", "Yankees", "new york yankees"],
+  ["Name an ice hockey team", "Utah Hockey Club", "utah mammoth"],
+  ["Name an ice hockey team", "Habs", "montreal canadiens"],
+  ["Name a cricket team", "Liverpool", null],
+  ["Name a video game", "DTI", "dress to impress"],
+  ["Name a video game", "WuWa", "wuthering waves"],
+  ["Name a video game", "HSR", "honkai star rail"],
+  ["Name an animated TV show", "TADC", "the amazing digital circus"],
+  ["Name a cartoon character", "Okarun", "ken takakura"],
+  ["Name a toy", "Labubu", "labubu"],
+  ["Name a dessert", "Dubai chocolate", "dubai chocolate"],
+  ["Name a hobby", "Photocard collecting", "photocard collecting"],
   ["Name a cheese", "Mozarella", "mozzarella"], ["Name a cheese", "the moon", "moon"],
   ["Name a fruit", "Peaches", "peach"], ["Name a fruit", "kiwis", "kiwi"],
   ["Name a programming language", "C++", "c++"], ["Name a programming language", "C#", "c#"],
