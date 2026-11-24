@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b1022">
+<title>Squint — draw and guess with friends</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+<link rel="preload" href="fonts/silkscreen-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/vt323-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+<div id="home" class="home">
+  <a class="back" href="../index.html">◀ Games</a>
+  <header class="brand">
+    <div class="word" aria-label="Squint">
+      <span style="--c:#ff6b98">S</span><span style="--c:#ffd23f">Q</span><span style="--c:#8fd14f">U</span><span style="--c:#2ec4b6">I</span><span style="--c:#5ab0ff">N</span><span style="--c:#a56ee8">T</span>
+    </div>
+    <p class="tagline">Draw it. Guess it. Before the clock runs out.</p>
+  </header>
+
+  <section id="entry" class="entry px">
+    <input id="name" type="text" maxlength="20" placeholder="Enter your name" autocomplete="off" spellcheck="false" aria-label="Your name">
+    <div class="avmaker">
+      <div class="arrows">
+        <button type="button" data-part="0" data-dir="-1" aria-label="Previous colour">◀</button>
+        <button type="button" data-part="1" data-dir="-1" aria-label="Previous eyes">◀</button>
+        <button type="button" data-part="2" data-dir="-1" aria-label="Previous mouth">◀</button>
+        <button type="button" data-part="3" data-dir="-1" aria-label="Previous hat">◀</button>
+      </div>
+      <canvas id="avBig" width="16" height="16" aria-label="Your avatar"></canvas>
+      <div class="arrows">
+        <button type="button" data-part="0" data-dir="1" aria-label="Next colour">▶</button>
+        <button type="button" data-part="1" data-dir="1" aria-label="Next eyes">▶</button>
+        <button type="button" data-part="2" data-dir="1" aria-label="Next mouth">▶</button>
+        <button type="button" data-part="3" data-dir="1" aria-label="Next hat">▶</button>
+      </div>
+      <button type="button" id="avRandom" class="die" aria-label="Random avatar">🎲</button>
+    </div>
+    <form id="joinForm" class="joinrow" autocomplete="off">
+      <input id="code" type="text" inputmode="numeric" maxlength="6" placeholder="Room code" spellcheck="false" aria-label="Room code">
+      <button class="btn green big" id="playBtn" type="submit">Play!</button>
+    </form>
+    <button class="btn blue" id="createBtn" type="button">Create Private Room</button>
+    <div id="homeMsg" class="msg" aria-live="polite"></div>
+  </section>
+
+  <section class="info">
+    <div class="px">
+      <h2>About</h2>
+      <p><b>Squint</b> is a free online drawing and guessing game for 2 to 20 friends.</p>
+      <p>A game has a few rounds. Every round, each player takes a turn drawing a secret word while everyone else races to guess it. Guess fast to score more points. The player with the most points at the end wins!</p>
+    </div>
+    <div class="px">
+      <h2>How to play</h2>
+      <ol class="how">
+        <li>Create a private room and send your friends the invite link or the 6-digit code.</li>
+        <li>On your turn, pick one of the words and draw it.</li>
+        <li>Everyone else types guesses in the chat. Letters are revealed as hints.</li>
+        <li>The faster you guess, the more points you get. The drawer scores when people guess.</li>
+        <li>After the last round, the top three take the podium.</li>
+      </ol>
+    </div>
+    <div class="px">
+      <h2>Rules</h2>
+      <ul class="how">
+        <li>No writing the word or its letters on the canvas.</li>
+        <li>Don't give away the answer in chat once you've guessed it.</li>
+        <li>Be nice! You can votekick players who spoil the fun.</li>
+      </ul>
+      <p class="keys">Drawing keys: <b>B</b> brush · <b>F</b> fill · <b>U</b> undo · <b>C</b> clear · <b>S</b> swap colours · <b>1–5</b> size. Right-click draws with your second colour.</p>
+    </div>
+  </section>
+</div>
+
+<div id="game" class="game" hidden>
+  <div class="g-head px">
+    <div class="clock" id="clock"><span id="clockNum"></span></div>
+    <div class="roundtxt" id="roundTxt">Waiting</div>
+    <div class="wordbox"><small id="wordLabel">WAITING</small><div id="wordShown" class="wordshown"></div></div>
+    <div class="headbtns"><button type="button" id="soundBtn" class="iconbtn" aria-label="Sound"></button><button type="button" id="leaveBtn" class="btn small grey">Leave</button></div>
+  </div>
+  <aside class="g-players px" id="players" aria-label="Players"></aside>
+  <div class="g-board">
+    <canvas id="board" width="800" height="600" aria-label="Drawing canvas"></canvas>
+    <div id="overlay" class="overlay" hidden></div>
+    <div class="rate" id="rate" hidden>
+      <button type="button" data-k="like" aria-label="Like the drawing">👍</button>
+      <button type="button" data-k="dislike" aria-label="Dislike the drawing">👎</button>
+    </div>
+  </div>
+  <aside class="g-chat px">
+    <div class="log" id="log" aria-live="polite"></div>
+    <form id="chatForm" autocomplete="off"><input id="chatIn" type="text" maxlength="100" placeholder="Type your guess here…" aria-label="Chat or guess"></form>
+  </aside>
+  <div class="g-tools" id="tools" hidden>
+    <button type="button" class="cur" id="swapBtn" aria-label="Swap colours" title="Swap colours (S)"><i id="curA"></i><i id="curB"></i></button>
+    <div class="palette px" id="palette"></div>
+    <div class="tgroup px"><button type="button" id="toolBrush" title="Brush (B)" aria-label="Brush"></button><button type="button" id="toolFill" title="Fill (F)" aria-label="Fill"></button></div>
+    <div class="tgroup px" id="sizes"></div>
+    <div class="tgroup px"><button type="button" id="undoBtn" title="Undo (U)" aria-label="Undo"></button><button type="button" id="clearBtn" title="Clear (C)" aria-label="Clear"></button></div>
+  </div>
+</div>
+
+<div id="pop" class="pop px" hidden></div>
+<div id="toast" class="toast" role="status"></div>
+
+<script src="js/words.js?v=1"></script>
+<script src="js/host.js?v=1"></script>
+<script src="js/board.js?v=1"></script>
+<script src="js/art.js?v=1"></script>
+<script src="js/sound.js?v=1"></script>
+<script src="js/net.js?v=1"></script>
+<script src="js/main.js?v=1"></script>
+<script src="../site.js" async></script>
+</body>
+</html>
